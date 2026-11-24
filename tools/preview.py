@@ -250,7 +250,7 @@ def sidebar(articles, structure, maps, active: str) -> str:
         cls = ' class="active"' if "source-" + m["slug"] == active else ""
         mitems.append(f'<li><a href="source-{m["slug"]}.html"{cls}>{m["title"].split(":")[0]}</a></li>')
     index_items = [("start.html", "Start here"), ("assertions.html", "Assertions"),
-                   ("bibliography.html", "Bibliography")]
+                   ("bibliography.html", "Bibliography"), ("all.html", "Single file")]
     idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
                   for href, label in index_items)
     return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
@@ -298,6 +298,8 @@ def build(out: Path) -> dict:
 
     def page_shell(title, description, inner, active):
         return shell(title, description, inner, sidebar(articles, structure, maps, active))
+
+    rendered: dict[str, str] = {}
 
     # ---- articles
     for aid in order:
@@ -361,6 +363,7 @@ def build(out: Path) -> dict:
 <a class="top" href="#">back to top</a>"""
         (out / f"{aid}.html").write_text(
             page_shell(f"{meta['title']} — Hierarchical RG", meta["summary"], inner, aid))
+        rendered[aid] = body
         search_entries.append({"url": f"{aid}.html", "title": meta["title"], "subtitle": meta["subtitle"],
                                "summary": meta["summary"], "text": strip_html(body)[:4000]})
 
@@ -510,6 +513,42 @@ wiki uses it.</p>"""
                            "the block structure, the decimation identity, the renormalisation group map, "
                            "fixed points, exponents, percolation, vector models, phi-fourth, Euclidean comparison"})
 
+    # ---- single-file edition
+    def strip_sims(text):
+        def note(m):
+            title = m.group(2) or ""
+            return (f'<p class="meta">[Interactive figure: {title} &mdash; on the web page]</p>'
+                    if title else '<p class="meta">[Interactive figure &mdash; on the web page]</p>')
+        return re.sub(r'<div class="sim" data-sim="[a-z-]+"(?: data-title="([^"]*)")?>(?:<div class="sim-title">(.*?)</div>)?</div>',
+                      lambda m: f'<p class="meta">[Interactive figure{": " + m.group(2) if m.group(2) else ""} &mdash; on the web page]</p>',
+                      text)
+    contents = []
+    for i, part in enumerate(parts):
+        contents.append(f'<li><strong>Part {i + 1}: {part["title"]}</strong><ol>' +
+                        "".join(f'<li><a href="#whole-{a}">{articles[a]["title"]}</a></li>'
+                                for a in part["articles"]) + "</ol></li>")
+    whole = []
+    for aid in order:
+        meta = articles[aid]
+        body = strip_sims(rendered[aid])
+        body = re.sub(r'<a class="anchor" href="#[^"]*" aria-label="link to this section">#</a>', "", body)
+        whole.append(f'<section class="whole" id="whole-{aid}"><h1>{meta["title"]}</h1>'
+                     f'<p class="subtitle">{meta["subtitle"]}</p>'
+                     f'<p class="meta">{meta["kind"]} &middot; <a href="{aid}.html">separate page</a></p>'
+                     f'{body}</section>')
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Single file</p>
+<h1>Hierarchical RG</h1>
+<p class="subtitle">The whole wiki in one page, for printing or reading offline.</p>
+<p class="meta">{len(order)} articles &middot; {len(assertion_rows)} tagged assertions &middot; the pages
+that are interactive or generated are linked from each article's separate page</p>
+<details class="toc" open><summary>Contents</summary><ol>{''.join(contents)}</ol></details>
+{''.join(whole)}"""
+    (out / "all.html").write_text(
+        page_shell("Hierarchical RG — single file", "The whole wiki in one page.", inner, "all"))
+    search_entries.append({"url": "all.html", "title": "Single file edition",
+                           "subtitle": f"all {len(order)} articles in one page", "summary": "",
+                           "text": "single file printable edition"})
+
     # ---- home
     part_cards = []
     for i, part in enumerate(parts):
@@ -539,6 +578,7 @@ attribution where they are not.</p>
 <ol class="paths">
 <li><a href="assertions.html">Assertions</a> <span class="meta">— every tagged statement, with its own page</span></li>
 <li><a href="bibliography.html">Bibliography</a> <span class="meta">— every work cited, with the articles citing it</span></li>
+<li><a href="all.html">Single file</a> <span class="meta">— the whole wiki in one page, for printing</span></li>
 </ol>"""
     (out / "index.html").write_text(
         page_shell("Hierarchical RG — a wiki on the renormalisation group",

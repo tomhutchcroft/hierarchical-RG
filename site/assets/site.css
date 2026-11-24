@@ -162,3 +162,8 @@ ol.paths li { margin: .45rem 0; }
 ol.paths .meta { display: block; font-size: .8rem; }
 .lead-para { font-size: 1.05rem; }
 .assertion { border-left: 2px solid var(--rule); padding-left: .9rem; margin: 1rem 0 1.4rem; }
+
+.sim-svg .cell { stroke: none; }
+.sim-svg .cell.up { fill: #17181a; }
+.sim-svg .cell.down { fill: #f2efe8; }
+.sim-svg .bar-down { fill: #8a8f99; opacity: .7; }

@@ -84,7 +84,23 @@ def main() -> int:
     check("live percolation run is consistent", bool(size >= 1 and has0 and edges_ok),
           f"|K_0| = {size}, contains 0 = {has0}, edges valid = {edges_ok}")
 
-    # 5. the data the pages embed
+    # 5. the Ising heat bath: one sweep, bit for bit
+    n, L, d, alpha, beta = 4, 2, 1, 0.5, 1.0
+    J = simulate.ising_couplings(n, L, d, alpha)
+    N = len(J)
+    bits = simulate.lcg_stream(7, N * 8 + 10)
+    spins, off = [1] * N, 0
+    for _ in range(6):
+        off = simulate.ising_sweep(spins, J, beta, bits, off)
+    js = json.loads(ctx.eval(
+        "JSON.stringify((function(){var J=SIM.isingCouplings(%d,%d,%d,%s);"
+        "var sp=new Array(%d).fill(1);var bits=%s;var off=0;"
+        "for(var k=0;k<6;k++) off=SIM.isingSweep(sp,J,%s,bits,off);return sp;})())"
+        % (n, L, d, alpha, N, json.dumps(bits), beta)))
+    check("Ising heat bath agrees with the reference", spins == js,
+          "identical spin configuration after six sweeps" if spins == js else "configurations differ")
+
+    # 6. the data the pages embed
     data = simulate.build()
     for key in ("rg-orbit", "exponents", "triangle"):
         json.dumps(data[key])

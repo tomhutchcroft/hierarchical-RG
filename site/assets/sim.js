@@ -106,6 +106,32 @@
 
   global.SIM = SIM;
 
+  /* ---------------------------------------------------------------- Ising heat bath */
+
+  SIM.isingCouplings = function (n, L, d, alpha) {
+    var V = SIM.vertices(d, L, n), N = V.length, J = [], i, j;
+    for (i = 0; i < N; i++) { J.push([]); for (j = 0; j < N; j++) J[i].push(0); }
+    for (i = 0; i < N; i++) {
+      for (j = i + 1; j < N; j++) {
+        var w = Math.pow(L, -(d + alpha) * SIM.level(V[i], V[j], d));
+        J[i][j] = w; J[j][i] = w;
+      }
+    }
+    return J;
+  };
+
+  SIM.isingSweep = function (spins, J, beta, bits, offset) {
+    var N = spins.length, i, j;
+    for (i = 0; i < N; i++) {
+      var h = 0;
+      for (j = 0; j < N; j++) if (j !== i) h += J[i][j] * spins[j];
+      var pUp = 1 / (1 + Math.exp(-2 * beta * h));
+      spins[i] = bits[offset % bits.length] < pUp ? 1 : -1;
+      offset++;
+    }
+    return offset;
+  };
+
   /* ---------------------------------------------------------------- browser widgets */
 
   if (typeof document === "undefined") return;
@@ -336,6 +362,90 @@
       host.appendChild(svg);
       var controls = document.createElement("div"); controls.className = "sim-controls";
       controls.appendChild(slider);
+      host.appendChild(controls); host.appendChild(readout);
+      draw();
+    },
+
+    /* -------------------------------------------------- Ising Monte Carlo */
+    "ising-mc": function (host) {
+      var n = 6, L = 2, d = 1, alpha = 0.5, N = Math.pow(L, d * n);
+      var J = SIM.isingCouplings(n, L, d, alpha);
+      var W = 640, H = 260, pad = { l: 26, r: 14, t: 16, b: 46 };
+      var svg = svgRoot(W, H);
+      var spins = [], bits = [], off = 0, sweeps = 0, seed = 11, timer = null;
+      var cell = (W - pad.l - pad.r) / N;
+      function rebuild(keep) {
+        var i;
+        if (!keep) { spins = []; for (i = 0; i < N; i++) spins.push(1); sweeps = 0; }
+        bits = [];
+        var rnd = SIM.rng(seed);
+        for (i = 0; i < N * 300; i++) bits.push(rnd());
+        off = 0;
+      }
+      rebuild(false);
+      var rects = [], i;
+      for (i = 0; i < N; i++) {
+        rects.push(el("rect", { x: pad.l + i * cell, y: pad.t, width: cell + 0.4, height: 54, class: "cell" }));
+        svg.appendChild(rects[i]);
+      }
+      for (i = 1; i < 7; i++) {
+        var x = pad.l + Math.pow(2, i) * cell;
+        svg.appendChild(el("line", { x1: x, y1: pad.t, x2: x, y2: pad.t + 54, class: "guide" }));
+      }
+      // block magnetisation at level 3: eight blocks of eight sites
+      var bars = [], nb = 8, bw = (W - pad.l - pad.r) / nb;
+      for (i = 0; i < nb; i++) {
+        bars.push(el("rect", { x: pad.l + i * bw + 8, y: 120, width: bw - 16, height: 2, class: "bar" }));
+        svg.appendChild(bars[i]);
+      }
+      svg.appendChild(el("text", { x: pad.l, y: 110 }, "block magnetisation of the eight level-3 blocks"));
+      var slider = document.createElement("input");
+      slider.type = "range"; slider.min = 0.2; slider.max = 1.6; slider.step = 0.01; slider.value = 0.6;
+      slider.className = "sim-slider";
+      var runBtn = document.createElement("button");
+      runBtn.className = "sim-button"; runBtn.textContent = "run";
+      var resetBtn = document.createElement("button");
+      resetBtn.className = "sim-button"; resetBtn.textContent = "reset";
+      var readout = document.createElement("div"); readout.className = "sim-readout";
+      var betaC = 1 / ((1 - Math.pow(L, -d)) * Math.pow(L, -alpha) / (1 - Math.pow(L, -alpha)));
+      function draw() {
+        var beta = parseFloat(slider.value), i2, M = 0;
+        for (i2 = 0; i2 < N; i2++) {
+          rects[i2].setAttribute("class", spins[i2] > 0 ? "cell up" : "cell down");
+          M += spins[i2];
+        }
+        for (i2 = 0; i2 < nb; i2++) {
+          var m = 0;
+          for (var j = i2 * (N / nb); j < (i2 + 1) * (N / nb); j++) m += spins[j];
+          m /= (N / nb);
+          var h = Math.abs(m) * 46, y = 120 + 46 - h;
+          bars[i2].setAttribute("y", y.toFixed(1));
+          bars[i2].setAttribute("height", Math.max(1, h).toFixed(1));
+          bars[i2].setAttribute("class", m > 0 ? "bar" : "bar bar-down");
+        }
+        readout.innerHTML = "β = " + beta.toFixed(2) + " = " + (beta / betaC).toFixed(2) + " β<sub>c</sub>" +
+          " &nbsp;·&nbsp; sweeps " + sweeps +
+          " &nbsp;·&nbsp; |M|/N = " + (Math.abs(M) / N).toFixed(3) +
+          " &nbsp;·&nbsp; " + N + " sites, couplings at six levels";
+      }
+      function step() {
+        var beta = parseFloat(slider.value), k;
+        for (k = 0; k < 2; k++) {
+          if (off + N >= bits.length) { seed = (seed * 7 + 13) % 997 + 1; var keep = spins.slice(); rebuild(true); spins = keep; }
+          off = SIM.isingSweep(spins, J, beta, bits, off);
+          sweeps++;
+        }
+        draw();
+      }
+      runBtn.addEventListener("click", function () {
+        if (timer) { clearInterval(timer); timer = null; runBtn.textContent = "run"; }
+        else { timer = setInterval(step, 90); runBtn.textContent = "pause"; }
+      });
+      resetBtn.addEventListener("click", function () { rebuild(false); draw(); });
+      slider.addEventListener("input", draw);
+      host.appendChild(svg);
+      var controls = document.createElement("div"); controls.className = "sim-controls";
+      controls.appendChild(slider); controls.appendChild(runBtn); controls.appendChild(resetBtn);
       host.appendChild(controls); host.appendChild(readout);
       draw();
     },

@@ -368,3 +368,47 @@ def ising_block(n=4, L=2, d=1, alpha=0.5, n_beta=18):
     return {"n": n, "N": N, "values": list(range(-N, N + 1, 2)),
             "betas": [round(b, 6) for b in betas], "beta_c": 1 / row,
             "histograms": histograms, "alpha": alpha, "L": L, "d": d}
+
+
+# ---------------------------------------------------------------- 6. Ising Monte Carlo (reference)
+
+
+def ising_couplings(n, L=2, d=1, alpha=0.5):
+    """The coupling matrix of the hierarchical Ising model on a block of 2^n sites."""
+    V = vertices(d, L, n)
+    N = len(V)
+    J = [[0.0] * N for _ in range(N)]
+    for i in range(N):
+        for j in range(i + 1, N):
+            k = children_index(V[i], V[j], d)
+            w = L ** (-(d + alpha) * k)
+            J[i][j] = J[j][i] = w
+    return J
+
+
+def ising_sweep(spins, J, beta, bits, offset):
+    """One heat-bath sweep: site i becomes +1 with probability 1/(1+exp(-2 beta h_i)).
+
+    Returns the new offset into the uniform stream. The browser code in wiki/static/sim.js
+    reproduces this function exactly; tools/test_sim.py checks the two against each other.
+    """
+    N = len(spins)
+    for i in range(N):
+        h = 0.0
+        row = J[i]
+        for j in range(N):
+            if j != i:
+                h += row[j] * spins[j]
+        p_up = 1.0 / (1.0 + math.exp(-2.0 * beta * h))
+        spins[i] = 1 if bits[offset % len(bits)] < p_up else -1
+        offset += 1
+    return offset
+
+
+def lcg_stream(seed, count):
+    s = seed & 0xFFFFFFFF or 1
+    out = []
+    for _ in range(count):
+        s = (s * 1664525 + 1013904223) & 0xFFFFFFFF
+        out.append(s / 4294967296)
+    return out
