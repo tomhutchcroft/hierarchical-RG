@@ -151,3 +151,14 @@ figure.fig figcaption { font-family: var(--sans); font-size: .8rem; color: var(-
 
 .sim-svg .bar { fill: var(--accent); opacity: .8; }
 .sim-svg .axes-line { stroke: var(--rule); stroke-width: 1; }
+
+/* ---------- parts, paths, assertions */
+.card.part { background: var(--panel); }
+.card .mini { margin: .45rem 0 0; padding-left: 1.05rem; font-size: .88rem; }
+.card .mini li { margin: .18rem 0; }
+.card .mini .meta { display: block; font-size: .78rem; color: var(--faint); }
+ol.paths { font-size: .95rem; margin: .6rem 0 1.4rem; padding-left: 1.2rem; }
+ol.paths li { margin: .45rem 0; }
+ol.paths .meta { display: block; font-size: .8rem; }
+.lead-para { font-size: 1.05rem; }
+.assertion { border-left: 2px solid var(--rule); padding-left: .9rem; margin: 1rem 0 1.4rem; }

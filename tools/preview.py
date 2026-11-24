@@ -27,9 +27,10 @@ ARTICLES = WIKI / "articles"
 SOURCES = WIKI / "sources"
 STATIC = WIKI / "static"
 CATALOG = WIKI / "src" / "content" / "catalog.json"
+STRUCTURE = WIKI / "structure.json"
 DEFAULT_OUT = ROOT / "site"
 
-# Reading order of the articles, from the lattice to the comparison.
+# Fallback order used only if wiki/structure.json is missing; the structure file wins.
 ORDER = [
     "hierarchical-lattice",
     "hierarchical-gibbs-measure",
@@ -71,6 +72,31 @@ def load_articles():
         out[meta["id"]] = meta
     order = [i for i in ORDER if i in out] + [i for i in out if i not in ORDER]
     return out, order
+
+
+def load_structure(articles) -> dict:
+    """Parts and reading paths, validated against the articles that exist."""
+    data = json.loads(STRUCTURE.read_text())
+    parts = data["parts"]
+    seen = []
+    for part in parts:
+        if not part.get("articles"):
+            raise SystemExit(f"structure: part {part['id']!r} has no articles")
+        for aid in part["articles"]:
+            if aid not in articles:
+                raise SystemExit(f"structure: part {part['id']!r} names unknown article {aid!r}")
+            seen.append(aid)
+    missing = [a for a in articles if a not in seen]
+    if missing:
+        raise SystemExit(f"structure: articles not in any part: {missing}")
+    if len(seen) != len(set(seen)):
+        dupes = sorted({a for a in seen if seen.count(a) > 1})
+        raise SystemExit(f"structure: article in more than one part: {dupes}")
+    for path in data["paths"]:
+        for aid in path["articles"]:
+            if aid not in articles:
+                raise SystemExit(f"structure: path {path['id']!r} names unknown article {aid!r}")
+    return data
 
 
 def load_maps():
@@ -207,50 +233,76 @@ def shell(title: str, description: str, inner: str, sidebar: str, scripts: str =
 </body></html>"""
 
 
-def sidebar(articles, order, maps, active: str) -> str:
-    assert_active = ' class="active"' if active == "assertions" else ""
-    items = []
-    for n, aid in enumerate(order, start=1):
-        cls = ' class="active"' if aid == active else ""
-        items.append(f'<li><span class="num">{n}</span><a href="{aid}.html"{cls}>{articles[aid]["title"]}</a></li>')
+def sidebar(articles, structure, maps, active: str) -> str:
+    parts = structure["parts"]
+    blocks = []
+    for part in parts:
+        items = []
+        for n, aid in enumerate(part["articles"], start=1):
+            cls = ' class="active"' if aid == active else ""
+            items.append(f'<li><span class="num">{n}</span><a href="{aid}.html"{cls}>'
+                         f'{articles[aid]["title"]}</a></li>')
+        pcls = ' class="active"' if "part-" + part["id"] == active else ""
+        blocks.append(f'<nav class="sec"><h2><a href="part-{part["id"]}.html"{pcls}>'
+                      f'{part["title"]}</a></h2><ol>{"".join(items)}</ol></nav>')
     mitems = []
     for m in maps:
         cls = ' class="active"' if "source-" + m["slug"] == active else ""
         mitems.append(f'<li><a href="source-{m["slug"]}.html"{cls}>{m["title"].split(":")[0]}</a></li>')
+    index_items = [("start.html", "Start here"), ("assertions.html", "Assertions"),
+                   ("bibliography.html", "Bibliography")]
+    idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
+                  for href, label in index_items)
     return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
 <form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
 <ul class="search-results" id="results"></ul>
-<nav class="sec"><h2>Articles</h2><ol>{''.join(items)}</ol></nav>
+{''.join(blocks)}
 <nav class="sec"><h2>Reading maps</h2><ul>{''.join(mitems)}</ul></nav>
-<nav class="sec"><h2>On this site</h2><ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="assertions.html"{assert_active}>Assertions</a></li>
-<li><a href="index.html#bibliography">Bibliography</a></li>
-</ul></nav>"""
+<nav class="sec"><h2>Index</h2><ul>{idx}</ul></nav>"""
 
 
 # ------------------------------------------------------------------ builders
 
 def build(out: Path) -> dict:
-    articles, order = load_articles()
+    articles, _fallback = load_articles()
+    structure = load_structure(articles)
+    parts = structure["parts"]
+    order = [aid for part in parts for aid in part["articles"]]
+    part_of = {aid: part for part in parts for aid in part["articles"]}
     maps = load_maps()
     catalog = json.loads(CATALOG.read_text())["sources"]
-    by_id = {s["id"]: s for s in catalog}
 
     tag_owner = {}
     for aid, meta in articles.items():
         for m in ANCHOR_RE.finditer(meta["body"]):
             tag_owner[m.group(1)] = aid
 
+    # reverse links and citations, for "linked from" and the bibliography
+    linked_from: dict[str, list[str]] = {aid: [] for aid in articles}
+    cited_in: dict[str, list[str]] = {}
+    for aid, meta in articles.items():
+        for target in set(re.findall(r'/articles/([a-z0-9-]+)/', meta["body"])):
+            if target in linked_from and target != aid:
+                linked_from[target].append(aid)
+        for key in set(re.findall(r"\[@([a-z0-9-]+)", meta["body"])):
+            cited_in.setdefault(key, []).append(aid)
+    for v in linked_from.values():
+        v.sort(key=order.index)
+
     out.mkdir(parents=True, exist_ok=True)
     sim_data = simulate.build()
     figs = simulate.figures()
     used_sims: dict[str, dict] = {}
     search_entries = []
+    assertion_rows = []
+
+    def page_shell(title, description, inner, active):
+        return shell(title, description, inner, sidebar(articles, structure, maps, active))
 
     # ---- articles
     for aid in order:
         meta = articles[aid]
+        part = part_of[aid]
         body = fences_to_details(meta["body"])
         body = rewrite_links(body, tag_owner)
         body = add_heading_anchors(body)
@@ -276,27 +328,66 @@ def build(out: Path) -> dict:
         toc = "".join(f'<li><a href="#{sid}">{title}</a></li>' for sid, title in heads)
         n_assert = len(ANCHOR_RE.findall(meta["body"]))
         n = order.index(aid)
-        prev_link = (f'<a href="{order[n-1]}.html"><span class="dir">previous</span>{articles[order[n-1]]["title"]}</a>'
-                     if n > 0 else "<span></span>")
-        next_link = (f'<a href="{order[n+1]}.html"><span class="dir">next</span>{articles[order[n+1]]["title"]}</a>'
-                     if n + 1 < len(order) else "<span></span>")
+
+        def pager_link(target, direction):
+            label = "previous" if direction < 0 else "next"
+            if part_of[target] is not part:
+                label += " part"
+            return (f'<a href="{target}.html"><span class="dir">{label}</span>'
+                    f'{articles[target]["title"]}</a>')
+        prev_link = pager_link(order[n - 1], -1) if n > 0 else "<span></span>"
+        next_link = pager_link(order[n + 1], +1) if n + 1 < len(order) else "<span></span>"
+
+        sources = linked_from.get(aid, [])
+        linked_html = ""
+        if sources:
+            linked_html = ('<p class="meta">Linked from: ' +
+                           ", ".join(f'<a href="{b}.html">{articles[b]["title"]}</a>' for b in sources) +
+                           '</p>')
+
         lead, sep, rest = body.partition("<h2")
         rest = sep + rest if sep else ""
-        inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Articles / {meta['title']}</p>
+        inner = f"""<p class="crumbs"><a href="index.html">Home</a> /
+<a href="part-{part['id']}.html">{part['title']}</a> / {meta['title']}</p>
 <h1>{meta['title']}</h1>
 <p class="subtitle">{meta['subtitle']}</p>
-<p class="meta">{meta['kind']} &middot; {meta['category']} &middot; {len(heads)} sections &middot;
+<p class="meta">{meta['kind']} &middot; part {parts.index(part) + 1} &middot; {len(heads)} sections &middot;
 {n_assert} tagged assertions &middot; <span class="tag">{aid}</span></p>
 {lead}
 <details class="toc" open><summary>On this page</summary><ol>{toc}</ol></details>
 {rest}
+{linked_html}
 <div class="pager">{prev_link}{next_link}</div>
 <a class="top" href="#">back to top</a>"""
         (out / f"{aid}.html").write_text(
-            shell(f"{meta['title']} — Hierarchical RG", meta["summary"], inner,
-                  sidebar(articles, order, maps, aid)))
+            page_shell(f"{meta['title']} — Hierarchical RG", meta["summary"], inner, aid))
         search_entries.append({"url": f"{aid}.html", "title": meta["title"], "subtitle": meta["subtitle"],
                                "summary": meta["summary"], "text": strip_html(body)[:4000]})
+
+    # ---- part hubs
+    for i, part in enumerate(parts):
+        items = "".join(
+            f'<div class="card"><span class="kind">{len(ANCHOR_RE.findall(articles[a]["body"]))} '
+            f'tagged assertions</span><h3><a href="{a}.html">{articles[a]["title"]}</a></h3>'
+            f'<p class="sub">{articles[a]["subtitle"]}</p><p class="sum">{articles[a]["summary"]}</p></div>'
+            for a in part["articles"])
+        nxt = ""
+        if i + 1 < len(parts):
+            nxt = (f'<div class="pager"><span></span><a href="part-{parts[i + 1]["id"]}.html">'
+                   f'<span class="dir">next part</span>{parts[i + 1]["title"]}</a></div>')
+        inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Part {i + 1}</p>
+<h1>{part['title']}</h1>
+<p class="subtitle">{part['subtitle']}</p>
+<p class="meta">part {i + 1} of {len(parts)} &middot; {len(part['articles'])} articles &middot;
+<span class="tag">part-{part['id']}</span></p>
+<p class="lead-para">{part['intro']}</p>
+<div class="cards">{items}</div>
+{nxt}"""
+        (out / f"part-{part['id']}.html").write_text(
+            page_shell(f"{part['title']} — Hierarchical RG", part["subtitle"], inner, f"part-{part['id']}"))
+        search_entries.append({"url": f"part-{part['id']}.html", "title": part["title"],
+                               "subtitle": "part " + str(i + 1), "summary": part["subtitle"],
+                               "text": part["intro"]})
 
     # ---- reading maps
     for m in maps:
@@ -307,25 +398,22 @@ def build(out: Path) -> dict:
 {map_body_to_html(m['body'])}
 <div class="pager"><a href="index.html"><span class="dir">back</span>Home</a><span></span></div>"""
         (out / f"{page}.html").write_text(
-            shell(f"{m['title']} — Hierarchical RG", "A reading map for the wiki.", inner,
-                  sidebar(articles, order, maps, page)))
+            page_shell(f"{m['title']} — Hierarchical RG", "A reading map for the wiki.", inner, page))
         search_entries.append({"url": f"{page}.html", "title": m["title"], "subtitle": "reading map",
                                "summary": "", "text": strip_html(map_body_to_html(m["body"]))[:4000]})
 
-    # ---- assertions: one citable page per tag, and an index
-    assertion_rows = []
+    # ---- assertions
     for aid in order:
         body = articles[aid]["body"]
         for m in ANCHOR_RE.finditer(body):
             tag, kind, title = m.group(1), m.group(2), m.group(3)
             chunk = body[m.end():]
-            cut = min([x for x in (chunk.find("<a id=\"tag-"), chunk.find("<h2 ")) if x >= 0] or [len(chunk)])
-            statement = chunk[:cut].strip()
-            statement = fences_to_details(statement)
+            cut = min([x for x in (chunk.find('<a id="tag-'), chunk.find("<h2 ")) if x >= 0] or [len(chunk)])
+            statement = fences_to_details(chunk[:cut].strip())
             statement = rewrite_links(statement, tag_owner)
             statement = re.sub(r"^<p>", "", statement)
             page = f"tag-{tag}"
-            inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Assertions / {tag}</p>
+            inner = f"""<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / {tag}</p>
 <h1>{title}</h1>
 <p class="meta">{kind} &middot; <span class="tag">{tag}</span> &middot; in
 <a href="{aid}.html">{articles[aid]['title']}</a></p>
@@ -336,8 +424,7 @@ def build(out: Path) -> dict:
 <div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
 <a href="{aid}.html#tag-{tag}"><span class="dir">context</span>{articles[aid]['title']}</a></div>"""
             (out / f"{page}.html").write_text(
-                shell(f"{title} — Hierarchical RG", f"{kind}: {title}", inner,
-                      sidebar(articles, order, maps, page)))
+                page_shell(f"{title} — Hierarchical RG", f"{kind}: {title}", inner, page))
             assertion_rows.append((tag, kind, title, aid))
             search_entries.append({"url": f"{page}.html", "title": title, "subtitle": f"{kind} {tag}",
                                    "summary": "", "text": strip_html(statement)[:1500]})
@@ -355,46 +442,109 @@ article being edited around it.</p>
 <table><thead><tr><th>Tag</th><th>Kind</th><th>Statement</th><th>Article</th></tr></thead>
 <tbody>{rows}</tbody></table>"""
     (out / "assertions.html").write_text(
-        shell("Assertions — Hierarchical RG", "Every tagged assertion in the wiki.", inner,
-              sidebar(articles, order, maps, "assertions")))
+        page_shell("Assertions — Hierarchical RG", "Every tagged assertion in the wiki.", inner, "assertions"))
+
+    # ---- bibliography
+    by_id = {s["id"]: s for s in catalog}
+    brow = []
+    for source in catalog:
+        users = cited_in.get(source["id"], [])
+        links = ", ".join(f'<a href="{a}.html">{articles[a]["title"]}</a>' for a in users) or "&mdash;"
+        zbl = f'<a href="{source["zblUrl"]}">{source["zbl"]}</a>' if source.get("zbl") else "—"
+        brow.append(f'<tr><td>{source["shortName"]}</td>'
+                    f'<td>{source["title"]}<br><span class="meta">{source["edition"]}</span></td>'
+                    f'<td class="num">{zbl}</td><td>{links}</td></tr>')
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Bibliography</p>
+<h1>Bibliography</h1>
+<p class="meta">{len(catalog)} works, {sum(1 for s in catalog if s.get("zbl"))} with a zbMATH record</p>
+<p>Every work the wiki cites, with the articles that cite it. The zbMATH number links to the
+record; a dash means no record was found, and the work is cited by its published details.</p>
+<table><thead><tr><th>Author</th><th>Work</th><th>Zbl</th><th>Cited in</th></tr></thead>
+<tbody>{''.join(brow)}</tbody></table>"""
+    (out / "bibliography.html").write_text(
+        page_shell("Bibliography — Hierarchical RG", "The works the wiki cites, and where.", inner, "bibliography"))
+    search_entries.append({"url": "bibliography.html", "title": "Bibliography", "subtitle": f"{len(catalog)} works",
+                           "summary": "", "text": " ".join(s["title"] + " " + s["author"] for s in catalog)})
+
+    # ---- start here
+    path_blocks = []
+    for path in structure["paths"]:
+        items = "".join(
+            f'<li><a href="{a}.html">{articles[a]["title"]}</a> '
+            f'<span class="meta">— {articles[a]["subtitle"]}</span></li>' for a in path["articles"])
+        path_blocks.append(f'<h3>{path["title"]}</h3><p class="meta">{path["note"]}</p><ol>{items}</ol>')
+    part_links = "".join(
+        f'<li><a href="part-{part["id"]}.html">Part {i + 1}: {part["title"]}</a> '
+        f'<span class="meta">— {part["subtitle"]}</span></li>' for i, part in enumerate(parts))
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Start here</p>
+<h1>Start here</h1>
+<p class="subtitle">What the wiki argues, and three ways through it.</p>
+<p>On a hierarchical lattice the renormalisation group is not an approximation. A block has no
+boundary: every pair of vertices in different children of a block sits at the same distance, so
+the energy of a block is the sum of the energies of its children plus one interaction between
+their sums. Decimation is therefore an identity, the state of the recursion is the law of one
+number, and the critical behaviour is the behaviour of an orbit of a single map. Everything in
+this wiki follows from that.</p>
+<p>The argument has three moves. First, <a href="part-block-structure.html">the block structure</a>
+and the identity it makes exact. Second, <a href="part-renormalisation-group.html">the map and its
+fixed points</a>, including the one case solved in closed form and the two rigorous analyses of the
+case that is not. Third, <a href="part-beyond-spins.html">the models that are not scalar spins</a>,
+where the same mechanism produces percolation exponents, a free direction for vector spins, and the
+obstruction that stops the argument on $\\mathbb Z^d$.</p>
+<h2>The parts</h2>
+<ol class="paths">{part_links}</ol>
+<h2>Reading paths</h2>
+{''.join(path_blocks)}
+<h2>Beyond the articles</h2>
+<p>The <a href="assertions.html">assertions index</a> lists every tagged statement, each with a
+page of its own; the <a href="bibliography.html">bibliography</a> gives every work cited and the
+articles citing it; and the reading maps — for
+<a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a>,
+<a href="source-koch-wittwer.html">Koch and Wittwer</a> and
+<a href="source-abdesselam.html">Abdesselam</a> — say what each paper establishes and where the
+wiki uses it.</p>"""
+    (out / "start.html").write_text(
+        page_shell("Start here — Hierarchical RG", "The argument of the wiki, and ways through it.", inner, "start"))
+    search_entries.append({"url": "start.html", "title": "Start here",
+                           "subtitle": "the argument of the wiki", "summary": "", "text":
+                           "the block structure, the decimation identity, the renormalisation group map, "
+                           "fixed points, exponents, percolation, vector models, phi-fourth, Euclidean comparison"})
 
     # ---- home
-    cards = []
-    for n, aid in enumerate(order, start=1):
-        meta = articles[aid]
-        cards.append(f"""<div class="card"><span class="kind">{meta['kind']} · {meta['category']}</span>
-<h3><a href="{aid}.html">{meta['title']}</a></h3>
-<p class="sub">{meta['subtitle']}</p>
-<p class="sum">{meta['summary']}</p></div>""")
+    part_cards = []
+    for i, part in enumerate(parts):
+        arts = "".join(f'<li><a href="{a}.html">{articles[a]["title"]}</a> '
+                       f'<span class="meta">{articles[a]["subtitle"]}</span></li>' for a in part["articles"])
+        part_cards.append(f"""<div class="card part"><span class="kind">part {i + 1}</span>
+<h3><a href="part-{part['id']}.html">{part['title']}</a></h3>
+<p class="sub">{part['subtitle']}</p>
+<ol class="mini">{arts}</ol></div>""")
     map_cards = "".join(f'<li><a href="source-{m["slug"]}.html">{html.escape(m["title"])}</a></li>' for m in maps)
-    def bib_row(source):
-        zbl = f'<a href="{source["zblUrl"]}">{source["zbl"]}</a>' if source.get("zbl") else "—"
-        return (f'<tr><td>{source["shortName"]}</td>'
-                f'<td>{source["title"]}<br><span class="meta">{source["edition"]}</span></td>'
-                f'<td class="num">{zbl}</td></tr>')
-
-    bib = "".join(bib_row(source) for source in catalog)
     inner = f"""<h1>Hierarchical RG</h1>
-<p class="subtitle">Twelve articles on the block-spin transformation, its exact recursion, its fixed points and their exponents.</p>
-<p>The renormalisation group is exact on a hierarchical lattice: a block has no boundary, every
-pair between two children carries one coupling, and one decimation step is an operation on the law
+<p class="subtitle">A wiki on the renormalisation group on hierarchical lattices: fourteen articles,
+ten figures, 52 tagged assertions.</p>
+<p>The renormalisation group is exact on a hierarchical lattice. A block has no boundary, every
+pair between two children carries one coupling, and a decimation step is an operation on the law
 of a single number. This wiki develops that structure — the lattice, the recursion, the fixed
 points, the exponents, the literature — with complete proofs where they are short and precise
-attribution where they are not. Each article has a simulation or a worked computation attached
-where one is illuminating.</p>
-<h2 id="articles">The articles</h2>
-<div class="cards">{''.join(cards)}</div>
+attribution where they are not.</p>
+<p><a href="start.html">Start here</a> for the argument and four reading paths, or go straight to
+<a href="part-{parts[0]['id']}.html">part one</a>.</p>
+<h2 id="parts">The three parts</h2>
+<div class="cards">{''.join(part_cards)}</div>
 <h2 id="maps">Reading maps</h2>
 <p>One finding aid per group of works: what each paper establishes and where the wiki uses it.</p>
 <ul>{map_cards}</ul>
-<h2 id="bibliography">Bibliography</h2>
-<p>{len(catalog)} works, with the zbMATH record where one exists.</p>
-<table><thead><tr><th>Author</th><th>Work</th><th>Zbl</th></tr></thead><tbody>{bib}</tbody></table>"""
+<h2 id="index">Index</h2>
+<ol class="paths">
+<li><a href="assertions.html">Assertions</a> <span class="meta">— every tagged statement, with its own page</span></li>
+<li><a href="bibliography.html">Bibliography</a> <span class="meta">— every work cited, with the articles citing it</span></li>
+</ol>"""
     (out / "index.html").write_text(
-        shell("Hierarchical RG — a wiki on the renormalisation group", "A wiki on the renormalisation group on hierarchical lattices.",
-              inner, sidebar(articles, order, maps, "index")))
+        page_shell("Hierarchical RG — a wiki on the renormalisation group",
+                   "A wiki on the renormalisation group on hierarchical lattices.", inner, "index"))
 
-    # ---- search index, simulation data, assets
+    # ---- assets and search
     (out / "search-index.json").write_text(json.dumps(search_entries, ensure_ascii=False))
     if used_sims:
         blob = json.dumps(used_sims, ensure_ascii=False).replace("</", "<\\/")
@@ -413,7 +563,8 @@ where one is illuminating.</p>
     shutil.copytree(STATIC / "katex", assets / "katex")
 
     return {"articles": len(order), "maps": len(maps), "pages": len(list(out.glob("*.html"))),
-            "sims": sorted(used_sims), "sources": len(catalog)}
+            "sims": sorted(used_sims), "sources": len(catalog), "parts": len(parts),
+            "assertions": len(assertion_rows)}
 
 
 # ------------------------------------------------------------------ entry point

@@ -78,6 +78,14 @@ an abstract.
 
 Current maps: `bleher-major-sinai.md`, `koch-wittwer.md` and `abdesselam.md`.
 
+## Structure
+
+`wiki/structure.json` holds the large-scale structure: the parts in reading order, each with a
+title, subtitle and introduction, and the suggested reading paths. It must partition the articles —
+each one in exactly one part — and the checker fails if it does not. The generator derives from it
+the sidebar, the part hub pages, the previous/next links (labelled across part boundaries) and the
+front page, so adding an article means putting it in a part.
+
 ## Assertion pages
 
 Each anchor's tag gets two generated views: a page of its own at `site/tag-XXXX.html`, showing the

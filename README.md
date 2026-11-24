@@ -4,7 +4,8 @@ A wiki on the renormalisation group on hierarchical lattices: the block-spin tra
 the exact recursion it satisfies there, its fixed points, and the critical exponents read off
 from them.
 
-The articles live in `wiki/articles/`, one topic each, in the format of the
+The articles live in `wiki/articles/`, one topic each, grouped into three parts by
+`wiki/structure.json`, in the format of the
 [PercLib wiki](https://github.com/tomhutchcroft/perclib/tree/main/wiki): JSON front matter, a
 lead of at most three paragraphs, `## Heading {#section-…}` sections, assertion anchors with
 reserved four-character tags, collapsed proofs, and citations by catalogue key.

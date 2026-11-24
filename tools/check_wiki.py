@@ -29,6 +29,7 @@ ARTICLES = WIKI / "articles"
 CATALOG = WIKI / "src" / "content" / "catalog.json"
 LEDGER = WIKI / "tags.json"
 SOURCES = WIKI / "sources"
+STRUCTURE_FILE = WIKI / "structure.json"
 
 KINDS = {"definition", "proposition", "theorem", "corollary", "model"}
 REQUIRED = ["id", "title", "subtitle", "kind", "category", "summary", "context", "related", "sourceIds"]
@@ -121,6 +122,44 @@ def check_lead(where: str, lead: str) -> None:
     paragraphs = [p for p in re.split(r"\n\s*\n", lead.strip()) if p.strip()]
     if len(paragraphs) > 3:
         fail(where, f"lead has {len(paragraphs)} paragraphs, the limit is 3")
+
+
+def check_structure(ids: set[str]) -> None:
+    """wiki/structure.json must partition the articles and name only articles that exist."""
+    try:
+        data = json.loads(STRUCTURE_FILE.read_text())
+    except FileNotFoundError:
+        fail("wiki/structure.json", "missing; the site cannot be built without it")
+        return
+    except json.JSONDecodeError as exc:
+        fail("wiki/structure.json", f"not JSON: {exc}")
+        return
+    seen: list[str] = []
+    for part in data.get("parts", []):
+        pid = part.get("id", "")
+        if not re.fullmatch(r"[a-z0-9-]+", pid):
+            fail("wiki/structure.json", f"part id {pid!r} is not a slug")
+        for key in ("title", "subtitle", "intro"):
+            if not part.get(key):
+                fail("wiki/structure.json", f"part {pid!r} lacks {key!r}")
+        if not part.get("articles"):
+            fail("wiki/structure.json", f"part {pid!r} has no articles")
+        for aid in part.get("articles", []):
+            if aid not in ids:
+                fail("wiki/structure.json", f"part {pid!r} names unknown article {aid!r}")
+            seen.append(aid)
+    missing = sorted(ids - set(seen))
+    if missing:
+        fail("wiki/structure.json", f"articles in no part: {missing}")
+    dupes = sorted({a for a in seen if seen.count(a) > 1})
+    if dupes:
+        fail("wiki/structure.json", f"articles in more than one part: {dupes}")
+    for path in data.get("paths", []):
+        if not path.get("articles"):
+            fail("wiki/structure.json", f"path {path.get('id')!r} has no articles")
+        for aid in path.get("articles", []):
+            if aid not in ids:
+                fail("wiki/structure.json", f"path {path.get('id')!r} names unknown article {aid!r}")
 
 
 def check_maps(articles: dict[str, list[str]]) -> None:
@@ -293,6 +332,7 @@ def main() -> int:
             if m.group(1) == aid:
                 warn(aid, "links to itself")
 
+    check_structure(set(meta_by_id))
     check_maps(sections)
 
     unused = [t for t, s in reserved.items() if s == "allocated" and t not in anchors]
