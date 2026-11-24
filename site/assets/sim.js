@@ -197,7 +197,7 @@
         readout.innerHTML = "β = " + beta.toFixed(4) + " = " + (beta / data.beta_c).toFixed(3) + " β<sub>c</sub>" +
           " &nbsp;·&nbsp; v<sub>" + (orbit.length - 1) + "</sub> = " + fmt(last, 3) +
           " &nbsp;·&nbsp; u<sub>n</sub> = βJ<sub>n</sub>v<sub>n</sub> = " + fmt(u, 4) +
-          " &nbsp;·&nbsp; fixed point u* = " + fmt(data.theory.theta, 4);
+          " &nbsp;·&nbsp; fixed point u* = " + fmt(data.u_star, 4);
       }
       slider.addEventListener("input", draw);
       var snap = document.createElement("button");

@@ -113,6 +113,7 @@ python3 tools/preview.py             # build site/ from the sources
 python3 tools/check_site.py          # every local link, fragment and asset in site/
 python3 tools/preview.py --check     # fail if site/ is not what the sources build to
 python3 tools/test_sim.py            # the browser simulation code, in quickjs
+python3 tools/test_math.py           # every formula, rendered through KaTeX in quickjs
 ```
 
 The checker is a format check, not a mathematical one. It verifies that every tag is in the

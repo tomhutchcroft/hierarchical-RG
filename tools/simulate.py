@@ -65,7 +65,8 @@ def sim_rg_orbit(L=2, d=1, alpha=0.5, n_max=24, n_beta=25):
         curves.append([None if x is None or x <= 0 else round(math.log10(x), 6) for x in v])
     crit = variance_orbit(beta_c, n_max, L, d, alpha)
     crit = [round(math.log10(x), 6) for x in crit]
-    return {"beta_c": beta_c, "betas": [round(b, 6) for b in betas],
+    u_star = m * (L ** alpha - 1) / (m - 1)
+    return {"beta_c": beta_c, "u_star": u_star, "betas": [round(b, 6) for b in betas],
             "curves": curves, "critical": crit, "alpha": alpha, "L": L, "d": d, "m": m,
             "n_max": n_max,
             "theory": {"nu": 1 / alpha, "theta": (d + alpha) / 2}}
