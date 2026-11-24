@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iterated decimation and the free energy recursion — Hierarchical RG</title>
+<meta name="description" content="corollary: Iterated decimation and the free energy recursion">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / Z8BM</p>
+<h1>Iterated decimation and the free energy recursion</h1>
+<p class="meta">corollary &middot; <span class="tag">Z8BM</span> &middot; in
+<a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></p>
+<div class="assertion">For $1\leq k\leq n$, $\mu_n=\mathcal T_{\beta J_n}\cdots\mathcal T_{\beta J_{k+1}}\mu_k$. With $F_n=m^{-n}\log Z_n$,</p>
+<div class="math-display">$$F_n=F_0+\sum_{k=1}^n\frac{1}{m^k}\log\mathbb E_{\mu_{k-1}^{\otimes m}}\Bigl[\exp\Bigl(\beta J_k\sum_{a<a'}s_as_{a'}\Bigr)\Bigr],\qquad F_0=\log\int\varrho(d\sigma).$$</div>
+<p>If the prior satisfies $\lvert\sigma\rvert\leq1$ and $J_k&gt;0$ for every $k$, then $F_n$ is nondecreasing in $n$ and</p>
+<div class="math-display">$$F_0\leq F_n\leq F_0+\tfrac{\beta}{2}\sum_{x\neq0}J\lVert x\rVert^{-d-\alpha}$$</div>
+<p>for every $n$, so $F=\lim_nF_n$ exists and is finite; $F$ is convex in $\beta$.</p>
+<details><summary>Proof of the free energy recursion</summary><div class='collapsible-body'>
+<p>The iterate is the decimation identity applied $n-k$ times. Taking logarithms in the identity for $Z_n$ and dividing by $m^n=m\cdot m^{n-1}$ gives $F_n=F_{n-1}+m^{-n}\Lambda_n$ with $\Lambda_n$ the logarithm in the display, and iterating this relation gives the stated formula.</p>
+<p>For the monotonicity, apply the second Griffiths inequality [@griffiths-1967] to the ferromagnetic measure $\mathbb P_{k-1}^{\otimes m}$, whose couplings between distinct children are all zero: it gives $\mathbb E[s_as_{a'}]\geq0$ for $a\neq a'$. Hence $\mathbb E[\sum_{a&lt;a'}s_as_{a'}]\geq0$, and Jensen's inequality $\log\mathbb E[e^X]\geq\mathbb E[X]$ gives $\Lambda_k\geq0$, so $F_n-F_{n-1}\geq0$.</p>
+<p>For the upper bound, $\lvert\sigma_x\sigma_y\rvert\leq1$ gives $\exp(-\beta H_{\Lambda_n})\leq\exp(\beta\sum_{\{x,y\}\subset\Lambda_n}J(\lVert x-y\rVert))$, so $Z_n\leq(\int\varrho)^{m^n}\exp(\beta\sum_{\{x,y\}}J(\lVert x-y\rVert))$ and $F_n\leq F_0+\beta m^{-n}\sum_{\{x,y\}\subset\Lambda_n}J(\lVert x-y\rVert)$. Each vertex of $\Lambda_n$ has at most $\sum_{x\neq0}J(\lVert x\rVert)$ total intensity to its partners, so the double sum is at most $m^n\sum_{x\neq0}J(\lVert x\rVert)/2$, which is finite by the <a href="hierarchical-lattice.html#section-kernels">summability criterion</a>. Convexity follows because $\beta\mapsto\log Z_n(\beta)$ has second derivative the variance of $H_{\Lambda_n}$.</p>
+</div></details>
+<p>For the Ising prior, $F_0=\log2$, and the bounds read $\log2\leq F_n\leq\log2+\frac{\beta}{2}\sum_{x\neq0}J(\lVert x\rVert)$. The recursion is the useful statement: the increment at scale $k$ is a function of the level-$(k-1)$ block-spin law alone, so the free energy is a sum of per-scale contributions, each computed from the renormalised state at that scale. This is the form in which the free energy is used in <a href="critical-exponents-from-rg.html">the article on exponents</a>.</p>
+
+## Correlations of block sums {#section-correlations}
+
+<p>The derivative of the free energy in a level coupling identifies a block correlation, and this is the observable the renormalisation group controls.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-gibbs-measure.html#tag-Z8BM">Hierarchical spin systems and decimation</a>. To cite this assertion, link to
+<span class="tag">tag-Z8BM.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-gibbs-measure.html#tag-Z8BM"><span class="dir">context</span>Hierarchical spin systems and decimation</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

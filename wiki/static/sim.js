@@ -293,6 +293,53 @@
       draw();
     },
 
+    /* -------------------------------------------------- Ising block-spin law */
+    "ising-block": function (host, data) {
+      var W = 620, H = 300, pad = { l: 44, r: 14, t: 14, b: 42 };
+      var values = data.values, hist = data.histograms, betas = data.betas;
+      var svg = svgRoot(W, H);
+      var bw = (W - pad.l - pad.r) / values.length;
+      var bars = [], maxP = 0, i, j;
+      for (i = 0; i < hist.length; i++) for (j = 0; j < hist[i].length; j++) if (hist[i][j] > maxP) maxP = hist[i][j];
+      maxP = Math.max(maxP, 1e-6);
+      var yOf = function (p) { return H - pad.b - (p / maxP) * (H - pad.t - pad.b); };
+      svg.appendChild(el("line", { x1: pad.l, y1: H - pad.b, x2: W - pad.r, y2: H - pad.b, class: "axes-line" }));
+      for (j = 0; j < values.length; j++) {
+        if (values[j] % 4 !== 0) continue;
+        var x = pad.l + (j + 0.5) * bw;
+        svg.appendChild(el("text", { x: x, y: H - pad.b + 15, "text-anchor": "middle" }, String(values[j])));
+      }
+      svg.appendChild(el("text", { x: (W + pad.l - pad.r) / 2, y: H - 6, "text-anchor": "middle", class: "axis-label" }, "block spin S of a block of 16 sites"));
+      for (j = 0; j < values.length; j++) {
+        bars.push(el("rect", { x: pad.l + j * bw + 1, y: H - pad.b, width: bw - 2, height: 0, class: "bar" }));
+        svg.appendChild(bars[j]);
+      }
+      var slider = document.createElement("input");
+      slider.type = "range"; slider.min = 0; slider.max = betas.length - 1; slider.step = 1;
+      slider.value = Math.floor(betas.length * 0.55); slider.className = "sim-slider";
+      var readout = document.createElement("div"); readout.className = "sim-readout";
+      function draw() {
+        var k = parseInt(slider.value, 10), h = hist[k];
+        var mean = 0;
+        for (var j2 = 0; j2 < values.length; j2++) {
+          var y = yOf(h[j2]);
+          bars[j2].setAttribute("y", y.toFixed(1));
+          bars[j2].setAttribute("height", (H - pad.b - y).toFixed(1));
+          mean += Math.abs(values[j2]) * h[j2];
+        }
+        readout.innerHTML = "β = " + betas[k].toFixed(3) + " = " + (betas[k] / data.beta_c).toFixed(2) + " β<sub>c</sub>" +
+          " &nbsp;·&nbsp; E|S|/N = " + (mean / data.N).toFixed(3) +
+          " &nbsp;·&nbsp; P(S = 0) = " + h[Math.floor(h.length / 2)].toFixed(3) +
+          " &nbsp;·&nbsp; P(|S| = N) = " + h[0].toFixed(3);
+      }
+      slider.addEventListener("input", draw);
+      host.appendChild(svg);
+      var controls = document.createElement("div"); controls.className = "sim-controls";
+      controls.appendChild(slider);
+      host.appendChild(controls); host.appendChild(readout);
+      draw();
+    },
+
     /* -------------------------------------------------- percolation */
     "percolation": function (host) {
       var n = 5, L = 2, d = 1, alpha = 0.5;

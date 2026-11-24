@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaussian closure and the variance recursion — Hierarchical RG</title>
+<meta name="description" content="theorem: Gaussian closure and the variance recursion">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / N1GK</p>
+<h1>Gaussian closure and the variance recursion</h1>
+<p class="meta">theorem &middot; <span class="tag">N1GK</span> &middot; in
+<a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></p>
+<div class="assertion">Let $b\geq0$ and let $\mu=N(0,v)$ with $v&gt;0$. If $bv(m-1)&lt;1$ then $Z_b(\mu)&lt;\infty$ and</p>
+<div class="math-display">$$\mathcal T_b\mu=N(0,v'),\qquad v'=\frac{mv}{1-bv(m-1)};$$</div>
+<p>if $bv(m-1)\geq1$ then $Z_b(\mu)=\infty$ and $\mathcal T_b\mu$ is undefined.</p>
+<details><summary>Proof of the closure and the variance recursion</summary><div class='collapsible-body'>
+<p>Write $s=(s_a)_{a\in A}$ and let $\Sigma^{-1}=(v^{-1}+b)I-b\mathbf 1\mathbf 1^T$, where $\mathbf 1$ is the vector with all entries $1$. Completing the square,</p>
+<div class="math-display">$$-\frac{1}{2v}\sum_as_a^2+\frac b2\Bigl(\bigl(\sum_as_a\bigr)^2-\sum_as_a^2\Bigr)=-\tfrac12s^T\Sigma^{-1}s,$$</div>
+<p>so the tilted measure is $N(0,\Sigma)$ when $\Sigma^{-1}$ is positive definite, and in that case the law of $\sum_as_a$ is $N(0,\mathbf 1^T\Sigma\mathbf 1)$. Positive definiteness of $\Sigma^{-1}$ means $v^{-1}+b&gt;0$ and the determinant is positive; the eigenvalues of $\Sigma^{-1}$ are $v^{-1}+b$ with multiplicity $m-1$ and $v^{-1}+b-bm$ with multiplicity one, so the condition is $v^{-1}&gt;b(m-1)$, which is $bv(m-1)&lt;1$.</p>
+<p>For the variance, apply the Woodbury identity $(A-uu^T)^{-1}=A^{-1}+\frac{A^{-1}uu^TA^{-1}}{1-u^TA^{-1}u}$ with $A=(v^{-1}+b)I$ and $u=\sqrt b\,\mathbf 1$. Then $\mathbf 1^TA^{-1}\mathbf 1=\frac{mv}{1+bv}$, so</p>
+<div class="math-display">$$\mathbf 1^T\Sigma\mathbf 1=\frac{mv}{1+bv}+\frac{b\,(mv/(1+bv))^2}{1-bmv/(1+bv)}=\frac{mv}{1+bv-bmv}=\frac{mv}{1-bv(m-1)}.$$</div>
+<p>If $bv(m-1)\geq1$, the quadratic form $s^T\Sigma^{-1}s$ takes nonpositive values on the line $\mathbb R\mathbf 1$, so the tilted density is not integrable and the normaliser diverges.</p>
+</div></details>
+<p>The recursion is fractional linear in $v$, increasing and convex on its domain, and it blows up at the boundary $v=1/(b(m-1))$. It is the exact statement that the block spin of a Gaussian model is Gaussian: the tilt by a function of the sum and the pushforward by the sum preserve the class of centred Gaussians.</p>
+
+## The closed form and the critical intensity {#section-critical}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="gaussian-renormalisation-group.html#tag-N1GK">The Gaussian renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-N1GK.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="gaussian-renormalisation-group.html#tag-N1GK"><span class="dir">context</span>The Gaussian renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

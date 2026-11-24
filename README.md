@@ -23,6 +23,7 @@ paper establishes and which article uses it.
 | [The renormalisation group map](wiki/articles/renormalisation-group-map.md) | The operator on block-spin laws, its scaling form, fixed points and the eigenvalue problem |
 | [The Gaussian renormalisation group](wiki/articles/gaussian-renormalisation-group.md) | Exact closure on Gaussian laws, the critical coupling, the multiplier $L^\alpha$ |
 | [Critical exponents from the renormalisation group](wiki/articles/critical-exponents-from-rg.md) | The exponent dictionary and the scaling relations |
+| [Corrections to scaling](wiki/articles/corrections-to-scaling.md) | The second eigenvalue, the correction exponent, and oscillatory and logarithmic limits |
 | [The Bleher–Sinai fixed point](wiki/articles/bleher-sinai-fixed-point.md) | The non-Gaussian fixed point, its existence, and the crossover at $\alpha=d/2$ |
 | [Renormalisation for hierarchical percolation](wiki/articles/hierarchical-percolation-rg.md) | The percolation recursion, the critical two-point exponent, the triangle threshold |
 | [Hierarchical and Euclidean renormalisation](wiki/articles/hierarchical-and-euclidean-rg.md) | Why the recursion is exact here, what fails on $\mathbb Z^d$, and how the model is used anyway |
@@ -30,6 +31,10 @@ paper establishes and which article uses it.
 | [The phi-fourth model and its truncations](wiki/articles/hierarchical-phi4-truncations.md) | The potential flow, the exact Gaussian truncation, and the low-temperature vector phase |
 | [Koch and Wittwer's non-Gaussian fixed point](wiki/articles/koch-wittwer-fixed-point.md) | A certified fixed point at explicit parameters, with no small parameter |
 | [Abdesselam's trajectory between two fixed points](wiki/articles/abdesselam-global-trajectory.md) | A whole orbit of the Euclidean renormalisation group, built from a one-dimensional iteration |
+| [Ultrametric block systems and the p-adic models](wiki/articles/ultrametric-block-systems.md) | What the recursion actually needs: cosets, constant branching, and the p-adic integers |
+
+Every tagged assertion also has its own page (`site/tag-XXXX.html`, listed on the site's
+Assertions page), so a statement can be cited without pointing into the middle of an article.
 
 The site is built into `site/` and published on GitHub Pages, either directly from the branch
 (an `index.html` at the root redirects into `site/`, and `.nojekyll` stops Jekyll from

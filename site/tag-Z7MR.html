@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Euclidean block has a boundary and its decimation is not a function of block sums — Hierarchical RG</title>
+<meta name="description" content="proposition: The Euclidean block has a boundary and its decimation is not a function of block sums">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / Z7MR</p>
+<h1>The Euclidean block has a boundary and its decimation is not a function of block sums</h1>
+<p class="meta">proposition &middot; <span class="tag">Z7MR</span> &middot; in
+<a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></p>
+<div class="assertion">Let $B=[0,L^n)^d\cap\mathbb Z^d$ with $n\geq1$ and $L\geq2$, and let $B_1,B_2$ be two subcubes of side $L^{n-1}$. The number of unordered pairs $\{x,y\}$ with $x\in B_1$, $y\in B_2$ is $L^{2d(n-1)}$, and the number of such pairs that are nearest neighbours is at most $dL^{d(n-1)}$. Moreover the fraction of nearest-neighbour edges of $\mathbb Z^d$ that join two distinct $L$-blocks equals $1/L$, independently of the scale.</p>
+<details><summary>Proof of the boundary counts</summary><div class='collapsible-body'>
+<p>The two cubes each have $L^{d(n-1)}$ vertices, so there are $L^{2d(n-1)}$ unordered pairs. Each vertex has $2d$ neighbours, so the number of neighbouring pairs between the two cubes is at most $2dL^{d(n-1)}/2=dL^{d(n-1)}$: this is the bound for the count of pairs, and the exponent $d(n-1)$ against $2d(n-1)$ is the statement that only a fraction $L^{-d(n-1)}$ of the pairs are nearest neighbours.</p>
+<p>For the fraction of edges, count in the infinite lattice. Each block of the $L$-partition contains $L^d$ vertices; the nearest-neighbour edges with both endpoints in it are $dL^{d-1}(L-1)$, since there are $d$ directions and $L^{d-1}(L-1)$ edges in each. The number of edges per vertex of $\mathbb Z^d$ is $d$, so the number of edges per block is $dL^d$, and the fraction with both endpoints in the same block is $\frac{dL^{d-1}(L-1)}{dL^d}=\frac{L-1}{L}$. The crossing fraction is the complement, $1/L$.</p>
+</div></details>
+<p>Two things follow. A decimation step on $\mathbb Z^d$ cannot be described by a handful of couplings between neighbouring block magnetisations, because the interaction between two blocks is carried by a boundary of size $L^{(d-1)n}$ whose shape depends on the relative position of the blocks; and the interaction between two blocks at a given displacement is not a function of the distance alone unless the lattice and the blocks are chosen with exceptional care. The hierarchical lattice avoids both by making the boundary a point: the children of a block are in bijection with a finite set, and the interaction between any two of them has the same strength.</p>
+
+## What fails beyond the geometry {#section-failure}
+
+<p>The geometric obstruction is the visible one; there is a second, stronger, one. Decimation of a Gibbs measure need not produce a Gibbs measure.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-and-euclidean-rg.html#tag-Z7MR">Hierarchical and Euclidean renormalisation</a>. To cite this assertion, link to
+<span class="tag">tag-Z7MR.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-and-euclidean-rg.html#tag-Z7MR"><span class="dir">context</span>Hierarchical and Euclidean renormalisation</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

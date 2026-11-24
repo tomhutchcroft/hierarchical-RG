@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cosets, children and the top level, in any block system — Hierarchical RG</title>
+<meta name="description" content="proposition: Cosets, children and the top level, in any block system">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / U7KQ</p>
+<h1>Cosets, children and the top level, in any block system</h1>
+<p class="meta">proposition &middot; <span class="tag">U7KQ</span> &middot; in
+<a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></p>
+<div class="assertion">Let $n\geq1$. The children of $G_n$ are the $m$ cosets of $G_{n+1}$ in $G_n$, they partition $G_n$, each is a translate of $G_{n+1}$, and if $x,y$ lie in different children of a block $B$ then $\operatorname{lev}(x-y)=\operatorname{lev}(B)$. The same holds with $G_n$ replaced by any coset of it.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>Since $G_{n+1}\subseteq G_n$ are subgroups, the cosets of $G_{n+1}$ inside $G_n$ are disjoint and their union is $G_n$; there are $[G_n:G_{n+1}]=m$ of them. A coset $g+G_{n+1}$ with $g\in G_n$ is a translate of $G_{n+1}$. If $x\in g+G_{n+1}$ and $y\in g'+G_{n+1}$ with $g\neq g'$ modulo $G_{n+1}$, then $x-y\in G_n$ because both terms lie in $G_n$, while $x-y\notin G_{n+1}$ because its class in $G_n/G_{n+1}$ is $g-g'\neq0$. Hence the least $k$ with $x-y\in G_k$ is exactly $n$. For a coset $z+G_n$ the same argument applies after translating both points by $-z$, and levels are translation invariant because $G_k$ is a subgroup.</p>
+</div></details>
+<p>The proposition is what "the block has no boundary" means algebraically: any two vertices in different children of a block are at the top level of that block, whatever their distance, so a coupling that depends only on the level charges all of them the same rate. In $\mathbb Z_p$ this says that the two balls of radius $p^{-(n+1)}$ inside a ball of radius $p^{-n}$ are joined by edges of one intensity, even though the p-adic distance between a point near the middle of one and a point near the middle of the other is much smaller than $p^{-n}$ — the ultrametric makes every such pair equal.</p>
+
+## The decimation identity in general {#section-decimation}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="ultrametric-block-systems.html#tag-U7KQ">Ultrametric block systems and the p-adic models</a>. To cite this assertion, link to
+<span class="tag">tag-U7KQ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="ultrametric-block-systems.html#tag-U7KQ"><span class="dir">context</span>Ultrametric block systems and the p-adic models</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

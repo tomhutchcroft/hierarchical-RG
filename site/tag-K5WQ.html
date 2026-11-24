@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quadratic potentials are invariant and the quartic coupling is generated — Hierarchical RG</title>
+<meta name="description" content="proposition: Quadratic potentials are invariant and the quartic coupling is generated">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / K5WQ</p>
+<h1>Quadratic potentials are invariant and the quartic coupling is generated</h1>
+<p class="meta">proposition &middot; <span class="tag">K5WQ</span> &middot; in
+<a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></p>
+<div class="assertion">Let $V(s)=\tfrac{\mu}{2}s^2$ with $\mu>0$ and $b&lt;1/(v(m-1))$, where $v=1/\mu$. Then $\mathcal V_bV$ is quadratic, with curvature $\mu'$ given by</p>
+<div class="math-display">$$\frac{1}{\mu'}=\frac{m}{\mu-b(m-1)},$$</div>
+<p>that is $\mu'=(\mu-b(m-1))/m$: the curvature flows affinely, and the variance recursion $v'=mv/(1-bv(m-1))$ is the same statement for $v=1/\mu$. A quartic potential is not mapped to a quartic potential: at $\tfrac{\mu}{2}s^2+\lambda s^4$ with $\lambda\neq0$ the first and second orders in $\lambda$ are again quartics in $s$, but the third order is not, and a sixth power appears with a coefficient proportional to $\lambda^3$.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>For the first part, the tilted product of Gaussians is Gaussian and the law of the sum is Gaussian, as in <a href="gaussian-renormalisation-group.html#section-closure">the closure theorem</a>; the displayed relation is that theorem with $\mu=1/v$ and $\mu'=1/v'$.</p>
+<p>To locate the sixth power, condition on $S=s$ and write $s_a=s/m+\delta_a$. The constraint gives $\sum_a\delta_a=0$ identically, and the conditional law of $\delta$ is centred Gaussian on the hyperplane $\sum_a\delta_a=0$, with a covariance $\Sigma$ that does not depend on $s$. Expanding, and dropping the linear term because $\sum_a\delta_a=0$,</p>
+<div class="math-display">$$\sum_a s_a^4=\frac{s^4}{m^3}+\frac{6s^2}{m^2}\sum_a\delta_a^2+\frac{4s}{m}\sum_a\delta_a^3+\sum_a\delta_a^4 .$$</div>
+<p>The cumulant expansion of $-\log\mathbb E[e^{-\lambda X}\mid S=s]$ in powers of $\lambda$ has $k$-th coefficient $\pm\frac{1}{k!}$ times the $k$-th conditional cumulant of $X=\sum_as_a^4$. The first cumulant is the conditional mean, a quartic in $s$, which is the first-order statement above. The second cumulant is the conditional variance, and since the only random coefficient of a power of $s$ in $X$ beyond the constant is $s^2$ times $\sum_a\delta_a^2$ and $s$ times $\sum_a\delta_a^3$, the variance is a quadratic form in $s^2$, $s$ and $1$: it is of degree at most four, so the second order produces no sixth power either.</p>
+<p>The third cumulant is a cubic form in $s^2$, $s$ and $1$, so it has a term in $s^6$: its coefficient is the third cumulant of $\frac{6}{m^2}\sum_a\delta_a^2$ under the conditional law. For a centred Gaussian vector $Z$ and a symmetric matrix $A$ one has $\kappa_3(Z^{\mathsf T}AZ)=8\operatorname{tr}\bigl((A\Sigma)^3\bigr)$, which is nonnegative, and positive here because $\Sigma$ has positive trace of its cube on the hyperplane. Hence</p>
+<div class="math-display">$$\text{coefficient of }s^6\text{ in }-\log f_\lambda =\frac{\lambda^3}{6}\cdot\frac{6^3}{m^6}\cdot 8\operatorname{tr}\bigl(\Sigma^3\bigr)\,(1+O(\lambda)),$$</div>
+<p>a nonzero multiple of $\lambda^3$. The quartic family therefore fails to be preserved at third order in the quartic coupling, and the first power beyond the fourth that appears is the sixth, with a positive coefficient.</p>
+</div></details>
+<p>The proposition is the precise form of two statements that are often made informally: the Gaussian truncation is exact, and every other truncation leaks. The leak is third order in the quartic coupling, so a two-coupling truncation is a controlled approximation only in a regime where the coupling is small, and the renormalisation-group flow of the hierarchical model has no such regime at the nontrivial fixed point.</p>
+
+## Truncations and what replaces them {#section-truncations}
+
+<p>A truncation is a projection of the flow onto finitely many couplings, and the proposition above shows that the projection does not commute with the flow beyond the quadratic term. Three routes replace it.</p>
+<p><em>Infinite-dimensional analysis.</em> The flow is studied on a Banach space of potentials, with the fixed point found by an existence argument rather than by truncation. This is Koch and Wittwer's route for the scalar hierarchical model [@koch-wittwer-1986], and the setting is the one described in <a href="koch-wittwer-fixed-point.html">the article on it</a>.</p>
+<p><em>Expansion in a parameter.</em> Near $\alpha=d/2$ the nontrivial fixed point is close to the Gaussian one and the flow can be expanded in $\alpha-d/2$, which gives the $\varepsilon$-expansion of Gawedzki and Kupiainen [@gawedzki-kupiainen-1983] and, in the hierarchical model, of Bleher and Sinai. The expansion is a statement about a neighbourhood of the marginal exponent, not about a truncation of the potential.</p>
+<p><em>Exact solutions of special models.</em> For a quadratic prior the flow is explicit, and for the vector model at low temperature it is explicit around a nonzero magnetisation; those are the two cases in which the recursion is solved rather than analysed.</p>
+<p>The $\varphi^4$ flow in two couplings nevertheless predicts the qualitative picture correctly: a Gaussian fixed point at the origin of the quartic coupling, a nontrivial fixed point at a positive quartic coupling for $\alpha&gt;d/2$, and a critical surface separating the two phases. What it cannot do is give the position of the nontrivial fixed point or the value of $\nu$ there.</p>
+
+## The low-temperature vector model {#section-low-temperature}
+
+<p>For the $r$-component model with $r\geq2$ the ordered phase has a direction, and the question a renormalisation-group analysis asks there is not about a fixed point but about the limit of the block sums around a nonzero magnetisation. Bleher and Major settle it for the vector-valued phi-fourth hierarchical model: at a supercritical intensity the centred block sums, normalised by the volume in the direction of the magnetisation and by a different power in the orthogonal directions, converge to a Gaussian field whose coordinates are independent [@bleher-major-1984].</p>
+
+<p>The two normalisations are the content. With the pair coupling at level $n$ equal to $2^{-an}$, so that $a=1+\alpha$ in the notation of this wiki, the direction of the spontaneous magnetisation scales as the square root of the volume, and each of the $r-1$ orthogonal directions scales as $\alpha_i^{n/2}$ with $\alpha_i=2^{a}=L^{1+\alpha}$. Since $\alpha_i&gt;L$ in the long-range range, the orthogonal block sums grow faster than the square root of the volume: the transverse fluctuations are enhanced, and after that normalisation their limit is Gaussian with independent coordinates. The proof rests on the large-deviation theory of the same model [@bleher-1985].</p>
+
+<p>In the non-Gaussian case the limit is not Gaussian, and its description is the subject of the two-part paper of 1988: a limit theorem for the average spin, and a description of the large-scale limit field [@bleher-major-1988], with a conference account of the renormalisation of the low-temperature model in [@bleher-major-1990]. Read with the survey, the picture is that below the critical temperature the vector model has non-central limit theorems at every temperature, in contrast with the scalar model, where away from criticality the block sums have Gaussian limits [@bleher-major-1987].</p>
+
+<p>These are the fluctuations whose critical form is the marginal angular direction of <a href="hierarchical-vector-models.html#section-thouless">the vector article</a>: at $T_c$ the transverse enhancement is what makes the direction of the block spin asymptotically uniform.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>The scalar case at $\alpha&gt;d/2$.</em> Here the nontrivial fixed point governs, the quartic coupling is relevant, and the two-coupling truncation places the fixed point at a value of the coupling that the exact analysis corrects; the exponent $\nu$ differs from $1/\alpha$, as <a href="bleher-sinai-fixed-point.html">the fixed-point article</a> records.</p>
+
+<p><em>Short-range $\varphi^4$ in three dimensions.</em> The Euclidean model with a modified propagator, for which the renormalisation-group trajectory is constructed by Brydges, Mitter and Scoppola [@brydges-mitter-scoppola-2003], has the same structure of a Gaussian ultraviolet fixed point and a nontrivial infrared one; the hierarchical counterpart of the modified propagator is the geometric kernel of the <a href="hierarchical-lattice.html#section-kernels">lattice article</a>, and the trajectory joining the two is Abdesselam's.</p>
+
+<p><em>Non-example: a quartic truncation at the fixed point.</em> Setting the sixth and higher couplings to zero is not a consistent approximation at a fixed point with a nonzero quartic coupling, by the second part of the proposition; the truncated flow has a fixed point, but the potential there is not the effective potential of any model.</p>
+
+<p><em>Non-example: the Gaussian model with a quartic term added by hand.</em> Adding $\lambda s^4$ to the prior without following its flow gives a model whose critical behaviour is Gaussian, because the added term is a bounded perturbation of a quadratic potential for the purposes of the recursion at small $\lambda$; it is not an approximation to the $\varphi^4$ fixed point.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Finite-component vectors.</em> For $r$ components the potential is a function of $\lvert s\rvert$, and the flow preserves rotation invariance; the space of radial potentials is infinite-dimensional for every $r$, and the marginal angular directions are absent from it, which is why the radial truncation is more nearly consistent than a truncation in powers of $s$.</p>
+
+<p><em>Hierarchical models on other geometries.</em> The Baker-based block structure gives the same kind of potential flow with different constants, and it is the model for which Koch and Wittwer prove a nontrivial fixed point in their third paper [@koch-wittwer-1994]; the $p$-adic and ultrametric groups give further variants with the same structure [@abdesselam-2018].</p>
+
+<p><em>The free energy along the flow.</em> The additive constants dropped in the definition are the per-scale increments of the free energy, so the potential flow carries the free energy as a cocycle: the increment at scale $k$ is the logarithm of the normaliser of the step. This is how the singular part of the free energy is computed from the flow in <a href="critical-exponents-from-rg.html#section-dictionary">the exponent dictionary</a>.</p>
+
+## History and attribution {#section-history}
+
+<p>The potential formulation is that of Bleher and Sinai, who wrote the recursion as a nonlinear transformation of measures and, equivalently, of the negative logarithm of their densities [@bleher-sinai-1973]. The low-temperature analysis of the vector model is Bleher and Major's [@bleher-major-1984]; the existence of the nontrivial fixed point without truncation and without a small parameter is Koch and Wittwer's [@koch-wittwer-1986]; the $\varepsilon$-expansion around the marginal exponent is Gawedzki and Kupiainen's [@gawedzki-kupiainen-1983]; and the classical long-range exponent values, with the upper critical exponent $\alpha=d/2$, are those of Fisher, Ma and Nickel [@fisher-ma-nickel-1972]. The systematic treatment of the renormalisation group as an operation on potentials is the one developed by Bauerschmidt, Brydges and Slade [@bauerschmidt-brydges-slade-2019].</p>
+
+## References {#section-references}
+
+<ul>
+<li>A. Abdesselam, Towards three-dimensional conformal probability, <em>p-Adic Numbers Ultrametric Anal. Appl.</em> 10 (2018), 233&ndash;247.</li>
+<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
+<li>P. M. Bleher, A theorem on large deviations in the neighbourhood of phi-fourth hierarchical models, <em>Theory Probab. Appl.</em> 30 (1985), 499&ndash;510.</li>
+<li>P. M. Bleher and P. Major, Renormalization of Dyson's hierarchical vector valued &phi;<sup>4</sup> model at low temperatures, <em>Comm. Math. Phys.</em> 95 (1984), 487&ndash;532.</li>
+<li>P. M. Bleher and P. Major, Critical phenomena and universal exponents in statistical physics. On Dyson's hierarchical model, <em>Ann. Probab.</em> 15 (1987), 431&ndash;477.</li>
+<li>P. M. Bleher and P. Major, The large-scale limit of Dyson's hierarchical vector valued model at low temperatures. The non-Gaussian case, <em>Ann. Inst. H. Poincar&eacute; Phys. Th&eacute;or.</em> 49 (1988), 7&ndash;85 and 87&ndash;143.</li>
+<li>P. M. Bleher and P. Major, Renormalization of Dyson's vector-valued hierarchical model at low temperatures, in <em>Probability Theory and Mathematical Statistics</em>, Proc. 5th Vilnius Conf., Vol. I, 141&ndash;151, 1990.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
+<li>D. C. Brydges, P. K. Mitter and B. Scoppola, Critical $(\Phi^4)_3$, <em>Comm. Math. Phys.</em> 240 (2003), 281&ndash;327.</li>
+<li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>
+<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
+<li>H. Koch and P. Wittwer, A non-Gaussian renormalization group fixed point for hierarchical scalar lattice field theories, <em>Comm. Math. Phys.</em> 106 (1986), 495&ndash;532.</li>
+<li>H. Koch and P. Wittwer, A nontrivial renormalization group fixed point for the Dyson-Baker hierarchical model, <em>Comm. Math. Phys.</em> 164 (1994), 627&ndash;647.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-phi4-truncations.html#tag-K5WQ">The phi-fourth hierarchical model and its truncations</a>. To cite this assertion, link to
+<span class="tag">tag-K5WQ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-phi4-truncations.html#tag-K5WQ"><span class="dir">context</span>The phi-fourth hierarchical model and its truncations</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

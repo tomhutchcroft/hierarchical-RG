@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shell averages from the block susceptibility — Hierarchical RG</title>
+<meta name="description" content="proposition: Shell averages from the block susceptibility">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / Y9KQ</p>
+<h1>Shell averages from the block susceptibility</h1>
+<p class="meta">proposition &middot; <span class="tag">Y9KQ</span> &middot; in
+<a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
+<div class="assertion">Suppose that $\tau_{\beta_c}$ is radial, $\tau_{\beta_c}(0,y)=f(\lVert y\rVert)$, and let $g_k$ be the mean of $f$ over the shell at level $k$. If $\chi_n(\beta_c)\asymp L^{\kappa n}$ then $g_k\leq CL^{-(d-\kappa)k}$ for every $k$, with $C$ depending only on $L,d$ and the constants in the hypothesis; and if $g_k\leq CL^{-(d-\kappa)k}$ for every $k$ then $\chi_n(\beta_c)\leq A'L^{\kappa n}$. Conversely, if $g_k\asymp L^{-(d-\kappa)k}$, then $\chi_n(\beta_c)\asymp L^{\kappa n}$; and if in addition $k\mapsto L^{(d-\kappa)k}g_k$ is monotone, then $\chi_n(\beta_c)\asymp L^{\kappa n}$ implies the two-sided bound $g_k\asymp L^{-(d-\kappa)k}$.</p>
+<details><summary>Proof of the shell estimates</summary><div class='collapsible-body'>
+<p>The shell at level $k$ has $S_k=(1-L^{-d})L^{dk}$ vertices, and $\chi_n=\sum_{k\leq n}S_kg_k$. Since all terms are nonnegative, $S_kg_k\leq\chi_k\leq AL^{\kappa k}$ for $k\leq n$, which is $g_k\leq\frac{A}{1-L^{-d}}L^{-(d-\kappa)k}$; this gives the first two statements, the second by summing the geometric series $\sum_{k\leq n}S_kCL^{-(d-\kappa)k}=C(1-L^{-d})\sum_{k\leq n}L^{\kappa k}$.</p>
+<p>If $g_k\geq cL^{-(d-\kappa)k}$ for all $k$ then the sum is at least a constant times $L^{\kappa n}$, since the last term alone is $S_ng_n\geq c(1-L^{-d})L^{\kappa n}$; this gives the converse. Under the monotonicity hypothesis write $h_k=L^{(d-\kappa)k}g_k$ and note that $\chi_n=\sum_{k\leq n}(1-L^{-d})L^{\kappa k}h_k$; if $h_k\leq h_n$ for $k\leq n$ then $\chi_n\leq(1-L^{-d})h_n\sum_{k\leq n}L^{\kappa k}\leq C'h_nL^{\kappa n}$, so $aL^{\kappa n}\leq\chi_n$ and $\chi_n\leq C'h_nL^{\kappa n}$ give $h_n\geq a/C'$, which is the lower bound; the upper bound is the first statement.</p>
+</div></details>
+<p>The second proposition is the version needed for percolation, where the two-point function is known to be radial and the exponent is proved from the block sums. The averaging is essential: the block susceptibility controls the shell means, and the pointwise statement is a separate result, requiring the level-isometry symmetry of the lattice in addition.</p>
+
+## The growth exponent is fixed {#section-growth}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="critical-exponents-from-rg.html#tag-Y9KQ">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-Y9KQ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="critical-exponents-from-rg.html#tag-Y9KQ"><span class="dir">context</span>Critical exponents from the renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exponents in terms of the two renormalisation-group numbers — Hierarchical RG</title>
+<meta name="description" content="theorem: Exponents in terms of the two renormalisation-group numbers">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / G6YW</p>
+<h1>Exponents in terms of the two renormalisation-group numbers</h1>
+<p class="meta">theorem &middot; <span class="tag">G6YW</span> &middot; in
+<a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
+<div class="assertion">Suppose that $\chi_n(\beta_c)\asymp L^{\kappa n}$ and that, uniformly in $n$ and $\beta$,</p>
+<div class="math-display">$$\chi_n(\beta)\asymp\min\bigl\{L^{\kappa n},\ \xi(\beta)^{\kappa}\bigr\},\qquad \xi(\beta)\asymp\lvert\beta_c-\beta\rvert^{-\nu}.$$</div>
+<p>Then $\chi(\beta)\asymp\lvert\beta_c-\beta\rvert^{-\kappa\nu}$, that is $\gamma=\kappa\nu$. If in addition $F_{\mathrm{sing}}\asymp\xi^{-d}$ then $2-\alpha_{\mathrm{hy}}=d\nu$, and if in addition $M\asymp\xi^{-(d-\kappa)/2}$ then $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-\kappa)$; under these two, together with the two relations just displayed,</p>
+<div class="math-display">$$\delta=\frac{d+\kappa}{d-\kappa},\qquad \alpha_{\mathrm{hy}}=2-d\nu,\qquad \gamma=\nu(2-\eta),\qquad \gamma=\beta_{\mathrm{o}}(\delta-1).$$</div>
+<details><summary>Proof of the dictionary</summary><div class='collapsible-body'>
+<p>For $\gamma$: the supremum over $n$ of $\min\{L^{\kappa n},\xi^\kappa\}$ is $\xi^\kappa$ up to constants, and $\xi\asymp\lvert\beta_c-\beta\rvert^{-\nu}$ gives $\chi\asymp\lvert\beta_c-\beta\rvert^{-\kappa\nu}$.</p>
+<p>For $\alpha_{\mathrm{hy}}$: $F_{\mathrm{sing}}\asymp\xi^{-d}\asymp\lvert\beta_c-\beta\rvert^{d\nu}$, and comparing with $F_{\mathrm{sing}}\asymp\lvert\beta_c-\beta\rvert^{2-\alpha_{\mathrm{hy}}}$ gives the identity.</p>
+<p>For $\beta_{\mathrm{o}}$: $M\asymp\xi^{-(d-\kappa)/2}\asymp\lvert\beta_c-\beta\rvert^{\nu(d-\kappa)/2}$, and comparing with the definition gives $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-\kappa)$, which is the same as $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-2+\eta)$ because $\kappa=2-\eta$.</p>
+<p>For $\delta$: Widom's relation $\gamma=\beta_{\mathrm{o}}(\delta-1)$ is the definition of $\delta$ once the other two exponents are known, and substituting $\gamma=\kappa\nu$ and $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-\kappa)$ gives $\kappa\nu=\tfrac{\nu}{2}(d-\kappa)(\delta-1)$, hence $\delta-1=\frac{2\kappa}{d-\kappa}$ and $\delta=\frac{d+\kappa}{d-\kappa}$. The last two displays restate the first two relations with $\kappa=2-\eta$.</p>
+</div></details>
+<p>Which of these is a theorem of the model and which is an extra hypothesis is the point of the small print. The first display of the dictionary is a theorem of percolation in the hierarchical model below the triangle threshold, where the block susceptibility is known to grow like $L^{\kappa n}$ and the truncated form is a consequence of the finite correlation length; hyperscaling, the identity $F_{\mathrm{sing}}\asymp\xi^{-d}$, is the hypothesis that fails in the classical regime. The relations $\gamma=\kappa\nu$ and the identification $\kappa=2-\eta$ are renormalisation-group statements and hold whenever the fixed point exists with a finite variance; $\delta=\frac{d+\kappa}{d-\kappa}$ follows only when hyperscaling does.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>The Gaussian fixed point.</em> With $\kappa=\alpha$ and $\nu=1/\alpha$ the dictionary gives $\gamma=1$, $\beta_{\mathrm{o}}=\frac{d-\alpha}{2\alpha}$, $\delta=\frac{d+\alpha}{d-\alpha}$ and $\alpha_{\mathrm{hy}}=2-d/\alpha$. These are the classical long-range values and they satisfy all three scaling relations identically; see <a href="gaussian-renormalisation-group.html#section-exponents">the Gaussian article</a>, where they are computed from the recursion rather than from the dictionary.</p>
+
+<p><em>Hierarchical percolation.</em> Here $\kappa=\alpha$ is a theorem for every $0&lt;\alpha&lt;d$ [@hutchcroft-hierarchical-2021], so $\eta=2-\alpha$ and $\gamma=\nu\alpha$. For $\alpha&lt;d/3$ the model is mean-field in the sense that the triangle condition holds and $\delta=2$, $\beta_{\mathrm{o}}=1$, while $\nu=1/\alpha$; hyperscaling fails there, and indeed $\frac{d+\alpha}{d-\alpha}&lt;2$ for $\alpha&lt;d/3$. For $\alpha&gt;d/3$ the volume exponent satisfies $\delta\geq\frac{d+\alpha}{d-\alpha}&gt;2$, with equality conjectured, and the value of $\nu$ is not known. Details are in <a href="hierarchical-percolation-rg.html">the percolation article</a>.</p>
+
+<p><em>The Ising model.</em> For $\alpha&lt;d/2$ the exponents are the classical ones, $\nu=1/\alpha$ and $\kappa=\alpha$, by Aizenman and Fernandez [@aizenman-fernandez-1988] and, in the Euclidean case, by the lace expansion [@heydenreich-hofstad-sakai-2008]. For $\alpha&gt;d/2$ the critical behaviour is governed by the <a href="bleher-sinai-fixed-point.html">non-Gaussian fixed point</a>, $\nu$ differs from $1/\alpha$, and the growth exponent stays at $\kappa=\alpha$ by the theorem above. At $\alpha=d/2$ the classical values hold with logarithmic corrections.</p>
+
+<p><em>Non-example: a model without a finite-variance fixed point.</em> If the rescaled orbit diverges, as it does for $\beta&gt;\beta_c$ in the Gaussian model, no exponent is defined at that intensity: the block spin per site tends to a nonzero limit and the susceptibility is infinite. The definitions above are statements about the critical orbit and its neighbourhood only.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Finite-size scaling.</em> The block susceptibility at criticality is the finite-size susceptibility of the block, so $\chi_n(\beta_c)\asymp L^{\kappa n}$ is a finite-size scaling statement with $\kappa=\gamma/\nu$: the susceptibility of a block of side $L^n$ at criticality grows like its side to the power $\gamma/\nu$. This is the form in which the exponents are measured numerically, and it requires no infinite-volume limit.</p>
+
+<p><em>Corrections to scaling.</em> The approach to a fixed point along an irrelevant direction with eigenvalue $\lambda_2$, $\lvert\lambda_2\rvert&lt;1$, modifies each power law by a factor $1+O(L^{-n(1-\log\lvert\lambda_2\rvert/\log L)})$. A complex pair of eigenvalues produces an oscillating factor, which is what distinguishes the hierarchical model's subleading behaviour from a pure power law and is analysed at <a href="bleher-sinai-fixed-point.html#section-spectrum">the nontrivial fixed point</a>.</p>
+
+<p><em>Two independent exponents.</em> The dictionary uses exactly two inputs, $\kappa$ and $\nu$; a model with a fixed point but no hyperscaling has two independent exponents and the other three relations fail, as in percolation for $\alpha&lt;d/3$. Five exponents cannot be independent in a model with a one-parameter family of fixed points, which is the content of the scaling hypothesis in its general form.</p>
+
+## History and attribution {#section-history}
+
+<p>The reading of the indices off the linearised renormalisation map is the content of Bleher and Sinai's second paper on the hierarchical model [@bleher-sinai-1975], where the indices are computed as functions of the spectrum at the fixed point. The classical long-range values are those of Fisher, Ma and Nickel [@fisher-ma-nickel-1972], and the rigorous mean-field region for long-range Ising models is due to Aizenman and Fernandez [@aizenman-fernandez-1988]. The two-point exponent for hierarchical percolation and the volume-exponent obstruction are Hutchcroft's [@hutchcroft-hierarchical-2021].</p>
+
+## References {#section-references}
+
+<ul>
+<li>M. Aizenman and R. Fernandez, Critical exponents for long-range interactions, <em>Lett. Math. Phys.</em> 16 (1988), 39&ndash;49.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>
+<li>M. Heydenreich, R. van der Hofstad and A. Sakai, Mean-field behavior for long- and finite range Ising model, percolation and self-avoiding walk, <em>J. Statist. Phys.</em> 132 (2008), 1001&ndash;1049.</li>
+<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <em>Ann. Appl. Probab.</em> 34 (2024), 986&ndash;1002 (arXiv:2103.17013).</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="critical-exponents-from-rg.html#tag-G6YW">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-G6YW.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="critical-exponents-from-rg.html#tag-G6YW"><span class="dir">context</span>Critical exponents from the renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

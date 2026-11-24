@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Existence of the non-Gaussian fixed point of the three-dimensional hierarchy — Hierarchical RG</title>
+<meta name="description" content="theorem: Existence of the non-Gaussian fixed point of the three-dimensional hierarchy">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / C2ZB</p>
+<h1>Existence of the non-Gaussian fixed point of the three-dimensional hierarchy</h1>
+<p class="meta">theorem &middot; <span class="tag">C2ZB</span> &middot; in
+<a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></p>
+<div class="assertion">For the scalar hierarchical model with a phi-fourth single-spin distribution there is a coupling $b$ and a potential $V^*$, not quadratic, with $\mathcal V_bV^*=V^*$ up to an additive constant, such that the theory around $V^*$ is described by convergent expansions: the effective potential, its derivatives, and the correlation functions obtained from it admit convergent expansions in the parameters of the model, with no small parameter assumed and with the large-field region included [@koch-wittwer-1986]. The same construction applies to the Dyson-Baker hierarchy, where the block structure comes from an expanding map rather than from the ultrametric blocks of <a href="hierarchical-lattice.html">the lattice article</a> [@koch-wittwer-1994].</p>
+<p>The eigenvalue statement that makes the fixed point a critical theory, with a one-dimensional unstable direction and the correlation-length exponent $\log L/\log\lambda_1$, is the one supplied by the general theory of <a href="bleher-sinai-fixed-point.html#section-statement">the fixed-point article</a> and by the analysis of the transformation in the companion paper [@koch-wittwer-1991]; it is not what the 1986 paper sets out to prove, and the wiki separates the two.</p>
+
+## Idea of the proof {#section-idea}
+
+<p>The argument has three parts, and the first is the one that distinguishes it from everything else in this wiki.</p>
+<p><em>The large-field region.</em> Split the integral defining the effective potential according to whether the children's spins are small or large. On the small-field region the potential is analytic in the coupling and the expansion converges; on the large-field region it does not, and since the spins are unbounded that region is not negligible. A renormalisation step that discards it computes the wrong map.</p>
+<p><em>Borel summation.</em> The perturbation series of the large-field region is summable in the Borel sense: its Borel transform has an analytic continuation along the relevant directions, and the sum reconstructs the function. Summing rather than truncating turns the divergent series into a convergent object, and the two regions can then be combined into a single convergent expansion. The technique is the one developed for a hierarchical gradient model by Gawedzki, Kupiainen and Tirozzi [@gawedzki-kupiainen-tirozzi-1984], and it is an improvement of the analyticity methods of the hierarchy-model papers [@gawedzki-kupiainen-1982].</p>
+<p><em>The fixed point.</em> With the map defined and analytic on a suitable space of potentials, and with the expansions convergent uniformly on that space, the fixed point is obtained by the contraction argument of the general theory, in the regime in which the effective coupling is at its critical value. The result is quantitative in the sense that every quantity is given by a convergent series, and not in the sense of a numerical certification.</p>
+
+## Consequences and applications {#section-consequences}
+
+<p><em>The exponents of the three-dimensional theory.</em> Given the fixed point and the linearisation there, the exponents follow from the dictionary of <a href="critical-exponents-from-rg.html#section-dictionary">the exponent article</a>, with the growth exponent $\kappa=\alpha$ fixed by the autonomy of the recursion as in <a href="critical-exponents-from-rg.html#section-growth">the growth theorem</a>. The value of $\nu$ is the one read off the linearisation of the exact map, and the convergent expansions around the fixed point are what make it computable in principle.</p>
+
+<p><em>Bounds on the exponents.</em> The existence of the fixed point and the value of an exponent are different things, and the second is what the paper of 1988 addresses: an outline of a computer-assisted proof, in an extended Wilson-Kadanoff scheme, giving rigorous bounds on the exponent that governs the scaling of the free energy density for a one-parameter family of hierarchical systems in three dimensions [@koch-wittwer-1988]. That exponent is $2-\alpha_{\mathrm{hy}}$ in the notation of <a href="critical-exponents-from-rg.html#section-dictionary">the dictionary</a>, so the bounds are bounds on the free-energy exponent, and they are where the numerical element of this group's work sits.</p>
+
+<p><em>The transformation itself.</em> The companion paper treats the renormalisation transformation of scalar hierarchical models as an operator, with its beta function and its asymptotics, and identifies the relation between the hierarchies of Dyson and of Gallavotti [@koch-wittwer-1991]. That relation is the reason the two hierarchies are treated as one family in this wiki: they differ in the block structure and agree in the form of the map.</p>
+
+<p><em>A benchmark for expansions.</em> Because the expansions are convergent, the fixed point is a fixed point and not an approximation to one; a truncation of the flow or of the epsilon expansion that predicts a different $\nu$ is wrong by more than the error of its own truncation, which is what makes the exact analysis a reference point.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>The quadratic fixed point.</em> For $m$ children and coupling $b$ there is exactly one quadratic fixed point, of curvature $(\mu-b(m-1))/m$ in the flow of the truncations article; it is the Gaussian theory, stable below the marginal exponent and unstable above it.</p>
+
+<p><em>The Dyson-Baker hierarchy.</em> In the Dyson-Baker model the blocks of the interval come from an expanding map rather than from an ultrametric, so the children of a block are not equidistant from one another; the renormalisation map is of the same type with different constants, and the 1994 paper proves the nontrivial fixed point there [@koch-wittwer-1994].</p>
+
+<p><em>Non-example: a truncated system.</em> Solving the flow truncated at finitely many couplings gives an approximate fixed point but not a fixed point; by <a href="hierarchical-phi4-truncations.html#section-gaussian">the quartic computation</a> the truncation generates powers it neglects, and the error is not controlled by the truncated flow itself.</p>
+
+<p><em>Non-example: the epsilon expansion at a distance.</em> The expansion is organised in powers of $\alpha-d/2$ and certifies nothing at a fixed positive distance from the marginal exponent, where the fixed point of this article lives.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Component count.</em> The scalar case is the one treated; for $r$ components the potential is radial, so the space is a space of functions of one variable and the analysis is formally the same, but the marginal angular directions of <a href="hierarchical-vector-models.html">the vector article</a> have to be separated out, and the low-temperature phase needs the separate treatment of Bleher and Major.</p>
+
+<p><em>Other block structures.</em> The Dyson-Baker case shows that the method is a property of the class of maps and not of one arithmetic choice of the lattice; any block structure whose decimation is an integral operator of the same type, with unbounded spins, admits the same treatment.</p>
+
+<p><em>The Euclidean counterpart.</em> The hierarchy is the approximation; the corresponding statement for the Euclidean model is not a corollary, and the global object there is the trajectory between fixed points described in <a href="abdesselam-global-trajectory.html">the next article</a>.</p>
+
+## History and attribution {#section-history}
+
+<p>Koch and Wittwer proved the existence of the nontrivial fixed point for hierarchical scalar lattice field theories in 1986, with a method for the large-field problem based on Borel summation [@koch-wittwer-1986]; the transformation itself, its beta function and the Dyson-Gallavotti connection are the subject of the 1991 paper [@koch-wittwer-1991], and the Dyson-Baker case of the 1994 paper [@koch-wittwer-1994]. The general existence theorem is Bleher and Sinai's [@bleher-sinai-1975]; the analyticity techniques that the 1986 method improves on are Gawedzki and Kupiainen's [@gawedzki-kupiainen-1982], and the Borel summability technique it uses was developed with Tirozzi [@gawedzki-kupiainen-tirozzi-1984].</p>
+
+## References {#section-references}
+
+<ul>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>K. Gawedzki and A. Kupiainen, Triviality of phi-fourth in four dimensions and all that in a hierarchy model approximation, <em>J. Statist. Phys.</em> 29 (1982), 683&ndash;699.</li>
+<li>K. Gawedzki, A. Kupiainen and B. Tirozzi, Borel summability of the perturbation series in a hierarchical lambda (nabla phi)-fourth model, <em>J. Statist. Phys.</em> 36 (1984), 145&ndash;162.</li>
+<li>H. Koch and P. Wittwer, A non-Gaussian renormalization group fixed point for hierarchical scalar lattice field theories, <em>Comm. Math. Phys.</em> 106 (1986), 495&ndash;532.</li>
+<li>H. Koch and P. Wittwer, Computing bounds on critical indices, in <em>Nonlinear Evolution and Chaotic Phenomena</em>, Proc. NATO ASI, NATO ASI Ser. B 176, 269&ndash;277, 1988.</li>
+<li>H. Koch and P. Wittwer, On the renormalization group transformation for scalar hierarchical models, <em>Comm. Math. Phys.</em> 138 (1991), 537&ndash;568.</li>
+<li>H. Koch and P. Wittwer, A nontrivial renormalization group fixed point for the Dyson-Baker hierarchical model, <em>Comm. Math. Phys.</em> 164 (1994), 627&ndash;647.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="koch-wittwer-fixed-point.html#tag-C2ZB">Koch and Wittwer's non-Gaussian fixed point</a>. To cite this assertion, link to
+<span class="tag">tag-C2ZB.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="koch-wittwer-fixed-point.html#tag-C2ZB"><span class="dir">context</span>Koch and Wittwer's non-Gaussian fixed point</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

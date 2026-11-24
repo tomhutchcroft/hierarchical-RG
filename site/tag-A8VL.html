@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Any convergent rescaled orbit has the prescribed block-spin growth — Hierarchical RG</title>
+<meta name="description" content="theorem: Any convergent rescaled orbit has the prescribed block-spin growth">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / A8VL</p>
+<h1>Any convergent rescaled orbit has the prescribed block-spin growth</h1>
+<p class="meta">theorem &middot; <span class="tag">A8VL</span> &middot; in
+<a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
+<div class="assertion">Let $\nu_n$ be the law of $L^{-\theta_0n}S_n$ with $\theta_0=\tfrac12(d+\alpha)$ and suppose that $\nu_n$ converges weakly to a law $\nu^*$ with $0&lt;\int s^2d\nu^*&lt;\infty$, the second moments being uniformly integrable. Then</p>
+<div class="math-display">$$\mathbb E_\beta[S_n^2]=L^{(d+\alpha)n}\int s^2d\nu^*\,(1+o(1)),\qquad \chi_n(\beta)\asymp L^{\alpha n},$$</div>
+<p>so $\kappa=\alpha$ and $\eta=2-\alpha$. The growth exponent is $\theta_0$ for every fixed point of the rescaled recursion, independently of the intensity and of the fixed point.</p>
+<details><summary>Proof of the growth theorem</summary><div class='collapsible-body'>
+<p>By definition $\mathbb E[S_n^2]=L^{2\theta_0n}\int s^2d\nu_n$ and $2\theta_0=d+\alpha$. Weak convergence together with uniform integrability of the second moments gives $\int s^2d\nu_n\to\int s^2d\nu^*$, which is the first display after substituting $2\theta_0=d+\alpha$. The second follows from the block identity $\chi_n=L^{-dn}\mathbb E[S_n^2]=L^{\alpha n}\int s^2d\nu^*(1+o(1))$, and $\kappa=\alpha$ is the definition of $\kappa$.</p>
+</div></details>
+<p>The mechanism is worth separating from the bookkeeping. The autonomy of the recursion at $\theta_0$ is a statement about the couplings, and it says that the only self-similar law consistent with them has block spins growing at rate $L^{\theta_0n}$. What the theorem adds is convergence of the orbit, which is the content of the fixed-point theory in the <a href="gaussian-renormalisation-group.html">Gaussian</a> and <a href="bleher-sinai-fixed-point.html">non-Gaussian</a> cases. The exponent that is not fixed this way is $\nu$, which measures the rate at which the orbit leaves the fixed point and is computed from the linearisation.</p>
+
+## The dictionary {#section-dictionary}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="critical-exponents-from-rg.html#tag-A8VL">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-A8VL.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="critical-exponents-from-rg.html#tag-A8VL"><span class="dir">context</span>Critical exponents from the renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

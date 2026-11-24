@@ -78,6 +78,13 @@ an abstract.
 
 Current maps: `bleher-major-sinai.md`, `koch-wittwer.md` and `abdesselam.md`.
 
+## Assertion pages
+
+Each anchor's tag gets two generated views: a page of its own at `site/tag-XXXX.html`, showing the
+statement with its formulas and links back to the article for context, and a row in
+`site/assertions.html`. The tag is the citation identity; the article anchor
+`<article>.html#tag-XXXX` remains the place where the hypotheses and the proof are.
+
 Catalogue entries carry a `zbl` field and its `zblUrl` where zbMATH Open has a record; the home
 page of the site lists them. A work with no record shows a dash rather than a guessed number.
 

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The hierarchical lattices of different dimensions are the same group — Hierarchical RG</title>
+<meta name="description" content="proposition: The hierarchical lattices of different dimensions are the same group">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / W9TF</p>
+<h1>The hierarchical lattices of different dimensions are the same group</h1>
+<p class="meta">proposition &middot; <span class="tag">W9TF</span> &middot; in
+<a href="hierarchical-lattice.html">The hierarchical lattice</a></p>
+<div class="assertion">Let $d\geq1$ and $L\geq2$, and let $\psi:(\mathbb Z/L\mathbb Z)^d\to\mathbb Z/L^d\mathbb Z$ be a bijection taking $0$ to $0$. Applying $\psi$ in every coordinate gives a group isomorphism $\Psi:\mathbb H^d_L\to\mathbb H^1_{L^d}$ with</p>
+<div class="math-display">$$\lVert\Psi(x)-\Psi(y)\rVert_{\mathbb H^1_{L^d}}=\lVert x-y\rVert_{\mathbb H^d_L}^{\,d}.$$</div>
+<details><summary>Proof of the distance identity</summary><div class='collapsible-body'>
+<p>The map $\psi(a)=\sum_{j=1}^da_jL^{j-1}$ is a bijection of the underlying sets fixing $0$, and applying it coordinatewise is a bijection of the direct sums. A vertex of $\mathbb H^d_L$ has level $k$ exactly when its last nonzero entry is the $k$-th, which the coordinatewise application preserves because level is read off the index and not the entry; a vertex of $\mathbb H^1_{L^d}$ at level $k$ has distance $(L^d)^k=L^{dk}$ from the origin and distance $L^k$ in the other lattice. Group structure is not needed for the distance identity, and it holds for $\Psi$ applied to a difference since the map is applied entrywise.</p>
+</div></details>
+<p>Under this identification the power kernel $\lVert x\rVert^{-d-\alpha}$ on $\mathbb H^d_L$ becomes $\lVert y\rVert^{-1-\alpha/d}$ on $\mathbb H^1_{L^d}$, so a statement about power kernels at every exponent on the one-dimensional lattice covers every dimension. The dimensional parameter is thus the ratio $\alpha/d$, which is why exponents in this model are functions of $\alpha/d$ and of the ratio of the kernel to the scale, and not of $d$ alone.</p>
+
+<p><em>Other coefficient groups.</em> Nothing in the definitions uses finiteness of $A$ except the counts. With $A=\mathbb Z^d$ the level-one block is infinite, the shells are infinite, the summability criterion changes, and the model is a long-range system on a tree-like group; the child decomposition survives, the counting arguments do not.</p>
+
+## History and attribution {#section-history}
+
+<p>Dyson (1969) introduced the one-dimensional model with couplings decaying as a power and proved that a phase transition occurs for decay exponents between one and two [@dyson-1969]; the hierarchical approximation used there is the lattice above with $d=1$ and a coupling that is constant on the shells of the ultrametric. The group-theoretic description, in which blocks are cosets of nested subgroups with $L^d$ children each, is the form in which Bleher and Sinai set up the renormalisation transformation [@bleher-sinai-1973], and it is the presentation used in the modern development of the renormalisation group for lattice field theory [@bauerschmidt-brydges-slade-2019].</p>
+
+<p>The counts of this article are elementary and appear in each of those sources; the statement that all pairs between two children of a block lie at the top level of that block is the property that distinguishes this lattice from a Euclidean block partition, where the interaction between two neighbouring blocks depends on the shape of their common boundary. The comparison is the subject of <a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a>.</p>
+
+## References {#section-references}
+
+<ul>
+<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
+<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
+<li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-lattice.html#tag-W9TF">The hierarchical lattice</a>. To cite this assertion, link to
+<span class="tag">tag-W9TF.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-lattice.html#tag-W9TF"><span class="dir">context</span>The hierarchical lattice</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

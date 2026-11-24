@@ -192,6 +192,26 @@
     {
       "tag": "OEV0",
       "state": "allocated"
+    },
+    {
+      "tag": "U4PM",
+      "state": "allocated"
+    },
+    {
+      "tag": "U7KQ",
+      "state": "allocated"
+    },
+    {
+      "tag": "U2NB",
+      "state": "allocated"
+    },
+    {
+      "tag": "C6VW",
+      "state": "allocated"
+    },
+    {
+      "tag": "C3XD",
+      "state": "allocated"
     }
   ]
 }

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultrametricity, nested blocks and exact shell counts — Hierarchical RG</title>
+<meta name="description" content="proposition: Ultrametricity, nested blocks and exact shell counts">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / M8ZR</p>
+<h1>Ultrametricity, nested blocks and exact shell counts</h1>
+<p class="meta">proposition &middot; <span class="tag">M8ZR</span> &middot; in
+<a href="hierarchical-lattice.html">The hierarchical lattice</a></p>
+<div class="assertion">The level is subadditive under addition, $\operatorname{lev}(u+v)\leq\max\{\operatorname{lev}(u),\operatorname{lev}(v)\}$, and invariant under negation. Consequently $\lVert x-z\rVert\leq\max\{\lVert x-y\rVert,\lVert y-z\rVert\}$ for all $x,y,z$, the distance is symmetric and translation invariant, and $\lVert x\rVert=0$ only at $x=0$. Each $\Lambda_n$ is a subgroup, the blocks of a fixed level are its cosets, and two blocks are disjoint or one contains the other. Finally</p>
+<div class="math-display">$$\lvert\Lambda_n\rvert=L^{dn}=m^n,\qquad \bigl\lvert\{x:\operatorname{lev}(x)=n\}\bigr\rvert=L^{dn}-L^{d(n-1)}\quad(n\geq1).$$</div>
+<details><summary>Proof of ultrametricity and the counts</summary><div class='collapsible-body'>
+<p>Let $u,v\in\mathbb H^d_L$ and $k=\max\{\operatorname{lev}(u),\operatorname{lev}(v)\}$. Both vanish above coordinate $k$, hence so does $u+v$, and $\operatorname{lev}(u+v)\leq k$; the coordinates of $-u$ are the negatives of those of $u$, so $\operatorname{lev}(-u)=\operatorname{lev}(u)$. Taking $u=x-y$ and $v=y-z$ gives the strong triangle inequality. Symmetry is $\operatorname{lev}(y-x)=\operatorname{lev}(x-y)$, translation invariance is $\operatorname{lev}((x+w)-(y+w))=\operatorname{lev}(x-y)$, and positive definiteness is the definition together with $\operatorname{lev}(x)\geq1$ for $x\neq0$.</p>
+<p>The condition $\operatorname{lev}(z)\leq n$ is exactly $z_i=0$ for $i&gt;n$, and the set of such $z$ is closed under addition and negation, so $\Lambda_n$ is a subgroup; it is contained in $\Lambda_{n+1}$. A translate of a subgroup is a coset, and two cosets of the same subgroup coincide or are disjoint; nested subgroups give the same statement for blocks of different levels.</p>
+<p>Restriction to the first $n$ coordinates maps $\Lambda_n$ bijectively onto $A^n$, with inverse given by appending zeros, so $\lvert\Lambda_n\rvert=\lvert A\rvert^n=m^n=L^{dn}$. The shell at level $n$ is $\Lambda_n\setminus\Lambda_{n-1}$ and the two blocks are nested, so its cardinality is the difference.</p>
+</div></details>
+<p>Every vertex of $\Lambda_n$ is within distance $L^n$ of every other: a pair of points of $\Lambda_n$ differs only in coordinates at most $n$, so its level is at most $n$. This is the sense in which a block has no boundary: the diameter of $\Lambda_n$ is exactly the radius at which it first appears.</p>
+
+## The child decomposition {#section-children}
+
+<p>The single structural fact behind the exactness of decimation is that a block is the disjoint union of congruent children, and that the interaction between two children is a function of their total spins alone. For $a\in A$ and $n\geq1$ let $e_n(a)$ be the vertex whose $n$-th coordinate is $a$ and whose other coordinates vanish.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-lattice.html#tag-M8ZR">The hierarchical lattice</a>. To cite this assertion, link to
+<span class="tag">tag-M8ZR.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-lattice.html#tag-M8ZR"><span class="dir">context</span>The hierarchical lattice</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

@@ -148,3 +148,6 @@ figure.fig figcaption { font-family: var(--sans); font-size: .8rem; color: var(-
 .fig-svg .fg-flow { fill: none; stroke: #b9a7a3; stroke-width: 1.2; }
 .fig-svg .fg-result { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1; }
 .wanted { border-bottom: 1px dotted var(--faint); }
+
+.sim-svg .bar { fill: var(--accent); opacity: .8; }
+.sim-svg .axes-line { stroke: var(--rule); stroke-width: 1; }

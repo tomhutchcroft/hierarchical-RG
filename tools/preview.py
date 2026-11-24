@@ -36,6 +36,7 @@ ORDER = [
     "renormalisation-group-map",
     "gaussian-renormalisation-group",
     "critical-exponents-from-rg",
+    "corrections-to-scaling",
     "bleher-sinai-fixed-point",
     "hierarchical-vector-models",
     "hierarchical-phi4-truncations",
@@ -43,6 +44,7 @@ ORDER = [
     "abdesselam-global-trajectory",
     "hierarchical-percolation-rg",
     "hierarchical-and-euclidean-rg",
+    "ultrametric-block-systems",
 ]
 
 HEAD_RE = re.compile(r"^## (.+?) \{#(section-[a-z0-9-]+)\}\s*$")
@@ -206,6 +208,7 @@ def shell(title: str, description: str, inner: str, sidebar: str, scripts: str =
 
 
 def sidebar(articles, order, maps, active: str) -> str:
+    assert_active = ' class="active"' if active == "assertions" else ""
     items = []
     for n, aid in enumerate(order, start=1):
         cls = ' class="active"' if aid == active else ""
@@ -221,6 +224,7 @@ def sidebar(articles, order, maps, active: str) -> str:
 <nav class="sec"><h2>Reading maps</h2><ul>{''.join(mitems)}</ul></nav>
 <nav class="sec"><h2>On this site</h2><ul>
 <li><a href="index.html">Home</a></li>
+<li><a href="assertions.html"{assert_active}>Assertions</a></li>
 <li><a href="index.html#bibliography">Bibliography</a></li>
 </ul></nav>"""
 
@@ -307,6 +311,52 @@ def build(out: Path) -> dict:
                   sidebar(articles, order, maps, page)))
         search_entries.append({"url": f"{page}.html", "title": m["title"], "subtitle": "reading map",
                                "summary": "", "text": strip_html(map_body_to_html(m["body"]))[:4000]})
+
+    # ---- assertions: one citable page per tag, and an index
+    assertion_rows = []
+    for aid in order:
+        body = articles[aid]["body"]
+        for m in ANCHOR_RE.finditer(body):
+            tag, kind, title = m.group(1), m.group(2), m.group(3)
+            chunk = body[m.end():]
+            cut = min([x for x in (chunk.find("<a id=\"tag-"), chunk.find("<h2 ")) if x >= 0] or [len(chunk)])
+            statement = chunk[:cut].strip()
+            statement = fences_to_details(statement)
+            statement = rewrite_links(statement, tag_owner)
+            statement = re.sub(r"^<p>", "", statement)
+            page = f"tag-{tag}"
+            inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Assertions / {tag}</p>
+<h1>{title}</h1>
+<p class="meta">{kind} &middot; <span class="tag">{tag}</span> &middot; in
+<a href="{aid}.html">{articles[aid]['title']}</a></p>
+<div class="assertion">{statement}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="{aid}.html#tag-{tag}">{articles[aid]['title']}</a>. To cite this assertion, link to
+<span class="tag">tag-{tag}.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="{aid}.html#tag-{tag}"><span class="dir">context</span>{articles[aid]['title']}</a></div>"""
+            (out / f"{page}.html").write_text(
+                shell(f"{title} — Hierarchical RG", f"{kind}: {title}", inner,
+                      sidebar(articles, order, maps, page)))
+            assertion_rows.append((tag, kind, title, aid))
+            search_entries.append({"url": f"{page}.html", "title": title, "subtitle": f"{kind} {tag}",
+                                   "summary": "", "text": strip_html(statement)[:1500]})
+
+    rows = "".join(
+        f'<tr><td class="num">{tag}</td><td>{kind}</td><td><a href="tag-{tag}.html">{title}</a></td>'
+        f'<td><a href="{aid}.html">{articles[aid]["title"]}</a></td></tr>'
+        for tag, kind, title, aid in assertion_rows)
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Assertions</p>
+<h1>Assertions</h1>
+<p class="meta">{len(assertion_rows)} tagged statements</p>
+<p>Each assertion has a permanent four-character tag, reserved in the wiki's ledger and never
+reused. The tag identifies a citable statement rather than a page, so a link to it survives the
+article being edited around it.</p>
+<table><thead><tr><th>Tag</th><th>Kind</th><th>Statement</th><th>Article</th></tr></thead>
+<tbody>{rows}</tbody></table>"""
+    (out / "assertions.html").write_text(
+        shell("Assertions — Hierarchical RG", "Every tagged assertion in the wiki.", inner,
+              sidebar(articles, order, maps, "assertions")))
 
     # ---- home
     cards = []

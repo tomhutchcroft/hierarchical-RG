@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uniform direction and independence for rotation invariant laws — Hierarchical RG</title>
+<meta name="description" content="proposition: Uniform direction and independence for rotation invariant laws">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / N4TZ</p>
+<h1>Uniform direction and independence for rotation invariant laws</h1>
+<p class="meta">proposition &middot; <span class="tag">N4TZ</span> &middot; in
+<a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></p>
+<div class="assertion">Let $\nu$ be a rotation invariant probability measure on $\mathbb R^r$ with $\nu(\{0\})=0$, $r\geq2$. Then under $\nu$ the random variable $S/\lvert S\rvert$ is uniform on $\mathbb S^{r-1}$ and independent of $\lvert S\rvert$. In particular the conclusion holds for every law of the Gaussian orbit and for every rotation invariant fixed point of $\mathcal R_{\theta,b}$.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>Let $f$ be bounded measurable on $\mathbb S^{r-1}$ and $g$ bounded measurable on $[0,\infty)$. Since $\lvert QS\rvert=\lvert S\rvert$ for orthogonal $Q$ and $\nu$ is invariant,</p>
+<div class="math-display">$$\int f(S/\lvert S\rvert)g(\lvert S\rvert)\,d\nu(S)=\int f(QS/\lvert QS\rvert)g(\lvert S\rvert)\,d\nu(S)$$</div>
+<p>for every $Q$. Averaging over $Q$ against the Haar measure of $O(r)$ and using Fubini, the right-hand side is $\int \bar f\,g(\lvert S\rvert)d\nu(S)$ with $\bar f$ the average of $f$ over the sphere, which is $\int f\,d\sigma$ for the uniform $\sigma$. Taking $g=\mathbf 1_{B}$ for a Borel $B\subseteq[0,\infty)$ gives $\int f(S/\lvert S\rvert)\mathbf 1_B(\lvert S\rvert)d\nu=\bigl(\int f\,d\sigma\bigr)\nu(\lvert S\rvert\in B)$, which is the product statement; the case $f\equiv1$ gives uniformity.</p>
+</div></details>
+<p>The proposition explains why "the direction is uniform" is not by itself a critical phenomenon: it holds at every temperature in the Gaussian model. What Bleher and Major prove is that it holds at the critical temperature of the interacting model as well, where the direction could have concentrated, and that this coexists with a vanishing spontaneous magnetisation.</p>
+
+## Dyson's conjecture and the Thouless-like effect {#section-thouless}
+
+<p>At the marginal exponent the interaction is summable exactly when the level couplings are, and the question is whether summability is the same as the absence of a transition. Dyson conjectured that it is, and Bleher and Major proved the conjecture for the vector model.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-vector-models.html#tag-N4TZ">Hierarchical models with continuous symmetry</a>. To cite this assertion, link to
+<span class="tag">tag-N4TZ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-vector-models.html#tag-N4TZ"><span class="dir">context</span>Hierarchical models with continuous symmetry</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

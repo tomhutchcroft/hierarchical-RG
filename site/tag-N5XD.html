@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exact recursion for the partition function and the block-spin law — Hierarchical RG</title>
+<meta name="description" content="theorem: Exact recursion for the partition function and the block-spin law">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / N5XD</p>
+<h1>Exact recursion for the partition function and the block-spin law</h1>
+<p class="meta">theorem &middot; <span class="tag">N5XD</span> &middot; in
+<a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></p>
+<div class="assertion">For $n\geq1$,</p>
+<div class="math-display">$$Z_n(\beta)=Z_{n-1}(\beta)^m\int_{\mathbb R^m}\exp\Bigl(\beta J_n\sum_{a<a'}s_as_{a'}\Bigr)\prod_{a\in A}\mu_{n-1}(ds_a),$$</div>
+<p>and the law of $(S_a)_{a\in A}$ under $\mathbb P_n$ is the normalised version of that measure. Hence, writing</p>
+<div class="math-display">$$\mathcal T_b\mu(A')=\frac{\displaystyle\int_{\mathbb R^m}\mathbf 1_{A'}\Bigl(\sum_{a}s_a\Bigr)\exp\Bigl(b\sum_{a<a'}s_as_{a'}\Bigr)\prod_{a}\mu(ds_a)}{\displaystyle\int_{\mathbb R^m}\exp\Bigl(b\sum_{a<a'}s_as_{a'}\Bigr)\prod_{a}\mu(ds_a)}$$</div>
+<p>for $b\geq0$, the block-spin laws satisfy $\mu_n=\mathcal T_{\beta J_n}\mu_{n-1}$.</p>
+<details><summary>Proof of the decimation identity</summary><div class='collapsible-body'>
+<p>Write $\sigma=(\sigma^{(a)})_{a\in A}$ with $\sigma^{(a)}$ the restriction to the child $\Lambda^{(a)}$, and $S_a=\sum_{x\in\Lambda^{(a)}}\sigma^{(a)}_x$. The prior is a product over vertices, hence over children, and the level decomposition gives</p>
+<div class="math-display">$$\exp(-\beta H_{\Lambda_n}(\sigma))=\prod_{a\in A}\exp\bigl(-\beta H_{\Lambda^{(a)}}(\sigma^{(a)})\bigr)\exp\Bigl(\beta J_n\sum_{a<a'}S_aS_{a'}\Bigr).$$</div>
+<p>Because a child is a translate of $\Lambda_{n-1}$ and the Hamiltonian only depends on differences, the integral of the $a$-th factor against the prior over that child is $Z_{n-1}$ on the set where $S_a=s_a$, as the definition of the Hamiltonian gives the same function of the translated configuration. Integrating out all children with $S_a$ held fixed therefore produces $\prod_aZ_{n-1}\mu_{n-1}(ds_a)$, and integrating the remaining factor over $(s_a)$ gives the displayed identity for $Z_n$. Dividing by $Z_n$ gives the law of $(S_a)$, and the law of $\sum_as_a$ is its image.</p>
+</div></details>
+<p>In this form the identity is the renormalisation transformation of Bleher and Sinai, who made the law of the block spin the object of study [@bleher-sinai-1973].
+<div class="fig" data-fig="decimation" data-title="One decimation step. The children are independent with law μ; the tilt depends only on their sums; the result is the law of the block spin, which is the new state of the recursion."></div> The display is the whole renormalisation group, at finite volume: the state of the model after $n$ scales is the law of one number, and one more scale acts on that law by a fixed rule depending on the coupling $b=\beta J_n$. Three features are immediate. First, $\mathcal T_b$ is a nonlinear but explicit operation, given by a Gibbs tilt of a product measure by the variance-type quantity $\sum_{a&lt;a'}s_as_{a'}=\tfrac12\bigl((\sum_as_a)^2-\sum_as_a^2\bigr)$; second, the coupling argument decreases geometrically, $J_n=L^{-(d+\alpha)n}J$; third, the identity holds for any prior $\varrho$, so it applies to Ising, Gaussian and $\varphi^4$ spins at once, differing only in the initial law $\mu_0$.</p>
+
+## Iteration and the free energy {#section-free-energy}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-gibbs-measure.html#tag-N5XD">Hierarchical spin systems and decimation</a>. To cite this assertion, link to
+<span class="tag">tag-N5XD.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-gibbs-measure.html#tag-N5XD"><span class="dir">context</span>Hierarchical spin systems and decimation</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

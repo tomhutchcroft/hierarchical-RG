@@ -175,7 +175,8 @@ def cluster_of_zero(n, L, d, alpha, bits, beta):
 
 
 def build() -> dict:
-    return {"rg-orbit": sim_rg_orbit(), "exponents": sim_exponents(), "triangle": sim_triangle()}
+    return {"rg-orbit": sim_rg_orbit(), "exponents": sim_exponents(), "triangle": sim_triangle(),
+            "ising-block": ising_block()}
 
 
 if __name__ == "__main__":
@@ -331,3 +332,39 @@ def fig_thouless():
                      f'y2="{cy - r*0.9*math.sin(ang):.1f}" stroke="#8a1c1c" stroke-width="1" opacity="0.45"/>')
         p.append(f'<text x="{cx}" y="{cy+r+22}" text-anchor="middle" class="fg-small">{title}</text>')
     return _svg(W, H, "direction of the block spin", "".join(p))
+
+
+# ---------------------------------------------------------------- 5. Ising block spin (exact)
+
+
+def ising_block(n=4, L=2, d=1, alpha=0.5, n_beta=18):
+    """Exact law of the block spin of the Ising model on a block of 2^n sites, free boundary.
+
+    With 2^n = 16 there are 65536 configurations, so the histogram is exact, not sampled.
+    """
+    V = vertices(d, L, n)
+    N = len(V)
+    pairs = []
+    for i in range(N):
+        for j in range(i + 1, N):
+            k = children_index(V[i], V[j], d)
+            pairs.append((i, j, L ** (-(d + alpha) * k)))
+    configs = list(itertools.product([-1, 1], repeat=N))
+    energies = []
+    for cfg in configs:
+        energies.append(sum(w * cfg[i] * cfg[j] for i, j, w in pairs))
+    spins = [sum(cfg) for cfg in configs]
+    _, row = flat_params(L, d, alpha)
+    beta_max = 1.6 / row
+    betas = [beta_max * (i + 1) / n_beta for i in range(n_beta)]
+    histograms = []
+    for beta in betas:
+        weights = [math.exp(beta * e) for e in energies]
+        Z = sum(weights)
+        counts = {v: 0.0 for v in range(-N, N + 1, 2)}
+        for w, s in zip(weights, spins):
+            counts[s] += w / Z
+        histograms.append([round(counts[v], 8) for v in range(-N, N + 1, 2)])
+    return {"n": n, "N": N, "values": list(range(-N, N + 1, 2)),
+            "betas": [round(b, 6) for b in betas], "beta_c": 1 / row,
+            "histograms": histograms, "alpha": alpha, "L": L, "d": d}

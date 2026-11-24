@@ -108,6 +108,7 @@
 
 <p><em>Ising spins.</em> With $\varrho=\tfrac12(\delta_{-1}+\delta_1)$, each $s_a$ is an integer between $-m^{n-1}$ and $m^{n-1}$, and $\mu_0$ is uniform on $\{\pm1\}$. The decimation identity reproduces the standard block-spin recursion of the Dyson model: the level-$n$ measure is $m$ independent copies of the level-$(n-1)$ measure, reweighted by a ferromagnetic coupling between their sums.</p>
 
+<div class="sim" data-sim="ising-block" data-title="The exact law of the block spin on a block of sixteen sites, at a temperature you choose. Exact enumeration of all 65536 configurations, not a simulation: as the intensity passes the critical value the single peak at zero gives way to two peaks at the extremes."></div>
 <p><em>Gaussian spins.</em> With $\varrho=N(0,1)$ the same identity holds, and both the tilt and the pushforward preserve Gaussianity, so the recursion closes on the variance. This is the <a href="/articles/gaussian-renormalisation-group/">Gaussian renormalisation group</a>, and it is the only case in which the recursion is solved in closed form.</p>
 
 <p><em>A kernel that is not constant on levels.</em> If $J$ depends on the pair rather than on the level, the first display fails: the interaction between two children is then a sum of terms with different intensities, and the block's energy depends on the internal arrangement of spins, not only on the sums. The <a href="/articles/hierarchical-and-euclidean-rg/">Euclidean obstruction</a> is of this kind but worse, since there the geometry of the blocks also changes with scale.</p>

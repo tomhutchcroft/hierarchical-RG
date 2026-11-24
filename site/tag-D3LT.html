@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classical region and the crossover at alpha equal to half the dimension — Hierarchical RG</title>
+<meta name="description" content="theorem: Classical region and the crossover at alpha equal to half the dimension">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / D3LT</p>
+<h1>Classical region and the crossover at alpha equal to half the dimension</h1>
+<p class="meta">theorem &middot; <span class="tag">D3LT</span> &middot; in
+<a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></p>
+<div class="assertion">For $0&lt;\alpha&lt;d/2$ the critical orbit of the Ising initial law converges, after rescaling, to a Gaussian law, and the exponents take the classical values of <a href="gaussian-renormalisation-group.html#section-exponents">the Gaussian fixed point</a>. At $\alpha=d/2$ the nontrivial fixed point merges with the Gaussian one, $\lambda_1\to L^{d/2}$, and the classical values hold with logarithmic corrections.</p>
+<p>The arithmetic that connects the two statements is the proposition above: at $\alpha=d/2$ the classical correlation-length exponent is $1/\alpha=2/d$, so $\lambda_1=L^{d/2}$, and the two fixed points coincide at that value of the multiplier. The identification of the critical fixed point for $\alpha&lt;d/2$ with the Gaussian one, and of the exponents with the classical values, is the content of the classical region in Bleher and Sinai [@bleher-sinai-1975]; the Euclidean counterpart at the same threshold is due to Aizenman and Fernandez [@aizenman-fernandez-1988].</p>
+<p>The two theorems together describe a bifurcation:
+<div class="fig" data-fig="exponents-alpha" data-title="The classical exponents against the kernel exponent in one dimension. Below α = d/2 the Gaussian fixed point governs and these are the exponents; above it the nontrivial fixed point takes over and only ν changes in the dictionary."></div> at $\alpha=d/2$ a nontrivial fixed point separates from the Gaussian one as $\alpha$ increases, taking over the critical behaviour. The exponents move continuously from the classical values at the threshold, which is why the classical formulas remain a good approximation just above $d/2$ and why the $\varepsilon$-expansion is organised in powers of $\alpha-d/2$ rather than in powers of a coupling.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>The Gaussian case as the threshold member.</em> For every $b$ the rescaled map has exactly one Gaussian fixed point, of variance $v_b$; at the Gaussian model's critical coupling $b_1^{(0)}$ it is $N(0,1)$ with multiplier $L^{\alpha}$. The classical exponents are therefore a one-parameter family in $\alpha$, and the threshold $\alpha=d/2$ is where $\nu=1/\alpha$ meets the mean-field value $2/d$.</p>
+
+<p><em>One dimension, $\alpha\in(\tfrac12,1)$.</em> Here $d=1$ and the threshold is $\alpha=\tfrac12$: below it the classical values $\nu=1/\alpha$, $\delta=\frac{1+\alpha}{1-\alpha}$ hold; above it the nontrivial fixed point governs, and $\delta=\frac{1+\alpha}{1-\alpha}$ is still the conjectured value while $\nu$ is not $1/\alpha$. This is Dyson's original model, and the phase transition exists for every $\alpha&lt;1$ with $\beta_c&lt;\infty$ exactly in that range.</p>
+
+<p><em>Non-example: a law with heavy tails.</em> If the prior has a density decaying like $\lvert s\rvert^{-p}$ with $p$ large, the tilt is not normalisable for any $b&gt;0$ and the orbit is undefined. The class $\mathcal E$ is chosen to exclude this: the exponential moment is what makes the tilt integrable and what makes the linearisation compact.</p>
+
+<p><em>Non-example: the orbit above criticality.</em> For $b&gt;b_c$ the rescaled variance grows without bound; the block spin per site has a nonzero limit and the law concentrates on the two points $\pm M$ with $M$ the spontaneous magnetisation. That limit is a fixed point of the map only in the degenerate sense of a law with infinite variance after rescaling, and it is not in $\mathcal E$.</p>
+
+## Idea of the proof {#section-idea}
+
+<p>The argument has four parts, and only the first is elementary.</p>
+
+<p><em>An invariant class.</em> The tilt $\exp(b\sum_{a&lt;a'}s_as_{a'})$ grows at most like $\exp(\tfrac b2(\sum_as_a)^2)\leq\exp(\tfrac{bm}{2}\sum_as_a^2)$, and the sum $\sum_as_a$ of $m$ variables with exponential moments has exponential moments with a constant depending on $m$ and $b$. Hence $\mathcal R_{\theta,b}$ maps $\mathcal E$ into a subset of itself on which the exponential constant is bounded in terms of $b$ and the input constant. This gives compactness: a sequence of laws in $\mathcal E$ with a uniform exponential constant is tight with uniformly integrable moments, so every orbit has convergent subsequences.</p>
+
+<p><em>A truncation.</em> The tilt is replaced by $\exp(b\sum_{a&lt;a'}s_as_{a'})$ cut off at $\lvert s\rvert\leq K$, which is bounded and continuous; the truncated map is continuous on the laws supported in $[-K,K]$, and an invariant compact convex set plus Schauder's theorem gives a fixed point for each $K$. The a priori bounds of the first part are uniform in $K$, and a limit of fixed points as $K\to\infty$ along a subsequence is a fixed point of the original map.</p>
+
+<p><em>Identification of the critical coupling.</em> The orbit from the Ising initial law is compared with the orbits of the Gaussian family: below a certain $b$ the variance decreases geometrically to zero, above it the variance grows geometrically, and $b_c$ is the value between. Since the variance recursion of the Gaussian family is explicit, the two regimes can be separated by explicit inequalities, and the fixed point at $b_c$ is the limit of the critical orbit.</p>
+
+<p><em>The linearisation.</em> The derivative of $\mathcal R_{\theta_0,b_c}$ at $\nu^*$ is the sum of two terms: the linearisation of the tilt, which is a bounded integral operator with kernel $\sum_{a&lt;a'}(s_as_{a'}-\mathbb E[s_as_{a'}])$, and the linearisation of the summation and rescaling, which is the dilation composed with the $m$-fold convolution. The second is the operator whose spectrum at the Gaussian fixed point is computed by the variance multiplier; the first is a compact perturbation, so the spectrum is discrete with the leading eigenvalue simple by a Perron-Frobenius argument on the cone of positive perturbations. Composing, one obtains $\lambda_1$ as the leading eigenvalue and $L^{\alpha}$ as the value it takes at the Gaussian fixed point.</p>
+
+<p>What this sketch does not do is exhibit the fixed point or prove the convergence, and those are the substance of the two papers cited. The point of writing it out is to locate where each hypothesis is used: exponential moments give compactness, truncation gives existence, comparison with the Gaussian family gives the critical coupling, and compactness of the perturbation gives simplicity of the leading eigenvalue.</p>
+
+## The spectrum {#section-spectrum}
+
+<p>The eigenvalues of the linearisation are the exponents and their corrections, so their structure is worth stating separately.</p>
+<p>The leading eigenvalue $\lambda_1&gt;1$ is the thermal direction: a perturbation of the critical coupling changes the orbit by a factor $\lambda_1$ per scale, and inverting gives $\xi\asymp\lvert\beta_c-\beta\rvert^{-\nu}$ with $\nu=\log L/\log\lambda_1$. The second eigenvalue $\mu_1$ is the leading correction: it multiplies the $n$-th scale by $\mu_1^n$, so each power law acquires a factor $1+O(\lvert\mu_1\rvert^n)$ in the scale variable, that is a correction of order $\xi^{-\lvert\log\lvert\mu_1\rvert\rvert/\log L}$. A pair of complex conjugate eigenvalues $\mu_1,\bar\mu_1$ replaces that factor by $1+O(\lvert\mu_1\rvert^n\cos(n\arg\mu_1))$, which is an oscillation in $\log\lvert x\rvert$ and is visible in the hierarchical model's numerical exponents as a modulation of the corrections; the $\varepsilon$-expansion and the normal-form analysis of this phenomenon are in Gawedzki and Kupiainen [@gawedzki-kupiainen-1983].</p>
+<p>The magnetic direction is the second relevant one, and it is not an eigenmeasure of the zero-field map: it appears when the recursion is carried with a field, as a derivative in the field at zero. Its eigenvalue is the number that enters $\delta$; in the classical regime it gives the value $\frac{d+\alpha}{d-\alpha}$ through the dictionary of <a href="critical-exponents-from-rg.html#section-dictionary">the exponent article</a>.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>The scaling limit.</em> The decay of the orbit to $\nu^*$ at the rate $\lambda_1^{-n}$ is what makes the scaling limit exist: after centring and rescaling by $\xi^{\theta_0}$, the block-spin process converges to a nontrivial limit whose law is determined by $\nu^*$ and the unstable manifold. This is the content of Gawedzki and Kupiainen's second paper [@gawedzki-kupiainen-1984], and it is the analogue for the hierarchical model of the construction of a critical Euclidean field theory.</p>
+
+<p><em>The fixed point as a self-similar field.</em> A fixed point of the recursion is a law of a block spin that reproduces itself under decimation; assembled over the scales, it gives a random field whose block sums have the same law after rescaling, which is a self-similar field with hierarchical structure. Bleher's construction of such fields [@bleher-1982] is the probabilistic form of the fixed-point theorem: the fixed point exists as a law and as a field at once, and the two statements are the two halves of one orbit.</p>
+
+<p><em>Other initial laws.</em> The domain of attraction of $\nu^*$ is a codimension-one set of initial laws: the critical manifold. Any symmetric prior with exponential moments whose orbit meets that manifold converges to $\nu^*$, so the exponents depend on $\alpha$ and $d$ and not on the prior. This is the hierarchical model's version of universality, and it is a theorem here rather than a hypothesis.</p>
+
+<p><em>The $\varphi^4$ parametrisation.</em> Writing the prior as $e^{-\lambda s^4-\frac{\mu}{2}s^2}ds$ and following the orbit of $(\lambda,\mu)$ gives the flow on the two-dimensional truncation of the space of interactions, which has the same bifurcation structure at $\alpha=d/2$; the truncation is not closed, and the exact statement requires the full infinite-dimensional map.</p>
+
+## History and attribution {#section-history}
+
+<p>Bleher announced the analysis of the second-order transition in Dyson's asymptotically hierarchical models in 1974 [@bleher-1974]. Bleher and Sinai introduced the renormalisation transformation of the hierarchical model and proved the existence of the nontrivial fixed point, the trichotomy of the orbit and the formula for the indices in terms of the linearisation [@bleher-sinai-1973] [@bleher-sinai-1975]; Sinai's monograph is the systematic account of the framework of limit Gibbs distributions in which the model sits [@sinai-1982]. Gawedzki and Kupiainen gave the local analysis: the $\varepsilon$-expansion around $\alpha=d/2$, the unstable manifold and its normal form, and the convergence of the rescaled correlations to a nontrivial scaling limit [@gawedzki-kupiainen-1983] [@gawedzki-kupiainen-1984]. The identification of the classical region with the mean-field exponents, in the Euclidean setting and at the same threshold, is due to Aizenman and Fernandez [@aizenman-fernandez-1988].</p>
+
+## References {#section-references}
+
+<ul>
+<li>M. Aizenman and R. Fernandez, Critical exponents for long-range interactions, <em>Lett. Math. Phys.</em> 16 (1988), 39&ndash;49.</li>
+<li>P. M. Bleher, Studium des Phasenuebergangs zweiter Art in Dysons asymptotischen hierarchischen Modellen, <em>Uspekhi Mat. Nauk</em> 29 (1974), 163&ndash;164.</li>
+<li>P. M. Bleher, Construction of non-Gaussian self-similar random fields with hierarchical structure, <em>Comm. Math. Phys.</em> 84 (1982), 557&ndash;578.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
+<li>K. Gawedzki and A. Kupiainen, Non-Gaussian scaling limits. Hierarchical model approximation, <em>J. Statist. Phys.</em> 35 (1984), 267&ndash;284.</li>
+<li>Ya. G. Sinai, <em>Theory of Phase Transitions: Rigorous Results</em>, Pergamon Press, 1982.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="bleher-sinai-fixed-point.html#tag-D3LT">The Bleher–Sinai fixed point</a>. To cite this assertion, link to
+<span class="tag">tag-D3LT.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="bleher-sinai-fixed-point.html#tag-D3LT"><span class="dir">context</span>The Bleher–Sinai fixed point</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

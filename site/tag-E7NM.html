@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuity of decimation on compactly supported laws — Hierarchical RG</title>
+<meta name="description" content="proposition: Continuity of decimation on compactly supported laws">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">3</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">4</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">5</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">8</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">9</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">10</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">11</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">12</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">13</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li><li><span class="num">14</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="assertions.html">Assertions</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / Assertions / E7NM</p>
+<h1>Continuity of decimation on compactly supported laws</h1>
+<p class="meta">proposition &middot; <span class="tag">E7NM</span> &middot; in
+<a href="renormalisation-group-map.html">The renormalisation group map</a></p>
+<div class="assertion">Fix $K&lt;\infty$ and $B&lt;\infty$. The map $(\mu,b)\mapsto\mathcal T_b\mu$ is continuous on the set of laws supported in $[-K,K]$ and couplings $b\in[0,B]$, for the topology of weak convergence, and $\mathcal T_b$ maps that set into the laws supported in $[-mK,mK]$.</p>
+<details><summary>Proof of continuity</summary><div class='collapsible-body'>
+<p>On $[-K,K]^m$ the tilt $\exp(b\sum_{a&lt;a'}s_as_{a'})$ is continuous in $(s,b)$ and bounded above by $e^{Bm(m-1)K^2/2}$ and below by $e^{-Bm(m-1)K^2/2}$, and the sum $\sum_as_a$ is continuous and bounded by $mK$. If $\mu_j\Rightarrow\mu$ weakly with all $\mu_j$ supported in $[-K,K]$ and $b_j\to b$, then $\mu_j^{\otimes m}\Rightarrow\mu^{\otimes m}$ because the product of a weakly convergent sequence of laws on a compact set converges weakly to the product, and the integrands above are continuous and bounded, so $Z_{b_j}(\mu_j)\to Z_b(\mu)$. The normalisers are bounded below by $e^{-Bm(m-1)K^2/2}$, which is positive, so the normalised measures converge weakly by the same bounded convergence applied to $\mathbf 1_{A'}(\sum_as_a)$ tested against bounded continuous functions of $\sum_as_a$. The support statement is immediate from $\lvert s_a\rvert\leq K$.</p>
+</div></details>
+<p>The hypothesis of compact support is met by the Ising prior at finite volume, where the block spin of $\Lambda_n$ lies in $[-m^n,m^n]$, and it is met after rescaling only in the sense that the support bound $L^{(d-\theta)n}$ grows with $n$ when $\theta&lt;d$. The rescaled orbit is therefore not confined to a fixed compact set, and the continuity above does not by itself give compactness: what compactness requires is a uniform bound on the second moment of the rescaled laws, and supplying that bound is where the analysis of a particular model enters. Below the critical intensity the block spin has typical size $L^{dn/2}$, above it $L^{dn}$, and at the critical intensity $L^{\theta_0n}$ with $\theta_0=\tfrac12(d+\alpha)$; the rescaled orbit therefore shrinks, grows, or stays of order one in the three cases.</p>
+
+## The autonomous form {#section-autonomous}
+
+<p>The model applies a different operator at each scale. Rescaling the spin makes the sequence a power of one map, and this is the precise sense in which the renormalisation group is a dynamical system here.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="renormalisation-group-map.html#tag-E7NM">The renormalisation group map</a>. To cite this assertion, link to
+<span class="tag">tag-E7NM.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="renormalisation-group-map.html#tag-E7NM"><span class="dir">context</span>The renormalisation group map</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>
