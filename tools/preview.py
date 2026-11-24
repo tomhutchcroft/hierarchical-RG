@@ -28,6 +28,7 @@ SOURCES = WIKI / "sources"
 STATIC = WIKI / "static"
 CATALOG = WIKI / "src" / "content" / "catalog.json"
 STRUCTURE = WIKI / "structure.json"
+STYLE = WIKI / "STYLE.md"
 DEFAULT_OUT = ROOT / "site"
 
 # Fallback order used only if wiki/structure.json is missing; the structure file wins.
@@ -108,6 +109,55 @@ def load_maps():
         title = text.splitlines()[0][2:].strip()
         out.append({"slug": path.stem, "title": title, "body": "\n".join(text.splitlines()[1:]).strip()})
     return out
+
+
+NOTATION_RE = re.compile(r"^## Notation\s*$(.*?)(?=^## )", re.M | re.S)
+
+
+def load_notation(articles) -> dict:
+    """The notation table of wiki/STYLE.md, with each row's article resolved.
+
+    The page is generated from STYLE.md rather than copied, so that the table has one home: a symbol
+    added there appears on the page, and a row naming an article that does not exist fails the build.
+    """
+    m = NOTATION_RE.search(STYLE.read_text())
+    if not m:
+        sys.exit("STYLE.md has no '## Notation' section; the notation page is generated from it")
+    rows, paras, para = [], {"lead": [], "note": []}, []
+    state = "lead"
+
+    def flush():
+        nonlocal para
+        if para:
+            paras[state].append(" ".join(para))
+            para = []
+
+    for line in m.group(1).splitlines():
+        line = line.strip()
+        if line.startswith("|"):
+            flush()
+            state = "note"
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if len(cells) != 3:
+                sys.exit(f"a notation row of STYLE.md needs three columns (object, symbol, article): {line}")
+            if cells[0] == "Object" or set(cells[0]) <= set("-: "):
+                continue
+            obj, symbol, aid = cells
+            if aid not in articles:
+                sys.exit(f"the notation table names '{aid}', which is not an article")
+            rows.append((obj, symbol, aid))
+        elif line.startswith(">"):
+            continue  # notes to maintainers, kept in the source and not published
+        elif line:
+            para.append(line)
+        else:
+            flush()
+    flush()
+    if not rows:
+        sys.exit("the notation table of STYLE.md is empty")
+    return {"rows": rows,
+            "lead": "".join(f"<p>{inline_md(p)}</p>" for p in paras["lead"]),
+            "note": "".join(f"<p>{inline_md(p)}</p>" for p in paras["note"])}
 
 
 # ------------------------------------------------------------------ transforming bodies
@@ -250,7 +300,8 @@ def sidebar(articles, structure, maps, active: str) -> str:
         cls = ' class="active"' if "source-" + m["slug"] == active else ""
         mitems.append(f'<li><a href="source-{m["slug"]}.html"{cls}>{m["title"].split(":")[0]}</a></li>')
     index_items = [("start.html", "Start here"), ("assertions.html", "Assertions"),
-                   ("bibliography.html", "Bibliography"), ("all.html", "Single file")]
+                   ("notation.html", "Notation"), ("bibliography.html", "Bibliography"),
+                   ("all.html", "Single file")]
     idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
                   for href, label in index_items)
     return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
@@ -469,6 +520,27 @@ record; a dash means no record was found, and the work is cited by its published
     search_entries.append({"url": "bibliography.html", "title": "Bibliography", "subtitle": f"{len(catalog)} works",
                            "summary": "", "text": " ".join(s["title"] + " " + s["author"] for s in catalog)})
 
+    # ---- notation
+    notation = load_notation(articles)
+    nrows = "".join(
+        f'<tr><td>{symbol}</td><td>{obj}</td>'
+        f'<td><a href="{aid}.html">{articles[aid]["title"]}</a></td></tr>'
+        for obj, symbol, aid in notation["rows"])
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Notation</p>
+<h1>Notation</h1>
+<p class="meta">{len(notation["rows"])} symbols, one per object</p>
+{notation["lead"]}
+<table><thead><tr><th>Symbol</th><th>Object</th><th>Introduced in</th></tr></thead>
+<tbody>{nrows}</tbody></table>
+{notation["note"]}"""
+    (out / "notation.html").write_text(
+        page_shell("Notation — Hierarchical RG", "One symbol per object, and where each is introduced.",
+                   inner, "notation"))
+    search_entries.append({"url": "notation.html", "title": "Notation",
+                           "subtitle": f"{len(notation['rows'])} symbols", "summary": "",
+                           "text": " ".join(f"{obj} {articles[aid]['title']}"
+                                            for obj, _symbol, aid in notation["rows"])})
+
     # ---- start here
     path_blocks = []
     for path in structure["paths"]:
@@ -501,7 +573,8 @@ obstruction that stops the argument on $\\mathbb Z^d$.</p>
 <h2>Beyond the articles</h2>
 <p>The <a href="assertions.html">assertions index</a> lists every tagged statement, each with a
 page of its own; the <a href="bibliography.html">bibliography</a> gives every work cited and the
-articles citing it; and the reading maps — for
+articles citing it; the <a href="notation.html">notation page</a> fixes one symbol per object and
+names the article that introduces it; and the reading maps — for
 <a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a>,
 <a href="source-koch-wittwer.html">Koch and Wittwer</a> and
 <a href="source-abdesselam.html">Abdesselam</a> — say what each paper establishes and where the
@@ -560,8 +633,8 @@ that are interactive or generated are linked from each article's separate page</
 <ol class="mini">{arts}</ol></div>""")
     map_cards = "".join(f'<li><a href="source-{m["slug"]}.html">{html.escape(m["title"])}</a></li>' for m in maps)
     inner = f"""<h1>Hierarchical RG</h1>
-<p class="subtitle">A wiki on the renormalisation group on hierarchical lattices: fourteen articles,
-ten figures, 52 tagged assertions.</p>
+<p class="subtitle">A wiki on the renormalisation group on hierarchical lattices: {len(order)} articles,
+{len(figs)} figures, {len(assertion_rows)} tagged assertions.</p>
 <p>The renormalisation group is exact on a hierarchical lattice. A block has no boundary, every
 pair between two children carries one coupling, and a decimation step is an operation on the law
 of a single number. This wiki develops that structure — the lattice, the recursion, the fixed
@@ -577,6 +650,7 @@ attribution where they are not.</p>
 <h2 id="index">Index</h2>
 <ol class="paths">
 <li><a href="assertions.html">Assertions</a> <span class="meta">— every tagged statement, with its own page</span></li>
+<li><a href="notation.html">Notation</a> <span class="meta">— one symbol per object, and the article that introduces it</span></li>
 <li><a href="bibliography.html">Bibliography</a> <span class="meta">— every work cited, with the articles citing it</span></li>
 <li><a href="all.html">Single file</a> <span class="meta">— the whole wiki in one page, for printing</span></li>
 </ol>"""

@@ -18,9 +18,9 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Fifteen articles in three parts, three reading maps, 54 tagged assertions, six interactive
-simulations and five generated diagrams, and a built site committed under `site/`. The checks below
-pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
+Sixteen articles in three parts, four reading paths, three reading maps, 57 tagged assertions,
+six interactive simulations, five generated diagrams, a notation page generated from `STYLE.md`,
+and a built site of 85 pages committed under `site/`. The checks below pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
 Actions artifact whose root is `site/`.
 
 This section ages. Trust the checks and `git log`, not this paragraph.
@@ -59,37 +59,16 @@ Beyond the scripts:
 
 **Priority: parts one and two first.** Percolation is not the priority. Build out the block
 structure and the renormalisation group — and, within part three, the vector and phi-fourth
-material — before returning to the percolation volume, which is item 5.
+material — before returning to the percolation volume, which is item 3.
 
-### 1. The lattice's isometry group, and why "by symmetry" is allowed
-
-Several articles use, without proof, that any two pairs of vertices at the same level are exchanged
-by an isometry preserving the law, and that the block sums of a block are exchangeable. The second
-is used in the vector and percolation articles; the first underlies every radial reduction.
-
-- New article `hierarchical-symmetries` in part `block-structure`: the translation group, the
-  level-preserving isometries, transitivity on pairs at each level, and the consequences — a radial
-  kernel gives a radial two-point function, the block sums of a block are exchangeable, the
-  restricted cluster size has one law at every vertex.
-- Done when: the article exists with its tags, the vector and percolation articles link to it where
-  they currently say "by symmetry", and every check passes.
-
-### 2. Notation page
-
-- Generate `notation.html` from the notation table in `wiki/STYLE.md` (it is already a pipe table),
-  with each symbol linking to one article that uses it; link it from the sidebar index and from
-  `start.html`.
-- Done when: every row of the table appears, the links resolve, and editing `STYLE.md` changes the
-  page because it is generated rather than copied.
-
-### 3. The infinite-volume limit in part one
+### 1. The infinite-volume limit in part one
 
 `hierarchical-gibbs-measure` deliberately stays at finite volume and says the limit is a separate
 step; part one should close that gap. Compactness of the finite-volume measures, a limit along a
 subsequence, and the Gibbs property for a summable interaction — or an explicit statement of what
 is assumed, if the proof is out of reach here.
 
-### 4. Then, by value
+### 2. Then, by value
 
 - A percolation figure that is not a schematic: the cluster-size tail on a level-6 lattice with the
   predicted power law and the crossover marked, sampled by code written twice and compared bit for
@@ -99,8 +78,10 @@ is assumed, if the proof is out of reach here.
   and the two rigorous fixed-point analyses.
 - More literature maps (Gawedzki–Kupiainen; Bauerschmidt–Brydges–Slade) if a reader's question
   points there.
+- The notation page gives one article per symbol. A second column saying where each symbol is
+  *used*, not only where it is introduced, would help a reader who arrives in the middle.
 
-### 5. The volume of the critical cluster (percolation depth), deferred
+### 3. The volume of the critical cluster (percolation depth), deferred
 
 Part 3 promises the non-mean-field regime and delivers one article. Define the exponent from the
 tail of the cluster volume, explain why the two-point function is not the hard object there, state
@@ -109,6 +90,15 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- The lattice's isometries (`hierarchical-symmetries`): translations and coordinate-wise bijections
+  are isometries and act transitively on ordered pairs at each level, which supplies the three
+  statements five articles were using as "by symmetry". A level-preserving bijection that is not an
+  isometry, and the fact that the coordinates cannot be permuted, show the criterion has content.
+  The five articles link to it where they lean on it.
+- The notation page (`notation.html`): generated from the table in `wiki/STYLE.md`, each symbol
+  linking to the article that introduces it, linked from the sidebar, `start.html` and `index.html`.
+  A row naming a missing article fails the build, and lines starting with `>` are maintainer notes
+  that stay out of the page.
 - The spectrum at the Gaussian fixed point (`gaussian-fixed-point-spectrum`): the linearisation is
   triangular in the even monomials with eigenvalues `L^(d(1-k)+k alpha)`, which derives the quartic
   threshold `alpha = d/2`, the marginal case, and the upper critical dimension four. Checked
