@@ -212,6 +212,14 @@
     {
       "tag": "C3XD",
       "state": "allocated"
+    },
+    {
+      "tag": "G5KM",
+      "state": "allocated"
+    },
+    {
+      "tag": "G2TR",
+      "state": "allocated"
     }
   ]
 }

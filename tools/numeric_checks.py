@@ -191,6 +191,49 @@ def check_quartic_generation():
          f"{[round(float(x), 2) for x in slopes]} (leading slope predicts 3)")
 
 
+def check_gaussian_spectrum():
+    """The linearisation at the Gaussian fixed point: diagonal entries L^(d(1-k)+k alpha)."""
+    L, d, K = 2.0, 1.0, 3
+
+    def step_function(alpha):
+        theta = (d + alpha) / 2
+        m = L ** d
+        b = (1 - m / L ** (2 * theta)) / (m - 1)
+        x = np.linspace(-20.0, 20.0, 40001)
+        S = np.linspace(-0.7, 0.7, 81)
+        A = np.vstack([S ** (2 * k) for k in range(K + 1)]).T
+
+        def step(coeffs):
+            def V(z):
+                return sum(c * z ** (2 * (k + 1)) for k, c in enumerate(coeffs))
+            vals = np.empty_like(S)
+            for i, sv in enumerate(S):
+                s1 = x
+                s2 = L ** theta * sv - s1
+                vals[i] = -np.log(np.trapezoid(np.exp(-V(s1) - V(s2) + b * s1 * s2), x))
+            out, *_ = np.linalg.lstsq(A, vals, rcond=None)
+            return out
+        return step
+
+    for alpha in (0.3, 0.5, 0.8):
+        step = step_function(alpha)
+        vstar = np.array([0.5, 0.0, 0.0])
+        base = step(vstar)
+        h = 1e-6
+        M = np.zeros((K, K))
+        for j in range(K):
+            pert = vstar.copy()
+            pert[j] += h
+            M[:, j] = (step(pert)[1:] - base[1:]) / h
+        ev = np.sort(np.real(np.linalg.eigvals(M)))[::-1]
+        predicted = np.array([L ** (d * (1 - k) + k * alpha) for k in (1, 2, 3)])
+        rel = np.max(np.abs(ev - predicted) / predicted)
+        note(f"Gaussian spectrum alpha={alpha}", rel < 1e-3,
+             f"eigenvalues {[round(float(x), 6) for x in ev]} vs "
+             f"L^(d(1-k)+k alpha) {[round(float(x), 6) for x in predicted]}, "
+             f"largest relative error {rel:.1e}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -199,6 +242,7 @@ def main() -> int:
     check_decimation_ising()
     check_triangle()
     check_quartic_generation()
+    check_gaussian_spectrum()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

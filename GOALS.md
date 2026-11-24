@@ -18,7 +18,7 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Fourteen articles in three parts, three reading maps, 52 tagged assertions, six interactive
+Fifteen articles in three parts, three reading maps, 54 tagged assertions, six interactive
 simulations and five generated diagrams, and a built site committed under `site/`. The checks below
 pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
 Actions artifact whose root is `site/`.
@@ -57,53 +57,62 @@ Beyond the scripts:
 
 ## The queue
 
-In order. Each item names what finishes it.
+**Priority: parts one and two first.** Percolation is not the priority. Build out the block
+structure and the renormalisation group — and, within part three, the vector and phi-fourth
+material — before returning to the percolation volume, which is item 5.
 
-### 1. The volume of the critical cluster (percolation depth)
+### 1. The lattice's isometry group, and why "by symmetry" is allowed
 
-Part 3 promises the non-mean-field regime and delivers one article; this is the largest
-intellectual gap.
+Several articles use, without proof, that any two pairs of vertices at the same level are exchanged
+by an isometry preserving the law, and that the block sums of a block are exchangeable. The second
+is used in the vector and percolation articles; the first underlies every radial reduction.
 
-- A new article `hierarchical-cluster-volumes`, in part `beyond-spins` after
-  `hierarchical-percolation-rg`: the exponent `δ` defined by the tail of `|K_0|`; why the two-point
-  function is *not* the hard object here (it is known for every `0 < α < d`) while the volume is;
-  the obstruction giving `δ ≥ (d+α)/(d−α)` above the triangle threshold; and what is conjectured
-  versus proved.
-- Sources already in the catalogue: `hutchcroft-hierarchical-2021` (Corollary 1.5),
-  `hutchcroft-2025-volumes`. Add nothing to the catalogue without a zbMATH or DOI record.
-- Prove what can be proved from the two-point exponent and the block identities; state the rest as
-  attributed theorems with the argument sketched, and say which part is sketch.
-- Done when: the article exists with its own tags, `hierarchical-percolation-rg` links to it, the
-  part's introduction mentions it, and every check passes.
+- New article `hierarchical-symmetries` in part `block-structure`: the translation group, the
+  level-preserving isometries, transitivity on pairs at each level, and the consequences — a radial
+  kernel gives a radial two-point function, the block sums of a block are exchangeable, the
+  restricted cluster size has one law at every vertex.
+- Done when: the article exists with its tags, the vector and percolation articles link to it where
+  they currently say "by symmetry", and every check passes.
 
 ### 2. Notation page
 
 - Generate `notation.html` from the notation table in `wiki/STYLE.md` (it is already a pipe table),
-  with each symbol linking to one article that uses it.
-- Link it from the sidebar index and from `start.html`.
-- Done when: the page lists every row of the table, the links resolve, and edits to `STYLE.md`
-  change the page (the generator, not a copy).
+  with each symbol linking to one article that uses it; link it from the sidebar index and from
+  `start.html`.
+- Done when: every row of the table appears, the links resolve, and editing `STYLE.md` changes the
+  page because it is generated rather than copied.
 
-### 3. Reading map for the percolation literature
+### 3. The infinite-volume limit in part one
 
-- `wiki/sources/percolation.md`, in the format of the three existing maps: one row per work, what it
-  establishes, where the wiki uses it; a section on what is deliberately outside; a "Records"
-  section giving the date of the zbMATH consultation and crediting any review paraphrased
-  (CC BY-SA 4.0).
-- Works: `koval-meester-trapman-2012`, `hutchcroft-hierarchical-2021`, `hutchcroft-2022-bounds`,
-  `hutchcroft-2025-volumes`, with `heydenreich-hofstad-sakai-2008` as background.
-- Done when: the map is linked from the site and `check_wiki.py` passes its format checks.
+`hierarchical-gibbs-measure` deliberately stays at finite volume and says the limit is a separate
+step; part one should close that gap. Compactness of the finite-volume measures, a limit along a
+subsequence, and the Gibbs property for a summable interaction — or an explicit statement of what
+is assumed, if the proof is out of reach here.
 
 ### 4. Then, by value
 
-- A percolation figure that is not a schematic: the cluster-size tail measured on a level-6 lattice,
-  with the predicted power law and the crossover marked. It needs the sampling code to be testable
-  the way `SIM.isingSweep` is (write it twice, compare bit for bit).
-- A second look at part 2's entry points: whether `corrections-to-scaling` should precede
-  `bleher-sinai-fixed-point` for a first-time reader, or whether the part needs a short bridge
-  paragraph between the dictionary and the two rigorous fixed-point analyses.
-- More literature maps (Gawędzki–Kupiainen; Bauerschmidt–Brydges–Slade) if a reader's question
+- A percolation figure that is not a schematic: the cluster-size tail on a level-6 lattice with the
+  predicted power law and the crossover marked, sampled by code written twice and compared bit for
+  bit the way `SIM.isingSweep` is.
+- A second look at part 2's entry order: whether `corrections-to-scaling` should precede
+  `bleher-sinai-fixed-point`, or the part needs a bridge paragraph between the exponent dictionary
+  and the two rigorous fixed-point analyses.
+- More literature maps (Gawedzki–Kupiainen; Bauerschmidt–Brydges–Slade) if a reader's question
   points there.
+
+### 5. The volume of the critical cluster (percolation depth), deferred
+
+Part 3 promises the non-mean-field regime and delivers one article. Define the exponent from the
+tail of the cluster volume, explain why the two-point function is not the hard object there, state
+the obstruction giving the bound above the triangle threshold, and keep proved and attributed
+sharply apart. Sources already in the catalogue.
+
+## Done
+
+- The spectrum at the Gaussian fixed point (`gaussian-fixed-point-spectrum`): the linearisation is
+  triangular in the even monomials with eigenvalues `L^(d(1-k)+k alpha)`, which derives the quartic
+  threshold `alpha = d/2`, the marginal case, and the upper critical dimension four. Checked
+  numerically by finite-difference diagonalisation of the truncated map.
 
 ## How the repository works
 

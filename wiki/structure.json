@@ -6,21 +6,39 @@
       "title": "The block structure",
       "subtitle": "Nested blocks, congruent children, and the decimation identity they make exact.",
       "intro": "Three articles establish the object everything else rests on: a group whose balls are cosets of nested finite-index subgroups, with the same number of children at every scale. The child decomposition says that every pair of vertices in different children of a block sits at the top level of that block, which is what makes the energy split into the children plus one interaction between their sums. The decimation identity is that statement written as an identity for partition functions, and it is the whole reason the renormalisation group is exact here. The third article isolates what the argument actually uses, and carries it to the p-adic integers.",
-      "articles": ["hierarchical-lattice", "hierarchical-gibbs-measure", "ultrametric-block-systems"]
+      "articles": [
+        "hierarchical-lattice",
+        "hierarchical-gibbs-measure",
+        "ultrametric-block-systems"
+      ]
     },
     {
       "id": "renormalisation-group",
       "title": "The renormalisation group",
       "subtitle": "The map on block-spin laws, its fixed points, and the exponents read off them.",
       "intro": "Decimation, rescaled, is one operator on laws on the line, and the model is an orbit of it. This part builds the operator, solves it exactly in the Gaussian case, and extracts from it the two numbers that matter: the multiplier of the linearised map, which gives the correlation-length exponent, and the growth of the block spin, which the autonomy of the recursion fixes for every fixed point of this model. From those two numbers the exponent dictionary follows by algebra. The remaining articles supply what the dictionary cannot: the non-Gaussian fixed point, the corrections to the power laws, and the two rigorous analyses of the fixed point that do not go through a small parameter.",
-      "articles": ["renormalisation-group-map", "gaussian-renormalisation-group", "critical-exponents-from-rg", "corrections-to-scaling", "bleher-sinai-fixed-point", "koch-wittwer-fixed-point", "abdesselam-global-trajectory"]
+      "articles": [
+        "renormalisation-group-map",
+        "gaussian-renormalisation-group",
+        "gaussian-fixed-point-spectrum",
+        "critical-exponents-from-rg",
+        "corrections-to-scaling",
+        "bleher-sinai-fixed-point",
+        "koch-wittwer-fixed-point",
+        "abdesselam-global-trajectory"
+      ]
     },
     {
       "id": "beyond-spins",
       "title": "Percolation, vectors, and the Euclidean comparison",
       "subtitle": "What changes when the order parameter is a set, a vector, or a field on Z^d.",
       "intro": "The same block structure carries models that are not the scalar spin model, and each one changes something specific. Percolation replaces the block-spin law by a cluster partition, and the mechanism that survives is amplification: two large clusters in sibling blocks are joined at a rate proportional to the product of their sizes. Vector spins make the block spin a vector, so the direction becomes an observable, and at criticality it does not settle. The phi-fourth truncation is where the infinite-dimensionality of the flow shows up, and the Euclidean comparison is where the exactness is lost.",
-      "articles": ["hierarchical-percolation-rg", "hierarchical-vector-models", "hierarchical-phi4-truncations", "hierarchical-and-euclidean-rg"]
+      "articles": [
+        "hierarchical-percolation-rg",
+        "hierarchical-vector-models",
+        "hierarchical-phi4-truncations",
+        "hierarchical-and-euclidean-rg"
+      ]
     }
   ],
   "paths": [
@@ -28,25 +46,58 @@
       "id": "short",
       "title": "The short path",
       "note": "Five articles, about an hour: the block structure, the identity, the map, the one case solved exactly, and the exponents.",
-      "articles": ["hierarchical-lattice", "hierarchical-gibbs-measure", "renormalisation-group-map", "gaussian-renormalisation-group", "critical-exponents-from-rg"]
+      "articles": [
+        "hierarchical-lattice",
+        "hierarchical-gibbs-measure",
+        "renormalisation-group-map",
+        "gaussian-renormalisation-group",
+        "critical-exponents-from-rg"
+      ]
     },
     {
       "id": "full",
       "title": "The full argument",
       "note": "All fourteen, in order. Each part opens with what it adds to the one before.",
-      "articles": ["hierarchical-lattice", "hierarchical-gibbs-measure", "ultrametric-block-systems", "renormalisation-group-map", "gaussian-renormalisation-group", "critical-exponents-from-rg", "corrections-to-scaling", "bleher-sinai-fixed-point", "koch-wittwer-fixed-point", "abdesselam-global-trajectory", "hierarchical-percolation-rg", "hierarchical-vector-models", "hierarchical-phi4-truncations", "hierarchical-and-euclidean-rg"]
+      "articles": [
+        "hierarchical-lattice",
+        "hierarchical-gibbs-measure",
+        "ultrametric-block-systems",
+        "renormalisation-group-map",
+        "gaussian-renormalisation-group",
+        "critical-exponents-from-rg",
+        "corrections-to-scaling",
+        "bleher-sinai-fixed-point",
+        "koch-wittwer-fixed-point",
+        "abdesselam-global-trajectory",
+        "hierarchical-percolation-rg",
+        "hierarchical-vector-models",
+        "hierarchical-phi4-truncations",
+        "hierarchical-and-euclidean-rg"
+      ]
     },
     {
       "id": "literature",
       "title": "The literature first",
       "note": "For a reader who wants the sources: the fixed point theorem, the vector case, the truncations, then the two rigorous analyses of the fixed point, with the reading maps alongside.",
-      "articles": ["bleher-sinai-fixed-point", "hierarchical-vector-models", "hierarchical-phi4-truncations", "koch-wittwer-fixed-point", "abdesselam-global-trajectory"]
+      "articles": [
+        "bleher-sinai-fixed-point",
+        "hierarchical-vector-models",
+        "hierarchical-phi4-truncations",
+        "koch-wittwer-fixed-point",
+        "abdesselam-global-trajectory"
+      ]
     },
     {
       "id": "percolation",
       "title": "Coming from percolation",
       "note": "The model, the identity, the percolation recursion and its two exponents, then what fails on Z^d.",
-      "articles": ["hierarchical-lattice", "hierarchical-gibbs-measure", "hierarchical-percolation-rg", "critical-exponents-from-rg", "hierarchical-and-euclidean-rg"]
+      "articles": [
+        "hierarchical-lattice",
+        "hierarchical-gibbs-measure",
+        "hierarchical-percolation-rg",
+        "critical-exponents-from-rg",
+        "hierarchical-and-euclidean-rg"
+      ]
     }
   ]
 }
