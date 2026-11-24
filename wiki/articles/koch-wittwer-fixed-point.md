@@ -17,7 +17,15 @@
     "gaussian-renormalisation-group",
     "abdesselam-global-trajectory"
   ],
-  "sourceIds": ["koch-wittwer-1986", "koch-wittwer-1991", "koch-wittwer-1994", "gawedzki-kupiainen-1982", "gawedzki-kupiainen-tirozzi-1984", "bleher-sinai-1975"],
+  "sourceIds": [
+    "koch-wittwer-1986",
+    "koch-wittwer-1991",
+    "koch-wittwer-1994",
+    "gawedzki-kupiainen-1982",
+    "gawedzki-kupiainen-tirozzi-1984",
+    "bleher-sinai-1975",
+    "koch-wittwer-1988"
+  ],
   "aliases": [
     "non-Gaussian fixed point",
     "large field problem",
@@ -60,6 +68,8 @@
 
 <p><em>The exponents of the three-dimensional theory.</em> Given the fixed point and the linearisation there, the exponents follow from the dictionary of <a href="/articles/critical-exponents-from-rg/#section-dictionary">the exponent article</a>, with the growth exponent $\kappa=\alpha$ fixed by the autonomy of the recursion as in <a href="/articles/critical-exponents-from-rg/#section-growth">the growth theorem</a>. The value of $\nu$ is the one read off the linearisation of the exact map, and the convergent expansions around the fixed point are what make it computable in principle.</p>
 
+<p><em>Bounds on the exponents.</em> The existence of the fixed point and the value of an exponent are different things, and the second is what the paper of 1988 addresses: an outline of a computer-assisted proof, in an extended Wilson-Kadanoff scheme, giving rigorous bounds on the exponent that governs the scaling of the free energy density for a one-parameter family of hierarchical systems in three dimensions [@koch-wittwer-1988]. That exponent is $2-\alpha_{\mathrm{hy}}$ in the notation of <a href="/articles/critical-exponents-from-rg/#section-dictionary">the dictionary</a>, so the bounds are bounds on the free-energy exponent, and they are where the numerical element of this group's work sits.</p>
+
 <p><em>The transformation itself.</em> The companion paper treats the renormalisation transformation of scalar hierarchical models as an operator, with its beta function and its asymptotics, and identifies the relation between the hierarchies of Dyson and of Gallavotti [@koch-wittwer-1991]. That relation is the reason the two hierarchies are treated as one family in this wiki: they differ in the block structure and agree in the form of the map.</p>
 
 <p><em>A benchmark for expansions.</em> Because the expansions are convergent, the fixed point is a fixed point and not an approximation to one; a truncation of the flow or of the epsilon expansion that predicts a different $\nu$ is wrong by more than the error of its own truncation, which is what makes the exact analysis a reference point.</p>
@@ -93,6 +103,7 @@
 <li>K. Gawedzki and A. Kupiainen, Triviality of phi-fourth in four dimensions and all that in a hierarchy model approximation, <em>J. Statist. Phys.</em> 29 (1982), 683&ndash;699.</li>
 <li>K. Gawedzki, A. Kupiainen and B. Tirozzi, Borel summability of the perturbation series in a hierarchical lambda (nabla phi)-fourth model, <em>J. Statist. Phys.</em> 36 (1984), 145&ndash;162.</li>
 <li>H. Koch and P. Wittwer, A non-Gaussian renormalization group fixed point for hierarchical scalar lattice field theories, <em>Comm. Math. Phys.</em> 106 (1986), 495&ndash;532.</li>
+<li>H. Koch and P. Wittwer, Computing bounds on critical indices, in <em>Nonlinear Evolution and Chaotic Phenomena</em>, Proc. NATO ASI, NATO ASI Ser. B 176, 269&ndash;277, 1988.</li>
 <li>H. Koch and P. Wittwer, On the renormalization group transformation for scalar hierarchical models, <em>Comm. Math. Phys.</em> 138 (1991), 537&ndash;568.</li>
 <li>H. Koch and P. Wittwer, A nontrivial renormalization group fixed point for the Dyson-Baker hierarchical model, <em>Comm. Math. Phys.</em> 164 (1994), 627&ndash;647.</li>
 </ul>

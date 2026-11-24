@@ -415,6 +415,18 @@
       "edition": "J. Statist. Phys. 29 (1982), 683-699",
       "zbl": "",
       "description": "The hierarchy-model approximation used to discuss triviality of phi-fourth in four dimensions; cited by Koch and Wittwer as the analyticity technique their method improves on."
+    },
+    {
+      "id": "koch-wittwer-1988",
+      "shortName": "Koch–Wittwer",
+      "title": "Computing bounds on critical indices",
+      "author": "H. Koch and P. Wittwer",
+      "year": 1988,
+      "edition": "Nonlinear evolution and chaotic phenomena, Proc. NATO ASI (Noto, 1987), NATO ASI Ser. B 176, 269-277",
+      "url": "https://zbmath.org/?q=an:0722.60108",
+      "zbl": "0722.60108",
+      "zblUrl": "https://zbmath.org/?q=an:0722.60108",
+      "description": "An outline of a computer-assisted proof giving rigorous bounds on the free-energy exponent, universal across a one-parameter family of hierarchical systems in three dimensions."
     }
   ]
 }

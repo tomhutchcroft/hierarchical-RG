@@ -2,8 +2,8 @@
 
 This is the reading map for the three papers in which Hans Koch and Peter Wittwer proved that the
 hierarchical renormalisation map has a nontrivial fixed point with unbounded spins. The group is
-small and unusually homogeneous: the same two authors, one object, three papers, and a method
-that is the reason the papers are cited. The method is not a numerical certification. It is an
+small and unusually homogeneous: the same two authors, one object, four papers, and a method that
+is the reason the papers are cited. The method is not a numerical certification. It is an
 analytic treatment of the *large-field region*, the part of the integral defining the effective
 potential in which the spin is too large for the perturbative expansion to converge and which, for
 an unbounded single-spin distribution, carries a non-negligible part of the measure. Borel
@@ -22,6 +22,7 @@ without a small parameter.
 |---|---|---|
 | A non-Gaussian renormalization group fixed point for hierarchical scalar lattice field theories, *Comm. Math. Phys.* 106 (1986), 495-532; [Zbl 0654.60100](https://zbmath.org/?q=an:0654.60100) | A rigorous method for the large-field problem in the Wilson-Kadanoff renormalisation group with unbounded spins, applied to the non-Gaussian fixed point governing the infrared behaviour of the three-dimensional critical theory in the hierarchical approximation; Borel summation incorporates the large-field region into the perturbative one, so that the theory is described by convergent expansions | [The Koch-Wittwer fixed point](/articles/koch-wittwer-fixed-point/#section-statement), [the method](/articles/koch-wittwer-fixed-point/#section-idea) |
 | On the renormalization group transformation for scalar hierarchical models, *Comm. Math. Phys.* 138 (1991), 537-568; [Zbl 0735.47046](https://zbmath.org/?q=an:0735.47046) | The transformation itself for scalar hierarchical models: the beta function written for it, its asymptotic behaviour, and the connection between the hierarchical models of Dyson and of Gallavotti | [The transformation as an operator](/articles/koch-wittwer-fixed-point/#section-consequences), [Dyson and Gallavotti](/articles/koch-wittwer-fixed-point/#section-idea) |
+| Computing bounds on critical indices, *Proc. NATO ASI (Noto, 1987)*, NATO ASI Ser. B 176 (1988), 269-277; [Zbl 0722.60108](https://zbmath.org/?q=an:0722.60108) | An outline of a computer-assisted proof giving rigorous bounds on the free-energy exponent, universal for a one-parameter family of hierarchical systems in three dimensions | [Bounds on the exponents](/articles/koch-wittwer-fixed-point/#section-consequences) |
 | A nontrivial renormalization group fixed point for the Dyson-Baker hierarchical model, *Comm. Math. Phys.* 164 (1994), 627-647; [Zbl 0838.47051](https://zbmath.org/?q=an:0838.47051) | The same conclusion for the Dyson-Baker hierarchy, whose blocks come from an expanding map of the interval rather than from an ultrametric | [The Dyson-Baker hierarchy](/articles/koch-wittwer-fixed-point/#section-examples), [block structures](/articles/hierarchical-phi4-truncations/#section-variants) |
 
 ## What is taken from each
@@ -36,6 +37,16 @@ analyticity methods of Gawedzki and Kupiainen's hierarchy-model papers. The wiki
 to reproduce the estimates, and it separates two claims that the literature sometimes runs
 together: the existence of the fixed point, which is this paper, and the one-dimensional
 instability that makes it critical, which is the general theory and the companion paper.
+
+### The 1988 note
+
+This is where the computer-assisted element of the group's work belongs: an outline of a proof,
+in an extended Wilson-Kadanoff scheme, that gives rigorous bounds on the exponent governing the
+scaling of the free energy density for a one-parameter family of hierarchical systems in three
+dimensions. The wiki cites it for the bounds and for the separation of two questions that are
+easily run together: the fixed point exists by the analysis of 1986, and the exponents at it are
+bounded by the computation described here. The exponent in the note is the free-energy exponent,
+which is two minus the specific-heat exponent in the notation of this wiki.
 
 ### The 1991 paper
 
