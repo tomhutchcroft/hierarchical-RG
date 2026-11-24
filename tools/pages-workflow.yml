@@ -1,0 +1,90 @@
+# Template for .github/workflows/pages.yml.
+#
+# The agent that maintains this repository cannot create files under .github/workflows/ (the
+# GitHub App has no workflows permission), so the workflow is kept here, where it is harmless,
+# and installed by hand: on GitHub, Add file -> Create new file, path
+# .github/workflows/pages.yml, paste this file's content, commit to main. Then set
+# Settings -> Pages -> Source to "GitHub Actions".
+
+name: Wiki site
+
+# Publishes the wiki on GitHub Pages.
+#
+# The built site is committed under site/, so publishing from the branch works without this
+# workflow; when it runs, it checks that the committed copy is current and deploys it as the
+# Pages artifact. A copy of this file is kept at tools/pages-workflow.yml because the connector
+# used to write this repository may not create files under .github/workflows/.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'tools/**'
+      - 'site/**'
+      - 'README.md'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # Format, tag, link and citation checks: a broken wiki does not get published.
+      - name: Check the wiki
+        run: python3 tools/check_wiki.py
+
+      # The built site is committed under site/, so publishing from the branch also works.
+      # This step fails if the committed copy is stale.
+      - name: Check the committed site is current
+        run: python3 tools/preview.py --check
+      - name: Check the site's links and assets
+        run: python3 tools/check_site.py
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  # Independent of the deployment: the numerical checks need numpy and are
+  # informative rather than gating.
+  numerics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install numpy and quickjs
+        run: pip install --quiet numpy quickjs
+      - name: Check the displayed identities
+        run: python3 tools/numeric_checks.py
+      - name: Check the browser simulation code
+        run: python3 tools/test_sim.py
+      - name: Check that every formula renders
+        run: python3 tools/test_math.py
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
