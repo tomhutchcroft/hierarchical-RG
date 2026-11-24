@@ -18,7 +18,15 @@
     "critical-exponents-from-rg",
     "hierarchical-percolation-rg"
   ],
-  "sourceIds": ["dyson-1969", "bleher-major-1984", "bleher-major-1987", "bleher-major-2021", "bleher-sinai-1973"],
+  "sourceIds": [
+    "dyson-1969",
+    "bleher-major-1984",
+    "bleher-major-1987",
+    "bleher-major-2021",
+    "bleher-sinai-1973",
+    "bleher-major-1988",
+    "bleher-1987-vilnius"
+  ],
   "aliases": [
     "vector hierarchical model",
     "continuous symmetry",
@@ -84,7 +92,8 @@
 <p>Let $r\geq2$, let the interaction be $U(x,y)=-l_nL^{-2n}\langle\sigma_x,\sigma_y\rangle$ at level $n$, and let the prior be uniform on $\mathbb S^{r-1}$. Then a phase transition exists if and only if $\sum_nl_n=\infty$. At the critical temperature the spontaneous magnetisation vanishes, and the law of the normalised average spin of $\Lambda_N$ converges to the uniform distribution on $\mathbb S^{r-1}$ as $N\to\infty$.</p>
 <p>The statement is Theorem 1 of Bleher and Major [@bleher-major-2021], where the model is written with the potential $-l(d)d^{-2}$ in the hierarchical distance $d$; the exponent $-2$ is the marginal one, $\alpha=d$ in the notation of this wiki, and the condition $\sum_nl_n=\infty$ is the failure of summability of the interaction. The same paper gives the corresponding statements for the scalar case as the boundary of its analysis.</p>
 <p>Three consequences are worth separating. First, at the marginal exponent the criterion is a condition on the level sequence and not on a power: replacing $l_n$ by a sequence with the same growth but a convergent sum removes the transition. Second, the transition is continuous: the spontaneous magnetisation tends to zero at $T_c$, so the Thouless effect — a jump of the order parameter at the transition — does not occur. Third, the direction of the block spin is asymptotically uniform at $T_c$, so the order parameter vanishes while the block spin is of the size it has at criticality: the transition is carried by the fluctuations of the size, not by a selected direction.</p>
-<p>The three statements together are the vector counterpart of the scalar picture of <a href="/articles/critical-exponents-from-rg/">the exponent article</a>. In the scalar case the block spin at criticality is a number whose law has a nontrivial limit after rescaling; in the vector case the direction is asymptotically free and the limit law of the rescaled block spin is rotation invariant, so the angular variable contributes a marginal direction rather than a third independent exponent.</p>
+<p>Below the critical temperature the limits change character. For the vector model the block sums have non-central limit theorems at every temperature below $T_c$, and the non-Gaussian large-scale limit of the ordered phase is described by Bleher and Major in the two-part paper of 1988 [@bleher-major-1988], with the phenomenon recorded in their survey as one of the features that distinguishes the vector model from the scalar one [@bleher-major-1987]. The mechanism is the transverse enhancement of <a href="/articles/hierarchical-phi4-truncations/#section-low-temperature">the low-temperature section of the truncations article</a>: the orthogonal fluctuations grow faster than the square root of the volume, and their limit need not be Gaussian.</p>
+<p>The three statements of the theorem together are the vector counterpart of the scalar picture of <a href="/articles/critical-exponents-from-rg/">the exponent article</a>. In the scalar case the block spin at criticality is a number whose law has a nontrivial limit after rescaling; in the vector case the direction is asymptotically free and the limit law of the rescaled block spin is rotation invariant, so the angular variable contributes a marginal direction rather than a third independent exponent.</p>
 
 ## Consequences for the exponents {#section-exponents}
 
@@ -114,14 +123,16 @@
 
 ## History and attribution {#section-history}
 
-<p>Dyson introduced the hierarchical model to prove a transition for power-law couplings [@dyson-1969], and conjectured that for continuous symmetry the criterion for a transition is the failure of summability of the interaction; the conjecture and its proof are the subject of Bleher and Major's paper, which circulated from 2002 and appeared in 2021 [@bleher-major-2021]. The low-temperature phase of the vector $\varphi^4$ model was treated by the same authors in 1984 [@bleher-major-1984], and the survey of 1987 presents the hierarchical model as a problem about limit distributions of strongly dependent random variables, with the vector phenomena and a list of conjectures [@bleher-major-1987]. The transformation itself, in the scalar case, is that of Bleher and Sinai [@bleher-sinai-1973]; the historical account of the Moscow seminar in which this circle of ideas developed is Bleher's [@bleher-2012].</p>
+<p>Dyson introduced the hierarchical model to prove a transition for power-law couplings [@dyson-1969], and conjectured that for continuous symmetry the criterion for a transition is the failure of summability of the interaction; the conjecture and its proof are the subject of Bleher and Major's paper, which circulated from 2002 and appeared in 2021 [@bleher-major-2021]. The low-temperature phase of the vector $\varphi^4$ model was treated by the same authors in 1984 [@bleher-major-1984], and the survey of 1987 presents the hierarchical model as a problem about limit distributions of strongly dependent random variables, with the vector phenomena and a list of conjectures [@bleher-major-1987], and the limit theorems for multicomponent models were announced in the Vilnius proceedings of the same period [@bleher-1987-vilnius]. The transformation itself, in the scalar case, is that of Bleher and Sinai [@bleher-sinai-1973]; the historical account of the Moscow seminar in which this circle of ideas developed is Bleher's [@bleher-2012].</p>
 
 ## References {#section-references}
 
 <ul>
 <li>P. M. Bleher, Hierarchical models and renormalisation group, <em>Eur. Phys. J. H</em> 37 (2012), 605&ndash;618.</li>
 <li>P. M. Bleher and P. Major, Renormalization of Dyson's hierarchical vector valued &phi;<sup>4</sup> model at low temperatures, <em>Comm. Math. Phys.</em> 95 (1984), 487&ndash;532.</li>
+<li>P. M. Bleher, Limit theorems for multicomponent hierarchical models, in <em>Probability Theory and Mathematical Statistics</em>, Proc. 4th Vilnius Conf., Vol. 1, 211&ndash;229, 1987.</li>
 <li>P. M. Bleher and P. Major, Critical phenomena and universal exponents in statistical physics. On Dyson's hierarchical model, <em>Ann. Probab.</em> 15 (1987), 431&ndash;477.</li>
+<li>P. M. Bleher and P. Major, The large-scale limit of Dyson's hierarchical vector valued model at low temperatures. The non-Gaussian case, <em>Ann. Inst. H. Poincar&eacute; Phys. Th&eacute;or.</em> 49 (1988), 7&ndash;85 and 87&ndash;143.</li>
 <li>P. M. Bleher and P. Major, A Thouless-like effect in the Dyson hierarchical model with continuous symmetry, <em>Pure Appl. Funct. Anal.</em> 6 (2021), 101&ndash;175.</li>
 <li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
 <li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>

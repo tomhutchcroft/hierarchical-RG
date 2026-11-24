@@ -156,6 +156,14 @@ def render_map(text: str, ids: set[str], tag_owner: dict[str, str]) -> tuple[str
     return title, "\n".join(blocks)
 
 
+def source_row(s: dict) -> str:
+    zbl = s.get("zbl") or ""
+    link = (f"<a href=\"{s['zblUrl']}\">{zbl}</a>" if zbl else "<span class='meta'>-</span>")
+    return (f"<tr><td>{s['shortName']}</td>"
+            f"<td>{s['title']}<br><span class='meta'>{s['edition']}</span></td>"
+            f"<td class='tag'>{link}</td></tr>")
+
+
 def main() -> None:
     entries = []
     tag_owner: dict[str, str] = {}
@@ -237,7 +245,7 @@ renders only if KaTeX loads from the network.</div>
 <h2 id="reading-maps">Reading maps</h2>
 <ul>{''.join(map_links)}</ul>
 <h2 id="sources">Sources cited</h2>
-<table><tbody>{''.join(f"<tr><td>{s['shortName']}</td><td>{s['title']}<br><span class='meta'>{s['edition']}</span></td></tr>" for s in catalog.values())}</tbody></table>"""
+<table><thead><tr><th>Author</th><th>Work</th><th>zbMATH</th></tr></thead><tbody>{''.join(source_row(s) for s in catalog.values())}</tbody></table>"""
     (OUT / "index.html").write_text(page("Hierarchical RG", index))
     print("wrote index.html")
 

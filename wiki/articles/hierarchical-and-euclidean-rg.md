@@ -23,7 +23,8 @@
     "brydges-mitter-scoppola-2003",
     "bauerschmidt-brydges-slade-2019",
     "dyson-1969",
-    "abdesselam-2007"
+    "abdesselam-2007",
+    "hutchcroft-2022-bounds"
   ],
   "aliases": [
     "Euclidean renormalisation group",
@@ -79,6 +80,8 @@
 
 <p><em>Power counting and the upper critical exponent.</em> The exponent at which the two-point exponent stops being $2-\alpha$, and the corresponding statements for $\varphi^4$, are read off from the hierarchical map and transferred. For $\varphi^4_3$ the trajectory of the renormalisation group is constructed in the same way, with the hierarchical analysis of the quartic coupling as the model computation [@brydges-mitter-scoppola-2003] [@bauerschmidt-brydges-slade-2019].</p>
 
+<p><em>Bounds transported the other way.</em> The comparison also runs from the hierarchy to the lattice: sharp upper bounds on the critical two-point function for long-range percolation on $\mathbb Z^d$ are obtained by a hierarchical argument, with the hierarchy serving as the comparison object rather than as a model of interest [@hutchcroft-2022-bounds]. This is the percolation counterpart of the perturbation scheme above, and it is the clearest case in which a statement about the hierarchical lattice yields one about $\mathbb Z^d$ without an expansion.</p>
+
 <p><em>What does not transfer.</em> The exact exponent values of the hierarchical model are not the Euclidean ones, except in the classical region where both are given by the Gaussian fixed point. For a short-range model in $d$ dimensions with $2&lt;d&lt;4$ the exponents are not the classical ones and are not the hierarchical ones either: the hierarchical model's $\nu$ depends on $\alpha$, while the Euclidean model's depends on $d$. The two agree in the mean-field region and in the structure of the corrections, not in the numbers.</p>
 
 ## Examples and non-examples {#section-examples}
@@ -110,6 +113,7 @@
 <li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
 <li>K. Gawedzki and A. Kupiainen, A rigorous block spin approach to massless lattice theories, <em>Comm. Math. Phys.</em> 77 (1980), 31&ndash;64.</li>
 <li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
+<li>T. Hutchcroft, Sharp hierarchical upper bounds on the critical two-point function for long-range percolation on Z^d, <em>J. Math. Phys.</em> 63 (2022), 113301.</li>
 <li>A. C. D. van Enter, R. Fernandez and A. D. Sokal, Regularity properties and pathologies of position-space renormalization-group transformations, <em>J. Statist. Phys.</em> 72 (1993), 879&ndash;1167.</li>
 <li>A. Abdesselam, A complete renormalization group trajectory between two fixed points, <em>Comm. Math. Phys.</em> 276 (2007), 727&ndash;772.</li>
 </ul>

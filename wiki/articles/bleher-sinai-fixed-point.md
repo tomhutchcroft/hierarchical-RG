@@ -22,7 +22,9 @@
     "bleher-sinai-1975",
     "gawedzki-kupiainen-1983",
     "gawedzki-kupiainen-1984",
-    "sinai-1982"
+    "sinai-1982",
+    "bleher-1982",
+    "bleher-1974"
   ],
   "aliases": [
     "non-Gaussian fixed point",
@@ -105,18 +107,22 @@
 
 <p><em>The scaling limit.</em> The decay of the orbit to $\nu^*$ at the rate $\lambda_1^{-n}$ is what makes the scaling limit exist: after centring and rescaling by $\xi^{\theta_0}$, the block-spin process converges to a nontrivial limit whose law is determined by $\nu^*$ and the unstable manifold. This is the content of Gawedzki and Kupiainen's second paper [@gawedzki-kupiainen-1984], and it is the analogue for the hierarchical model of the construction of a critical Euclidean field theory.</p>
 
+<p><em>The fixed point as a self-similar field.</em> A fixed point of the recursion is a law of a block spin that reproduces itself under decimation; assembled over the scales, it gives a random field whose block sums have the same law after rescaling, which is a self-similar field with hierarchical structure. Bleher's construction of such fields [@bleher-1982] is the probabilistic form of the fixed-point theorem: the fixed point exists as a law and as a field at once, and the two statements are the two halves of one orbit.</p>
+
 <p><em>Other initial laws.</em> The domain of attraction of $\nu^*$ is a codimension-one set of initial laws: the critical manifold. Any symmetric prior with exponential moments whose orbit meets that manifold converges to $\nu^*$, so the exponents depend on $\alpha$ and $d$ and not on the prior. This is the hierarchical model's version of universality, and it is a theorem here rather than a hypothesis.</p>
 
 <p><em>The $\varphi^4$ parametrisation.</em> Writing the prior as $e^{-\lambda s^4-\frac{\mu}{2}s^2}ds$ and following the orbit of $(\lambda,\mu)$ gives the flow on the two-dimensional truncation of the space of interactions, which has the same bifurcation structure at $\alpha=d/2$; the truncation is not closed, and the exact statement requires the full infinite-dimensional map.</p>
 
 ## History and attribution {#section-history}
 
-<p>Bleher and Sinai introduced the renormalisation transformation of the hierarchical model and proved the existence of the nontrivial fixed point, the trichotomy of the orbit and the formula for the indices in terms of the linearisation [@bleher-sinai-1973] [@bleher-sinai-1975]; Sinai's monograph is the systematic account of the framework of limit Gibbs distributions in which the model sits [@sinai-1982]. Gawedzki and Kupiainen gave the local analysis: the $\varepsilon$-expansion around $\alpha=d/2$, the unstable manifold and its normal form, and the convergence of the rescaled correlations to a nontrivial scaling limit [@gawedzki-kupiainen-1983] [@gawedzki-kupiainen-1984]. The identification of the classical region with the mean-field exponents, in the Euclidean setting and at the same threshold, is due to Aizenman and Fernandez [@aizenman-fernandez-1988].</p>
+<p>Bleher announced the analysis of the second-order transition in Dyson's asymptotically hierarchical models in 1974 [@bleher-1974]. Bleher and Sinai introduced the renormalisation transformation of the hierarchical model and proved the existence of the nontrivial fixed point, the trichotomy of the orbit and the formula for the indices in terms of the linearisation [@bleher-sinai-1973] [@bleher-sinai-1975]; Sinai's monograph is the systematic account of the framework of limit Gibbs distributions in which the model sits [@sinai-1982]. Gawedzki and Kupiainen gave the local analysis: the $\varepsilon$-expansion around $\alpha=d/2$, the unstable manifold and its normal form, and the convergence of the rescaled correlations to a nontrivial scaling limit [@gawedzki-kupiainen-1983] [@gawedzki-kupiainen-1984]. The identification of the classical region with the mean-field exponents, in the Euclidean setting and at the same threshold, is due to Aizenman and Fernandez [@aizenman-fernandez-1988].</p>
 
 ## References {#section-references}
 
 <ul>
 <li>M. Aizenman and R. Fernandez, Critical exponents for long-range interactions, <em>Lett. Math. Phys.</em> 16 (1988), 39&ndash;49.</li>
+<li>P. M. Bleher, Studium des Phasenuebergangs zweiter Art in Dysons asymptotischen hierarchischen Modellen, <em>Uspekhi Mat. Nauk</em> 29 (1974), 163&ndash;164.</li>
+<li>P. M. Bleher, Construction of non-Gaussian self-similar random fields with hierarchical structure, <em>Comm. Math. Phys.</em> 84 (1982), 557&ndash;578.</li>
 <li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
 <li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
 <li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>

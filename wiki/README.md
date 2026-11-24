@@ -76,7 +76,10 @@ tables. No raw HTML and no collapsibles. A map is a finding aid, not a claim of 
 accuracy: the wiki cites works by work, not by theorem number, unless a statement is quoted from
 an abstract.
 
-Current maps: `bleher-major-sinai.md` and `abdesselam.md`.
+Current maps: `bleher-major-sinai.md`, `koch-wittwer.md` and `abdesselam.md`.
+
+Catalogue entries carry a `zbl` field and its `zblUrl` where zbMATH Open has a record; the home
+page of the site lists them. A work with no record shows a dash rather than a guessed number.
 
 ## Publishing
 

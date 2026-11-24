@@ -18,7 +18,18 @@
     "abdesselam-global-trajectory",
     "bleher-sinai-fixed-point"
   ],
-  "sourceIds": ["bleher-sinai-1973", "bleher-major-1984", "koch-wittwer-1986", "abdesselam-2007", "fisher-ma-nickel-1972", "bauerschmidt-brydges-slade-2019"],
+  "sourceIds": [
+    "bleher-sinai-1973",
+    "bleher-major-1984",
+    "koch-wittwer-1986",
+    "abdesselam-2007",
+    "fisher-ma-nickel-1972",
+    "bauerschmidt-brydges-slade-2019",
+    "bleher-1985",
+    "bleher-major-1987",
+    "bleher-major-1988",
+    "bleher-major-1990"
+  ],
   "aliases": [
     "phi-fourth model",
     "quartic truncation",
@@ -73,9 +84,13 @@
 
 ## The low-temperature vector model {#section-low-temperature}
 
-<p>For the $r$-component model with $r\geq2$ the ordered phase has a direction, and the renormalisation group has to be set up around a nonzero magnetisation. Bleher and Major carry this out for the vector-valued $\varphi^4$ hierarchical model [@bleher-major-1984].</p>
-<p>In the ordered phase the block spin has a mean $M\neq0$ and fluctuations that are decomposed into a longitudinal part, along $M$, and $r-1$ transverse parts. The transverse directions are massless: the energy depends on the transverse components only through gradients, so no quadratic term is generated for them at any scale. The renormalisation of the model is the analysis of the coupled flow of the longitudinal potential and of the transverse stiffness, and in the hierarchical model it reduces to a recursion of the same type as the one for the symmetric phase, with the field expanded around $M$ rather than around $0$. The result is that the low-temperature phase of the vector model is renormalisable in the hierarchical setting, and that the transverse fluctuations do not generate a mass.</p>
-<p>This is the origin of the marginal angular direction of <a href="/articles/hierarchical-vector-models/#section-thouless">the vector article</a>: at criticality the same transverse modes are the ones that make the direction of the block spin asymptotically uniform, and the two statements are the ordered-phase and critical forms of one mechanism.</p>
+<p>For the $r$-component model with $r\geq2$ the ordered phase has a direction, and the question a renormalisation-group analysis asks there is not about a fixed point but about the limit of the block sums around a nonzero magnetisation. Bleher and Major settle it for the vector-valued phi-fourth hierarchical model: at a supercritical intensity the centred block sums, normalised by the volume in the direction of the magnetisation and by a different power in the orthogonal directions, converge to a Gaussian field whose coordinates are independent [@bleher-major-1984].</p>
+
+<p>The two normalisations are the content. With the pair coupling at level $n$ equal to $2^{-an}$, so that $a=1+\alpha$ in the notation of this wiki, the direction of the spontaneous magnetisation scales as the square root of the volume, and each of the $r-1$ orthogonal directions scales as $\alpha_i^{n/2}$ with $\alpha_i=2^{a}=L^{1+\alpha}$. Since $\alpha_i&gt;L$ in the long-range range, the orthogonal block sums grow faster than the square root of the volume: the transverse fluctuations are enhanced, and after that normalisation their limit is Gaussian with independent coordinates. The proof rests on the large-deviation theory of the same model [@bleher-1985].</p>
+
+<p>In the non-Gaussian case the limit is not Gaussian, and its description is the subject of the two-part paper of 1988: a limit theorem for the average spin, and a description of the large-scale limit field [@bleher-major-1988], with a conference account of the renormalisation of the low-temperature model in [@bleher-major-1990]. Read with the survey, the picture is that below the critical temperature the vector model has non-central limit theorems at every temperature, in contrast with the scalar model, where away from criticality the block sums have Gaussian limits [@bleher-major-1987].</p>
+
+<p>These are the fluctuations whose critical form is the marginal angular direction of <a href="/articles/hierarchical-vector-models/#section-thouless">the vector article</a>: at $T_c$ the transverse enhancement is what makes the direction of the block spin asymptotically uniform.</p>
 
 ## Examples and non-examples {#section-examples}
 
@@ -104,7 +119,11 @@
 <ul>
 <li>A. Abdesselam, Towards three-dimensional conformal probability, <em>p-Adic Numbers Ultrametric Anal. Appl.</em> 10 (2018), 233&ndash;247.</li>
 <li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
+<li>P. M. Bleher, A theorem on large deviations in the neighbourhood of phi-fourth hierarchical models, <em>Theory Probab. Appl.</em> 30 (1985), 499&ndash;510.</li>
 <li>P. M. Bleher and P. Major, Renormalization of Dyson's hierarchical vector valued &phi;<sup>4</sup> model at low temperatures, <em>Comm. Math. Phys.</em> 95 (1984), 487&ndash;532.</li>
+<li>P. M. Bleher and P. Major, Critical phenomena and universal exponents in statistical physics. On Dyson's hierarchical model, <em>Ann. Probab.</em> 15 (1987), 431&ndash;477.</li>
+<li>P. M. Bleher and P. Major, The large-scale limit of Dyson's hierarchical vector valued model at low temperatures. The non-Gaussian case, <em>Ann. Inst. H. Poincar&eacute; Phys. Th&eacute;or.</em> 49 (1988), 7&ndash;85 and 87&ndash;143.</li>
+<li>P. M. Bleher and P. Major, Renormalization of Dyson's vector-valued hierarchical model at low temperatures, in <em>Probability Theory and Mathematical Statistics</em>, Proc. 5th Vilnius Conf., Vol. I, 141&ndash;151, 1990.</li>
 <li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
 <li>D. C. Brydges, P. K. Mitter and B. Scoppola, Critical $(\Phi^4)_3$, <em>Comm. Math. Phys.</em> 240 (2003), 281&ndash;327.</li>
 <li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>

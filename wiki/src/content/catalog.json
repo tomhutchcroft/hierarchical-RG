@@ -8,7 +8,9 @@
       "year": 1969,
       "edition": "Comm. Math. Phys. 12 (1969), 91-107",
       "url": "https://doi.org/10.1007/BF01645907",
-      "description": "The one-dimensional Ising model with pair couplings decaying as a power: a transition exists for decay exponent between one and two. Introduces the hierarchical approximation that later carries the renormalisation group exactly."
+      "description": "The one-dimensional Ising model with pair couplings decaying as a power: a transition exists for decay exponent between one and two. Introduces the hierarchical approximation that later carries the renormalisation group exactly.",
+      "zbl": "1306.47082",
+      "zblUrl": "https://zbmath.org/?q=an:1306.47082"
     },
     {
       "id": "bleher-sinai-1973",
@@ -48,7 +50,9 @@
       "year": 1983,
       "edition": "Comm. Math. Phys. 89 (1983), 191-220",
       "url": "https://doi.org/10.1007/BF01211827",
-      "description": "Existence and local analysis of the nontrivial fixed points of the hierarchical renormalisation map: the epsilon expansion, the unstable manifold, and its normal form."
+      "description": "Existence and local analysis of the nontrivial fixed points of the hierarchical renormalisation map: the epsilon expansion, the unstable manifold, and its normal form.",
+      "zbl": "0542.60095",
+      "zblUrl": "https://zbmath.org/?q=an:0542.60095"
     },
     {
       "id": "gawedzki-kupiainen-1984",
@@ -58,7 +62,9 @@
       "year": 1984,
       "edition": "J. Statist. Phys. 35 (1984), 267-284",
       "url": "https://doi.org/10.1007/BF01014384",
-      "description": "Scaling limits of the hierarchical model governed by the nontrivial fixed point, and the renormalisation-group flow of the relevant direction around it."
+      "description": "Scaling limits of the hierarchical model governed by the nontrivial fixed point, and the renormalisation-group flow of the relevant direction around it.",
+      "zbl": "0589.60094",
+      "zblUrl": "https://zbmath.org/?q=an:0589.60094"
     },
     {
       "id": "aizenman-fernandez-1988",
@@ -68,7 +74,9 @@
       "year": 1988,
       "edition": "Lett. Math. Phys. 16 (1988), 39-49",
       "url": "https://doi.org/10.1007/BF00398169",
-      "description": "Classical values of the long-range Ising exponents in the mean-field region, with the marginal case included."
+      "description": "Classical values of the long-range Ising exponents in the mean-field region, with the marginal case included.",
+      "zbl": "0658.60136",
+      "zblUrl": "https://zbmath.org/?q=an:0658.60136"
     },
     {
       "id": "fisher-ma-nickel-1972",
@@ -88,17 +96,21 @@
       "year": 2012,
       "edition": "Electron. J. Probab. 17 (2012), no. 57",
       "url": "https://doi.org/10.1214/EJP.v17-1977",
-      "description": "The phase transition of long-range percolation on the hierarchical lattice: a finite critical intensity exactly when the kernel exponent is below the dimension, and no infinite cluster at criticality."
+      "description": "The phase transition of long-range percolation on the hierarchical lattice: a finite critical intensity exactly when the kernel exponent is below the dimension, and no infinite cluster at criticality.",
+      "zbl": "1260.60183",
+      "zblUrl": "https://zbmath.org/?q=an:1260.60183"
     },
     {
       "id": "hutchcroft-hierarchical-2021",
       "shortName": "Hutchcroft",
       "title": "The critical two-point function for long-range percolation on the hierarchical lattice",
       "author": "T. Hutchcroft",
-      "year": 2021,
-      "edition": "arXiv:2103.17013",
-      "url": "https://arxiv.org/abs/2103.17013",
-      "description": "Critical connection probabilities on the hierarchical lattice of order the distance to the power minus the dimension minus the kernel exponent, the volume exponent obstruction above the triangle threshold, and mean-field consequences below it."
+      "year": 2024,
+      "edition": "Ann. Appl. Probab. 34 (2024), no. 1B, 986-1002 (arXiv:2103.17013, 2021)",
+      "url": "https://doi.org/10.1214/23-AAP1982",
+      "description": "Critical connection probabilities on the hierarchical lattice of order the distance to the power minus the dimension minus the kernel exponent, the volume exponent obstruction above the triangle threshold, and mean-field consequences below it.",
+      "zbl": "1545.60115",
+      "zblUrl": "https://zbmath.org/?q=an:1545.60115"
     },
     {
       "id": "griffiths-1967",
@@ -118,7 +130,9 @@
       "year": 1993,
       "edition": "J. Statist. Phys. 72 (1993), 879-1167",
       "url": "https://doi.org/10.1007/BF01048183",
-      "description": "Block-spin transformations of Gibbs measures need not be Gibbs measures, so position-space decimation does not preserve a space of interactions in general."
+      "description": "Block-spin transformations of Gibbs measures need not be Gibbs measures, so position-space decimation does not preserve a space of interactions in general.",
+      "zbl": "1101.82314",
+      "zblUrl": "https://zbmath.org/?q=an:1101.82314"
     },
     {
       "id": "heydenreich-hofstad-sakai-2008",
@@ -128,7 +142,9 @@
       "year": 2008,
       "edition": "J. Statist. Phys. 132 (2008), 1001-1049",
       "url": "https://doi.org/10.1007/s10955-008-9580-5",
-      "description": "Lace-expansion proof of mean-field behaviour for long-range models, with the dimension thresholds in terms of the decay exponent."
+      "description": "Lace-expansion proof of mean-field behaviour for long-range models, with the dimension thresholds in terms of the decay exponent.",
+      "zbl": "1152.82007",
+      "zblUrl": "https://zbmath.org/?q=an:1152.82007"
     },
     {
       "id": "brydges-mitter-scoppola-2003",
@@ -138,7 +154,9 @@
       "year": 2003,
       "edition": "Comm. Math. Phys. 240 (2003), 281-327",
       "url": "https://doi.org/10.1007/s00220-003-0895-4",
-      "description": "A renormalisation-group trajectory for a critical Euclidean field theory, the argument being organised by the hierarchical analysis of the same map."
+      "description": "A renormalisation-group trajectory for a critical Euclidean field theory, the argument being organised by the hierarchical analysis of the same map.",
+      "zbl": "1053.81065",
+      "zblUrl": "https://zbmath.org/?q=an:1053.81065"
     },
     {
       "id": "bauerschmidt-brydges-slade-2019",
@@ -148,7 +166,9 @@
       "year": 2019,
       "edition": "Lecture Notes in Mathematics 2242, Springer, 2019",
       "url": "https://doi.org/10.1007/978-981-32-9593-3",
-      "description": "Self-contained development of the renormalisation group for lattice field theory, beginning from the hierarchical model as the model in which the map is a one-variable recursion."
+      "description": "Self-contained development of the renormalisation group for lattice field theory, beginning from the hierarchical model as the model in which the map is a one-variable recursion.",
+      "zbl": "1471.81001",
+      "zblUrl": "https://zbmath.org/?q=an:1471.81001"
     },
     {
       "id": "bleher-major-1984",
@@ -158,7 +178,9 @@
       "year": 1984,
       "edition": "Comm. Math. Phys. 95 (1984), 487-532",
       "url": "https://doi.org/10.1007/BF01210834",
-      "description": "The renormalisation of the vector-valued hierarchical φ⁴ model in its low-temperature phase, where the continuous symmetry leaves a Goldstone direction."
+      "description": "The renormalisation of the vector-valued hierarchical φ⁴ model in its low-temperature phase, where the continuous symmetry leaves a Goldstone direction.",
+      "zbl": "0587.60098",
+      "zblUrl": "https://zbmath.org/?q=an:0587.60098"
     },
     {
       "id": "bleher-major-1987",
@@ -168,7 +190,9 @@
       "year": 1987,
       "edition": "Ann. Probab. 15 (1987), 431-477",
       "url": "https://doi.org/10.1214/aop/1176992155",
-      "description": "A survey of the hierarchical model as a problem about the limit distribution of partial sums of strongly dependent variables: critical behaviour and exponents with sketches of proofs, the vector case, and conjectures."
+      "description": "A survey of the hierarchical model as a problem about the limit distribution of partial sums of strongly dependent variables: critical behaviour and exponents with sketches of proofs, the vector case, and conjectures.",
+      "zbl": "0628.60101",
+      "zblUrl": "https://zbmath.org/?q=an:0628.60101"
     },
     {
       "id": "bleher-major-2021",
@@ -178,7 +202,9 @@
       "year": 2021,
       "edition": "Pure Appl. Funct. Anal. 6 (2021), 101-175",
       "url": "https://arxiv.org/abs/math-ph/0201014",
-      "description": "Dyson's conjecture for the r-component hierarchical model: a phase transition exactly when the interaction sequence fails to be summable, no Thouless effect in the spontaneous magnetisation, and a uniform limit law on the sphere for the normalised average spin at criticality."
+      "description": "Dyson's conjecture for the r-component hierarchical model: a phase transition exactly when the interaction sequence fails to be summable, no Thouless effect in the spontaneous magnetisation, and a uniform limit law on the sphere for the normalised average spin at criticality.",
+      "zbl": "1469.82013",
+      "zblUrl": "https://zbmath.org/?q=an:1469.82013"
     },
     {
       "id": "bleher-2012",
@@ -198,7 +224,9 @@
       "year": 1982,
       "edition": "Pergamon Press, 1982",
       "url": "https://doi.org/10.1016/B978-0-08-026469-1.50005-5",
-      "description": "The rigorous theory of phase transitions and limit Gibbs distributions, with the renormalisation group for hierarchical models as its worked example."
+      "description": "The rigorous theory of phase transitions and limit Gibbs distributions, with the renormalisation group for hierarchical models as its worked example.",
+      "zbl": "0537.60097",
+      "zblUrl": "https://zbmath.org/?q=an:0537.60097"
     },
     {
       "id": "koch-wittwer-1986",
@@ -208,7 +236,9 @@
       "year": 1986,
       "edition": "Comm. Math. Phys. 106 (1986), 495-532",
       "url": "https://doi.org/10.1007/BF01207260",
-      "description": "A computer-assisted proof of a nontrivial fixed point of the hierarchical renormalisation map for scalar lattice fields, with no small parameter and no epsilon expansion."
+      "description": "A computer-assisted proof of a nontrivial fixed point of the hierarchical renormalisation map for scalar lattice fields, with no small parameter and no epsilon expansion.",
+      "zbl": "0654.60100",
+      "zblUrl": "https://zbmath.org/?q=an:0654.60100"
     },
     {
       "id": "koch-wittwer-1991",
@@ -218,7 +248,9 @@
       "year": 1991,
       "edition": "Comm. Math. Phys. 138 (1991), 537-568",
       "url": "https://doi.org/10.1007/BF02102041",
-      "description": "The functional-analytic framework for the hierarchical renormalisation map on scalar models: the space of interactions, the map, and the estimates the fixed-point proof rests on."
+      "description": "The functional-analytic framework for the hierarchical renormalisation map on scalar models: the space of interactions, the map, and the estimates the fixed-point proof rests on.",
+      "zbl": "0735.47046",
+      "zblUrl": "https://zbmath.org/?q=an:0735.47046"
     },
     {
       "id": "koch-wittwer-1994",
@@ -228,7 +260,9 @@
       "year": 1994,
       "edition": "Comm. Math. Phys. 164 (1994), 627-647",
       "url": "https://doi.org/10.1007/BF02101493",
-      "description": "The same programme for the hierarchical model built on the Baker map, where the block structure comes from a piecewise linear expanding map of the interval."
+      "description": "The same programme for the hierarchical model built on the Baker map, where the block structure comes from a piecewise linear expanding map of the interval.",
+      "zbl": "0838.47051",
+      "zblUrl": "https://zbmath.org/?q=an:0838.47051"
     },
     {
       "id": "abdesselam-2007",
@@ -238,7 +272,9 @@
       "year": 2007,
       "edition": "Comm. Math. Phys. 276 (2007), 727-772",
       "url": "https://doi.org/10.1007/s00220-007-0352-x",
-      "description": "A rigorous nonperturbative construction of a massless trajectory of Wilson's exact renormalisation group joining the ultraviolet Gaussian fixed point to the nontrivial infrared fixed point, for a three-dimensional model with modified propagator."
+      "description": "A rigorous nonperturbative construction of a massless trajectory of Wilson's exact renormalisation group joining the ultraviolet Gaussian fixed point to the nontrivial infrared fixed point, for a three-dimensional model with modified propagator.",
+      "zbl": "1194.81168",
+      "zblUrl": "https://zbmath.org/?q=an:1194.81168"
     },
     {
       "id": "abdesselam-2009",
@@ -248,7 +284,9 @@
       "year": 2009,
       "edition": "Proc. XVI Int. Congr. Math. Phys. (Prague), 2010",
       "url": "https://arxiv.org/abs/0910.1063",
-      "description": "A six-page account of the construction of complete trajectories between fixed points: a fixed point argument in a Banach space of sequences obtained by perturbing a nonlinear one-dimensional iteration, without the hierarchical approximation."
+      "description": "A six-page account of the construction of complete trajectories between fixed points: a fixed point argument in a Banach space of sequences obtained by perturbing a nonlinear one-dimensional iteration, without the hierarchical approximation.",
+      "zbl": "1203.81122",
+      "zblUrl": "https://zbmath.org/?q=an:1203.81122"
     },
     {
       "id": "abdesselam-2018",
@@ -259,6 +297,124 @@
       "edition": "p-Adic Numbers Ultrametric Anal. Appl. 10 (2018), 233-247",
       "url": "https://arxiv.org/abs/1511.03180",
       "description": "The ultrametric and p-adic counterparts of the hierarchical model, and the renormalisation group on them, as a route to a three-dimensional conformal field theory."
+    },
+    {
+      "id": "hutchcroft-2022-bounds",
+      "shortName": "Hutchcroft",
+      "title": "Sharp hierarchical upper bounds on the critical two-point function for long-range percolation on Z^d",
+      "author": "T. Hutchcroft",
+      "year": 2022,
+      "edition": "J. Math. Phys. 63 (2022), 113301",
+      "url": "https://doi.org/10.1063/5.0088450",
+      "zbl": "1508.60098",
+      "zblUrl": "https://zbmath.org/?q=an:1508.60098",
+      "description": "Hierarchical upper bounds, transported to the Euclidean lattice, on the critical two-point function of long-range percolation."
+    },
+    {
+      "id": "hutchcroft-2025-volumes",
+      "shortName": "Hutchcroft",
+      "title": "Critical cluster volumes in hierarchical percolation",
+      "author": "T. Hutchcroft",
+      "year": 2025,
+      "edition": "Proc. Lond. Math. Soc. (3) 130 (2025), e70023",
+      "url": "https://doi.org/10.1112/plms.70023",
+      "zbl": "1557.60262",
+      "zblUrl": "https://zbmath.org/?q=an:1557.60262",
+      "description": "The volume of the critical cluster in hierarchical long-range percolation, and the exponent that governs its tail."
+    },
+    {
+      "id": "bleher-1974",
+      "shortName": "Bleher",
+      "title": "Studium des Phasenuebergangs zweiter Art in Dysons asymptotischen hierarchischen Modellen",
+      "author": "P. M. Bleher",
+      "year": 1974,
+      "edition": "Uspekhi Mat. Nauk 29 (1974), no. 1, 163-164",
+      "url": "https://zbmath.org/?q=an:0301.60073",
+      "zbl": "0301.60073",
+      "zblUrl": "https://zbmath.org/?q=an:0301.60073",
+      "description": "A short announcement of the second-order phase transition in Dyson's asymptotically hierarchical models, preceding the detailed papers with Sinai."
+    },
+    {
+      "id": "bleher-1982",
+      "shortName": "Bleher",
+      "title": "Construction of non-Gaussian self-similar random fields with hierarchical structure",
+      "author": "P. M. Bleher",
+      "year": 1982,
+      "edition": "Comm. Math. Phys. 84 (1982), 557-578",
+      "url": "https://doi.org/10.1007/BF01209635",
+      "zbl": "0515.60058",
+      "zblUrl": "https://zbmath.org/?q=an:0515.60058",
+      "description": "A construction of self-similar random fields with hierarchical structure, that is, of block-spin laws invariant under the renormalisation step."
+    },
+    {
+      "id": "bleher-1985",
+      "shortName": "Bleher",
+      "title": "A theorem on large deviations in the neighbourhood of phi-fourth hierarchical models",
+      "author": "P. M. Bleher",
+      "year": 1985,
+      "edition": "Theory Probab. Appl. 30 (1985), 499-510 (Teor. Veroyatn. Primen. 30)",
+      "url": "https://zbmath.org/?q=an:0581.60024",
+      "zbl": "0581.60024",
+      "zblUrl": "https://zbmath.org/?q=an:0581.60024",
+      "description": "Large deviations for the hierarchical model with a phi-fourth single-spin distribution, the tool on which the low-temperature limit theorems rest."
+    },
+    {
+      "id": "bleher-1987-vilnius",
+      "shortName": "Bleher",
+      "title": "Limit theorems for multicomponent hierarchical models",
+      "author": "P. M. Bleher",
+      "year": 1987,
+      "edition": "Probability theory and mathematical statistics, Proc. 4th Vilnius Conf. (1985), Vol. 1, 211-229",
+      "url": "https://zbmath.org/?q=an:0648.60109",
+      "zbl": "0648.60109",
+      "zblUrl": "https://zbmath.org/?q=an:0648.60109",
+      "description": "Limit theorems for the block sums of multicomponent hierarchical models: the vector case in which the limits need not be Gaussian."
+    },
+    {
+      "id": "bleher-major-1988",
+      "shortName": "Bleher–Major",
+      "title": "The large-scale limit of Dyson's hierarchical vector valued model at low temperatures. The non-Gaussian case",
+      "author": "P. M. Bleher and P. Major",
+      "year": 1988,
+      "edition": "Ann. Inst. H. Poincaré Phys. Théor. 49 (1988), 7-85 and 87-143",
+      "url": "https://zbmath.org/?q=an:0669.60096",
+      "zbl": "0669.60096",
+      "zblUrl": "https://zbmath.org/?q=an:0669.60096",
+      "description": "Two-part paper on the large-scale limit of the low-temperature vector-valued hierarchical model in the non-Gaussian case: a limit theorem for the average spin, and a description of the limiting field."
+    },
+    {
+      "id": "bleher-major-1990",
+      "shortName": "Bleher–Major",
+      "title": "Renormalization of Dyson's vector-valued hierarchical model at low temperatures",
+      "author": "P. M. Bleher and P. Major",
+      "year": 1990,
+      "edition": "Probability theory and mathematical statistics, Proc. 5th Vilnius Conf. (1989), Vol. I, 141-151",
+      "url": "https://zbmath.org/?q=an:0726.60101",
+      "zbl": "0726.60101",
+      "zblUrl": "https://zbmath.org/?q=an:0726.60101",
+      "description": "A conference account of the low-temperature renormalisation of the vector-valued hierarchical model."
+    },
+    {
+      "id": "gawedzki-kupiainen-tirozzi-1984",
+      "shortName": "Gawedzki–Kupiainen–Tirozzi",
+      "title": "Borel summability of the perturbation series in a hierarchical lambda (nabla phi)^4 model",
+      "author": "K. Gawedzki, A. Kupiainen and B. Tirozzi",
+      "year": 1984,
+      "edition": "J. Statist. Phys. 36 (1984), 145-162",
+      "url": "https://doi.org/10.1007/BF01015730",
+      "zbl": "0587.60099",
+      "zblUrl": "https://zbmath.org/?q=an:0587.60099",
+      "description": "Borel summability of the perturbation series for a hierarchical gradient model: the technique with which the large-field region is brought under control."
+    },
+    {
+      "id": "gawedzki-kupiainen-1982",
+      "shortName": "Gawedzki–Kupiainen",
+      "title": "Triviality of phi-fourth in four dimensions and all that in a hierarchy model approximation",
+      "author": "K. Gawedzki and A. Kupiainen",
+      "year": 1982,
+      "edition": "J. Statist. Phys. 29 (1982), 683-699",
+      "zbl": "",
+      "description": "The hierarchy-model approximation used to discuss triviality of phi-fourth in four dimensions; cited by Koch and Wittwer as the analyticity technique their method improves on."
     }
   ]
 }

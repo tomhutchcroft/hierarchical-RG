@@ -127,5 +127,5 @@
 <li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
 <li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>
 <li>M. Heydenreich, R. van der Hofstad and A. Sakai, Mean-field behavior for long- and finite range Ising model, percolation and self-avoiding walk, <em>J. Statist. Phys.</em> 132 (2008), 1001&ndash;1049.</li>
-<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <a href="https://arxiv.org/abs/2103.17013">arXiv:2103.17013</a> (2021).</li>
+<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <em>Ann. Appl. Probab.</em> 34 (2024), 986&ndash;1002 (arXiv:2103.17013).</li>
 </ul>

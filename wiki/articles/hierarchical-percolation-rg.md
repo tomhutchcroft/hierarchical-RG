@@ -20,7 +20,8 @@
   "sourceIds": [
     "koval-meester-trapman-2012",
     "hutchcroft-hierarchical-2021",
-    "dyson-1969"
+    "dyson-1969",
+    "hutchcroft-2025-volumes"
   ],
   "aliases": [
     "hierarchical percolation",
@@ -88,7 +89,7 @@
 
 <p><em>The growth exponent.</em> The theorem gives $\chi_n(\beta_c)\asymp L^{\alpha n}$ directly, which is $\kappa=\alpha$ and $\eta=2-\alpha$ in the notation of <a href="/articles/critical-exponents-from-rg/#section-exponents">the exponent article</a>. This agrees with the general statement that the growth exponent is fixed by the autonomy of the recursion at $\theta_0=\tfrac12(d+\alpha)$: the quantile bound $R_n(\beta_c)^2\lesssim L^{(d+\alpha)n}$ is the upper half of the variance growth, and the boundary flux supplies the lower half.</p>
 
-<p><em>The volume exponent.</em> For $3\alpha&gt;d$ the model is not mean-field, and the cluster-volume tail is constrained. If $\mathbb P_{\beta_c}(\lvert K_0\rvert\geq n)=n^{-1/\delta+o(1)}$, then $\delta\geq\frac{d+\alpha}{d-\alpha}$, which is strictly greater than $2$; the value $\delta=\frac{d+\alpha}{d-\alpha}$ is conjectured, and it is the value that the scaling relations give when the two-point exponent is $2-\alpha$. This is Corollary 1.5 of Hutchcroft [@hutchcroft-hierarchical-2021].</p>
+<p><em>The volume exponent.</em> For $3\alpha&gt;d$ the model is not mean-field, and the cluster-volume tail is constrained. If $\mathbb P_{\beta_c}(\lvert K_0\rvert\geq n)=n^{-1/\delta+o(1)}$, then $\delta\geq\frac{d+\alpha}{d-\alpha}$, which is strictly greater than $2$; the value $\delta=\frac{d+\alpha}{d-\alpha}$ is conjectured, and it is the value that the scaling relations give when the two-point exponent is $2-\alpha$. This is Corollary 1.5 of Hutchcroft [@hutchcroft-hierarchical-2021]. The volume of the critical cluster in hierarchical percolation is the subject of a separate analysis [@hutchcroft-2025-volumes], which is where the exponent of the tail is studied directly rather than through the two-point function.</p>
 
 <p><em>The exponent $\nu$.</em> Nothing in the two-point theorem identifies the correlation-length exponent, and it is the one quantity the percolation analysis does not determine in the non-mean-field regime. In the mean-field regime $\nu=1/\alpha$ follows from the classical values and $\gamma=1$; for $\alpha&gt;d/3$ the value of $\nu$ is not known, and it is where the comparison with the spin model's nontrivial fixed point would enter.</p>
 
@@ -118,6 +119,7 @@
 
 <ul>
 <li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
-<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <a href="https://arxiv.org/abs/2103.17013">arXiv:2103.17013</a> (2021).</li>
+<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <em>Ann. Appl. Probab.</em> 34 (2024), 986&ndash;1002 (arXiv:2103.17013).</li>
+<li>T. Hutchcroft, Critical cluster volumes in hierarchical percolation, <em>Proc. Lond. Math. Soc.</em> 130 (2025), e70023.</li>
 <li>V. Koval, R. Meester and P. Trapman, Long-range percolation on the hierarchical lattice, <em>Electron. J. Probab.</em> 17 (2012), no. 57.</li>
 </ul>
