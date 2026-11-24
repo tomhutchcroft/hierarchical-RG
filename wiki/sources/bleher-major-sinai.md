@@ -84,3 +84,12 @@ either spelling of the authors' names, so they are cited by DOI only.
 Background rather than part of the group: Dyson's 1969 paper, which introduced the couplings and
 proved the transition, and the classical long-range exponent values of Fisher, Ma and Nickel,
 which the wiki uses as the values of the Gaussian fixed point.
+
+## Records
+
+The descriptions of the works follow the published titles, and for the two papers where a review
+was used they follow it closely: the anisotropic central limit theorem of Bleher and Major's 1984
+paper is described after the review by Th. Eisele (review of Zbl 0587.60098, zbMATH Open, CC BY-SA
+4.0), and the account of the 1987 survey after the review by M. Muermann (review of Zbl 0628.60101,
+zbMATH Open, CC BY-SA 4.0); both are paraphrased and shortened here, and the wiki's wording is its
+own. Zbl numbers and links were taken from zbMATH Open on 24 November 2026.

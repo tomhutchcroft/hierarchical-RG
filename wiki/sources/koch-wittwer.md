@@ -80,3 +80,10 @@ No locator is claimed, and no estimate is reproduced. The statements attributed 
 follow its published summary; those attributed to the 1991 and 1994 papers follow their titles and
 subject classifications, since their summaries are withheld from the zbMATH API for licensing
 reasons. The wiki cites the three works by work and not by theorem number.
+
+## Records
+
+Titles, venues and Zbl numbers are from zbMATH Open, consulted on 24 November 2026. The account of
+the 1986 method follows the summary printed with Zbl 0654.60100, and that of the 1988 note the
+summary printed with Zbl 0722.60108; both are paraphrased here. No review text is reproduced, and
+no estimate from any of the four papers is restated.
