@@ -155,6 +155,42 @@ def check_triangle():
              f" ({'growing' if predicted > 1 else 'decaying'} case)")
 
 
+def check_quartic_generation():
+    """phi-fourth: a quartic potential generates a sixth power at third order in the coupling."""
+    mu0, b, m = 1.0, 0.1, 2
+
+    def neglog(s, lam, zmax=10.0, n=20001):
+        z = np.linspace(-zmax, zmax, n)
+        vz = 0.5 * mu0 * z * z + lam * z ** 4
+        s2 = s - z
+        integrand = np.exp(b * z * s2 - vz - (0.5 * mu0 * s2 * s2 + lam * s2 ** 4))
+        return -np.log(np.trapezoid(integrand, z))
+
+    def coefs(lam, half=0.6, pts=81, order=4):
+        s = np.linspace(-half, half, pts)
+        f = np.array([neglog(x, lam) for x in s])
+        A = np.vstack([s ** (2 * k) for k in range(order + 1)]).T
+        c, *_ = np.linalg.lstsq(A, f, rcond=None)
+        return c  # c[1] is the s^2 coefficient, c[2] the s^4 one, c[3] the s^6 one
+
+    # calibration: at quadratic order the density is Gaussian with the known variance
+    v = 1 / mu0
+    vp = m * v / (1 - b * v * (m - 1))
+    c = coefs(0.0)
+    note("quartic calibration at zero coupling", abs(c[1] - 1 / (2 * vp)) < 1e-8,
+         f"s^2 coefficient {c[1]:.10f}, exact {1 / (2 * vp):.10f}")
+
+    # The slope approaches 3 as the coupling goes to zero; larger couplings carry the
+    # expected O(lambda) correction, which is why the smallest pair is the one tested.
+    lams = np.array([0.00125, 0.0025, 0.005, 0.01])
+    c6 = np.array([coefs(l)[3] for l in lams])
+    slopes = np.diff(np.log(c6)) / np.diff(np.log(lams))
+    note("quartic generates a sixth power at third order",
+         bool(np.all(c6 > 0)) and abs(slopes[0] - 3) < 0.15,
+         f"s^6 coefficients {[f'{x:.2e}' for x in c6]}, log-log slopes "
+         f"{[round(float(x), 2) for x in slopes]} (leading slope predicts 3)")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -162,6 +198,7 @@ def main() -> int:
     check_block_identity()
     check_decimation_ising()
     check_triangle()
+    check_quartic_generation()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0
