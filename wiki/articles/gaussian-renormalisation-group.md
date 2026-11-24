@@ -83,6 +83,7 @@
 ## The autonomous flow and the multiplier {#section-multiplier}
 
 <p>Written in the dimensionless coupling, the recursion has a nonzero fixed point, and its multiplier is the exponent.</p>
+<div class="sim" data-sim="rg-orbit" data-title="The Gaussian orbit: choose the intensity and watch the block-spin variance against the scale. Above βc it grows, below it dies, and on the dashed critical orbit it grows like L^{(d+α)n}."></div>
 <a id="tag-K7DR" data-assertion="theorem" data-title="Fixed point of the dimensionless coupling and the multiplier L to the alpha"></a>
 <p>Let $u_n=b_nv_n$ with $b_n=\beta J_n$. Then $u_n=g(u_{n-1})$, where</p>
 <div class="math-display">$$g(u)=\frac{mu}{\lambda-(m-1)u},\qquad \lambda=L^{d+\alpha},$$</div>

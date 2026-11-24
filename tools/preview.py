@@ -1,68 +1,88 @@
 #!/usr/bin/env python3
-"""Render a static preview of the wiki into wiki/preview/.
+"""Build the static site for the wiki.
 
-This is a reader for the authored sources, not the PercLib build: it renders the
-article format (front matter, lead, sections, collapsible blocks, links, citation
-keys) into HTML and loads KaTeX from a CDN for the mathematics. The PercLib build
-renders mathematics at build time with node; this preview does not, so mathematics
-needs the network the first time a page is opened.
+Reads the authored sources (wiki/articles, wiki/sources, the catalogue) and writes a flat site:
+one page per article and per reading map, a home page, a search index, the stylesheet and script,
+and a vendored KaTeX. Mathematics is rendered in the browser by the vendored KaTeX, so no page
+needs the network.
 
-Usage: python3 tools/preview.py
+Usage:
+  python3 tools/preview.py                 # build into site/
+  python3 tools/preview.py --out DIR       # build elsewhere
+  python3 tools/preview.py --check         # fail if site/ is not what the sources build to
 """
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
 import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WIKI = ROOT / "wiki"
 ARTICLES = WIKI / "articles"
 SOURCES = WIKI / "sources"
+STATIC = WIKI / "static"
 CATALOG = WIKI / "src" / "content" / "catalog.json"
-OUT = WIKI / "preview"
+DEFAULT_OUT = ROOT / "site"
+
+# Reading order of the articles, from the lattice to the comparison.
+ORDER = [
+    "hierarchical-lattice",
+    "hierarchical-gibbs-measure",
+    "renormalisation-group-map",
+    "gaussian-renormalisation-group",
+    "critical-exponents-from-rg",
+    "bleher-sinai-fixed-point",
+    "hierarchical-vector-models",
+    "hierarchical-phi4-truncations",
+    "koch-wittwer-fixed-point",
+    "abdesselam-global-trajectory",
+    "hierarchical-percolation-rg",
+    "hierarchical-and-euclidean-rg",
+]
 
 HEAD_RE = re.compile(r"^## (.+?) \{#(section-[a-z0-9-]+)\}\s*$")
 ANCHOR_RE = re.compile(r'<a\s+id="tag-([0-9A-Z]{4})"\s+data-assertion="([a-z]+)"\s+data-title="([^"]+)"\s*></a>')
+FIG_RE = re.compile(r'<div class="fig" data-fig="([a-z-]+)"(?: data-title="([^"]*)")?\s*></div>')
+SIM_RE = re.compile(r'<div class="sim" data-sim="([a-z-]+)"(?: data-title="([^"]*)")?\s*></div>')
 
-CSS = """
-:root { --ink:#1a1a1a; --muted:#666; --rule:#ddd; --accent:#8a1c1c; }
-* { box-sizing: border-box; }
-body { margin:0; font: 17px/1.6 Georgia, 'Times New Roman', serif; color:var(--ink); background:#fbfaf7; }
-main { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 6rem; }
-header.site { border-bottom:1px solid var(--rule); margin-bottom:2rem; padding-bottom:.6rem;
-  display:flex; justify-content:space-between; align-items:baseline; font-family: ui-sans-serif, system-ui, sans-serif; font-size:.85rem; }
-header.site a { color: var(--ink); text-decoration:none; }
-h1 { font-size:1.9rem; line-height:1.2; margin:.2rem 0 .3rem; }
-.subtitle { color:var(--muted); font-style:italic; margin:0 0 1.6rem; }
-h2 { font-size:1.2rem; margin:2.4rem 0 .6rem; padding-bottom:.25rem; border-bottom:1px solid var(--rule); }
-a { color:var(--accent); }
-.math-display { overflow-x:auto; margin:1rem 0; }
-details { margin:1rem 0; border-left:2px solid var(--rule); padding:.1rem 0 .1rem 1rem; }
-summary { cursor:pointer; color:var(--muted); font-family: ui-sans-serif, system-ui, sans-serif; font-size:.9rem; }
-table { border-collapse:collapse; width:100%; font-size:.95rem; }
-td, th { text-align:left; padding:.4rem .6rem; border-bottom:1px solid var(--rule); vertical-align:top; }
-.meta { font-family: ui-sans-serif, system-ui, sans-serif; font-size:.82rem; color:var(--muted); }
-.tag { font-family: ui-monospace, monospace; font-size:.75rem; color:var(--muted); }
-.note { background:#fff6e5; border:1px solid #f0dcb4; padding:.7rem .9rem; font-size:.85rem;
-  font-family: ui-sans-serif, system-ui, sans-serif; margin-bottom:2rem; }
-"""
-
-KATEX = """
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-"""
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import simulate  # noqa: E402
 
 
-def split(text: str):
+# ------------------------------------------------------------------ reading the sources
+
+def split_front_matter(text: str):
     end = text.find("\n---\n", 4)
-    meta = json.loads(text[4:end])
-    return meta, text[end + 5:]
+    return json.loads(text[4:end]), text[end + 5:]
 
+
+def load_articles():
+    out = {}
+    for path in sorted(ARTICLES.glob("*.md")):
+        meta, body = split_front_matter(path.read_text())
+        meta["body"] = body
+        out[meta["id"]] = meta
+    order = [i for i in ORDER if i in out] + [i for i in out if i not in ORDER]
+    return out, order
+
+
+def load_maps():
+    out = []
+    if not SOURCES.is_dir():
+        return out
+    for path in sorted(SOURCES.glob("*.md")):
+        text = path.read_text().strip("\n")
+        title = text.splitlines()[0][2:].strip()
+        out.append({"slug": path.stem, "title": title, "body": "\n".join(text.splitlines()[1:]).strip()})
+    return out
+
+
+# ------------------------------------------------------------------ transforming bodies
 
 def fences_to_details(body: str) -> str:
     out, stack = [], []
@@ -83,181 +103,313 @@ def fences_to_details(body: str) -> str:
     return "\n".join(out)
 
 
-def rewrite_links(body: str, tag_owner: dict[str, str], ids: set[str]) -> str:
+def rewrite_links(body: str, tag_owner: dict[str, str]) -> str:
     def art(m):
         target, frag = m.group(1), (m.group(2) or "")
-        return f'href="{target}.html{frag}"'
+        return f'href="{target}.html' + (f"#{frag}" if frag else "") + '"'
     body = re.sub(r'href="/articles/([a-z0-9-]+)/(?:#([a-z0-9-]+))?"', art, body)
     body = re.sub(r'href="/tag/([0-9A-Z]{4})/"',
                   lambda m: f'href="{tag_owner[m.group(1)]}.html#tag-{m.group(1)}"', body)
+    body = re.sub(r'<a\s+data-wanted="[a-z0-9-]+">(.*?)</a>', r'<span class="wanted">\1</span>', body)
     return body
 
 
-def inline(text: str, ids: set[str], tag_owner: dict[str, str]) -> str:
-    """Inline Markdown of the reading-map format: links, emphasis, code."""
-    out = []
-    for line in text.splitlines():
-        line = re.sub(r"\[([^\]]+)\]\(([^)]+)\)",
-                      lambda m: _link(m.group(1), m.group(2), ids, tag_owner), line)
-        line = re.sub(r"`([^`]+)`", r"<code>\1</code>", line)
-        line = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", line)
-        line = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", line)
-        out.append(line)
-    return "\n".join(out)
+def markdown_links(body: str) -> str:
+    """[text](target) as used by the reading maps."""
+    def rep(m):
+        label, target = m.group(1), m.group(2)
+        t = re.fullmatch(r"/articles/([a-z0-9-]+)/(?:#(section-[a-z0-9-]+))?", target)
+        href = f"{t.group(1)}.html" + (f"#{t.group(2)}" if t.group(2) else "") if t else target
+        return f'<a href="{href}">{label}</a>'
+    return re.sub(r"\[([^\]]+)\]\(([^)]+)\)", rep, body)
 
 
-def _link(label: str, target: str, ids: set[str], tag_owner: dict[str, str]) -> str:
-    m = re.fullmatch(r"/articles/([a-z0-9-]+)/(?:#(section-[a-z0-9-]+))?", target)
-    if m:
-        frag = f"#{m.group(2)}" if m.group(2) else ""
-        return f'<a href="{m.group(1)}.html{frag}">{label}</a>'
-    return f'<a href="{target}">{label}</a>'
+def inline_md(text: str) -> str:
+    text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
+    text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", text)
+    return text
 
 
-def render_map(text: str, ids: set[str], tag_owner: dict[str, str]) -> tuple[str, str]:
-    """Returns (title, body html) for a reading map."""
-    lines = text.splitlines()
-    title = lines[0][2:].strip()
+def map_body_to_html(body: str) -> str:
     blocks, para, table = [], [], []
-
     def flush():
         nonlocal para, table
         if table:
             head = [c.strip() for c in table[0].strip("|").split("|")]
             rows = [[c.strip() for c in r.strip("|").split("|")] for r in table[2:]]
-            html = ["<table><thead><tr>"]
-            html += [f"<th>{inline(c, ids, tag_owner)}</th>" for c in head]
-            html.append("</tr></thead><tbody>")
+            h = ["<table><thead><tr>"] + [f"<th>{inline_md(c)}</th>" for c in head] + ["</tr></thead><tbody>"]
             for r in rows:
-                html.append("<tr>" + "".join(f"<td>{inline(c, ids, tag_owner)}</td>" for c in r) + "</tr>")
-            html.append("</tbody></table>")
-            blocks.append("".join(html))
-            table = []
+                h.append("<tr>" + "".join(f"<td>{inline_md(c)}</td>" for c in r) + "</tr>")
+            h.append("</tbody></table>")
+            blocks.append("".join(h)); table = []
         if para:
-            blocks.append("<p>" + inline(" ".join(para), ids, tag_owner) + "</p>")
-            para = []
-
-    for line in lines[1:]:
+            blocks.append("<p>" + inline_md(" ".join(para)) + "</p>"); para = []
+    for line in markdown_links(body).splitlines():
         if line.startswith("|"):
-            if para:
-                flush()
+            if para: flush()
             table.append(line)
         elif not line.strip():
             flush()
         elif line.startswith("### "):
-            flush(); blocks.append(f"<h3>{inline(line[4:], ids, tag_owner)}</h3>")
+            flush(); blocks.append(f"<h3>{inline_md(line[4:])}</h3>")
         elif line.startswith("## "):
-            flush(); blocks.append(f"<h2>{inline(line[3:], ids, tag_owner)}</h2>")
+            flush(); blocks.append(f"<h2>{inline_md(line[3:])}</h2>")
         else:
-            if table:
-                flush()
+            if table: flush()
             para.append(line.strip())
     flush()
-    return title, "\n".join(blocks)
+    return "\n".join(blocks)
 
 
-def source_row(s: dict) -> str:
-    zbl = s.get("zbl") or ""
-    link = (f"<a href=\"{s['zblUrl']}\">{zbl}</a>" if zbl else "<span class='meta'>-</span>")
-    return (f"<tr><td>{s['shortName']}</td>"
-            f"<td>{s['title']}<br><span class='meta'>{s['edition']}</span></td>"
-            f"<td class='tag'>{link}</td></tr>")
+def add_heading_anchors(body: str) -> str:
+    def rep(m):
+        title, sid = m.group(1), m.group(2)
+        return f'<h2 id="{sid}">{title}<a class="anchor" href="#{sid}" aria-label="link to this section">#</a></h2>'
+    return re.sub(HEAD_RE.pattern.replace("^", "(?m)^"), rep, body)
 
 
-def main() -> None:
-    entries = []
-    tag_owner: dict[str, str] = {}
-    for path in sorted(ARTICLES.glob("*.md")):
-        meta, body = split(path.read_text())
-        meta["_body"] = body
-        meta["_path"] = path
-        entries.append(meta)
-        for m in ANCHOR_RE.finditer(body):
-            tag_owner[m.group(1)] = meta["id"]
+def strip_html(text: str) -> str:
+    text = re.sub(r"<script.*?</script>", " ", text, flags=re.S)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = html.unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
 
-    catalog = {s["id"]: s for s in json.loads(CATALOG.read_text())["sources"]}
-    ids = {m["id"] for m in entries}
-    OUT.mkdir(exist_ok=True)
 
-    def page(title: str, inner: str) -> str:
-        return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+# ------------------------------------------------------------------ page shell
+
+def shell(title: str, description: str, inner: str, sidebar: str, scripts: str = "") -> str:
+    return f"""<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)}</title><style>{CSS}</style>{KATEX}</head>
-<body><main>
-<header class="site"><a href="index.html">Hierarchical RG</a>
-<span>A wiki: unfinished, in draft</span></header>
+<title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(description[:200])}">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+{sidebar}
+</aside>
+<main>
 {inner}
-</main></body></html>"""
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'$',right:'$',display:false}}],throwOnError:false,ignoredClasses:['sim']}});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+{scripts}
+</body></html>"""
 
-    for meta in entries:
-        body = fences_to_details(meta["_body"])
-        body = rewrite_links(body, tag_owner, ids)
-        # Contents and section anchors
-        parts, cur, heads = [], [], []
-        for line in body.splitlines():
-            m = HEAD_RE.match(line)
-            if m:
-                if cur or not parts:
-                    parts.append("\n".join(cur))
-                    cur = []
-                heads.append((m.group(1), m.group(2)))
-                cur.append(f'<h2 id="{m.group(2)}">{m.group(1)}</h2>')
-            else:
-                cur.append(line)
-        parts.append("\n".join(cur))
-        lead, sections = parts[0], parts[1:]
-        toc = "".join(f'<li><a href="#{h[1]}">{h[0]}</a></li>' for h in heads)
-        body_html = f"""<h1>{meta['title']}</h1>
+
+def sidebar(articles, order, maps, active: str) -> str:
+    items = []
+    for n, aid in enumerate(order, start=1):
+        cls = ' class="active"' if aid == active else ""
+        items.append(f'<li><span class="num">{n}</span><a href="{aid}.html"{cls}>{articles[aid]["title"]}</a></li>')
+    mitems = []
+    for m in maps:
+        cls = ' class="active"' if "source-" + m["slug"] == active else ""
+        mitems.append(f'<li><a href="source-{m["slug"]}.html"{cls}>{m["title"].split(":")[0]}</a></li>')
+    return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2>Articles</h2><ol>{''.join(items)}</ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul>{''.join(mitems)}</ul></nav>
+<nav class="sec"><h2>On this site</h2><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#bibliography">Bibliography</a></li>
+</ul></nav>"""
+
+
+# ------------------------------------------------------------------ builders
+
+def build(out: Path) -> dict:
+    articles, order = load_articles()
+    maps = load_maps()
+    catalog = json.loads(CATALOG.read_text())["sources"]
+    by_id = {s["id"]: s for s in catalog}
+
+    tag_owner = {}
+    for aid, meta in articles.items():
+        for m in ANCHOR_RE.finditer(meta["body"]):
+            tag_owner[m.group(1)] = aid
+
+    out.mkdir(parents=True, exist_ok=True)
+    sim_data = simulate.build()
+    figs = simulate.figures()
+    used_sims: dict[str, dict] = {}
+    search_entries = []
+
+    # ---- articles
+    for aid in order:
+        meta = articles[aid]
+        body = fences_to_details(meta["body"])
+        body = rewrite_links(body, tag_owner)
+        body = add_heading_anchors(body)
+
+        def sim_slot(m):
+            name = m.group(1)
+            if name in sim_data:
+                used_sims[name] = sim_data[name]
+            title = m.group(2) or ""
+            return (f'<div class="sim" data-sim="{name}">'
+                    f'<div class="sim-title">{title}</div></div>')
+        body = SIM_RE.sub(sim_slot, body)
+
+        def fig_slot(match):
+            name, title = match.group(1), match.group(2) or ""
+            if name not in figs:
+                return ""
+            caption = f"<figcaption>{title}</figcaption>" if title else ""
+            return f'<figure class="fig">{figs[name]}{caption}</figure>'
+        body = FIG_RE.sub(fig_slot, body)
+
+        heads = re.findall(r'<h2 id="(section-[a-z0-9-]+)">(.*?)<a class="anchor"', body)
+        toc = "".join(f'<li><a href="#{sid}">{title}</a></li>' for sid, title in heads)
+        n_assert = len(ANCHOR_RE.findall(meta["body"]))
+        n = order.index(aid)
+        prev_link = (f'<a href="{order[n-1]}.html"><span class="dir">previous</span>{articles[order[n-1]]["title"]}</a>'
+                     if n > 0 else "<span></span>")
+        next_link = (f'<a href="{order[n+1]}.html"><span class="dir">next</span>{articles[order[n+1]]["title"]}</a>'
+                     if n + 1 < len(order) else "<span></span>")
+        lead, sep, rest = body.partition("<h2")
+        rest = sep + rest if sep else ""
+        inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Articles / {meta['title']}</p>
+<h1>{meta['title']}</h1>
 <p class="subtitle">{meta['subtitle']}</p>
-<p class="meta">{meta['kind']} &middot; {meta['category']} &middot; <span class="tag">{meta['id']}</span></p>
-<div class="note">Preview generated from the sources by <code>tools/preview.py</code>. Mathematics
-renders only if the KaTeX style sheet and script load from the network; the sources are the
-authority.</div>
+<p class="meta">{meta['kind']} &middot; {meta['category']} &middot; {len(heads)} sections &middot;
+{n_assert} tagged assertions &middot; <span class="tag">{aid}</span></p>
 {lead}
-<nav class="meta"><strong>Contents</strong><ol>{toc}</ol></nav>
-{''.join(sections)}"""
-        (OUT / f"{meta['id']}.html").write_text(page(meta["title"], body_html))
-        print("wrote", f"{meta['id']}.html")
+<details class="toc" open><summary>On this page</summary><ol>{toc}</ol></details>
+{rest}
+<div class="pager">{prev_link}{next_link}</div>
+<a class="top" href="#">back to top</a>"""
+        (out / f"{aid}.html").write_text(
+            shell(f"{meta['title']} — Hierarchical RG", meta["summary"], inner,
+                  sidebar(articles, order, maps, aid)))
+        search_entries.append({"url": f"{aid}.html", "title": meta["title"], "subtitle": meta["subtitle"],
+                               "summary": meta["summary"], "text": strip_html(body)[:4000]})
 
-    map_links = []
-    if SOURCES.is_dir():
-        for path in sorted(SOURCES.glob("*.md")):
-            mtitle, mbody = render_map(path.read_text(), ids, tag_owner)
-            slug = path.stem
-            (OUT / f"source-{slug}.html").write_text(page(mtitle, f"""<h1>{mtitle}</h1>
-<p class="meta">Reading map &middot; <span class="tag">source-{slug}</span></p>
-<div class="note">A reading map lists the works of a group, what each establishes, and where this
-wiki uses it. It is a finding aid, not a source of formal status or of locator-level accuracy.</div>
-{mbody}
-<p class="meta"><a href="index.html">All articles</a></p>"""))
-            print("wrote", f"source-{slug}.html")
-            map_links.append(f"<li><a href=\"source-{slug}.html\">{mtitle}</a></li>")
+    # ---- reading maps
+    for m in maps:
+        page = "source-" + m["slug"]
+        inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Reading maps / {html.escape(m['title'])}</p>
+<h1>{html.escape(m['title'])}</h1>
+<p class="meta">reading map &middot; <span class="tag">{page}</span></p>
+{map_body_to_html(m['body'])}
+<div class="pager"><a href="index.html"><span class="dir">back</span>Home</a><span></span></div>"""
+        (out / f"{page}.html").write_text(
+            shell(f"{m['title']} — Hierarchical RG", "A reading map for the wiki.", inner,
+                  sidebar(articles, order, maps, page)))
+        search_entries.append({"url": f"{page}.html", "title": m["title"], "subtitle": "reading map",
+                               "summary": "", "text": strip_html(map_body_to_html(m["body"]))[:4000]})
 
-    rows = "".join(
-        f"<tr><td><a href=\"{m['id']}.html\">{m['title']}</a><br><span class='meta'>{m['subtitle']}</span></td>"
-        f"<td>{m['summary']}</td></tr>" for m in entries)
-    index = f"""<h1>Hierarchical renormalisation group</h1>
-<p class="subtitle">Eight articles on the block-spin transformation, its exact recursion, its fixed points and their exponents.</p>
-<div class="note">Preview generated from the sources by <code>tools/preview.py</code>. Mathematics
-renders only if KaTeX loads from the network.</div>
-<table><tbody>{rows}</tbody></table>
-<h2 id="reading-maps">Reading maps</h2>
-<ul>{''.join(map_links)}</ul>
-<h2 id="sources">Sources cited</h2>
-<table><thead><tr><th>Author</th><th>Work</th><th>zbMATH</th></tr></thead><tbody>{''.join(source_row(s) for s in catalog.values())}</tbody></table>"""
-    (OUT / "index.html").write_text(page("Hierarchical RG", index))
-    print("wrote index.html")
+    # ---- home
+    cards = []
+    for n, aid in enumerate(order, start=1):
+        meta = articles[aid]
+        cards.append(f"""<div class="card"><span class="kind">{meta['kind']} · {meta['category']}</span>
+<h3><a href="{aid}.html">{meta['title']}</a></h3>
+<p class="sub">{meta['subtitle']}</p>
+<p class="sum">{meta['summary']}</p></div>""")
+    map_cards = "".join(f'<li><a href="source-{m["slug"]}.html">{html.escape(m["title"])}</a></li>' for m in maps)
+    def bib_row(source):
+        zbl = f'<a href="{source["zblUrl"]}">{source["zbl"]}</a>' if source.get("zbl") else "—"
+        return (f'<tr><td>{source["shortName"]}</td>'
+                f'<td>{source["title"]}<br><span class="meta">{source["edition"]}</span></td>'
+                f'<td class="num">{zbl}</td></tr>')
 
-    # local link check
-    bad = []
-    for f in OUT.glob("*.html"):
-        text = f.read_text()
-        for target in re.findall(r'href="([a-z0-9-]+\.html)(#[^"]*)?"', text):
-            if not (OUT / target[0]).exists():
-                bad.append((f.name, target[0]))
-    print("broken local links:", bad if bad else "none")
+    bib = "".join(bib_row(source) for source in catalog)
+    inner = f"""<h1>Hierarchical RG</h1>
+<p class="subtitle">Twelve articles on the block-spin transformation, its exact recursion, its fixed points and their exponents.</p>
+<p>The renormalisation group is exact on a hierarchical lattice: a block has no boundary, every
+pair between two children carries one coupling, and one decimation step is an operation on the law
+of a single number. This wiki develops that structure — the lattice, the recursion, the fixed
+points, the exponents, the literature — with complete proofs where they are short and precise
+attribution where they are not. Each article has a simulation or a worked computation attached
+where one is illuminating.</p>
+<h2 id="articles">The articles</h2>
+<div class="cards">{''.join(cards)}</div>
+<h2 id="maps">Reading maps</h2>
+<p>One finding aid per group of works: what each paper establishes and where the wiki uses it.</p>
+<ul>{map_cards}</ul>
+<h2 id="bibliography">Bibliography</h2>
+<p>{len(catalog)} works, with the zbMATH record where one exists.</p>
+<table><thead><tr><th>Author</th><th>Work</th><th>Zbl</th></tr></thead><tbody>{bib}</tbody></table>"""
+    (out / "index.html").write_text(
+        shell("Hierarchical RG — a wiki on the renormalisation group", "A wiki on the renormalisation group on hierarchical lattices.",
+              inner, sidebar(articles, order, maps, "index")))
+
+    # ---- search index, simulation data, assets
+    (out / "search-index.json").write_text(json.dumps(search_entries, ensure_ascii=False))
+    if used_sims:
+        blob = json.dumps(used_sims, ensure_ascii=False).replace("</", "<\\/")
+        for path in out.glob("*.html"):
+            text = path.read_text()
+            if 'data-sim="' in text and "sim-data" not in text:
+                text = text.replace("</main>", f'<script type="application/json" id="sim-data">{blob}</script>\n</main>')
+                path.write_text(text)
+
+    assets = out / "assets"
+    if assets.exists():
+        shutil.rmtree(assets)
+    assets.mkdir(parents=True)
+    for name in ("site.css", "sim.js", "search.js"):
+        shutil.copy2(STATIC / name, assets / name)
+    shutil.copytree(STATIC / "katex", assets / "katex")
+
+    return {"articles": len(order), "maps": len(maps), "pages": len(list(out.glob("*.html"))),
+            "sims": sorted(used_sims), "sources": len(catalog)}
+
+
+# ------------------------------------------------------------------ entry point
+
+def differing(a: Path, b: Path) -> list[str]:
+    problems = []
+    fa = sorted(p.relative_to(a) for p in a.rglob("*") if p.is_file())
+    fb = sorted(p.relative_to(b) for p in b.rglob("*") if p.is_file())
+    if [str(x) for x in fa] != [str(x) for x in fb]:
+        problems.append(f"file lists differ: {len(fa)} built, {len(fb)} committed")
+    for rel in fa:
+        if rel in fb and (a / rel).read_bytes() != (b / rel).read_bytes():
+            problems.append(f"differs: {rel}")
+    return problems
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(DEFAULT_OUT))
+    ap.add_argument("--check", action="store_true", help="fail if the committed site is stale")
+    args = ap.parse_args()
+
+    if args.check:
+        tmp = ROOT / ".scratch" / "build-check"
+        if tmp.exists():
+            shutil.rmtree(tmp)
+        stats = build(tmp)
+        problems = differing(tmp, DEFAULT_OUT)
+        print(f"checked {stats['pages']} pages against site/")
+        for p in problems[:20]:
+            print("FAIL  " + p)
+        if problems:
+            print(f"\n{len(problems)} difference(s); run python3 tools/preview.py")
+            return 1
+        print("site/ is up to date")
+        return 0
+
+    out = Path(args.out)
+    if out.exists():
+        shutil.rmtree(out)
+    stats = build(out)
+    label = out.resolve().relative_to(ROOT) if out.resolve().is_relative_to(ROOT) else out
+    print(f"wrote {stats['pages']} pages to {label}/ "
+          f"({stats['articles']} articles, {stats['maps']} maps, simulations: {', '.join(stats['sims']) or 'none'})")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

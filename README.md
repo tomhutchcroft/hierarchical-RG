@@ -31,15 +31,19 @@ paper establishes and which article uses it.
 | [Koch and Wittwer's non-Gaussian fixed point](wiki/articles/koch-wittwer-fixed-point.md) | A certified fixed point at explicit parameters, with no small parameter |
 | [Abdesselam's trajectory between two fixed points](wiki/articles/abdesselam-global-trajectory.md) | A whole orbit of the Euclidean renormalisation group, built from a one-dimensional iteration |
 
-The site is published on GitHub Pages by `.github/workflows/pages.yml`; see
-[wiki/README.md](wiki/README.md#publishing) for the one setting it needs.
+The site is built into `site/` and published on GitHub Pages, either directly from the branch
+(an `index.html` at the root redirects into `site/`, and `.nojekyll` stops Jekyll from
+converting the sources) or through `.github/workflows/pages.yml`. See
+[wiki/README.md](wiki/README.md#publishing).
 
 ## Checks
 
 ```sh
 python3 tools/check_wiki.py       # format, tags, links, citations, fences
+python3 tools/preview.py          # build site/
+python3 tools/check_site.py       # every local link, fragment and asset in site/
 python3 tools/numeric_checks.py   # the displayed identities, checked on finite blocks
-python3 tools/preview.py          # static preview in wiki/preview/
+python3 tools/test_sim.py         # the browser simulation code, checked in quickjs
 ```
 
 The numeric checks confirm the formulas the articles display (the variance recursion and its
