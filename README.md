@@ -10,6 +10,9 @@ The articles live in `wiki/articles/`, one topic each, grouped into three parts 
 lead of at most three paragraphs, `## Heading {#section-…}` sections, assertion anchors with
 reserved four-character tags, collapsed proofs, and citations by catalogue key.
 
+The objective, the acceptance criteria and the work queued next are in [GOALS.md](GOALS.md), which
+is written so that a fresh chat can continue the project.
+
 Start at [wiki/README.md](wiki/README.md) for the format and the checks, and
 [wiki/STYLE.md](wiki/STYLE.md) for the house style and notation. The literature each article
 draws on is mapped in `wiki/sources/`: one finding aid per group of works, listing what every
