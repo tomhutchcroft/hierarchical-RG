@@ -1,0 +1,77 @@
+name: Wiki site
+
+# Publishes the wiki on GitHub Pages.
+#
+# The built site is committed under site/, so publishing from the branch works without this
+# workflow; when it runs, it checks that the committed copy is current and deploys it as the
+# Pages artifact.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'tools/**'
+      - 'site/**'
+      - 'README.md'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Check the wiki
+        run: python3 tools/check_wiki.py
+
+      - name: Check the committed site is current
+        run: python3 tools/preview.py --check
+
+      - name: Check the site's links and assets
+        run: python3 tools/check_site.py
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  numerics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install numpy and quickjs
+        run: pip install --quiet numpy quickjs
+      - name: Check the displayed identities
+        run: python3 tools/numeric_checks.py
+      - name: Check the browser simulation code
+        run: python3 tools/test_sim.py
+      - name: Check that every formula renders
+        run: python3 tools/test_math.py
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
