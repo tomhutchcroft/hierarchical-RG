@@ -96,7 +96,7 @@
 
 <p>The derivative of the free energy in a level coupling identifies a block correlation, and this is the observable the renormalisation group controls.</p>
 <a id="tag-D6QL" data-assertion="proposition" data-title="Level couplings and the block-sum correlations"></a>
-<p>For $k\geq1$ let $T_k=\mathbb E_{\mathbb P_k}[S_1S_2]$, where $S_1$ and $S_2$ are the sums over two distinct children of $\Lambda_k$; by the symmetry of the model on $\Lambda_k$ this does not depend on which two children are chosen. Then</p>
+<p>For $k\geq1$ let $T_k=\mathbb E_{\mathbb P_k}[S_1S_2]$, where $S_1$ and $S_2$ are the sums over two distinct children of $\Lambda_k$; by <a href="/articles/hierarchical-symmetries/#section-consequences">the symmetry of the model on $\Lambda_k$</a> this does not depend on which two children are chosen. Then</p>
 <div class="math-display">$$\frac{\partial}{\partial J_k}\log Z_k(\beta)=\beta\,\frac{m(m-1)}{2}\,T_k,\qquad \frac{\partial}{\partial J_k}\log Z_n(\beta)=\beta\,\mathbb E_{\mathbb P_n}[Q_k]\quad(n\geq k).$$</div>
 :::details Proof of the derivative identity
 <p>Differentiating $Z_n=\int\exp(\beta\sum_{j\leq n}J_jQ_j)\prod_{x\in\Lambda_n}\varrho(d\sigma_x)$ in $J_k$ brings down the factor $\beta Q_k$, so the derivative is $\beta\mathbb E_{\mathbb P_n}[Q_k]$, which is the second identity.</p>

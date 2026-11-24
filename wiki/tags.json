@@ -220,6 +220,18 @@
     {
       "tag": "G2TR",
       "state": "allocated"
+    },
+    {
+      "tag": "H8SN",
+      "state": "allocated"
+    },
+    {
+      "tag": "H3WQ",
+      "state": "allocated"
+    },
+    {
+      "tag": "H6LV",
+      "state": "allocated"
     }
   ]
 }

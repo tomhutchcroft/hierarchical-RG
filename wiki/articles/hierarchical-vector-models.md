@@ -71,6 +71,8 @@
 :::details Proof
 <p>Rotations preserve the inner product, so the tilted product measure and the sum $\sum_as_a$ are transported by $Q$; this gives the covariance. For the Gaussian prior the computation is componentwise: the exponent is $b\sum_{a&lt;a'}\sum_{j=1}^r s_{a,j}s_{a',j}$, a sum of $r$ copies of the scalar exponent, so the tilted law is a product over $j$ of scalar tilted laws, and the law of the sum is $N(0,v'I_r)$ with $v'$ the scalar value. The scalar recursion and its closed form then apply to each component, and neither the critical coupling $\beta_c=1/\sum_{x\neq0}J(\lVert x\rVert)$ nor the multiplier depends on $r$.</p>
 :::
+<p>A second symmetry acts on the lattice rather than on $\mathbb R^r$. The recursion is a map on the law of a single block sum, and that is a consequence of the $m$ children of a block having the same law and of their sums being exchangeable — statement (ii) of <a href="/articles/hierarchical-symmetries/">the isometry article</a> — which holds with all $r$ components moved together. Rotation covariance constrains the state of the recursion inside $\mathbb R^r$; the lattice symmetry is what makes that state one variable rather than the joint law of the $m$ child sums.</p>
+
 <p>The proposition is the reason the mean-field exponents of the vector model are the scalar ones. It also isolates what continuous symmetry can change: nothing in the Gaussian orbit, and therefore nothing in the two renormalisation-group numbers $\kappa$ and $\nu$ at the level of the Gaussian fixed point. The change appears at the non-Gaussian fixed point, whose linearisation acquires a marginal direction in the angular variable.</p>
 
 ## The direction of a rotation invariant block spin {#section-direction}

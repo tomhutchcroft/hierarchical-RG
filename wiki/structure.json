@@ -8,6 +8,7 @@
       "intro": "Three articles establish the object everything else rests on: a group whose balls are cosets of nested finite-index subgroups, with the same number of children at every scale. The child decomposition says that every pair of vertices in different children of a block sits at the top level of that block, which is what makes the energy split into the children plus one interaction between their sums. The decimation identity is that statement written as an identity for partition functions, and it is the whole reason the renormalisation group is exact here. The third article isolates what the argument actually uses, and carries it to the p-adic integers.",
       "articles": [
         "hierarchical-lattice",
+        "hierarchical-symmetries",
         "hierarchical-gibbs-measure",
         "ultrametric-block-systems"
       ]

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translations and coordinate-wise bijections are isometries, and act transitively on levels — Hierarchical RG</title>
+<meta name="description" content="theorem: Translations and coordinate-wise bijections are isometries, and act transitively on levels">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / H3WQ</p>
+<h1>Translations and coordinate-wise bijections are isometries, and act transitively on levels</h1>
+<p class="meta">theorem &middot; <span class="tag">H3WQ</span> &middot; in
+<a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></p>
+<div class="assertion">Translations are isometries, and so is every coordinate-wise bijection. Consequently, for each $n\geq0$ and every pair of ordered pairs $(x,y)$, $(x',y')$ with $\operatorname{lev}(y-x)=\operatorname{lev}(y'-x')=n$, there is an isometry $\phi$ with $\phi(x)=x'$ and $\phi(y)=y'$.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>A translation satisfies $\operatorname{lev}((x+v)-(y+v))=\operatorname{lev}(x-y)$ because levels of differences are translation invariant, which was proved in <a href="hierarchical-lattice.html#section-blocks">the lattice article</a>.</p>
+<p>For a coordinate-wise bijection, the coordinates at which $\psi_\sigma(x)$ and $\psi_\sigma(y)$ differ are exactly the coordinates at which $x$ and $y$ differ: if $x^{(i)}\neq y^{(i)}$ then $\sigma_i(x^{(i)})\neq\sigma_i(y^{(i)})$ because $\sigma_i$ is injective, and if $x^{(i)}=y^{(i)}$ then the images are equal. The set of indices at which two vertices differ is therefore preserved, so its maximum is preserved, which is the level.</p>
+<p>For transitivity, let $x,y$ have $y-x=z$ of level $n$, and let $x',y'$ have $y'-x'=z'$ of level $n$. Translate by $-x$: the pair becomes $(0,z)$. By the previous paragraph, choose bijections $\sigma_i$ of $A$ with $\sigma_i(z^{(i)})=z'^{(i)}$ for $i\leq n$ and arbitrary for $i&gt;n$ (possible because $A$ is a set and $\sigma_i$ is only required to take one prescribed value); the corresponding coordinate-wise bijection fixes $0$ and sends $z$ to $z'$. Composing with the translation by $x'$ gives an isometry taking $(x,y)$ to $(x',y')$.</p>
+</div></details>
+<p>The proof uses no structure of $A$ beyond its cardinality, so the statement holds for the coefficient group $\mathbb Z^d$ as well, where the lattice is the direct sum of copies of $\mathbb Z^d$: the levels are unaffected.</p>
+
+## Consequences that were being assumed {#section-consequences}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-symmetries.html#tag-H3WQ">The isometries of the hierarchical lattice</a>. To cite this assertion, link to
+<span class="tag">tag-H3WQ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-symmetries.html#tag-H3WQ"><span class="dir">context</span>The isometries of the hierarchical lattice</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

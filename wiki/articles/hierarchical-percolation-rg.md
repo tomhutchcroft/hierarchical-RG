@@ -68,7 +68,7 @@
 <div class="math-display">$$a\,L^{-(d-\alpha)n}\ \leq\ \frac{1}{L^{dn}}\sum_{x\in\Lambda_n\setminus\Lambda_{n-1}}\tau^{\Lambda_n}_{\beta_c}(0,x)\ \leq\ \frac{1}{L^{dn}}\sum_{x\in\Lambda_n}\tau_{\beta_c}(0,x)\ \leq\ A\,L^{-(d-\alpha)n}.$$</div>
 <p>If in addition $J$ is radial, then for every $x,y\in\mathbb H^d_L$,</p>
 <div class="math-display">$$a\,\langle x-y\rangle^{-(d-\alpha)}\ \leq\ \tau^{\Lambda(x,y)}_{\beta_c}(x,y)\ \leq\ \tau_{\beta_c}(x,y)\ \leq\ A\,\langle x-y\rangle^{-(d-\alpha)},$$</div>
-<p>where $\Lambda(x,y)$ is the smallest block containing both. Both constants are those of the averaged statement; the passage from averages to points uses the level isometries of the lattice.</p>
+<p>where $\Lambda(x,y)$ is the smallest block containing both. Both constants are those of the averaged statement; the passage from averages to points uses <a href="/articles/hierarchical-symmetries/#section-isometries">the level isometries of the lattice</a>.</p>
 <p>The averaged statement is Theorem 1.1 and the pointwise one Corollary 1.2 of Hutchcroft [@hutchcroft-hierarchical-2021], where the lower bound is proved for connections inside the smallest common block and the upper bound for unrestricted connections. The proof runs through <a href="/articles/hierarchical-lattice/#section-children">block quantiles</a>: the amplification of the previous section shows that $R_n(\beta)^2$ is at most a constant times $L^{(d+\alpha)n}$ at $\beta_c$, sharpness supplies a lower bound on the flux of intensity leaving a block, and the two together pin $\chi_n$ between constants times $L^{\alpha n}$; the conversion to connection probabilities is a BK decomposition according to the smallest block containing the path.</p>
 
 ## The triangle threshold {#section-triangle}
