@@ -1,0 +1,264 @@
+{
+  "sources": [
+    {
+      "id": "dyson-1969",
+      "shortName": "Dyson",
+      "title": "Existence of a phase-transition in a one-dimensional Ising ferromagnet",
+      "author": "F. J. Dyson",
+      "year": 1969,
+      "edition": "Comm. Math. Phys. 12 (1969), 91-107",
+      "url": "https://doi.org/10.1007/BF01645907",
+      "description": "The one-dimensional Ising model with pair couplings decaying as a power: a transition exists for decay exponent between one and two. Introduces the hierarchical approximation that later carries the renormalisation group exactly."
+    },
+    {
+      "id": "bleher-sinai-1973",
+      "shortName": "Bleher–Sinai",
+      "title": "Investigation of the critical point in models of the type of Dyson's hierarchical models",
+      "author": "P. M. Bleher and Ya. G. Sinai",
+      "year": 1973,
+      "edition": "Comm. Math. Phys. 33 (1973), 23-42",
+      "url": "https://doi.org/10.1007/BF01645604",
+      "description": "The renormalisation transformation of the hierarchical model as a nonlinear map on probability measures, with the critical point identified as the boundary between two domains of attraction."
+    },
+    {
+      "id": "bleher-sinai-1975",
+      "shortName": "Bleher–Sinai",
+      "title": "Critical indices for Dyson's asymptotically-hierarchical models",
+      "author": "P. M. Bleher and Ya. G. Sinai",
+      "year": 1975,
+      "edition": "Comm. Math. Phys. 45 (1975), 247-278",
+      "url": "https://doi.org/10.1007/BF01608331",
+      "description": "Critical indices of the hierarchical model from the spectrum of the linearised renormalisation map, including the non-Gaussian fixed point and the classical region."
+    },
+    {
+      "id": "gawedzki-kupiainen-1980",
+      "shortName": "Gawedzki–Kupiainen",
+      "title": "A rigorous block spin approach to massless lattice theories",
+      "author": "K. Gawedzki and A. Kupiainen",
+      "year": 1980,
+      "edition": "Comm. Math. Phys. 77 (1980), 31-64",
+      "url": "https://doi.org/10.1007/BF01205038",
+      "description": "A convergent block-spin expansion for lattice field theories, with the hierarchical model as the worked example and as the approximation justifying the Euclidean expansion."
+    },
+    {
+      "id": "gawedzki-kupiainen-1983",
+      "shortName": "Gawedzki–Kupiainen",
+      "title": "Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation",
+      "author": "K. Gawedzki and A. Kupiainen",
+      "year": 1983,
+      "edition": "Comm. Math. Phys. 89 (1983), 191-220",
+      "url": "https://doi.org/10.1007/BF01211827",
+      "description": "Existence and local analysis of the nontrivial fixed points of the hierarchical renormalisation map: the epsilon expansion, the unstable manifold, and its normal form."
+    },
+    {
+      "id": "gawedzki-kupiainen-1984",
+      "shortName": "Gawedzki–Kupiainen",
+      "title": "Non-Gaussian scaling limits. Hierarchical model approximation",
+      "author": "K. Gawedzki and A. Kupiainen",
+      "year": 1984,
+      "edition": "J. Statist. Phys. 35 (1984), 267-284",
+      "url": "https://doi.org/10.1007/BF01014384",
+      "description": "Scaling limits of the hierarchical model governed by the nontrivial fixed point, and the renormalisation-group flow of the relevant direction around it."
+    },
+    {
+      "id": "aizenman-fernandez-1988",
+      "shortName": "Aizenman-Fernandez",
+      "title": "Critical exponents for long-range interactions",
+      "author": "M. Aizenman and R. Fernandez",
+      "year": 1988,
+      "edition": "Lett. Math. Phys. 16 (1988), 39-49",
+      "url": "https://doi.org/10.1007/BF00398169",
+      "description": "Classical values of the long-range Ising exponents in the mean-field region, with the marginal case included."
+    },
+    {
+      "id": "fisher-ma-nickel-1972",
+      "shortName": "Fisher–Ma–Nickel",
+      "title": "Critical exponents for long-range interactions",
+      "author": "M. E. Fisher, S.-k. Ma and B. G. Nickel",
+      "year": 1972,
+      "edition": "Phys. Rev. Lett. 29 (1972), 917-920",
+      "url": "https://doi.org/10.1103/PhysRevLett.29.917",
+      "description": "The classical long-range exponent values as functions of the decay exponent, and the upper critical decay rate at which they cease to hold."
+    },
+    {
+      "id": "koval-meester-trapman-2012",
+      "shortName": "Koval-Meester-Trapman",
+      "title": "Long-range percolation on the hierarchical lattice",
+      "author": "V. Koval, R. Meester and P. Trapman",
+      "year": 2012,
+      "edition": "Electron. J. Probab. 17 (2012), no. 57",
+      "url": "https://doi.org/10.1214/EJP.v17-1977",
+      "description": "The phase transition of long-range percolation on the hierarchical lattice: a finite critical intensity exactly when the kernel exponent is below the dimension, and no infinite cluster at criticality."
+    },
+    {
+      "id": "hutchcroft-hierarchical-2021",
+      "shortName": "Hutchcroft",
+      "title": "The critical two-point function for long-range percolation on the hierarchical lattice",
+      "author": "T. Hutchcroft",
+      "year": 2021,
+      "edition": "arXiv:2103.17013",
+      "url": "https://arxiv.org/abs/2103.17013",
+      "description": "Critical connection probabilities on the hierarchical lattice of order the distance to the power minus the dimension minus the kernel exponent, the volume exponent obstruction above the triangle threshold, and mean-field consequences below it."
+    },
+    {
+      "id": "griffiths-1967",
+      "shortName": "Griffiths",
+      "title": "Correlations in Ising ferromagnets",
+      "author": "R. B. Griffiths",
+      "year": 1967,
+      "edition": "J. Math. Phys. 8 (1967), 478-489",
+      "url": "https://doi.org/10.1063/1.1705219",
+      "description": "The correlation inequalities for ferromagnetic Ising systems: monotonicity in the couplings and fields, and the positivity of the correlation of two disjoint sets of spins."
+    },
+    {
+      "id": "van-enter-fernandez-sokal-1993",
+      "shortName": "van Enter–Fernandez–Sokal",
+      "title": "Regularity properties and pathologies of position-space renormalization-group transformations: scope and limitations of Gibbsian theory",
+      "author": "A. C. D. van Enter, R. Fernandez and A. D. Sokal",
+      "year": 1993,
+      "edition": "J. Statist. Phys. 72 (1993), 879-1167",
+      "url": "https://doi.org/10.1007/BF01048183",
+      "description": "Block-spin transformations of Gibbs measures need not be Gibbs measures, so position-space decimation does not preserve a space of interactions in general."
+    },
+    {
+      "id": "heydenreich-hofstad-sakai-2008",
+      "shortName": "Heydenreich–van der Hofstad–Sakai",
+      "title": "Mean-field behavior for long- and finite range Ising model, percolation and self-avoiding walk",
+      "author": "M. Heydenreich, R. van der Hofstad and A. Sakai",
+      "year": 2008,
+      "edition": "J. Statist. Phys. 132 (2008), 1001-1049",
+      "url": "https://doi.org/10.1007/s10955-008-9580-5",
+      "description": "Lace-expansion proof of mean-field behaviour for long-range models, with the dimension thresholds in terms of the decay exponent."
+    },
+    {
+      "id": "brydges-mitter-scoppola-2003",
+      "shortName": "Brydges-Mitter-Scoppola",
+      "title": "Critical (Phi^4) in three dimensions",
+      "author": "D. C. Brydges, P. K. Mitter and B. Scoppola",
+      "year": 2003,
+      "edition": "Comm. Math. Phys. 240 (2003), 281-327",
+      "url": "https://doi.org/10.1007/s00220-003-0895-4",
+      "description": "A renormalisation-group trajectory for a critical Euclidean field theory, the argument being organised by the hierarchical analysis of the same map."
+    },
+    {
+      "id": "bauerschmidt-brydges-slade-2019",
+      "shortName": "Bauerschmidt-Brydges-Slade",
+      "title": "Introduction to a Renormalisation Group Method",
+      "author": "R. Bauerschmidt, D. C. Brydges and G. Slade",
+      "year": 2019,
+      "edition": "Lecture Notes in Mathematics 2242, Springer, 2019",
+      "url": "https://doi.org/10.1007/978-981-32-9593-3",
+      "description": "Self-contained development of the renormalisation group for lattice field theory, beginning from the hierarchical model as the model in which the map is a one-variable recursion."
+    },
+    {
+      "id": "bleher-major-1984",
+      "shortName": "Bleher–Major",
+      "title": "Renormalization of Dyson's hierarchical vector valued φ⁴ model at low temperatures",
+      "author": "P. M. Bleher and P. Major",
+      "year": 1984,
+      "edition": "Comm. Math. Phys. 95 (1984), 487-532",
+      "url": "https://doi.org/10.1007/BF01210834",
+      "description": "The renormalisation of the vector-valued hierarchical φ⁴ model in its low-temperature phase, where the continuous symmetry leaves a Goldstone direction."
+    },
+    {
+      "id": "bleher-major-1987",
+      "shortName": "Bleher–Major",
+      "title": "Critical phenomena and universal exponents in statistical physics. On Dyson's hierarchical model",
+      "author": "P. M. Bleher and P. Major",
+      "year": 1987,
+      "edition": "Ann. Probab. 15 (1987), 431-477",
+      "url": "https://doi.org/10.1214/aop/1176992155",
+      "description": "A survey of the hierarchical model as a problem about the limit distribution of partial sums of strongly dependent variables: critical behaviour and exponents with sketches of proofs, the vector case, and conjectures."
+    },
+    {
+      "id": "bleher-major-2021",
+      "shortName": "Bleher–Major",
+      "title": "A Thouless-like effect in the Dyson hierarchical model with continuous symmetry",
+      "author": "P. M. Bleher and P. Major",
+      "year": 2021,
+      "edition": "Pure Appl. Funct. Anal. 6 (2021), 101-175",
+      "url": "https://arxiv.org/abs/math-ph/0201014",
+      "description": "Dyson's conjecture for the r-component hierarchical model: a phase transition exactly when the interaction sequence fails to be summable, no Thouless effect in the spontaneous magnetisation, and a uniform limit law on the sphere for the normalised average spin at criticality."
+    },
+    {
+      "id": "bleher-2012",
+      "shortName": "Bleher",
+      "title": "Hierarchical models and renormalisation group. Critical phenomena in the Dyson hierarchical model and renormalisation group",
+      "author": "P. M. Bleher",
+      "year": 2012,
+      "edition": "Eur. Phys. J. H 37 (2012), 605-618",
+      "url": "https://doi.org/10.1140/epjh/e2012-10053-x",
+      "description": "A historical account of the Moscow seminar on mathematical statistical physics and of the renormalisation group for Dyson's hierarchical model."
+    },
+    {
+      "id": "sinai-1982",
+      "shortName": "Sinai",
+      "title": "Theory of Phase Transitions: Rigorous Results",
+      "author": "Ya. G. Sinai",
+      "year": 1982,
+      "edition": "Pergamon Press, 1982",
+      "url": "https://doi.org/10.1016/B978-0-08-026469-1.50005-5",
+      "description": "The rigorous theory of phase transitions and limit Gibbs distributions, with the renormalisation group for hierarchical models as its worked example."
+    },
+    {
+      "id": "koch-wittwer-1986",
+      "shortName": "Koch–Wittwer",
+      "title": "A non-Gaussian renormalization group fixed point for hierarchical scalar lattice field theories",
+      "author": "H. Koch and P. Wittwer",
+      "year": 1986,
+      "edition": "Comm. Math. Phys. 106 (1986), 495-532",
+      "url": "https://doi.org/10.1007/BF01207260",
+      "description": "A computer-assisted proof of a nontrivial fixed point of the hierarchical renormalisation map for scalar lattice fields, with no small parameter and no epsilon expansion."
+    },
+    {
+      "id": "koch-wittwer-1991",
+      "shortName": "Koch–Wittwer",
+      "title": "On the renormalization group transformation for scalar hierarchical models",
+      "author": "H. Koch and P. Wittwer",
+      "year": 1991,
+      "edition": "Comm. Math. Phys. 138 (1991), 537-568",
+      "url": "https://doi.org/10.1007/BF02102041",
+      "description": "The functional-analytic framework for the hierarchical renormalisation map on scalar models: the space of interactions, the map, and the estimates the fixed-point proof rests on."
+    },
+    {
+      "id": "koch-wittwer-1994",
+      "shortName": "Koch–Wittwer",
+      "title": "A nontrivial renormalization group fixed point for the Dyson-Baker hierarchical model",
+      "author": "H. Koch and P. Wittwer",
+      "year": 1994,
+      "edition": "Comm. Math. Phys. 164 (1994), 627-647",
+      "url": "https://doi.org/10.1007/BF02101493",
+      "description": "The same programme for the hierarchical model built on the Baker map, where the block structure comes from a piecewise linear expanding map of the interval."
+    },
+    {
+      "id": "abdesselam-2007",
+      "shortName": "Abdesselam",
+      "title": "A complete renormalization group trajectory between two fixed points",
+      "author": "A. Abdesselam",
+      "year": 2007,
+      "edition": "Comm. Math. Phys. 276 (2007), 727-772",
+      "url": "https://doi.org/10.1007/s00220-007-0352-x",
+      "description": "A rigorous nonperturbative construction of a massless trajectory of Wilson's exact renormalisation group joining the ultraviolet Gaussian fixed point to the nontrivial infrared fixed point, for a three-dimensional model with modified propagator."
+    },
+    {
+      "id": "abdesselam-2009",
+      "shortName": "Abdesselam",
+      "title": "Renormalization group trajectories between two fixed points",
+      "author": "A. Abdesselam",
+      "year": 2009,
+      "edition": "Proc. XVI Int. Congr. Math. Phys. (Prague), 2010",
+      "url": "https://arxiv.org/abs/0910.1063",
+      "description": "A six-page account of the construction of complete trajectories between fixed points: a fixed point argument in a Banach space of sequences obtained by perturbing a nonlinear one-dimensional iteration, without the hierarchical approximation."
+    },
+    {
+      "id": "abdesselam-2018",
+      "shortName": "Abdesselam",
+      "title": "Towards three-dimensional conformal probability",
+      "author": "A. Abdesselam",
+      "year": 2018,
+      "edition": "p-Adic Numbers Ultrametric Anal. Appl. 10 (2018), 233-247",
+      "url": "https://arxiv.org/abs/1511.03180",
+      "description": "The ultrametric and p-adic counterparts of the hierarchical model, and the renormalisation group on them, as a route to a three-dimensional conformal field theory."
+    }
+  ]
+}

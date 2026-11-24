@@ -1,0 +1,115 @@
+---
+{
+  "id": "hierarchical-and-euclidean-rg",
+  "title": "Hierarchical and Euclidean renormalisation",
+  "subtitle": "Why the recursion closes here, what fails on the lattice, and how the model is used anyway.",
+  "kind": "proposition",
+  "category": "Renormalisation group",
+  "summary": "The hierarchical recursion is exact because a block has no boundary: all pairs between two children carry one coupling, so the decimated state is a function of the child states alone. On the Euclidean lattice a block has a boundary of codimension one, the effective interaction after decimation depends on the geometry of the boundary and not on block sums, and the decimated measure need not be Gibbsian. The hierarchical model is nevertheless the reference for power counting, for the epsilon expansion and for the local analysis of the renormalisation map.",
+  "context": [
+    "The hierarchical lattice has $L\\geq2$, $d\\geq1$, $m=L^d$; the Euclidean lattice is $\\mathbb Z^d$ with the $L$-block partition.",
+    "Interactions are between pairs, with couplings constant on levels in the hierarchical case and translation invariant in the Euclidean case.",
+    "Only the geometry of one decimation step is at issue; the analytic questions of the Euclidean renormalisation group are referred to the sources."
+  ],
+  "related": [
+    "hierarchical-lattice",
+    "hierarchical-gibbs-measure",
+    "bleher-sinai-fixed-point"
+  ],
+  "sourceIds": [
+    "gawedzki-kupiainen-1980",
+    "gawedzki-kupiainen-1983",
+    "van-enter-fernandez-sokal-1993",
+    "brydges-mitter-scoppola-2003",
+    "bauerschmidt-brydges-slade-2019",
+    "dyson-1969",
+    "abdesselam-2007"
+  ],
+  "aliases": [
+    "Euclidean renormalisation group",
+    "block spin transformation on the lattice",
+    "non-Gibbsian",
+    "hierarchical approximation",
+    "exact decimation"
+  ]
+}
+---
+
+<p>The <a href="/articles/hierarchical-gibbs-measure/#section-decimation">decimation identity</a> is an identity, and not an approximation, because of one geometric fact: any two vertices in different children of a hierarchical block are at the same distance, so every pair joining two children carries the same coupling and the interaction between them is a function of the two block sums. A block has no boundary in the sense that no pair of its vertices is closer to the outside than another, and its children are congruent copies of itself. The recursion therefore closes on the law of one number.</p>
+
+<p>On $\mathbb Z^d$ none of this holds. A cube of side $L^n$ has a boundary of codimension one: the fraction of pairs at distance of order $L^n$ that join two neighbouring blocks is small, the number of nearest-neighbour edges crossing the boundary is of order $L^{(d-1)n}$ rather than $L^{dn}$, and the interaction between two blocks depends on whether they share a face, an edge or a corner. After one decimation step the effective interaction between two block magnetisations is a sum over a boundary whose size depends on the pair, and after two steps the interaction acquires a dependence on the shape of the interface. There is no finite-dimensional family of interactions closed under the operation, and there is a stronger obstruction: the decimated measure of a Gibbs measure need not be Gibbsian at all [@van-enter-fernandez-sokal-1993].</p>
+
+<p>What the hierarchical model supplies in spite of this is the local structure of the renormalisation map itself: its fixed points, the dimension of the unstable manifold, the eigenvalue problem, the $\varepsilon$-expansion about the upper critical exponent, and the mechanism by which the nonlinearity is irrelevant [@gawedzki-kupiainen-1983]. Those are the inputs of the Euclidean renormalisation group, and the hierarchical model is the setting in which they can be established; the transfer is the programme of Gawedzki and Kupiainen for lattice field theory [@gawedzki-kupiainen-1980], and of the renormalisation-group analysis of critical $(\Phi^4)_3$ and related models [@brydges-mitter-scoppola-2003] [@bauerschmidt-brydges-slade-2019].</p>
+
+## Definitions and setting {#section-setting}
+
+<p>Let $L\geq2$. On the hierarchical lattice the level-$n$ block is the subgroup $\Lambda_n$ of the <a href="/articles/hierarchical-lattice/">lattice article</a>, its children are the cosets of $\Lambda_{n-1}$, and the decimation state at level $n$ is the law of the block spin $S_{\Lambda_n}$. On $\mathbb Z^d$ the level-$n$ block at $x$ is the cube $x+[0,L^n)^d\cap\mathbb Z^d$, its children are the $L^d$ subcubes of side $L^{n-1}$, and the decimation state at level $n$ is the joint law of the $L^d$ block magnetisations of the children together with the fine configuration inside them.</p>
+<p>An interaction is a function $\Phi$ on configurations; a <em>decimation step</em> maps the Gibbs measure with interaction $\Phi$ on the fine lattice to the law of the coarse variables. A family of interactions is <em>closed</em> if the decimated measure is again a Gibbs measure with an interaction in the family, for every member of the family and every choice of the coarse-graining scale.</p>
+
+## What closes the recursion {#section-exactness}
+
+<a id="tag-X5QM" data-assertion="proposition" data-title="Exactness of decimation is a property of the block geometry"></a>
+<p>Suppose that a block $B$ is the disjoint union of $m$ children $B_1,\ldots,B_m$ and that the interaction is a sum over unordered pairs of a coupling that is constant on the set of pairs joining two given children. Then the energy of a configuration on $B$ is a function of the child configurations through the $m$ block sums alone, and the law of the $m$-tuple of block sums under the Gibbs measure of $B$ is determined by the interaction inside a child and by the $m(m-1)/2$ couplings between children. If in addition every child is isomorphic to $B$ with the same internal interaction, one decimation step is the map $\mathcal T_b$ of <a href="/articles/renormalisation-group-map/">the map article</a>, and the family of interactions on the scale of a block is closed.</p>
+:::details Proof of the exactness criterion
+<p>By hypothesis every pair $\{x,y\}$ with $x\in B_i$, $y\in B_j$, $i\neq j$, carries the same coupling $b_{ij}$, so its contribution to the energy is $-b_{ij}\sigma_x\sigma_y$ and the sum over such pairs is $-b_{ij}S_iS_j$ with $S_i=\sum_{x\in B_i}\sigma_x$. The pairs inside a child contribute the internal energy of that child, and no other pairs exist. Hence the total energy is $\sum_iH_{B_i}(\sigma^{(i)})-\sum_{i&lt;j}b_{ij}S_iS_j$, a function of the child configurations through the sums and of the internal energies. Dividing by the partition function and integrating over the internal configurations at fixed sums gives the stated dependence; if all children are isomorphic and $b_{ij}=b$ for all $i\neq j$, this is the tilt-plus-summation of $\mathcal T_b$.</p>
+:::
+<p>The hypothesis of the proposition is what the <a href="/articles/hierarchical-lattice/#section-children">child decomposition</a> provides. Every pair of distinct children of $\Lambda_n$ is joined by pairs of the same level $n$, so $b_{ij}=J_n$ for all $i\neq j$; every child is a translate of $\Lambda_{n-1}$, so the internal interaction is the same function; and the block at level $n$ is the block at level $1$ with the scale changed, which is the self-similarity that lets one map serve at every scale.</p>
+<a id="tag-Z7MR" data-assertion="proposition" data-title="The Euclidean block has a boundary and its decimation is not a function of block sums"></a>
+<p>Let $B=[0,L^n)^d\cap\mathbb Z^d$ with $n\geq1$ and $L\geq2$, and let $B_1,B_2$ be two subcubes of side $L^{n-1}$. The number of unordered pairs $\{x,y\}$ with $x\in B_1$, $y\in B_2$ is $L^{2d(n-1)}$, and the number of such pairs that are nearest neighbours is at most $dL^{d(n-1)}$. Moreover the fraction of nearest-neighbour edges of $\mathbb Z^d$ that join two distinct $L$-blocks equals $1/L$, independently of the scale.</p>
+:::details Proof of the boundary counts
+<p>The two cubes each have $L^{d(n-1)}$ vertices, so there are $L^{2d(n-1)}$ unordered pairs. Each vertex has $2d$ neighbours, so the number of neighbouring pairs between the two cubes is at most $2dL^{d(n-1)}/2=dL^{d(n-1)}$: this is the bound for the count of pairs, and the exponent $d(n-1)$ against $2d(n-1)$ is the statement that only a fraction $L^{-d(n-1)}$ of the pairs are nearest neighbours.</p>
+<p>For the fraction of edges, count in the infinite lattice. Each block of the $L$-partition contains $L^d$ vertices; the nearest-neighbour edges with both endpoints in it are $dL^{d-1}(L-1)$, since there are $d$ directions and $L^{d-1}(L-1)$ edges in each. The number of edges per vertex of $\mathbb Z^d$ is $d$, so the number of edges per block is $dL^d$, and the fraction with both endpoints in the same block is $\frac{dL^{d-1}(L-1)}{dL^d}=\frac{L-1}{L}$. The crossing fraction is the complement, $1/L$.</p>
+:::
+<p>Two things follow. A decimation step on $\mathbb Z^d$ cannot be described by a handful of couplings between neighbouring block magnetisations, because the interaction between two blocks is carried by a boundary of size $L^{(d-1)n}$ whose shape depends on the relative position of the blocks; and the interaction between two blocks at a given displacement is not a function of the distance alone unless the lattice and the blocks are chosen with exceptional care. The hierarchical lattice avoids both by making the boundary a point: the children of a block are in bijection with a finite set, and the interaction between any two of them has the same strength.</p>
+
+## What fails beyond the geometry {#section-failure}
+
+<p>The geometric obstruction is the visible one; there is a second, stronger, one. Decimation of a Gibbs measure need not produce a Gibbs measure.</p>
+<a id="tag-Q2LN" data-assertion="theorem" data-title="Block-spin transformations can destroy the Gibbs property"></a>
+<p>There are translation-invariant Gibbs measures for finite-range lattice interactions whose image under a block-spin transformation is not a Gibbs measure for any interaction, and there are models for which the image is Gibbsian but with an interaction that is not absolutely summable. Consequently position-space decimation does not define a map on a space of interactions in general [@van-enter-fernandez-sokal-1993].</p>
+<p>The reason is a long-range dependence in the coarse variables that is invisible in the fine ones: conditioning on the outside of a region in the coarse lattice constrains the fine configuration in a way that is not mediated by finitely many coarse variables, so the conditional probabilities of the coarse measure fail the Dobrushin-Lanford-Ruelle form. The hierarchical model is immune because its coarse variables are the block sums and a block interacts with the rest of the lattice through its sum alone, so conditioning on the outside of a block constrains the block only through one number.</p>
+
+## Consequences and applications {#section-consequences}
+
+<p><em>The reference model for the local analysis.</em> The renormalisation map of a hierarchical model is a nonlinear map on a space of measures with exponential moments, and the analysis of its fixed points, its unstable manifold and the $\varepsilon$-expansion can be carried out completely, as in <a href="/articles/bleher-sinai-fixed-point/">the Bleher–Sinai article</a>. This is the source of the structural facts that the Euclidean theory reproduces: two relevant directions, one of which is the thermal one; the irrelevance of the quartic coupling below the upper critical exponent; the analytic form of the corrections to scaling; and complex eigenvalues producing oscillatory corrections [@gawedzki-kupiainen-1983].</p>
+
+<p><em>The approximation scheme.</em> Gawedzki and Kupiainen organise the rigorous renormalisation group for a lattice field theory as a convergent expansion whose terms are indexed by the hierarchical approximation of the fluctuation covariance and by the corrections to it [@gawedzki-kupiainen-1980]. The hierarchical model is then not an analogy but the leading term of an expansion, and the control of the remainder is the technical content of the method.</p>
+
+<p><em>A whole orbit, not only its ends.</em> The renormalisation-group control of a Euclidean model is a statement about its trajectory between fixed points, and such a trajectory has been constructed for a three-dimensional model with modified propagator by perturbing the one-dimensional iteration that the hierarchical model supplies [@abdesselam-2007]. That construction is described in <a href="/articles/abdesselam-global-trajectory/">Abdesselam's trajectory</a>, and it is the precise sense in which the hierarchical recursion is the leading term of the Euclidean analysis rather than an analogy for it.</p>
+
+<p><em>Power counting and the upper critical exponent.</em> The exponent at which the two-point exponent stops being $2-\alpha$, and the corresponding statements for $\varphi^4$, are read off from the hierarchical map and transferred. For $\varphi^4_3$ the trajectory of the renormalisation group is constructed in the same way, with the hierarchical analysis of the quartic coupling as the model computation [@brydges-mitter-scoppola-2003] [@bauerschmidt-brydges-slade-2019].</p>
+
+<p><em>What does not transfer.</em> The exact exponent values of the hierarchical model are not the Euclidean ones, except in the classical region where both are given by the Gaussian fixed point. For a short-range model in $d$ dimensions with $2&lt;d&lt;4$ the exponents are not the classical ones and are not the hierarchical ones either: the hierarchical model's $\nu$ depends on $\alpha$, while the Euclidean model's depends on $d$. The two agree in the mean-field region and in the structure of the corrections, not in the numbers.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>Dyson's chain.</em> Dyson's model is a chain $\{0,\ldots,L^n-1\}$ with ferromagnetic couplings $J_{ij}$ comparable to $\lvert i-j\rvert^{-\gamma}$; its hierarchical approximation replaces them by couplings that depend only on the smallest interval of the dyadic hierarchy containing both sites, which is the lattice of this wiki with $d=1$ written as an interval by the identification of <a href="/articles/hierarchical-lattice/#section-variants">the lattice article</a>. The two models have the same block sums, which is all the recursion uses, and they differ in how the interaction is distributed inside a block: in the hierarchical model every pair of sites in the two halves of an interval carries the same coupling, while on the chain a pair is weighted by its separation, so the interaction across the midpoint of a long interval is strong near the midpoint and weak at the ends.</p>
+
+<p><em>Decimation on a tree.</em> A regular tree with branching $m$ and a coupling constant on every edge has the same property as the hierarchical lattice for the spin model: the interaction between a vertex and the rest is through its neighbours, and the recursion closes on the distribution of the cavity field. The tree is not ultrametric and its blocks are not self-similar in the same sense, but the closure mechanism is the same one — a boundary of size one.</p>
+
+<p><em>Non-example: the triangular lattice.</em> Any Euclidean lattice has the boundary phenomenon of the proposition above. The $L$-block partition of the triangular lattice has blocks whose boundary length grows like the side, and the effective interaction between neighbouring blocks depends on the orientation of their shared edge.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Wavelet and covariance-based coarse grainings.</em> A coarse graining defined by a projection of the Gaussian free field onto a subspace of slowly varying functions has an effective covariance that can be computed exactly, and for a suitable choice of the projection the interaction remains quadratic. What such a scheme gains in exactness it loses in locality: the coarse grained field has long-range couplings and the recursion is on a covariance rather than on a finite set of couplings.</p>
+
+<p><em>Hierarchical approximations of the Euclidean covariance.</em> Replacing the Euclidean covariance by its average over blocks, in the manner of Gawedzki and Kupiainen, produces a model whose recursion is finite-dimensional and whose exponents differ from the Euclidean ones by a computable amount; the expansion in the difference is the content of their method.</p>
+
+<p><em>Exactly renormalisable models.</em> The hierarchical lattice is not the only graph on which decimation closes; any graph with a self-similar block structure whose cross-block interaction is a function of block sums will do, and the ultrametric lattice is the unique transitive example with finite blocks up to the identifications of <a href="/articles/hierarchical-lattice/#section-variants">the lattice article</a>.</p>
+
+## History and attribution {#section-history}
+
+<p>Dyson introduced the hierarchical couplings to prove a phase transition in one dimension [@dyson-1969]; Bleher and Sinai turned the resulting recursion into the object of study, and it is their work that made the hierarchical model the standard testing ground for the renormalisation group [@bleher-sinai-1973]. Gawedzki and Kupiainen developed the rigorous block-spin expansion that uses the hierarchical model as its leading term [@gawedzki-kupiainen-1980] and analysed the nontrivial fixed point as the model problem for the Euclidean one [@gawedzki-kupiainen-1983]. The failure of the Gibbs property under block-spin transformations is the subject of van Enter, Fernandez and Sokal [@van-enter-fernandez-sokal-1993], and the renormalisation-group trajectory for critical $(\Phi^4)_3$ is constructed by Brydges, Mitter and Scoppola [@brydges-mitter-scoppola-2003], with a systematic account in Bauerschmidt, Brydges and Slade [@bauerschmidt-brydges-slade-2019].</p>
+
+## References {#section-references}
+
+<ul>
+<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
+<li>D. C. Brydges, P. K. Mitter and B. Scoppola, Critical $(\Phi^4)_3$, <em>Comm. Math. Phys.</em> 240 (2003), 281&ndash;327.</li>
+<li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
+<li>K. Gawedzki and A. Kupiainen, A rigorous block spin approach to massless lattice theories, <em>Comm. Math. Phys.</em> 77 (1980), 31&ndash;64.</li>
+<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
+<li>A. C. D. van Enter, R. Fernandez and A. D. Sokal, Regularity properties and pathologies of position-space renormalization-group transformations, <em>J. Statist. Phys.</em> 72 (1993), 879&ndash;1167.</li>
+<li>A. Abdesselam, A complete renormalization group trajectory between two fixed points, <em>Comm. Math. Phys.</em> 276 (2007), 727&ndash;772.</li>
+</ul>
