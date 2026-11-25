@@ -87,6 +87,14 @@ are Hutchcroft's theorems; for Ising spins they are the open input.
 
 ## Done
 
+- A second, independent route to the upper bound was reported to the swarm and refereed by me but not
+  written up: reflection positivity of the hierarchical kernel, through the telescoping
+  `f_R = sum_k (J_k - J_{k+1}) 1_{Λ_k} - J_1 delta_0` and the characters trivial on a block, gives
+  Gaussian domination and an infrared bound, and the character weights then give an *explicit*
+  constant, `K = (m-1)/(β_c(L^d - L^α))`. I verified the telescoping, the positive-semidefinite cross
+  matrix and the weight arithmetic, but not the h-shifted reflection-positivity criterion, the Bochner
+  step, or the limit `β ↑ β_c` — so the constant is not in the wiki. That chain, written out
+  self-contained, is the cheapest way to put an explicit constant into the article.
 - `κ = α` at criticality (`tag-UJC1` for the lower half, `tag-4QMQ` for the upper), from two submissions
   to a swarm run on this question. Both were refereed here before being written up: the two-child
   comparison's FKG-on-the-amplitude-quadrant and Riccati steps checked line by line, the recursion
