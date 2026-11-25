@@ -12,10 +12,13 @@ from __future__ import annotations
 
 import itertools
 import math
+import re
+
+from pathlib import Path
 
 import numpy as np
 
-sys_path = __import__('pathlib').Path(__file__).resolve().parent
+sys_path = Path(__file__).resolve().parent
 import sys as _sys
 _sys.path.insert(0, str(sys_path))
 import simulate  # noqa: E402
@@ -588,6 +591,71 @@ def check_free_energy_series():
          f"C at half the critical intensity {low:.3f}, at 0.95 of it {high:.3f}")
 
 
+def ising_free_energy_fft(beta, n, L=2, d=1, alpha=0.5):
+    """F_n for Ising spins by the convolution recursion: the method of the free-energy article."""
+    m = L ** d
+    N = 1
+    law = np.zeros(2 * N + 1)
+    law[0] = law[2] = 0.5
+    F = 0.0
+    for k in range(1, n + 1):
+        b = beta * L ** (-(d + alpha) * k)
+        S = np.arange(-N, N + 1, dtype=float)
+        with np.errstate(divide="ignore"):
+            log_t = np.where(law > 0, np.log(np.maximum(law, 1e-300)), -np.inf) - 0.5 * b * S * S
+        tilde = np.exp(log_t)
+        size = 1
+        while size < 2 * len(tilde) - 1:
+            size *= 2
+        conv = np.fft.irfft(np.fft.rfft(tilde, size) ** 2, size)[:2 * len(tilde) - 1]
+        conv = np.maximum(conv, 0.0)
+        S2 = np.arange(-2 * N, 2 * N + 1, dtype=float)
+        with np.errstate(divide="ignore"):
+            log_un = np.where(conv > 0, np.log(conv), -np.inf) + 0.5 * b * S2 * S2
+        mx = np.max(log_un)
+        logZ = mx + math.log(np.sum(np.exp(log_un - mx)))
+        F += m ** (-k) * logZ
+        law = np.exp(log_un - logZ)
+        N *= 2
+    return F
+
+
+def ising_free_energy_exact(beta, n, L=2, d=1, alpha=0.5):
+    """F_n by exact enumeration of the block-spin laws, for small n."""
+    m = L ** d
+    law = {-1.0: 0.5, 1.0: 0.5}
+    F = 0.0
+    for k in range(1, n + 1):
+        b = beta * L ** (-(d + alpha) * k)
+        Z = sum(p * q * math.exp(b * s * t) for s, p in law.items() for t, q in law.items())
+        F += m ** (-k) * math.log(Z)
+        new = {}
+        for s, p in law.items():
+            for t, q in law.items():
+                u = s + t
+                new[u] = new.get(u, 0.0) + p * q * math.exp(b * s * t) / Z
+        law = new
+    return F
+
+
+def check_ising_free_energy():
+    """The convolution recursion against enumeration, and the table of the free-energy article."""
+    worst = max(abs(ising_free_energy_fft(beta, 4) - ising_free_energy_exact(beta, 4))
+                for beta in (0.3, 0.8))
+    note("Ising free energy: convolution recursion against enumeration", worst < 1e-11,
+         f"largest difference at n=4: {worst:.2e}")
+
+    table = re.findall(r"<tr><td>(\d\.\d\d)</td><td>([\d.]+)</td><td>([\d.]+)</td><td>([\d.]+)</td></tr>", 
+                       (Path("wiki/articles/hierarchical-free-energy.md")).read_text())
+    worst = 0.0
+    for beta, f12, f16, f20 in table:
+        worst = max(worst, abs(ising_free_energy_fft(float(beta), 12) - float(f12)),
+                    abs(ising_free_energy_fft(float(beta), 16) - float(f16)),
+                    abs(ising_free_energy_fft(float(beta), 20) - float(f20)))
+    note("Ising free energy: the table of the article is what the recursion gives", len(table) == 4 and worst < 1e-7,
+         f"{len(table)} rows compared, largest difference {worst:.2e}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -605,6 +673,7 @@ def main() -> int:
     check_variance_sandwich()
     check_finite_volume_magnetisation()
     check_free_energy_series()
+    check_ising_free_energy()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

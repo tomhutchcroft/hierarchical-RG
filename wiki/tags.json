@@ -328,6 +328,10 @@
     {
       "tag": "GGZI",
       "state": "allocated"
+    },
+    {
+      "tag": "TZ31",
+      "state": "allocated"
     }
   ]
 }

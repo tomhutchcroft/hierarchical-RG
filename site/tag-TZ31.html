@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ising free energy by the convolution recursion, and the lower bounds it certifies — Hierarchical RG</title>
+<meta name="description" content="proposition: The Ising free energy by the convolution recursion, and the lower bounds it certifies">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<a class="skip" href="#main">skip to content</a>
+<div class="layout">
+<aside class="sidebar" aria-label="site">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec" aria-label="part: The block structure"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec" aria-label="part: The renormalisation group"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="hierarchical-free-energy.html">The free energy and its singularity</a></li><li><span class="num">8</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">9</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec" aria-label="part: Percolation, vectors, and the Euclidean comparison"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-cluster-volume.html">The volume of the critical cluster</a></li><li><span class="num">3</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">4</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">5</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">6</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec" aria-label="reading maps"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec" aria-label="index"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="chronology.html">Chronology</a></li><li><a href="figures.html">Figures</a></li><li><a href="open.html">What is not known</a></li><li><a href="checks.html">How it is checked</a></li><li><a href="sections.html">Sections</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main id="main">
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / TZ31</p>
+<h1>The Ising free energy by the convolution recursion, and the lower bounds it certifies</h1>
+<p class="meta">proposition &middot; <span class="tag">TZ31</span> &middot; in
+<a href="hierarchical-free-energy.html">The free energy and its singularity</a></p>
+<div class="assertion">The recursion reproduces the exact finite-volume free energy: for $n\leq4$ its output agrees with direct enumeration of the block-spin laws to twelve decimal places. Since every per-scale term is nonnegative — the tilted expectation is at least one, as the tilt has nonnegative mean — the sequence $F_n$ increases to $F$, and each computed $F_n$ is a certified lower bound for the free energy at that intensity:</p>
+<table><thead><tr><th>Intensity</th><th>$F_{12}$</th><th>$F_{16}$</th><th>$F_{20}$</th></tr></thead>
+<tbody>
+<tr><td>0.20</td><td>0.00174352</td><td>0.00174352</td><td>0.00193665</td></tr>
+<tr><td>0.50</td><td>0.01177716</td><td>0.01252022</td><td>0.01339464</td></tr>
+<tr><td>0.70</td><td>0.02455171</td><td>0.02659296</td><td>0.02782031</td></tr>
+<tr><td>0.80</td><td>0.03322376</td><td>0.03621819</td><td>0.03762020</td></tr>
+</tbody></table>
+<p>The table is honest about its limits, which are the interesting part. Away from criticality the sequence has converged by $n=12$: the first row does not move between twelve and sixteen scales and moves in the fourth decimal at twenty. Towards the critical intensity it does not converge at that size at all — the entry at $0.80$ is still rising in the fourth decimal at $n=20$ — and the reason is structural rather than numerical. Near criticality the per-scale contribution $m^{-k}\log Z_k$ decays only like $k\,m^{-k}$, because $\log Z_k$ grows linearly in the scale, so reaching a fixed accuracy needs a number of scales comparable to the logarithm of the reciprocal; and each scale doubles the support of the law, so the method's memory grows like $2^{2n}$. Twenty scales is what fits comfortably, and twenty is not enough.</p>
+<p>What follows for the questions this article is about is negative and worth stating plainly. The free energy itself is computable to a few digits and certified from below; its first derivative is not, because differentiating a truncated sequence near criticality amplifies the truncation error, which changes with the intensity faster than the derivative does; and its second derivative, the heat capacity, is further out of reach. So the curvature of the Ising free energy is not computed in this wiki, and the specific-heat exponent for the Ising model is not measured here. The Gaussian case is the one in which the series is elementary, and the reason it is recorded separately is exactly that the Ising case resists this computation for a reason one can write down.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Other priors with a closed form.</em> The derivation used only that the prior is Gaussian, so that $S$ and $Q$ are independent. For a prior that is a mixture of Gaussians the same computation gives a sum over the mixture, and the per-scale term becomes a finite sum of logarithms; for a prior with a quartic term the integral is not elementary and the series in $\beta$ is only asymptotic, which is where <a href="koch-wittwer-fixed-point.html">the large-field problem</a> begins.</p>
+
+<p><em>An external field.</em> A field adds a linear term to the tilt, the Gaussian integral still closes, and the per-scale term gains a factor depending on the field and on the block spin's mean; the free energy then has a singularity along the whole critical curve rather than at a point. The wiki does not develop this, and the reason is that the field's recursion in <a href="renormalisation-group-map.html">the map article</a> is a separate argument.</p>
+
+<p><em>The single-file edition.</em> The numbers in the figure come from <code>free_energy</code> in <code>tools/simulate.py</code>, which is the series above truncated after eighty scales; the truncation error at the intensities plotted is below the resolution of the drawing, and the closed form of the first two terms is checked against direct two-dimensional quadrature in <code>tools/numeric_checks.py</code>.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-free-energy.html#tag-TZ31">The free energy and its singularity</a>. To cite this assertion, link to
+<span class="tag">tag-TZ31.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-free-energy.html#tag-TZ31"><span class="dir">context</span>The free energy and its singularity</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>
