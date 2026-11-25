@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is proved for the hierarchical model and what for the Euclidean one — Hierarchical RG</title>
+<meta name="description" content="model: What is proved for the hierarchical model and what for the Euclidean one">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<a class="skip" href="#main">skip to content</a>
+<div class="layout">
+<aside class="sidebar" aria-label="site">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec" aria-label="part: The block structure"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec" aria-label="part: The renormalisation group"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="hierarchical-free-energy.html">The free energy and its singularity</a></li><li><span class="num">8</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">9</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec" aria-label="part: Percolation, vectors, and the Euclidean comparison"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-cluster-volume.html">The volume of the critical cluster</a></li><li><span class="num">3</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">4</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">5</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">6</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec" aria-label="reading maps"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec" aria-label="index"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="chronology.html">Chronology</a></li><li><a href="figures.html">Figures</a></li><li><a href="open.html">What is not known</a></li><li><a href="checks.html">How it is checked</a></li><li><a href="sections.html">Sections</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main id="main">
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / GGZI</p>
+<h1>What is proved for the hierarchical model and what for the Euclidean one</h1>
+<p class="meta">model &middot; <span class="tag">GGZI</span> &middot; in
+<a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></p>
+<div class="assertion"><table><thead><tr><th>Statement</th><th>Hierarchical lattice</th><th>Euclidean lattice</th></tr></thead>
+<tbody>
+<tr><td>the decimation step is an identity on one variable</td>
+<td>yes, by <a href="hierarchical-lattice.html#section-children">the child decomposition</a></td>
+<td>no: the effective interaction depends on the shape of the block boundary</td></tr>
+<tr><td>the two-point exponent is <code>2 - alpha</code> at criticality</td>
+<td>proved for every <code>0 &lt; alpha &lt; d</code> [@hutchcroft-hierarchical-2021]</td>
+<td>proved in the classical region <code>alpha &lt; d/2</code> [@aizenman-fernandez-1988]</td></tr>
+<tr><td>the cluster-volume exponent is <code>(d+alpha)/(d-alpha)</code> below and <code>2</code> above <code>d = 3 alpha</code></td>
+<td>proved in every regime [@hutchcroft-2025-volumes]</td>
+<td>open; only upper bounds, and they come from the hierarchy [@hutchcroft-2022-bounds]</td></tr>
+<tr><td>a nontrivial fixed point with a spectrum, near the marginal exponent</td>
+<td>proved [@bleher-sinai-1975] [@gawedzki-kupiainen-1983]</td>
+<td>proved in four dimensions for the <code>|phi|^4</code> model, by the method of [@bauerschmidt-brydges-slade-2019]</td></tr>
+<tr><td>a nontrivial fixed point without a small parameter</td>
+<td>proved for the hierarchical three-dimensional scalar case [@koch-wittwer-1986]</td>
+<td>open</td></tr>
+<tr><td>the correlation-length exponent in closed form</td>
+<td>not known above <code>alpha = d/2</code>; read off the linearisation</td>
+<td>not known for the three-dimensional Ising model</td></tr>
+</tbody></table>
+<p>Read down the middle column and the hierarchical model looks solved; read down the right and
+almost nothing is. The point of the table is that the difference is not a difference of difficulty
+in the analysis but of what there is to analyse: every row in which the hierarchy is proved and the
+lattice is not is a row where the proof uses the property that a block has no boundary, and the last
+row is the one where neither side can be computed and both are reduced to a linearisation that nobody
+has evaluated.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>Dyson's chain.</em> Dyson's model is a chain $\{0,\ldots,L^n-1\}$ with ferromagnetic couplings $J_{ij}$ comparable to $\lvert i-j\rvert^{-\gamma}$; its hierarchical approximation replaces them by couplings that depend only on the smallest interval of the dyadic hierarchy containing both sites, which is the lattice of this wiki with $d=1$ written as an interval by the identification of <a href="hierarchical-lattice.html#section-variants">the lattice article</a>. The two models have the same block sums, which is all the recursion uses, and they differ in how the interaction is distributed inside a block: in the hierarchical model every pair of sites in the two halves of an interval carries the same coupling, while on the chain a pair is weighted by its separation, so the interaction across the midpoint of a long interval is strong near the midpoint and weak at the ends.</p>
+
+<p><em>Decimation on a tree.</em> A regular tree with branching $m$ and a coupling constant on every edge has the same property as the hierarchical lattice for the spin model: the interaction between a vertex and the rest is through its neighbours, and the recursion closes on the distribution of the cavity field. The tree is not ultrametric and its blocks are not self-similar in the same sense, but the closure mechanism is the same one — a boundary of size one.</p>
+
+<p><em>Non-example: the triangular lattice.</em> Any Euclidean lattice has the boundary phenomenon of the proposition above. The $L$-block partition of the triangular lattice has blocks whose boundary length grows like the side, and the effective interaction between neighbouring blocks depends on the orientation of their shared edge.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Wavelet and covariance-based coarse grainings.</em> A coarse graining defined by a projection of the Gaussian free field onto a subspace of slowly varying functions has an effective covariance that can be computed exactly, and for a suitable choice of the projection the interaction remains quadratic. What such a scheme gains in exactness it loses in locality: the coarse grained field has long-range couplings and the recursion is on a covariance rather than on a finite set of couplings.</p>
+
+<p><em>Hierarchical approximations of the Euclidean covariance.</em> Replacing the Euclidean covariance by its average over blocks, in the manner of Gawedzki and Kupiainen, produces a model whose recursion is finite-dimensional and whose exponents differ from the Euclidean ones by a computable amount; the expansion in the difference is the content of their method.</p>
+
+<p><em>Exactly renormalisable models.</em> The hierarchical lattice is not the only graph on which decimation closes; any graph with a self-similar block structure whose cross-block interaction is a function of block sums will do, and the ultrametric lattice is the unique transitive example with finite blocks up to the identifications of <a href="hierarchical-lattice.html#section-variants">the lattice article</a>.</p>
+
+## History and attribution {#section-history}
+
+<p>Dyson introduced the hierarchical couplings to prove a phase transition in one dimension [@dyson-1969]; Bleher and Sinai turned the resulting recursion into the object of study, and it is their work that made the hierarchical model the standard testing ground for the renormalisation group [@bleher-sinai-1973]. Gawedzki and Kupiainen developed the rigorous block-spin expansion that uses the hierarchical model as its leading term [@gawedzki-kupiainen-1980] and analysed the nontrivial fixed point as the model problem for the Euclidean one [@gawedzki-kupiainen-1983]. The failure of the Gibbs property under block-spin transformations is the subject of van Enter, Fernandez and Sokal [@van-enter-fernandez-sokal-1993], and the renormalisation-group trajectory for critical $(\Phi^4)_3$ is constructed by Brydges, Mitter and Scoppola [@brydges-mitter-scoppola-2003], with a systematic account in Bauerschmidt, Brydges and Slade [@bauerschmidt-brydges-slade-2019].</p>
+
+## References {#section-references}
+
+<ul>
+<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
+<li>D. C. Brydges, P. K. Mitter and B. Scoppola, Critical $(\Phi^4)_3$, <em>Comm. Math. Phys.</em> 240 (2003), 281&ndash;327.</li>
+<li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
+<li>K. Gawedzki and A. Kupiainen, A rigorous block spin approach to massless lattice theories, <em>Comm. Math. Phys.</em> 77 (1980), 31&ndash;64.</li>
+<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
+<li>T. Hutchcroft, Sharp hierarchical upper bounds on the critical two-point function for long-range percolation on Z^d, <em>J. Math. Phys.</em> 63 (2022), 113301.</li>
+<li>A. C. D. van Enter, R. Fernandez and A. D. Sokal, Regularity properties and pathologies of position-space renormalization-group transformations, <em>J. Statist. Phys.</em> 72 (1993), 879&ndash;1167.</li>
+<li>A. Abdesselam, A complete renormalization group trajectory between two fixed points, <em>Comm. Math. Phys.</em> 276 (2007), 727&ndash;772.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-and-euclidean-rg.html#tag-GGZI">Hierarchical and Euclidean renormalisation</a>. To cite this assertion, link to
+<span class="tag">tag-GGZI.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-and-euclidean-rg.html#tag-GGZI"><span class="dir">context</span>Hierarchical and Euclidean renormalisation</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

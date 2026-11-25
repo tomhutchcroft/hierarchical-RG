@@ -324,6 +324,10 @@
     {
       "tag": "HLTX",
       "state": "allocated"
+    },
+    {
+      "tag": "GGZI",
+      "state": "allocated"
     }
   ]
 }

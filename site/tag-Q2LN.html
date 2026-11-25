@@ -39,39 +39,11 @@
 
 <p><em>What does not transfer.</em> The exact exponent values of the hierarchical model are not the Euclidean ones, except in the classical region where both are given by the Gaussian fixed point. For a short-range model in $d$ dimensions with $2&lt;d&lt;4$ the exponents are not the classical ones and are not the hierarchical ones either: the hierarchical model's $\nu$ depends on $\alpha$, while the Euclidean model's depends on $d$. The two agree in the mean-field region and in the structure of the corrections, not in the numbers.</p>
 
-## Examples and non-examples {#section-examples}
+## What is proved on each side {#section-status}
 
-<p><em>Dyson's chain.</em> Dyson's model is a chain $\{0,\ldots,L^n-1\}$ with ferromagnetic couplings $J_{ij}$ comparable to $\lvert i-j\rvert^{-\gamma}$; its hierarchical approximation replaces them by couplings that depend only on the smallest interval of the dyadic hierarchy containing both sites, which is the lattice of this wiki with $d=1$ written as an interval by the identification of <a href="hierarchical-lattice.html#section-variants">the lattice article</a>. The two models have the same block sums, which is all the recursion uses, and they differ in how the interaction is distributed inside a block: in the hierarchical model every pair of sites in the two halves of an interval carries the same coupling, while on the chain a pair is weighted by its separation, so the interaction across the midpoint of a long interval is strong near the midpoint and weak at the ends.</p>
-
-<p><em>Decimation on a tree.</em> A regular tree with branching $m$ and a coupling constant on every edge has the same property as the hierarchical lattice for the spin model: the interaction between a vertex and the rest is through its neighbours, and the recursion closes on the distribution of the cavity field. The tree is not ultrametric and its blocks are not self-similar in the same sense, but the closure mechanism is the same one — a boundary of size one.</p>
-
-<p><em>Non-example: the triangular lattice.</em> Any Euclidean lattice has the boundary phenomenon of the proposition above. The $L$-block partition of the triangular lattice has blocks whose boundary length grows like the side, and the effective interaction between neighbouring blocks depends on the orientation of their shared edge.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>Wavelet and covariance-based coarse grainings.</em> A coarse graining defined by a projection of the Gaussian free field onto a subspace of slowly varying functions has an effective covariance that can be computed exactly, and for a suitable choice of the projection the interaction remains quadratic. What such a scheme gains in exactness it loses in locality: the coarse grained field has long-range couplings and the recursion is on a covariance rather than on a finite set of couplings.</p>
-
-<p><em>Hierarchical approximations of the Euclidean covariance.</em> Replacing the Euclidean covariance by its average over blocks, in the manner of Gawedzki and Kupiainen, produces a model whose recursion is finite-dimensional and whose exponents differ from the Euclidean ones by a computable amount; the expansion in the difference is the content of their method.</p>
-
-<p><em>Exactly renormalisable models.</em> The hierarchical lattice is not the only graph on which decimation closes; any graph with a self-similar block structure whose cross-block interaction is a function of block sums will do, and the ultrametric lattice is the unique transitive example with finite blocks up to the identifications of <a href="hierarchical-lattice.html#section-variants">the lattice article</a>.</p>
-
-## History and attribution {#section-history}
-
-<p>Dyson introduced the hierarchical couplings to prove a phase transition in one dimension [@dyson-1969]; Bleher and Sinai turned the resulting recursion into the object of study, and it is their work that made the hierarchical model the standard testing ground for the renormalisation group [@bleher-sinai-1973]. Gawedzki and Kupiainen developed the rigorous block-spin expansion that uses the hierarchical model as its leading term [@gawedzki-kupiainen-1980] and analysed the nontrivial fixed point as the model problem for the Euclidean one [@gawedzki-kupiainen-1983]. The failure of the Gibbs property under block-spin transformations is the subject of van Enter, Fernandez and Sokal [@van-enter-fernandez-sokal-1993], and the renormalisation-group trajectory for critical $(\Phi^4)_3$ is constructed by Brydges, Mitter and Scoppola [@brydges-mitter-scoppola-2003], with a systematic account in Bauerschmidt, Brydges and Slade [@bauerschmidt-brydges-slade-2019].</p>
-
-## References {#section-references}
-
-<ul>
-<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
-<li>D. C. Brydges, P. K. Mitter and B. Scoppola, Critical $(\Phi^4)_3$, <em>Comm. Math. Phys.</em> 240 (2003), 281&ndash;327.</li>
-<li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
-<li>K. Gawedzki and A. Kupiainen, A rigorous block spin approach to massless lattice theories, <em>Comm. Math. Phys.</em> 77 (1980), 31&ndash;64.</li>
-<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
-<li>T. Hutchcroft, Sharp hierarchical upper bounds on the critical two-point function for long-range percolation on Z^d, <em>J. Math. Phys.</em> 63 (2022), 113301.</li>
-<li>A. C. D. van Enter, R. Fernandez and A. D. Sokal, Regularity properties and pathologies of position-space renormalization-group transformations, <em>J. Statist. Phys.</em> 72 (1993), 879&ndash;1167.</li>
-<li>A. Abdesselam, A complete renormalization group trajectory between two fixed points, <em>Comm. Math. Phys.</em> 276 (2007), 727&ndash;772.</li>
-</ul></div>
+<p>The prose above says what transfers and how. The table says, statement by statement, what is proved
+where, because the asymmetry is the substance of the comparison and it is easy to lose in a
+narrative.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="hierarchical-and-euclidean-rg.html#tag-Q2LN">Hierarchical and Euclidean renormalisation</a>. To cite this assertion, link to
 <span class="tag">tag-Q2LN.html</span> or to the article anchor directly.</p>

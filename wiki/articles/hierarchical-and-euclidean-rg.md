@@ -26,7 +26,12 @@
     "bauerschmidt-brydges-slade-2019",
     "dyson-1969",
     "abdesselam-2007",
-    "hutchcroft-2022-bounds"
+    "hutchcroft-2022-bounds",
+    "hutchcroft-hierarchical-2021",
+    "aizenman-fernandez-1988",
+    "hutchcroft-2025-volumes",
+    "bleher-sinai-1975",
+    "koch-wittwer-1986"
   ],
   "aliases": [
     "Euclidean renormalisation group",
@@ -85,6 +90,40 @@
 <p><em>Bounds transported the other way.</em> The comparison also runs from the hierarchy to the lattice: sharp upper bounds on the critical two-point function for long-range percolation on $\mathbb Z^d$ are obtained by a hierarchical argument, with the hierarchy serving as the comparison object rather than as a model of interest [@hutchcroft-2022-bounds]. This is the percolation counterpart of the perturbation scheme above, and it is the clearest case in which a statement about the hierarchical lattice yields one about $\mathbb Z^d$ without an expansion.</p>
 
 <p><em>What does not transfer.</em> The exact exponent values of the hierarchical model are not the Euclidean ones, except in the classical region where both are given by the Gaussian fixed point. For a short-range model in $d$ dimensions with $2&lt;d&lt;4$ the exponents are not the classical ones and are not the hierarchical ones either: the hierarchical model's $\nu$ depends on $\alpha$, while the Euclidean model's depends on $d$. The two agree in the mean-field region and in the structure of the corrections, not in the numbers.</p>
+
+## What is proved on each side {#section-status}
+
+<p>The prose above says what transfers and how. The table says, statement by statement, what is proved
+where, because the asymmetry is the substance of the comparison and it is easy to lose in a
+narrative.</p>
+<a id="tag-GGZI" data-assertion="model" data-title="What is proved for the hierarchical model and what for the Euclidean one"></a>
+<table><thead><tr><th>Statement</th><th>Hierarchical lattice</th><th>Euclidean lattice</th></tr></thead>
+<tbody>
+<tr><td>the decimation step is an identity on one variable</td>
+<td>yes, by <a href="/articles/hierarchical-lattice/#section-children">the child decomposition</a></td>
+<td>no: the effective interaction depends on the shape of the block boundary</td></tr>
+<tr><td>the two-point exponent is <code>2 - alpha</code> at criticality</td>
+<td>proved for every <code>0 &lt; alpha &lt; d</code> [@hutchcroft-hierarchical-2021]</td>
+<td>proved in the classical region <code>alpha &lt; d/2</code> [@aizenman-fernandez-1988]</td></tr>
+<tr><td>the cluster-volume exponent is <code>(d+alpha)/(d-alpha)</code> below and <code>2</code> above <code>d = 3 alpha</code></td>
+<td>proved in every regime [@hutchcroft-2025-volumes]</td>
+<td>open; only upper bounds, and they come from the hierarchy [@hutchcroft-2022-bounds]</td></tr>
+<tr><td>a nontrivial fixed point with a spectrum, near the marginal exponent</td>
+<td>proved [@bleher-sinai-1975] [@gawedzki-kupiainen-1983]</td>
+<td>proved in four dimensions for the <code>|phi|^4</code> model, by the method of [@bauerschmidt-brydges-slade-2019]</td></tr>
+<tr><td>a nontrivial fixed point without a small parameter</td>
+<td>proved for the hierarchical three-dimensional scalar case [@koch-wittwer-1986]</td>
+<td>open</td></tr>
+<tr><td>the correlation-length exponent in closed form</td>
+<td>not known above <code>alpha = d/2</code>; read off the linearisation</td>
+<td>not known for the three-dimensional Ising model</td></tr>
+</tbody></table>
+<p>Read down the middle column and the hierarchical model looks solved; read down the right and
+almost nothing is. The point of the table is that the difference is not a difference of difficulty
+in the analysis but of what there is to analyse: every row in which the hierarchy is proved and the
+lattice is not is a row where the proof uses the property that a block has no boundary, and the last
+row is the one where neither side can be computed and both are reduced to a linearisation that nobody
+has evaluated.</p>
 
 ## Examples and non-examples {#section-examples}
 

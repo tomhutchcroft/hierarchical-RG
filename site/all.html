@@ -21,7 +21,7 @@
 <p class="crumbs"><a href="index.html">Home</a> / Single file</p>
 <h1>Hierarchical RG</h1>
 <p class="subtitle">The whole wiki in one page, for printing or reading offline.</p>
-<p class="meta">21 articles &middot; 78 tagged assertions &middot; the pages
+<p class="meta">21 articles &middot; 79 tagged assertions &middot; the pages
 that are interactive or generated are linked from each article's separate page</p>
 <details class="toc" open><summary>Contents</summary><ol><li><strong>Part 1: The block structure</strong><ol><li><a href="#whole-hierarchical-lattice">The hierarchical lattice</a></li><li><a href="#whole-hierarchical-symmetries">The isometries of the hierarchical lattice</a></li><li><a href="#whole-hierarchical-gibbs-measure">Hierarchical spin systems and decimation</a></li><li><a href="#whole-hierarchical-infinite-volume-limit">The infinite-volume limit</a></li><li><a href="#whole-ultrametric-block-systems">Ultrametric block systems and the p-adic models</a></li><li><a href="#whole-hierarchical-magnetised-phase">The magnetised phase, and what monotonicity gives</a></li></ol></li><li><strong>Part 2: The renormalisation group</strong><ol><li><a href="#whole-renormalisation-group-map">The renormalisation group map</a></li><li><a href="#whole-gaussian-renormalisation-group">The Gaussian renormalisation group</a></li><li><a href="#whole-gaussian-fixed-point-spectrum">The spectrum at the Gaussian fixed point</a></li><li><a href="#whole-critical-exponents-from-rg">Critical exponents from the renormalisation group</a></li><li><a href="#whole-bleher-sinai-fixed-point">The Bleher–Sinai fixed point</a></li><li><a href="#whole-corrections-to-scaling">Corrections to scaling</a></li><li><a href="#whole-hierarchical-free-energy">The free energy and its singularity</a></li><li><a href="#whole-koch-wittwer-fixed-point">Koch and Wittwer's non-Gaussian fixed point</a></li><li><a href="#whole-abdesselam-global-trajectory">Abdesselam's trajectory between two fixed points</a></li></ol></li><li><strong>Part 3: Percolation, vectors, and the Euclidean comparison</strong><ol><li><a href="#whole-hierarchical-percolation-rg">Renormalisation for hierarchical percolation</a></li><li><a href="#whole-hierarchical-cluster-volume">The volume of the critical cluster</a></li><li><a href="#whole-hierarchical-vector-models">Hierarchical models with continuous symmetry</a></li><li><a href="#whole-hierarchical-phi4-truncations">The phi-fourth hierarchical model and its truncations</a></li><li><a href="#whole-hierarchical-two-marginalities">The two marginal exponents</a></li><li><a href="#whole-hierarchical-and-euclidean-rg">Hierarchical and Euclidean renormalisation</a></li></ol></li></ol></details>
 <section class="whole" id="whole-hierarchical-lattice"><h1>The hierarchical lattice</h1><p class="subtitle">An ultrametric group whose blocks fall into L^d congruent children.</p><p class="meta">model &middot; <a href="hierarchical-lattice.html">separate page</a></p>
@@ -1704,6 +1704,39 @@ that are interactive or generated are linked from each article's separate page</
 <p><em>Bounds transported the other way.</em> The comparison also runs from the hierarchy to the lattice: sharp upper bounds on the critical two-point function for long-range percolation on $\mathbb Z^d$ are obtained by a hierarchical argument, with the hierarchy serving as the comparison object rather than as a model of interest [@hutchcroft-2022-bounds]. This is the percolation counterpart of the perturbation scheme above, and it is the clearest case in which a statement about the hierarchical lattice yields one about $\mathbb Z^d$ without an expansion.</p>
 
 <p><em>What does not transfer.</em> The exact exponent values of the hierarchical model are not the Euclidean ones, except in the classical region where both are given by the Gaussian fixed point. For a short-range model in $d$ dimensions with $2&lt;d&lt;4$ the exponents are not the classical ones and are not the hierarchical ones either: the hierarchical model's $\nu$ depends on $\alpha$, while the Euclidean model's depends on $d$. The two agree in the mean-field region and in the structure of the corrections, not in the numbers.</p>
+
+<h2 id="section-status">What is proved on each side</h2>
+<p>The prose above says what transfers and how. The table says, statement by statement, what is proved
+where, because the asymmetry is the substance of the comparison and it is easy to lose in a
+narrative.</p>
+<a id="tag-GGZI" data-assertion="model" data-title="What is proved for the hierarchical model and what for the Euclidean one"></a>
+<table><thead><tr><th>Statement</th><th>Hierarchical lattice</th><th>Euclidean lattice</th></tr></thead>
+<tbody>
+<tr><td>the decimation step is an identity on one variable</td>
+<td>yes, by <a href="hierarchical-lattice.html#section-children">the child decomposition</a></td>
+<td>no: the effective interaction depends on the shape of the block boundary</td></tr>
+<tr><td>the two-point exponent is <code>2 - alpha</code> at criticality</td>
+<td>proved for every <code>0 &lt; alpha &lt; d</code> [@hutchcroft-hierarchical-2021]</td>
+<td>proved in the classical region <code>alpha &lt; d/2</code> [@aizenman-fernandez-1988]</td></tr>
+<tr><td>the cluster-volume exponent is <code>(d+alpha)/(d-alpha)</code> below and <code>2</code> above <code>d = 3 alpha</code></td>
+<td>proved in every regime [@hutchcroft-2025-volumes]</td>
+<td>open; only upper bounds, and they come from the hierarchy [@hutchcroft-2022-bounds]</td></tr>
+<tr><td>a nontrivial fixed point with a spectrum, near the marginal exponent</td>
+<td>proved [@bleher-sinai-1975] [@gawedzki-kupiainen-1983]</td>
+<td>proved in four dimensions for the <code>|phi|^4</code> model, by the method of [@bauerschmidt-brydges-slade-2019]</td></tr>
+<tr><td>a nontrivial fixed point without a small parameter</td>
+<td>proved for the hierarchical three-dimensional scalar case [@koch-wittwer-1986]</td>
+<td>open</td></tr>
+<tr><td>the correlation-length exponent in closed form</td>
+<td>not known above <code>alpha = d/2</code>; read off the linearisation</td>
+<td>not known for the three-dimensional Ising model</td></tr>
+</tbody></table>
+<p>Read down the middle column and the hierarchical model looks solved; read down the right and
+almost nothing is. The point of the table is that the difference is not a difference of difficulty
+in the analysis but of what there is to analyse: every row in which the hierarchy is proved and the
+lattice is not is a row where the proof uses the property that a block has no boundary, and the last
+row is the one where neither side can be computed and both are reduced to a linearisation that nobody
+has evaluated.</p>
 
 <h2 id="section-examples">Examples and non-examples</h2>
 <p><em>Dyson's chain.</em> Dyson's model is a chain $\{0,\ldots,L^n-1\}$ with ferromagnetic couplings $J_{ij}$ comparable to $\lvert i-j\rvert^{-\gamma}$; its hierarchical approximation replaces them by couplings that depend only on the smallest interval of the dyadic hierarchy containing both sites, which is the lattice of this wiki with $d=1$ written as an interval by the identification of <a href="hierarchical-lattice.html#section-variants">the lattice article</a>. The two models have the same block sums, which is all the recursion uses, and they differ in how the interaction is distributed inside a block: in the hierarchical model every pair of sites in the two halves of an interval carries the same coupling, while on the chain a pair is weighted by its separation, so the interaction across the midpoint of a long interval is strong near the midpoint and weak at the ends.</p>
