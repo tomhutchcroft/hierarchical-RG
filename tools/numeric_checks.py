@@ -364,6 +364,80 @@ def check_free_measure_conditional():
          f"largest discrepancy over 40 configurations: {worst:.2e}")
 
 
+# ---------------------------------------------------------------- the ferromagnetic phase
+
+def boundary_mass(d, L, n, alpha, J=1.0):
+    """The mass from outside Lambda_n at each vertex of Lambda_n; the same number at every vertex."""
+    M = n + 3
+    padded = [x + tuple([0] * (d * (M - n))) for x in vertices(d, L, n)]
+    return [sum(J * L ** (-(d + alpha) * lev(x, y, d)) for y in vertices(d, L, M) if lev(x, y, d) > n)
+            for x in padded]
+
+
+def ising_block(d, L, n, alpha, beta, boundary=1, J=1.0):
+    """Weights of the Ising measure on Lambda_n with a constant boundary condition, by enumeration."""
+    V = vertices(d, L, n)
+    b = boundary_mass(d, L, n, alpha, J)
+    w = {}
+    for s in itertools.product([-1, 1], repeat=len(V)):
+        e = 0.0
+        for a in range(len(V)):
+            for c in range(a + 1, len(V)):
+                e += J * L ** (-(d + alpha) * lev(V[a], V[c], d)) * s[a] * s[c]
+            e += boundary * b[a] * s[a]
+        w[s] = math.exp(beta * e)
+    Z = sum(w.values())
+    return {k: v / Z for k, v in w.items()}, V, b
+
+
+def check_ferromagnetic_phase():
+    """Domination in the boundary condition, monotonicity in the volume, the one-site identity and its bound."""
+    d, L, alpha, beta, n = 1, 2, 0.5, 0.5, 2
+    plus, V, _ = ising_block(d, L, n, alpha, beta, boundary=1)
+    minus, _, _ = ising_block(d, L, n, alpha, beta, boundary=-1)
+    # stochastic domination, tested on every upper set
+    diffs = [sum(p for s, p in plus.items() if all(s[i] >= t[i] for i in range(len(V)))) -
+             sum(p for s, p in minus.items() if all(s[i] >= t[i] for i in range(len(V))))
+             for t in itertools.product([-1, 1], repeat=len(V))]
+    note("plus dominates minus on every upper set", max(-d for d in diffs) <= 1e-12,
+         f"the excess of P_plus over P_minus ranges from {min(diffs):+.6f} to {max(diffs):+.6f} "
+         f"over {len(diffs)} upper sets")
+
+    # monotonicity in the volume: the plus measure on the smaller block magnetises more
+    d, L, alpha, beta = 1, 2, 0.5, 0.5
+    small, Vs, _ = ising_block(d, L, 1, alpha, beta, boundary=1)
+    big, Vb, _ = ising_block(d, L, 2, alpha, beta, boundary=1)
+    ms = sum(p * s[0] for s, p in small.items())
+    # site 0 of Lambda_2 is also index 0 of Lambda_1 under the coordinate convention
+    mb = sum(p * s[0] for s, p in big.items())
+    note("plus measure decreases with the volume", mb <= ms + 1e-12,
+         f"E[sigma_0] under Lambda_1: {ms:.6f}, under Lambda_2: {mb:.6f}")
+
+    # the one-site identity, and the bound of the proposition, in finite volume
+    d, L, alpha, beta, n = 1, 2, 0.5, 0.7, 3
+    tab, V, bmass = ising_block(d, L, n, alpha, beta, boundary=1)
+    N = len(V)
+    m = sum(p * s[0] for s, p in tab.items())
+    rhs = sum(p * math.tanh(beta * (sum(L ** (-(d + alpha) * lev(V[0], V[c], d)) * s[c]
+                                        for c in range(1, N)) + bmass[0]))
+              for s, p in tab.items())
+    inside = sum(L ** (-(d + alpha) * lev(V[0], V[c], d)) for c in range(1, N))
+    bound = math.tanh(beta * (inside + bmass[0]))
+    note("plus state is magnetised at finite volume", m > 1e-3,
+         f"E[sigma_0] = {m:.6f} under the plus boundary condition")
+    note("one-site Gibbs identity under plus", abs(m - rhs) < 1e-12,
+         f"E[sigma_0] = {m:.12f} against E[tanh(beta H)] = {rhs:.12f}")
+    note("order parameter below the tanh bound", m <= bound + 1e-12,
+         f"E[sigma_0] = {m:.6f} <= tanh(total mass) = {bound:.6f}")
+
+    # Griffiths: correlations dominate the product, and so M squared
+    worst = min(sum(p * s[0] * s[1] for s, p in tab.items()) -
+                sum(p * s[0] for s, p in tab.items()) * sum(p * s[1] for s, p in tab.items())
+                for _ in [0])
+    note("positive correlations", worst >= -1e-12,
+         f"E[s0 s1] - E[s0]E[s1] = {worst:+.6f}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -376,6 +450,7 @@ def main() -> int:
     check_boundary_field()
     check_conditional_lipschitz()
     check_free_measure_conditional()
+    check_ferromagnetic_phase()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

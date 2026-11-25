@@ -18,9 +18,9 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Seventeen articles in three parts, four reading paths, three reading maps, 62 tagged assertions,
+Eighteen articles in three parts, four reading paths, three reading maps, 67 tagged assertions,
 six interactive simulations, six generated diagrams, a notation page generated from `STYLE.md`,
-40 works in the catalogue, and a built site of 91 pages committed under `site/`. The checks below
+41 works in the catalogue, and a built site of 97 pages committed under `site/`. The checks below
 pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
 Actions artifact whose root is `site/`.
 
@@ -74,11 +74,12 @@ material — before returning to the percolation volume, which is item 2.
   points there.
 - The notation page gives one article per symbol. A second column saying where each symbol is
   *used*, not only where it is introduced, would help a reader who arrives in the middle.
-- Part one now has the infinite-volume limit, but the magnetised phase is only named there:
-  the two boundary conditions ± and the spontaneous magnetisation of the hierarchical Ising model
-  below the critical intensity are not proved anywhere in the wiki, only attributed. An article
-  that states what the Bleher–Sinai analysis gives, and what the FKG argument gives cheaply, would
-  close part one properly.
+- The phase diagram is now architecture (part one) plus the trichotomy (part two), but the
+  trichotomy is stated in the language of laws and the order parameter in the language of states.
+  One proposition joining them — that the block average of the plus state decreases to `M(β)` —
+  is asserted in `hierarchical-magnetised-phase` and used, but the *converse* direction, that a
+  nonzero limit of the block spin forces `M > 0`, is not proved anywhere; that is the sharpest
+  remaining gap in the argument connecting the two parts.
 
 ### 2. The volume of the critical cluster (percolation depth), deferred
 
@@ -89,6 +90,14 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- The magnetised phase (`hierarchical-magnetised-phase`): the FKG inequality plus a monotone heat-bath
+  coupling gives the two extremal states, the sandwich of every Gibbs measure between them, and the
+  equivalence of non-uniqueness with positivity of the order parameter `M(β)`; correlations under the
+  plus state dominate `M²`, so a magnetised phase has infinite susceptibility; and `M ≤ tanh(βC)` is
+  the only bound on the location that monotonicity gives, which is the article's argument that the
+  threshold has to come from the recursion. Checked: domination on every upper set, monotonicity of
+  the plus measure in the volume, the one-site Gibbs identity and the `tanh` bound, and positive
+  correlations, all by exact enumeration in `numeric_checks.py`.
 - The infinite-volume limit (`hierarchical-infinite-volume-limit`): the boundary field of a block is
   the same at every vertex and decays like `L^{-alpha n}`, while its sum over the block grows like
   `L^{(d-alpha)n}`, which is where the two ranges of the model part. The Gibbs conditional is

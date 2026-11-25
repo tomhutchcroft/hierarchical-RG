@@ -252,6 +252,26 @@
     {
       "tag": "ZR91",
       "state": "allocated"
+    },
+    {
+      "tag": "144T",
+      "state": "allocated"
+    },
+    {
+      "tag": "96HI",
+      "state": "allocated"
+    },
+    {
+      "tag": "N9S3",
+      "state": "allocated"
+    },
+    {
+      "tag": "7AD0",
+      "state": "allocated"
+    },
+    {
+      "tag": "GHFF",
+      "state": "allocated"
     }
   ]
 }

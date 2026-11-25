@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Positive correlations and the bound on the order parameter — Hierarchical RG</title>
+<meta name="description" content="proposition: Positive correlations and the bound on the order parameter">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / GHFF</p>
+<h1>Positive correlations and the bound on the order parameter</h1>
+<p class="meta">proposition &middot; <span class="tag">GHFF</span> &middot; in
+<a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></p>
+<div class="assertion">Assume $M(\beta)>0$. Then the correlations of the plus state dominate $M^2$: $\mathbb E_{\mu_+}[\sigma_x\sigma_y]\geq M^2$ for all $x,y$, so the susceptibility $\chi_+(\beta)=\sum_{y}\mathbb E_{\mu_+}[\sigma_0\sigma_y]$ is infinite. For every $\beta<\infty$,</p>
+<div class="math-display">$$M(\beta)\leq\tanh\Bigl(\beta C\Bigr)=\tanh\bigl(\beta/\beta_c^{\mathrm{G}}\bigr),$$</div>
+<p>where $\beta_c^{\mathrm G}=1/C$ is the critical intensity of the <a href="gaussian-renormalisation-group.html#section-critical">Gaussian model</a>.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p><em>Correlations.</em> By <a href="hierarchical-symmetries.html">the symmetry article</a> the plus state is invariant under translations and the two-point function is radial, and by the Griffiths inequality, the second of the pair in [@griffiths-1967], $\mathbb E_{\mu_+}[\sigma_x\sigma_y]\geq\mathbb E_{\mu_+}[\sigma_x]\,\mathbb E_{\mu_+}[\sigma_y]=M^2$ for every pair. Summing over the shell at level $k$, which has $(1-L^{-d})L^{dk}$ vertices, gives a contribution at least $M^2(1-L^{-d})L^{dk}$, and the sum over $k$ diverges.</p>
+<p><em>The bound.</em> By the Gibbs property at the single site $0$, $\sigma_0$ is a function of the other spins whose conditional expectation is $\tanh\bigl(\beta H\bigr)$ with $H=\sum_{y\neq0}J(\lVert y\rVert)\sigma_y$, so $M=\mathbb E_{\mu_+}[\tanh(\beta H)]$. Since $\tanh$ is odd and increasing, $\tanh(\beta H)\leq\tanh(\beta\lvert H\rvert)$; since $\lvert H\rvert\leq C$ and $\tanh$ is concave on $[0,\infty)$ with $\tanh0=0$, Jensen's inequality gives $\mathbb E[\tanh(\beta\lvert H\rvert)]\leq\tanh\bigl(\beta\mathbb E\lvert H\rvert\bigr)\leq\tanh(\beta C)$. The last value is $\tanh(\beta/\beta_c^{\mathrm G})$ because $C$ is the reciprocal of the Gaussian critical intensity.</p>
+</div></details>
+<p>The same computation at finite volume with the plus boundary condition gives $\mathbb E_{\mathbb P_\Lambda^{+}}[\sigma_x]\leq\tanh\bigl(\beta(C_\Lambda+b_x)\bigr)$, where $C_\Lambda=\sum_{y\in\Lambda\setminus x}J(x-y)$ is the mass inside the block and $b_x=\sum_{y\notin\Lambda}J(x-y)$ the mass at the boundary; both forms follow from $\lvert H\rvert\leq$ the total mass seen by $x$.</p>
+
+<p>The two statements are of very different strength, and the difference is the point of the article. The first is a genuine consequence: a magnetised phase has infinite susceptibility, so the divergence of $\chi$ is not an extra assumption but a corollary of order, and this is the inequality behind the exponent relation $\gamma\geq0$ in <a href="critical-exponents-from-rg.html">the dictionary</a>. The second is nearly empty: it says that $M$ is below one at every finite intensity, which was clear from $\lvert\sigma_0\rvert=1$, and that it tends to one as $\beta\to\infty$. It does not say that $M$ is zero anywhere, and no argument of this kind will.</p>
+
+## Where the threshold comes from {#section-threshold}
+
+<p>It is worth being explicit about why monotonicity cannot locate the transition, because the reason is structural rather than technical. Every assertion in the previous sections is preserved under replacing the kernel by another ferromagnetic one with the same total mass $C$: the domination, the sandwich, the equivalence of the theorem, and both bounds depend on the couplings only through their signs and their sum. In particular the one inequality that mentions the intensity, $M\leq\tanh(\beta C)$, holds at every $\beta$ and is therefore compatible both with $M>0$ at every intensity and with $M=0$ at every intensity. An argument whose conclusions are invariant under a change of kernel that preserves $C$ cannot produce a threshold, and the invariance here is exact, not a matter of the estimates being crude: no sharper use of the same inequalities will do better.</p>
+
+<p>The threshold is located by the recursion. In the language of <a href="bleher-sinai-fixed-point.html#section-statement">the fixed-point article</a>, the orbit of the Ising initial law under the rescaled decimation map converges to the point mass at $0$ below a critical coupling, to a nontrivial fixed point at it, and to a law of unbounded variance above it; that trichotomy is the theorem of Bleher and Sinai [@bleher-sinai-1973] [@bleher-sinai-1975]. The third branch is the magnetised phase: above the critical coupling the block spin per site has a nonzero limit $\pm M$, the two signs being the two states of this article. The identification with the order parameter defined here is through the block averages of the boundary-conditioned measures, which decrease to $M(\beta)$ by the proof of <a href="hierarchical-magnetised-phase.html#tag-N9S3">the extremal-state proposition</a>, so a nonzero limit of the block spin is exactly a nonzero order parameter.</p>
+
+<p>So the division of labour is this. Monotonicity gives the shape of the phase diagram — two extremal states, an order parameter, uniqueness exactly when the order parameter vanishes — and answers the previous article's open question about how many Gibbs measures there are, in the sense that it reduces the question to the sign of one number. The recursion decides the sign. That the sign requires the recursion, and is not available from the inequalities of this article, is what the paragraph above argues, and it is the reason the wiki treats the two arguments as separate.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>No interaction.</em> For $J=0$ the Gibbs measure is the product of the prior and is unique, so $M(\beta)=0$ for every $\beta$; the plus and minus boundary conditions have no effect beyond the boundary itself, and the two limits coincide with the product measure.</p>
+
+<p><em>An external field.</em> A field $h\sum_x\sigma_x$ adds the constant $h$ to every field in the specification, and <a href="hierarchical-magnetised-phase.html#tag-96HI">the domination proposition</a> applies in $h$ as it does in the boundary condition: the finite-volume measures are nondecreasing in $h$, hence so is $M(\beta,h)$, and the limit $h\downarrow0$ exists and is the order parameter of this article. The field also breaks the flip symmetry, so the minus state is no longer the mirror image of the plus one, and the two magnetisations, one positive and one negative at $h=0$, move towards each other as $h$ increases. That monotonicity is what makes the phase diagram of a model with a field a pair of curves rather than a pair of symmetric ones; where they meet is not a question monotonicity answers.</p>
+
+<p><em>Non-example: the antiferromagnet.</em> For $J&lt;0$ the FKG inequality in the form used here fails, since the lattice condition has the wrong sign, and with it every step of this article: the heat bath is no longer monotone, the plus and minus boundary conditions no longer bound the Gibbs measures, and the order parameter defined above has no reason to detect anything. Recovering a monotone structure for an antiferromagnet needs a gauge transformation, that is a choice of signs $\chi$ with $\chi(x)\chi(y)=-1$ across each coupled pair, which presupposes a bipartition of the coupled pairs; on the hierarchical lattice every pair is coupled, at some level, and no such $\chi$ exists. The wiki treats ferromagnetic models throughout, and this is the hypothesis the article rests on.</p>
+
+<p><em>Percolation.</em> The same architecture holds for <a href="hierarchical-percolation-rg.html">bond percolation</a> on the lattice: the Harris–FKG inequality gives that the connection probabilities increase in the intensity, the percolation probability $\theta(\beta)=\mathbb P_\beta(\lvert K_0\rvert=\infty)$ plays the role of the order parameter and is positive exactly in the percolating phase. The threshold there is $\beta_c$ of the percolation article, and its finiteness is decided by $\alpha&lt;d$ through a comparison with the recursion, again not by monotonicity.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>Other boundary conditions.</em> Every configuration $\omega$ satisfies $-\preceq\omega\preceq+$, so the sandwich holds with $\mathbb P_\Lambda^{\omega}$ in place of $\mathbb P_\Lambda^{\pm}$: the plus and minus states bound every finite-volume measure, not only the Gibbs measures. Free boundary conditions are not of that form, since there is no outside configuration to compare with, but the same domination holds: the plus measure is the free measure reweighted by $\exp\bigl(\beta\sum_{x\in\Lambda}b_x\sigma_x\bigr)$ with $b_x=\sum_{y\notin\Lambda}J(x-y)\geq0$, a bounded increasing function of the configuration, so the FKG inequality gives $\mathbb P_\Lambda^{\mathrm{free}}\preceq\mathbb P_\Lambda^{+}$ and the free limit of the previous article lies between $\mu_-$ and $\mu_+$ as well.</p>
+
+<p><em>Monotonicity in the intensity.</em> That $M(\beta)$ is nondecreasing in $\beta$ is the first Griffiths inequality, the companion of the second used above, and is the same statement as the monotonicity of the correlations in the couplings [@griffiths-1967]. It gives a critical intensity $\beta_c=\inf\{\beta:M(\beta)>0\}$ as a well-defined number, and it is what makes the phase diagram a diagram rather than a set of values; it still does not evaluate the infimum.</p>
+
+<p><em>The general block system.</em> Nothing in the argument uses the lattice beyond the fact that the blocks exhaust the vertex set and that the model is ferromagnetic with a finite total mass at a vertex. For any attractive spin system on a countable set the same two propositions hold, with the same proofs: the boundary-conditioned measures increase in the boundary configuration, the plus and minus limits exist, and every Gibbs measure lies between them. That the Gibbs measures of an attractive system form an interval in the stochastic order is the general form of <a href="hierarchical-magnetised-phase.html#tag-N9S3">the sandwich</a>.</p>
+
+## History and attribution {#section-history}
+
+<p>The inequality that increasing functions are positively correlated under a ferromagnetic measure is due to Fortuin, Kasteleyn and Ginibre [@fkg-1971]; for Ising spins the correlation inequalities, including the pair used here, are Griffiths's [@griffiths-1967]. The extremal states of an attractive system, obtained as the monotone limits of the plus and minus boundary conditions, and the statement that every Gibbs measure lies between them, are part of the general theory in Georgii's book [@georgii-2011], where the argument is given for a general specification; the monotone coupling used above is the standard proof in the finite volume.</p>
+
+<p>The phase transition of the hierarchical Ising model, with a nonzero spontaneous magnetisation above the critical coupling, is the third branch of the trichotomy of Bleher and Sinai [@bleher-sinai-1973] [@bleher-sinai-1975]; <a href="bleher-sinai-fixed-point.html">the fixed-point article</a> states their theorem and describes the mechanism of its proof. The separation recorded in the previous section — that the architecture is a matter of monotonicity and the threshold a matter of the recursion — is not a claim about the literature, in which the two are usually proved together for a particular model, but about which argument carries which statement.</p>
+
+## References {#section-references}
+
+<ul>
+<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>C. M. Fortuin, P. W. Kasteleyn and J. Ginibre, Correlation inequalities on some partially ordered sets, <em>Comm. Math. Phys.</em> 22 (1971), 89&ndash;103.</li>
+<li>H.-O. Georgii, <em>Gibbs Measures and Phase Transitions</em>, 2nd extended edition, De Gruyter Studies in Mathematics 9, de Gruyter, 2011.</li>
+<li>R. B. Griffiths, Correlations in Ising ferromagnets, <em>J. Math. Phys.</em> 8 (1967), 478&ndash;489.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-magnetised-phase.html#tag-GHFF">The magnetised phase, and what monotonicity gives</a>. To cite this assertion, link to
+<span class="tag">tag-GHFF.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-magnetised-phase.html#tag-GHFF"><span class="dir">context</span>The magnetised phase, and what monotonicity gives</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

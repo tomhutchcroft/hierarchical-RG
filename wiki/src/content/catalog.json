@@ -463,6 +463,18 @@
       "description": "The general theory of Gibbs measures on lattice spin systems: specifications, the DLR characterisation, compactness of the set of Gibbs measures, and the passage from finite-volume measures, with phase transitions treated through the convex structure.",
       "zbl": "1225.60001",
       "zblUrl": "https://zbmath.org/?q=an:1225.60001"
+    },
+    {
+      "id": "fkg-1971",
+      "shortName": "Fortuin–Kasteleyn–Ginibre",
+      "title": "Correlation inequalities on some partially ordered sets",
+      "author": "C. M. Fortuin, P. W. Kasteleyn and J. Ginibre",
+      "year": 1971,
+      "edition": "Comm. Math. Phys. 22 (1971), 89-103",
+      "url": "https://doi.org/10.1007/BF01651330",
+      "description": "Positive correlation of increasing functions for measures satisfying a positive lattice condition, covering ferromagnetic Ising and Potts models and percolation: the FKG inequality.",
+      "zbl": "0346.06011",
+      "zblUrl": "https://zbmath.org/?q=an:0346.06011"
     }
   ]
 }

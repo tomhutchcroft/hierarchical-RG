@@ -5,13 +5,14 @@
       "id": "block-structure",
       "title": "The block structure",
       "subtitle": "Nested blocks, congruent children, and the decimation identity they make exact.",
-      "intro": "Four articles establish the object everything else rests on: a group whose balls are cosets of nested finite-index subgroups, with the same number of children at every scale. The child decomposition says that every pair of vertices in different children of a block sits at the top level of that block, which is what makes the energy split into the children plus one interaction between their sums. The decimation identity is that statement written as an identity for partition functions, and it is the whole reason the renormalisation group is exact here. The fourth article passes from the blocks to the lattice, where the two-point function and the phase live, and the fifth isolates what the argument actually uses and carries it to the p-adic integers.",
+      "intro": "Six articles establish the object everything else rests on: a group whose balls are cosets of nested finite-index subgroups, with the same number of children at every scale. The child decomposition says that every pair of vertices in different children of a block sits at the top level of that block, which is what makes the energy split into the children plus one interaction between their sums. The decimation identity is that statement written as an identity for partition functions, and it is the whole reason the renormalisation group is exact here. The fourth article passes from the blocks to the lattice, where the two-point function and the phase live; the fifth isolates what the argument actually uses and carries it to the p-adic integers; and the sixth describes the phase diagram from monotonicity alone, ending where the recursion has to take over.",
       "articles": [
         "hierarchical-lattice",
         "hierarchical-symmetries",
         "hierarchical-gibbs-measure",
         "hierarchical-infinite-volume-limit",
-        "ultrametric-block-systems"
+        "ultrametric-block-systems",
+        "hierarchical-magnetised-phase"
       ]
     },
     {

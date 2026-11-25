@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domination in the boundary condition and in the field — Hierarchical RG</title>
+<meta name="description" content="proposition: Domination in the boundary condition and in the field">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / 96HI</p>
+<h1>Domination in the boundary condition and in the field</h1>
+<p class="meta">proposition &middot; <span class="tag">96HI</span> &middot; in
+<a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></p>
+<div class="assertion">Let $\Lambda$ be finite and let $\omega\preceq\omega'$. Then $\mathbb P_\Lambda^{\omega}\preceq\mathbb P_\Lambda^{\omega'}$. The same holds with an external field: if $h\leq h'$ then the measure with field $h$ is dominated by the measure with field $h'$.</p>
+<details><summary>Proof by coupling the heat baths</summary><div class='collapsible-body'>
+<p>The heat-bath chain on $\Lambda$ updates one site at a time. Given the configuration $\sigma$ and a uniform $U$, it sets $\sigma_x=+1$ if $U\leq p_x(\sigma)$ and $-1$ otherwise, where</p>
+<div class="math-display">$$p_x(\sigma)=\frac{1+\tanh\Bigl(\beta\sum_{y\in\Lambda\setminus x}J(x-y)\sigma_y+\beta\sum_{y\notin\Lambda}J(x-y)\omega_y+\beta h_x\Bigr)}{2}$$</div>
+<p>is the conditional probability that $\sigma_x=+1$ given the other spins. Each $p_x$ is increasing in $\sigma$ and in $\omega$ and in $h$, because $J>0$ and $\tanh$ is increasing. The chain is irreducible and aperiodic on the finite state space, so it has a unique invariant law, which is the Gibbs measure $\mathbb P_\Lambda^{\omega}$, and it converges to that law from every starting point.</p>
+<p>Run two chains with the same uniform variables and the same choice of updated site, one for $\omega$ and one for $\omega'$, from starting configurations $\sigma\preceq\sigma'$. The domination is preserved at every update, by the monotonicity of $p_x$: if the two configurations agree at the updated site then so do the new values, and otherwise the one with the larger background has a larger flip probability, so a uniform that flips the lower chain also flips the higher one. Hence the entire path satisfies $\sigma(t)\preceq\sigma'(t)$ for all $t$. Passing to the limit in $t$ gives a coupling of the two invariant laws supported on $\{\sigma\preceq\sigma'\}$, which is domination: for increasing $f$, $\int f\,d\mathbb P_\Lambda^{\omega}=\mathbb E[f(\sigma)]\leq\mathbb E[f(\sigma')]=\int f\,d\mathbb P_\Lambda^{\omega'}$.</p>
+<p>The field case is identical, the field entering $p_x$ the same way as the boundary spin.</p>
+</div></details>
+<p>Two consequences are used below. Taking $\omega\preceq\omega'$ to be the extreme configurations gives $\mathbb P_\Lambda^{-}\preceq\mathbb P_\Lambda^{+}$: the plus and minus boundary conditions are the largest and smallest available. Taking instead the boundary conditions produced by the spins outside a smaller block gives the monotonicity in the volume, which is where the limits come from.</p>
+
+## The two extremal states {#section-extremal}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-magnetised-phase.html#tag-96HI">The magnetised phase, and what monotonicity gives</a>. To cite this assertion, link to
+<span class="tag">tag-96HI.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-magnetised-phase.html#tag-96HI"><span class="dir">context</span>The magnetised phase, and what monotonicity gives</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>
