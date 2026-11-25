@@ -574,6 +574,54 @@ def fig_free_energy():
     return _svg(W, H, "free energy and heat capacity", "".join(p))
 
 
+def fig_volume_exponent():
+    """The cluster-volume exponent against the kernel exponent, with the upper critical dimension marked."""
+    d = 1
+    W, H = 560, 300
+    pad = {"l": 58, "r": 26, "t": 30, "b": 46}
+    lo, hi = 0.02, 0.99 * d
+
+    def X(a):
+        return pad["l"] + (a - lo) / (hi - lo) * (W - pad["l"] - pad["r"])
+
+    ymax = 6.0
+
+    def Y(v):
+        return H - pad["b"] - min(v, ymax) / ymax * (H - pad["t"] - pad["b"])
+
+    p = [f'<line x1="{pad["l"]}" y1="{H-pad["b"]}" x2="{W-pad["r"]}" y2="{H-pad["b"]}" class="fg-axis"/>',
+         f'<line x1="{pad["l"]}" y1="{pad["t"]}" x2="{pad["l"]}" y2="{H-pad["b"]}" class="fg-axis"/>']
+    for v in (1, 2, 3, 4, 5, 6):
+        p.append(f'<line x1="{pad["l"]}" y1="{Y(v):.1f}" x2="{W-pad["r"]}" y2="{Y(v):.1f}" '
+                 f'stroke="#e3e3e6" stroke-width="1"/>')
+        p.append(f'<text x="{pad["l"]-8}" y="{Y(v)+4:.1f}" text-anchor="end" class="fg-small">{v:g}</text>')
+    for a in (0.2, 1 / 3.0, 0.5, 0.7, 0.9):
+        p.append(f'<text x="{X(a):.1f}" y="{H-pad["b"]+18}" text-anchor="middle" class="fg-small">'
+                 f'{a:.2f}</text>')
+    ac = d / 3.0
+    p.append(f'<line x1="{X(ac):.1f}" y1="{pad["t"]}" x2="{X(ac):.1f}" y2="{H-pad["b"]}" '
+             f'stroke="#8a1c1c" stroke-width="1.4" stroke-dasharray="4 4"/>')
+    p.append(f'<text x="{X(ac)+6:.1f}" y="{pad["t"]+12}" class="fg-small">alpha = d/3</text>')
+    mean = [X(a) for a in (lo, ac)]
+    p.append(f'<path d="M{mean[0]:.1f} {Y(2):.1f} L{mean[1]:.1f} {Y(2):.1f}" stroke="#4a7a1c" stroke-width="2.4"/>')
+    pts = []
+    steps = 200
+    for i in range(steps + 1):
+        a = ac + (hi - ac) * i / steps
+        v = (d + a) / (d - a)
+        if v > ymax:
+            break
+        pts.append((X(a), Y(v)))
+    p.append('<path d="' + " ".join(("M" if i == 0 else "L") + f"{x:.1f} {y:.1f}"
+                                    for i, (x, y) in enumerate(pts)) + '" fill="none" stroke="#1c5a8a" stroke-width="2.4"/>')
+
+    p.append(f'<text x="{pad["l"]}" y="{pad["t"]-12}" class="fg-small">'
+             f'green: 2 for d &gt; 3 alpha    blue: (d+alpha)/(d-alpha) for d &lt; 3 alpha    d = 1</text>')
+    p.append(f'<text x="{(pad["l"]+W-pad["r"])/2:.0f}" y="{H-8}" text-anchor="middle" class="fg-small">'
+             f'kernel exponent alpha</text>')
+    return _svg(W, H, "the volume exponent against the kernel exponent", "".join(p))
+
+
 # ---------------------------------------------------------------- what each one computes
 
 #: One line per generated figure: what it computes, and what checks that computation.
@@ -600,6 +648,9 @@ FIGURE_NOTES = {
                     "the critical intensity marked.",
                     "the closed-form per-scale terms, checked against direct quadrature in "
                     "numeric_checks.py"),
+    "volume-exponent": ("The cluster-volume exponent against the kernel exponent, mean field on one "
+                        "side of d = 3 alpha and (d+alpha)/(d-alpha) on the other.",
+                        "arithmetic: the two formulas joined at the upper critical dimension"),
 }
 
 #: One line per interactive figure.
@@ -625,7 +676,7 @@ def figures() -> dict:
     return {"lattice-children": fig_lattice_children(), "flow": fig_flow(), "decimation": fig_decimation(),
             "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless(),
             "boundary": fig_boundary(), "percolation-tail": fig_percolation_tail(),
-            "free-energy": fig_free_energy()}
+            "free-energy": fig_free_energy(), "volume-exponent": fig_volume_exponent()}
 
 
 def fig_exponents_alpha():
