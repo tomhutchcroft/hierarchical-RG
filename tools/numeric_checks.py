@@ -784,6 +784,31 @@ def check_amplitude_ratios():
          "; ".join(f"beta={b}: {[round(x, 4) for x in rs]}" for b, rs in rows))
 
 
+def check_multicritical_counts():
+    """The count of relevant even directions at the Gaussian fixed point, and the thresholds it gives."""
+    def relevant(d, a):
+        return [k for k in range(1, 400) if k * (d - a) < d - 1e-12]
+
+    def marginal(d, a):
+        return [k for k in range(1, 400) if abs(k * (d - a) - d) < 1e-12]
+
+    cases = [(1, 0.2, [1]), (1, 0.35, [1]), (1, 0.6, [1, 2]), (1, 0.7, [1, 2, 3]), (1, 0.8, [1, 2, 3, 4])]
+    ok = all(relevant(d, a) == want for d, a, want in cases)
+    # at each threshold alpha_k precisely the first k-1 directions are relevant and k is marginal
+    ok = ok and all(marginal(1, 1 - 1 / k) == [k] for k in (2, 3, 5, 9))
+    note("the relevant even directions at the Gaussian fixed point", ok,
+         "for d=1: alpha=0.2 -> " + str(relevant(1, 0.2)) + ", 0.6 -> " + str(relevant(1, 0.6)) +
+         ", 0.7 -> " + str(relevant(1, 0.7)) +
+         ", 0.8 -> " + str(relevant(1, 0.8)) + "; at alpha=1-1/k the marginal index is k")
+
+    # with alpha = 2 the thresholds invert to d = 2k/(k-1): 4, 3, 8/3, 5/2
+    ds = [2 * k / (k - 1) for k in (2, 3, 4, 5)]
+    ok = all(abs((2 * k / (k - 1)) * (1 - 1 / k) - 2) < 1e-12 for k in (2, 3, 4, 5))
+    ok = ok and all(marginal(2 * k / (k - 1), 2) == [k] for k in (2, 3, 4, 5))
+    note("at alpha=2 the multicritical dimensions come out as 4, 3, 8/3, 5/2", ok,
+         f"d = {[round(x, 4) for x in ds]}; at each, the marginal index is k")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -806,6 +831,7 @@ def main() -> int:
     check_moment_monotonicity()
     check_two_child_recursion()
     check_amplitude_ratios()
+    check_multicritical_counts()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0
