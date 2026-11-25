@@ -704,6 +704,46 @@ def check_energy_telescoping():
          f"relative gap {gap:.3f}: a block inside a bigger block is not a free block")
 
 
+def check_moment_monotonicity():
+    """The even diagonal moment of a child increases under the decimation tilt, and the shell arithmetic."""
+    L, d, alpha = 2, 1, 0.5
+    m = L ** d
+
+    def block_law(n, beta):
+        tab, _, _ = ising_block(d, L, n, alpha, beta, boundary=0.0)
+        out = {}
+        for conf, p in tab.items():
+            out[sum(conf)] = out.get(sum(conf), 0.0) + p
+        return out
+
+    worst = 0.0
+    for beta in (0.2, 0.6, 1.0, 1.5):
+        for n in (2, 3, 4):
+            nu = block_law(n - 1, beta)
+            V_prev = sum(s * s * p for s, p in nu.items())
+            b = beta * L ** (-(d + alpha) * n)
+            items = list(nu.items())
+            Z = num = 0.0
+            for s1, p1 in items:
+                for s2, p2 in items:
+                    w = p1 * p2 * math.exp(b * s1 * s2)
+                    Z += w
+                    num += w * s1 * s1
+            worst = max(worst, V_prev - num / Z)
+    note("a child's second moment increases under decimation", worst < 1e-12,
+         f"largest violation of E_tilt[S_1^2] >= V_(n-1): {worst:.2e} over four intensities and three sizes")
+
+    # the two shell computations of the reduction
+    A, a, n = 0.7, 0.05, 6
+    shell = m ** n * (m - 1) * m ** (n - 1) * a * L ** (-(d - alpha) * n)
+    target = a * (1 - 1 / m) * L ** ((d + alpha) * n)
+    ir_sum = 1 + sum(A * L ** (-(d - alpha) * k) * (m - 1) * m ** (k - 1) for k in range(1, n + 1))
+    Kp = 1 + A * (1 - 1 / m) * L ** alpha / (L ** alpha - 1)
+    note("the shell counts of the reduction", abs(shell - target) < 1e-12 and ir_sum <= Kp * L ** (alpha * n) + 1e-12,
+         f"top shell gives {shell:.6f} = a(1-1/m)L^((d+alpha)n) = {target:.6f}; "
+         f"the IR sum at n = {n} is {ir_sum:.6f} <= K' L^(alpha n) = {Kp * L ** (alpha * n):.6f}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -723,6 +763,7 @@ def main() -> int:
     check_free_energy_series()
     check_ising_free_energy()
     check_energy_telescoping()
+    check_moment_monotonicity()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

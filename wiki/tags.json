@@ -336,6 +336,14 @@
     {
       "tag": "7NZO",
       "state": "allocated"
+    },
+    {
+      "tag": "T8WS",
+      "state": "allocated"
+    },
+    {
+      "tag": "UTEB",
+      "state": "allocated"
     }
   ]
 }

@@ -122,6 +122,29 @@
 
 <p>What this route does <em>not</em> give is the value of $\kappa$. The lower half of the sandwich bounds the free variance below, in terms of $M_n$, and $M_n\to0$ at criticality, so it cannot certify a growth of order $L^{2\theta_0n}$; the upper half bounds the plus variance, not the free one. That is not an accident of the estimates: the two variances differ by the factor between them, which is exactly what distinguishes a pinned block spin from a fluctuating one. Certifying $\kappa=\alpha$ therefore still needs either the convergence of the rescaled orbit, which is <a href="/tag/A8VL/">the growth theorem</a>, or an upper bound on the free block-spin variance which this argument does not supply.</p>
 
+## What the growth exponent needs {#section-reduction}
+
+<p>The variance route above left one input open. It can be narrowed to two pointwise statements about the two-point function, and the narrowing is worth recording because for the percolation class both statements are theorems, so what is isolated is exactly what the spin model needs beyond what percolation already has.</p>
+<p>The first ingredient is a monotonicity of the diagonal moments under decimation, which is not a consequence of the FKG inequality — $S_1^2$ is not an increasing function of the spins — but of Chebyshev's inequality for a single real variable.</p>
+<a id="tag-T8WS" data-assertion="proposition" data-title="Even diagonal moments of a child increase under the decimation tilt"></a>
+<p>Let $\nu$ be a symmetric law on $\mathbb R$, let $S_1,\dots,S_m$ be independent with law $\nu$, and let $\mathbb E_{\mathrm{tilt}}$ be the expectation under the normalised measure $\propto e^{b\sum_{a&lt;a'}S_aS_{a'}}\prod_a\nu(dS_a)$ with $b\geq0$. Then for every $r\geq1$</p>
+<div class="math-display">$$\mathbb E_{\mathrm{tilt}}\bigl[S_1^{2r}\bigr]\ \geq\ \int s^{2r}\,\nu(ds).$$</div>
+:::details Proof
+<p>Write $T=\sum_{a\geq2}S_a$ and $W_0=\exp\bigl(b\sum_{2\leq a&lt;a'}S_aS_{a'}\bigr) \geq0$. Integrating out everything but $S_1=x$ under the product law gives the conditional weight</p>
+<div class="math-display">$$f(x)=\mathbb E_0\bigl[e^{bxT}W_0\bigr]=\sum_{k\geq0}\frac{b^{2k}}{(2k)!}\,\mathbb E_0\bigl[T^{2k}W_0\bigr]x^{2k},$$</div>
+<p>with no odd terms: flipping all the blocks $2,\dots,m$ simultaneously leaves $W_0$ unchanged and sends $T$ to $-T$. Every coefficient is nonnegative, so $f$ is a nondecreasing function of $x^2$, and so is $x^{2r}$. Chebyshev's association inequality for a single real variable, applied to $X=S_1^2$, gives $\mathbb E_0[S_1^{2r}f(S_1)]\geq\mathbb E_0[S_1^{2r}]\,\mathbb E_0[f(S_1)]$, which after dividing by $\mathbb E_0[f(S_1)]$ — the normalising constant of the tilted law — is the claim. In the actual model the block sums are bounded, so the series converges and the interchanges are legitimate.</p>
+:::
+<p>The second ingredient is the comparison between the finite-volume and infinite-volume two-point functions, and then the two hypotheses. Recall $\tau_n$ for the free measure on $\Lambda_n$, $\tau_\infty$ for the limit, and $V_n=\mathbb E_\beta[S_n^2]=L^{dn}\sum_{y\in\Lambda_n}\tau_n(0,y)$, which is the <a href="/articles/critical-exponents-from-rg/#section-identities">block identity</a> with translation invariance.</p>
+<a id="tag-UTEB" data-assertion="proposition" data-title="The growth exponent follows from two pointwise bounds on the two-point function"></a>
+<p>Assume, at $\beta=\beta_c$: (IR) there is $A&lt;\infty$ with $\tau_\infty(0,y)\leq AL^{-(d-\alpha)\operatorname{lev}(y)}$ for every $y\neq0$; and (FSL) there are $a&gt;0$ and $n_0$ with $\tau_n(0,y)\geq aL^{-(d-\alpha)n}$ for every $n\geq n_0$ and every $y$ in the top shell $\Lambda_n\setminus\Lambda_{n-1}$. Then there are constants $0&lt;c\leq K&lt;\infty$, depending only on $L,d,\alpha,A,a,n_0$, with</p>
+<div class="math-display">$$c\,L^{(d+\alpha)n}\ \leq\ V_n\ \leq\ K\,L^{(d+\alpha)n}\qquad\text{for every }n\geq1,$$</div>
+<p>so the growth exponent is $\kappa=\alpha$ and the rescaled second moment stays bounded away from zero and infinity.</p>
+:::details Proof
+<p><em>Upper bound.</em> By Griffiths monotonicity in the couplings, $\tau_n(0,y)\leq\tau_\infty(0,y)$ for $n$ with $y\in\Lambda_n$, so $V_n\leq L^{dn}\sum_{y\in\Lambda_n}\tau_\infty(0,y)$. The shell at level $k$ has $(m-1)m^{k-1}$ vertices, so by (IR) the sum is at most $1+A(1-m^{-1})\sum_{k\leq n}L^{\alpha k}\leq K'L^{\alpha n}$, and $V_n\leq K'L^{(d+\alpha)n}$.</p>
+<p><em>Lower bound.</em> Retaining only the top shell and using (FSL), $V_n\geq L^{dn}(m-1)m^{n-1}\,aL^{-(d-\alpha)n}=a(1-m^{-1})L^{(d+\alpha)n}$ for $n\geq n_0$; finitely many smaller $n$ are absorbed into the constant.</p>
+:::
+<p>For the <em>percolation</em> class on the same lattice both hypotheses are theorems: the pointwise two-point bounds at criticality, in both directions and in exactly this form, are <a href="/articles/hierarchical-percolation-rg/#section-two-point">Hutchcroft's</a>, with the lower bound for connections inside the smallest common block — which is what (FSL) asks for. So for percolation the conclusion of the proposition is proved, and it reproduces the $\chi_n\asymp L^{\alpha n}$ of <a href="/articles/hierarchical-percolation-rg/#section-consequences">the percolation article</a> from a different direction. For the Ising model the two hypotheses are the missing input, and the proposition says precisely what they buy and why neither is implied by what the earlier sections prove: the upper bound needs the infinite-volume pointwise decay, which sum-level information does not give, and the lower bound needs a finite-volume estimate in the opposite direction to Griffiths monotonicity, which points the other way.</p>
+
 ## The dictionary {#section-dictionary}
 
 <a id="tag-G6YW" data-assertion="theorem" data-title="Exponents in terms of the two renormalisation-group numbers"></a>
