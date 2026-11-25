@@ -126,7 +126,7 @@
 
 <p>The variance route above left the growth exponent conditional. It is not: the upper half of the statement, that the block spin never grows faster than $L^{\theta_0n}$, follows from the decimation identity and one monotonicity, and the lower half follows from the divergence of the susceptibility. This section proves both and then says what remains — the amplitude, which is a different question.</p>
 
-### The two-child comparison {#section-two-child}
+## The two-child comparison {#section-two-child}
 
 <a id="tag-3V4U" data-assertion="proposition" data-title="Decimation increases the mean square of a child and creates a positive correlation between two children"></a>
 <p>Let $\mu$ be a symmetric law on $\mathbb R$ with variance $v\in(0,\infty)$, and let $\nu_b$ on $\mathbb R^2$ be the product $\mu\otimes\mu$ tilted by $e^{bxy}$, $b\geq0$. Then</p>
@@ -140,7 +140,7 @@
 <div class="math-display">$$V_n=\sum_a\mathbb E[S_a^2]+\sum_{a\neq a'}\mathbb E[S_aS_{a'}]\ \geq\ mV_{n-1}\bigl[1+(m-1)\tanh(\beta J_nV_{n-1})\bigr].\tag{1}$$</div>
 <p>The inequality is a lower bound on $V_n$ given $V_{n-1}$, and it is the whole engine of what follows: it says that if the block spin is large then it is amplified, because the children are pulled into alignment and their cross correlations add to their own squares.</p>
 
-### The upper bound {#section-upper}
+## The upper bound {#section-upper}
 
 <a id="tag-4QMQ" data-assertion="theorem" data-title="At criticality the block-spin variance grows at most like L to the (d+alpha)n"></a>
 <p>Let $\beta=\beta_c$ and $r=L^{d+\alpha}$, and suppose that $\mathbb E_{\beta_c}[(S_n/m^n)^2]\to0$, which holds because the block average converges to the vanishing magnetisation. Then there is $A&lt;\infty$, depending only on $L,d,\alpha,\beta_c$, with</p>
@@ -153,7 +153,7 @@
 <p>So the upper half of $\kappa=\alpha$ is unconditional at criticality. The proof uses nothing about the tilt being small: the runaway argument works precisely because a large normalised variance feeds itself, so it can be excluded by the one piece of global information the model gives for free, that the block average is negligible compared with the block.</p>
 <p>The same argument applies at any intensity at which the block average vanishes, which is every $\beta\leq\beta_c$; above $\beta_c$ the block average is macroscopic and $R_n$ grows like $L^{(d-\alpha)n}$, consistently with the bound failing.</p>
 
-### The amplitude: a trapping argument {#section-lower}
+## The amplitude: a trapping argument {#section-lower}
 
 <p>The upper bound says the normalised variance cannot be large. The lower bound says it cannot be small, and the proof is the mirror image of the runaway argument: where a large value is amplified, a small one decays, and decaying is as impossible as exploding because the susceptibility diverges at criticality.</p>
 <a id="tag-UJC1" data-assertion="theorem" data-title="At criticality the normalised second moment is bounded away from zero and from infinity"></a>
@@ -167,7 +167,7 @@
 :::
 <p>The same argument shows more than the boxed statement: it shows that the sequence $R_n$ cannot decay at all, so the exponential rate of $V_n$ is exactly $d+\alpha$ rather than merely at most it. The two halves are complementary and neither uses the convergence of the rescaled orbit: the pair (upper, amplitude) is what <a href="/tag/A8VL/">the growth theorem</a> previously needed as a hypothesis, and it is now a conclusion.</p>
 
-### What the theorem does not give {#section-amplitude}
+## What the theorem does not give {#section-amplitude}
 
 <p>The exponents are settled; what is not is the <em>pointwise</em> structure. The theorems above control the sum $\sum_{y\in\Lambda_n}\tau(0,y)$ and hence the block susceptibility, and they say nothing about $\tau(0,y)$ for a single $y$. The natural per-pair statements are these, and they remain unproved for Ising spins: (IR) $\tau_\infty(0,y)\leq AL^{-(d-\alpha)\operatorname{lev}(y)}$, and (FSL) $\tau_n(0,y)\geq aL^{-(d-\alpha)n}$ on the top shell. For the percolation class on the same lattice both are theorems, as <a href="/articles/hierarchical-cluster-volume/">the volume article</a> and <a href="/articles/hierarchical-percolation-rg/#section-two-point">the percolation article</a> record, and that is the sharpest way to say what the spin model still lacks: the summed bound is now proved, the per-pair bound is not.</p>
 <p>Two statements that a pointwise route would use are recorded here, because the first is a monotonicity that does not follow from FKG and the second shows exactly what the pair of assumptions buys.</p>
@@ -196,6 +196,11 @@
 <p>For $\beta_{\mathrm{o}}$: $M\asymp\xi^{-(d-\kappa)/2}\asymp\lvert\beta_c-\beta\rvert^{\nu(d-\kappa)/2}$, and comparing with the definition gives $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-\kappa)$, which is the same as $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-2+\eta)$ because $\kappa=2-\eta$.</p>
 <p>For $\delta$: Widom's relation $\gamma=\beta_{\mathrm{o}}(\delta-1)$ is the definition of $\delta$ once the other two exponents are known, and substituting $\gamma=\kappa\nu$ and $\beta_{\mathrm{o}}=\tfrac{\nu}{2}(d-\kappa)$ gives $\kappa\nu=\tfrac{\nu}{2}(d-\kappa)(\delta-1)$, hence $\delta-1=\frac{2\kappa}{d-\kappa}$ and $\delta=\frac{d+\kappa}{d-\kappa}$. The last two displays restate the first two relations with $\kappa=2-\eta$.</p>
 :::
+<p>Two things are called <em>mean field</em> in this subject and they are not the same, which is worth fixing before the dictionary is used.</p>
+<p><em>Mean field as the relevant Green's function.</em> The kernel $J(x)\asymp\lVert x\rVert^{-d-\alpha}$ is the kernel of a fractional Laplacian of order $\alpha$, whose Green's function is $\lVert x\rVert^{-(d-\alpha)}$. A model is mean field in this sense when its critical two-point function is of that order, $\tau_{\beta_c}(0,y)\asymp\lVert y\rVert^{-(d-\alpha)}$: the correlation is the one the kernel dictates, with no anomalous dimension beyond the one built into the kernel. In the notation above that statement is exactly $\eta=2-\alpha$, and it holds here for every $\alpha$, because the growth exponent is $\alpha$ at every fixed point. The free Gaussian field with this kernel already has it — its propagator <em>is</em> the Green's function — so $\eta=2-\alpha\neq0$ is not a failure of mean-field behaviour but its definition in the long-range setting.</p>
+<p><em>Mean field as the classical exponents.</em> A model is mean field in the second sense when its fixed point is the Gaussian one, so that $\nu=1/\alpha$ and everything the dictionary derives from $\nu$ takes the classical values. That holds only for $\alpha&lt;d/2$, and what changes at $\alpha=d/2$ is $\nu$ and the corrections to scaling, not $\eta$.</p>
+<p>The relation between the two uses is the short-range case. At $\alpha=2$, which is the borderline of summability of the second moment and the case a short-range interaction approximates, $\eta=2-\alpha=0$ and the Green's function is the ordinary $\lVert y\rVert^{-(d-2)}$; so "mean field implies $\eta=0$" is the $\alpha=2$ instance of "mean field means the Green's function", and a reader who has the short-range statement in mind should read $\eta=2-\alpha$ as the same statement rather than as its negation. What is proved pointwise differs by model: for percolation the order $\lVert y\rVert^{-(d-\alpha)}$ is a theorem for every $\alpha$ [@hutchcroft-hierarchical-2021], while for Ising spins the summed statement behind it — $\kappa=\alpha$ with the normalised second moment bounded two-sidedly — is what <a href="/articles/critical-exponents-from-rg/#section-lower">the amplitude section</a> proves, and the pointwise order is the item it leaves open.</p>
+
 <p>Which of these is a theorem of the model and which is an extra hypothesis is the point of the small print. The first display of the dictionary is a theorem of percolation in the hierarchical model below the triangle threshold, where the block susceptibility is known to grow like $L^{\kappa n}$ and the truncated form is a consequence of the finite correlation length; hyperscaling, the identity $F_{\mathrm{sing}}\asymp\xi^{-d}$, is the hypothesis that fails in the classical regime. The relations $\gamma=\kappa\nu$ and the identification $\kappa=2-\eta$ are renormalisation-group statements and hold whenever the fixed point exists with a finite variance; $\delta=\frac{d+\kappa}{d-\kappa}$ follows only when hyperscaling does.</p>
 
 <p>Everything in the dictionary is conditional, and it is worth being precise about on what. It takes a fixed point with a simple leading eigenvalue and a gap in the rest of the spectrum, it takes the growth exponent $\kappa$ from the autonomy of the recursion rather than from the model, and it takes hyperscaling where it uses it. The Gaussian case supplies all of this explicitly, which is why <a href="/articles/gaussian-renormalisation-group/">the solved article</a> can compute the classical exponents without further hypotheses. For the Ising model nothing is supplied here: the article that follows is where the fixed point and its spectrum are proved to exist, and <a href="/articles/bleher-sinai-fixed-point/">its statement</a> is what turns the dictionary from a machine with two inputs into the exponents of a particular model. A reader who wants the exponents should read this section as that machine, and the next article as the place where the inputs are produced.</p>
