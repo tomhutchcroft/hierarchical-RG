@@ -20,6 +20,7 @@ class Links(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.links: list[tuple[str, str]] = []
         self.ids: set[str] = set()
+        self.text = ""
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -32,7 +33,8 @@ class Links(HTMLParser):
 
 def parse(path: Path) -> Links:
     p = Links()
-    p.feed(path.read_text(errors="replace"))
+    p.text = path.read_text(errors="replace")
+    p.feed(p.text)
     return p
 
 
@@ -77,6 +79,18 @@ def main() -> int:
             checked += 1
             if not (css.parent / url.split("?")[0]).exists():
                 fails.append(f"{css.relative_to(site)}: missing asset {url}")
+
+    # structure and accessibility: one main landmark, a skip link, labelled navigation
+    for page, info in parsed.items():
+        text = info.text
+        if text.count("<main") != 1:
+            fails.append(f"{page}: {text.count('<main')} main landmarks")
+        if 'class="skip"' not in text:
+            fails.append(f"{page}: no skip link")
+        for m in re.finditer(r"<nav([^>]*)>", text):
+            if "aria-label" not in m.group(1):
+                fails.append(f"{page}: a nav element without an aria-label")
+                break
 
     print(f"{len(pages)} pages, {checked} local links and assets checked")
     for f in fails[:25]:

@@ -269,11 +269,12 @@ def shell(title: str, description: str, inner: str, sidebar: str, scripts: str =
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/site.css">
 </head><body>
+<a class="skip" href="#main">skip to content</a>
 <div class="layout">
-<aside class="sidebar">
+<aside class="sidebar" aria-label="site">
 {sidebar}
 </aside>
-<main>
+<main id="main">
 {inner}
 </main>
 </div>
@@ -296,7 +297,8 @@ def sidebar(articles, structure, maps, active: str) -> str:
             items.append(f'<li><span class="num">{n}</span><a href="{aid}.html"{cls}>'
                          f'{articles[aid]["title"]}</a></li>')
         pcls = ' class="active"' if "part-" + part["id"] == active else ""
-        blocks.append(f'<nav class="sec"><h2><a href="part-{part["id"]}.html"{pcls}>'
+        blocks.append(f'<nav class="sec" aria-label="part: {html.escape(part["title"])}">'
+                      f'<h2><a href="part-{part["id"]}.html"{pcls}>'
                       f'{part["title"]}</a></h2><ol>{"".join(items)}</ol></nav>')
     mitems = []
     for m in maps:
@@ -313,8 +315,8 @@ def sidebar(articles, structure, maps, active: str) -> str:
 <form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
 <ul class="search-results" id="results"></ul>
 {''.join(blocks)}
-<nav class="sec"><h2>Reading maps</h2><ul>{''.join(mitems)}</ul></nav>
-<nav class="sec"><h2>Index</h2><ul>{idx}</ul></nav>"""
+<nav class="sec" aria-label="reading maps"><h2>Reading maps</h2><ul>{''.join(mitems)}</ul></nav>
+<nav class="sec" aria-label="index"><h2>Index</h2><ul>{idx}</ul></nav>"""
 
 
 # ------------------------------------------------------------------ builders
