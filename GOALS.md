@@ -62,15 +62,13 @@ Beyond the scripts:
 structure and the renormalisation group — and, within part three, the vector and phi-fourth
 material — before returning to the percolation volume, which is item 2.
 
-### 1. The amplitude, which is all that is left of the growth exponent
+### 1. The pointwise rate, which is all that is left
 
-`κ = α` at criticality is now proved in `critical-exponents-from-rg`, section `reduction`: the upper
-bound unconditionally, from a two-child comparison and a runaway argument, and the lower bound as a
-limsup statement from the divergence of the susceptibility. What is not proved is the amplitude —
-that `R_n = V_n / L^{(d+α)n}` stays bounded away from zero — and the article records the two
-pointwise statements that would give it: an infinite-volume upper bound `τ_∞(0,y) ≤ A L^{-(d-α)lev y}`
-and a finite-volume lower bound on the top shell. For the percolation class on the same lattice both
-are Hutchcroft's theorems; for Ising spins they are the open input.
+The exponents of the Ising model on this lattice are settled: `κ = α` with `R_n = V_n/L^{(d+α)n}` bounded
+away from zero and from infinity at criticality (`critical-exponents-from-rg`, section `lower`). What is
+not proved is the per-pair statement behind it: `τ_∞(0,y) ≤ A L^{-(d-α)lev y}` and its finite-volume
+counterpart on the top shell. Both are theorems for the percolation class on the same lattice; for Ising
+spins the summed consequence is now proved and the pointwise one is not.
 
 ### 2. By value, next
 
@@ -87,6 +85,12 @@ are Hutchcroft's theorems; for Ising spins they are the open input.
 
 ## Done
 
+- The amplitude (`tag-UJC1` now carries the two-sided theorem): a trapping argument, from a fifth submission,
+  refereed here. In the small regime the uniform two-sided small-tilt expansion gives `R_n ≤ qR_{n-1}` with
+  `q = (1+L^{-α})/2 < 1`, so a small value would decay for ever, making `log χ_n` have summable increments and
+  the critical susceptibility bounded — contradicting sharpness. With the runaway argument for the upper bound,
+  `0 < inf_n R_n ≤ sup_n R_n < ∞`, and the growth theorem's convergence hypothesis is no longer needed.
+  Checked on the model's own laws: ratios `0.73–0.79` against `q = 0.854`.
 - A second, independent route to the upper bound was reported to the swarm and refereed by me but not
   written up: reflection positivity of the hierarchical kernel, through the telescoping
   `f_R = sum_k (J_k - J_{k+1}) 1_{Λ_k} - J_1 delta_0` and the characters trivial on a block, gives
