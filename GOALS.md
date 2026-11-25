@@ -73,13 +73,15 @@ extremal states. Both are the same kind of input as the trichotomy.
 
 - The Ising free energy's singularity. The Gaussian case is computed in closed form; for Ising spins
   no per-scale term is elementary and the curvature is computed nowhere in the wiki.
-- The Euclidean counterparts. Every statement in part three is about the hierarchical lattice, and
-  the volume article now says explicitly that the Euclidean tail is open. A page collecting what is
-  known on `Z^d` — the upper bounds transported from the hierarchy, the ranges in which the two-point
-  function is proved — would make the boundary of the comparison precise without claiming more.
 
 ## Done
 
+- The volume exponent as a picture (`volume-exponent`): `δ` against `α` in one dimension, mean field
+  to the left of `d = 3α` and rising without bound to the right; the curve is cut where it leaves the
+  frame rather than flattened on the axis.
+- A table of what is proved on each side of the Euclidean comparison, six rows with sources, in
+  `hierarchical-and-euclidean-rg`. The pattern is the argument: every row proved for the hierarchy and
+  not for the lattice uses that a block has no boundary.
 Sixteen increments in one session, of which three were content and the rest structure, checks and
 navigation:
 
