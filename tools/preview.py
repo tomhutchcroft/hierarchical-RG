@@ -342,6 +342,12 @@ def build(out: Path) -> dict:
     for v in linked_from.values():
         v.sort(key=order.index)
 
+    notation = load_notation(articles)
+    symbols_of: dict[str, list[tuple[int, str]]] = {}
+    for i, (obj, _symbol, aid, users) in enumerate(notation["rows"]):
+        for name in [aid] + users:
+            symbols_of.setdefault(name, []).append((i, obj))
+
     out.mkdir(parents=True, exist_ok=True)
     sim_data = simulate.build()
     figs = simulate.figures()
@@ -402,6 +408,11 @@ def build(out: Path) -> dict:
 
         lead, sep, rest = body.partition("<h2")
         rest = sep + rest if sep else ""
+        strip_items = symbols_of.get(aid, [])
+        notation_strip = (
+            '<p class="meta">Notation in this article: '
+            + ", ".join(f'<a href="notation.html#sym-{i + 1}">{obj}</a>' for i, obj in strip_items)
+            + '.</p>') if strip_items else ""
         inner = f"""<p class="crumbs"><a href="index.html">Home</a> /
 <a href="part-{part['id']}.html">{part['title']}</a> / {meta['title']}</p>
 <h1>{meta['title']}</h1>
@@ -412,6 +423,7 @@ def build(out: Path) -> dict:
 <details class="toc" open><summary>On this page</summary><ol>{toc}</ol></details>
 {rest}
 {linked_html}
+{notation_strip}
 <div class="pager">{prev_link}{next_link}</div>
 <a class="top" href="#">back to top</a>"""
         (out / f"{aid}.html").write_text(
@@ -559,18 +571,18 @@ results of the last decade.</p>
                                f"{src['year']} {src['author']} {src['title']}" for src in chrono)})
 
     # ---- notation
-    notation = load_notation(articles)
     def also_cell(users):
         return ", ".join(f'<a href="{u}.html">{articles[u]["title"]}</a>' for u in users) or "&mdash;"
 
     nrows = "".join(
-        f'<tr><td>{symbol}</td><td>{obj}</td>'
+        f'<tr id="sym-{i + 1}"><td>{symbol}</td><td>{obj}</td>'
         f'<td><a href="{aid}.html">{articles[aid]["title"]}</a></td>'
         f'<td>{also_cell(users)}</td></tr>'
-        for obj, symbol, aid, users in notation["rows"])
+        for i, (obj, symbol, aid, users) in enumerate(notation["rows"]))
     inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Notation</p>
 <h1>Notation</h1>
-<p class="meta">{len(notation["rows"])} symbols, one per object</p>
+<p class="meta">{len(notation["rows"])} symbols, one per object; each row is the target of the
+notation line at the foot of the articles that use it</p>
 {notation["lead"]}
 <table><thead><tr><th>Symbol</th><th>Object</th><th>Introduced in</th><th>Also used in</th></tr></thead>
 <tbody>{nrows}</tbody></table>
