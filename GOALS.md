@@ -64,10 +64,14 @@ material — before returning to the percolation volume, which is item 2.
 
 ### 1. The one mathematical question still open in the wiki
 
-The variance route gives `κ₊ ≤ α` unconditionally and pins the ratio of the two block-spin
-fluctuations at criticality, but it cannot certify `κ = α`: that needs an upper bound on the free
-block-spin variance, or a proof that the free measures at `β_c` are the even mixture of the two
-extremal states. Both are the same kind of input as the trichotomy.
+It is now narrowed. `critical-exponents-from-rg`, section `reduction`, proves that `κ = α` follows
+from two pointwise bounds on the two-point function at criticality: an infinite-volume upper bound
+`τ_∞(0,y) ≤ A L^{-(d-α)lev y}`, and a finite-volume lower bound on the top shell,
+`τ_n(0,y) ≥ a L^{-(d-α)n}`. For percolation both are Hutchcroft's theorems; for Ising spins they are
+the open model-specific input, and the article says why neither follows from the summed information
+the earlier sections have. A solver should either prove one of the two, or show that a proof needs
+an ingredient outside Griffiths monotonicity and GHS — a swarm member has shown the latter for
+response arguments alone.
 
 ### 2. By value, next
 
@@ -84,6 +88,12 @@ extremal states. Both are the same kind of input as the trichotomy.
 
 ## Done
 
+- The growth exponent reduced to two pointwise bounds (`tag-UTEB`), with the moment-monotonicity lemma
+  (`tag-T8WS`) that the argument needs. The reduction came from a member of a swarm run on this
+  question; it was refereed here — the lemma's Chebyshev step checked line by line and verified by
+  exact enumeration, the two implications checked, the shell counts checked — and then written into
+  the article in the wiki's own voice, with the percolation case noted as the one where both inputs
+  are already theorems.
 - The Ising free energy computed by the convolution recursion: one decimation step is a convolution
   because the tilt's matrix has eigenvalues `(m-1)/2` and `-1/2`; in the Fourier and log domains the
   recursion reproduces exact enumeration to `1.5e-16`, and since every per-scale term is nonnegative
