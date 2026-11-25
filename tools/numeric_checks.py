@@ -438,6 +438,51 @@ def check_ferromagnetic_phase():
          f"E[s0 s1] - E[s0]E[s1] = {worst:+.6f}")
 
 
+def check_block_average():
+    """Block average equals the single-site magnetisation; the bound in any boundary field; the variance identity."""
+    d, L, alpha, beta = 1, 2, 0.5, 0.9
+    rows = []
+    for n in (1, 2, 3):
+        tab, V, bmass = ising_block(d, L, n, alpha, beta, boundary=1)
+        per_site = {x: sum(p * s[x] for s, p in tab.items()) for x in range(len(V))}
+        block = sum(p * sum(s) for s, p in tab.items()) / L ** (d * n)
+        rows.append((n, min(per_site.values()), max(per_site.values()), block))
+    flat = max(r[2] - r[1] for r in rows)
+    identity = max(abs(r[3] - r[2]) for r in rows)
+    note("plus state: every vertex of the block is equivalent", flat < 1e-12,
+         f"largest spread of E[sigma_x] within a block over n=1,2,3: {flat:.2e}")
+    note("block average equals the single-site magnetisation", identity < 1e-12,
+         f"largest discrepancy: {identity:.2e}; values {[round(r[3], 6) for r in rows]}")
+    note("block average decreases with the volume", rows[0][3] > rows[1][3] > rows[2][3],
+         f"M_n = {[round(r[3], 6) for r in rows]}")
+
+    # the bound |E[S]| <= m^n max_x E_{P^+}[sigma_x], for every constant boundary field
+    n = 2
+    tab_plus, V, bmass = ising_block(d, L, n, alpha, beta, boundary=1)
+    cap = max(sum(p * s[x] for s, p in tab_plus.items()) for x in range(len(V))) * L ** (d * n)
+    worst = 0.0
+    for t in (-1.0, -0.6, -0.2, 0.0, 0.35, 0.8, 1.0):
+        tab, _, _ = ising_block(d, L, n, alpha, beta, boundary=t)
+        worst = max(worst, abs(sum(p * sum(s) for s, p in tab.items())) / cap)
+    note("block average is bounded by the order parameter", worst <= 1 + 1e-12,
+         f"largest |E[S]| / (m^n max_x E_+[sigma_x]) over seven boundary fields: {worst:.4f}")
+
+    # the variance identity, by Gauss-Legendre quadrature in the boundary field
+    nodes, weights = np.polynomial.legendre.leggauss(40)  # on [-1, 1]
+    B = bmass[0]
+    acc = 0.0
+    for t, w in zip(nodes, weights):
+        tab, _, _ = ising_block(d, L, n, alpha, beta, boundary=float(t))
+        S = {s: sum(s) for s in tab}
+        m1 = sum(p * S[s] for s, p in tab.items())
+        m2 = sum(p * S[s] ** 2 for s, p in tab.items())
+        acc += w * (m2 - m1 * m1)
+    lhs = sum(p * sum(s) for s, p in tab_plus.items())
+    rhs = 0.5 * beta * B * acc
+    note("block magnetisation is the integrated boundary-induced variance", abs(lhs - rhs) < 1e-9 * max(1.0, abs(lhs)),
+         f"E_+[S] = {lhs:.9f} against beta B / 2 times the integral of Var = {rhs:.9f}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -451,6 +496,7 @@ def main() -> int:
     check_conditional_lipschitz()
     check_free_measure_conditional()
     check_ferromagnetic_phase()
+    check_block_average()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

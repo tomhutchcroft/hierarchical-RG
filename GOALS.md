@@ -74,12 +74,13 @@ material — before returning to the percolation volume, which is item 2.
   points there.
 - The notation page gives one article per symbol. A second column saying where each symbol is
   *used*, not only where it is introduced, would help a reader who arrives in the middle.
-- The phase diagram is now architecture (part one) plus the trichotomy (part two), but the
-  trichotomy is stated in the language of laws and the order parameter in the language of states.
-  One proposition joining them — that the block average of the plus state decreases to `M(β)` —
-  is asserted in `hierarchical-magnetised-phase` and used, but the *converse* direction, that a
-  nonzero limit of the block spin forces `M > 0`, is not proved anywhere; that is the sharpest
-  remaining gap in the argument connecting the two parts.
+- The transfer between the trichotomy and the order parameter is now proved both ways
+  (`hierarchical-magnetised-phase`, section `block-average`), so what remains of that gap is only
+  the trichotomy itself, which is external and attributed. What is *not* in the wiki is the
+  variance identity's consequence at criticality: the block magnetisation of the plus state is the
+  integrated boundary-induced variance, which should give `M_n ≍ β B_n Var(S_n) / m^n` and hence
+  relate the order parameter to the block-spin variance growth — a route to `κ` that the exponent
+  article does not take.
 
 ### 2. The volume of the critical cluster (percolation depth), deferred
 
@@ -90,6 +91,14 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- The block-average converse (`hierarchical-magnetised-phase`, section `block-average`): the plus
+  state's block average *equals* its single-site magnetisation at every finite volume, because
+  translations by `Λ_n` permute `Λ_n`, so it decreases to `M(β)`; every Gibbs measure's block
+  average is bounded by `M` in modulus; and if `M = 0` the unique Gibbs measure is extremal, the
+  limit of the block averages is translation invariant, invariant events are tail events, so the
+  limit is the constant `0` — a nondegenerate limit therefore forces `M > 0`. Checked: the
+  equivalence of the vertices, the identity, the monotonicity in the volume, the bound over seven
+  boundary fields, and the variance identity to nine decimals by Gauss–Legendre quadrature.
 - The magnetised phase (`hierarchical-magnetised-phase`): the FKG inequality plus a monotone heat-bath
   coupling gives the two extremal states, the sandwich of every Gibbs measure between them, and the
   equivalence of non-uniqueness with positivity of the order parameter `M(β)`; correlations under the

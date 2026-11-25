@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The block average of the plus state is its single-site magnetisation — Hierarchical RG</title>
+<meta name="description" content="proposition: The block average of the plus state is its single-site magnetisation">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / F6J3</p>
+<h1>The block average of the plus state is its single-site magnetisation</h1>
+<p class="meta">proposition &middot; <span class="tag">F6J3</span> &middot; in
+<a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></p>
+<div class="assertion">Let $\nu$ be a Gibbs measure and $n\geq1$. Then $\lvert\mathbb E_\nu[S_{\Lambda_n}]\rvert\leq m^nM(\beta)$. For the plus state every term of the sum is the same number, with $M_n(\beta)$ in place of its limit:</p>
+<div class="math-display">$$\frac{1}{m^n}\mathbb E_{\mathbb P_{\Lambda_n}^{+}}\bigl[S_{\Lambda_n}\bigr]=\mathbb E_{\mathbb P_{\Lambda_n}^{+}}[\sigma_x]=:M_n(\beta)$$</div>
+<p>for <em>every</em> $x\in\Lambda_n$, and $M_n(\beta)$ decreases to $M(\beta)$.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>Translation by $v\in\Lambda_n$ maps $\Lambda_n$ onto itself, because $\Lambda_n$ is a subgroup, and it preserves the Hamiltonian and the prior, so it preserves $\mathbb P_{\Lambda_n}^{+}$ — this is the invariance used in the proof of <a href="hierarchical-magnetised-phase.html#tag-N9S3">the extremal-state proposition</a>. Hence $\mathbb E_{\mathbb P_{\Lambda_n}^{+}}[\sigma_x]$ does not depend on $x\in\Lambda_n$, and averaging $S_{\Lambda_n}$ over the $m^n$ vertices gives the identity.</p>
+<p>The limit: $\mathbb E_{\mathbb P_{\Lambda_n}^{+}}[\sigma_0]\to\mathbb E_{\mu_+}[\sigma_0]=M(\beta)$ because $\mathbb P_{\Lambda_n}^{+}\to\mu_+$ weakly and $\sigma_0$ is continuous and bounded, and the sequence decreases by the same proposition. For a general Gibbs measure, each $\mathbb E_\nu[\sigma_x]$ lies in $[\mathbb E_{\mu_-}[\sigma_x],\mathbb E_{\mu_+}[\sigma_x]]=[-M(\beta),M(\beta)]$ by the sandwich and the flip symmetry, so the sum is bounded in modulus by $m^nM(\beta)$.</p>
+</div></details>
+<p>Two things follow that the earlier sections could not state. First, the block average of the plus state and the order parameter are not merely related by a limit: at every finite volume they are the same number, so any statement about one is a statement about the other. Second, the block average of an <em>arbitrary</em> Gibbs measure is bounded by the order parameter, so a limit of block averages with a nonzero mean forces $M(\beta)>0$.</p>
+
+<p>For the symmetric measures the mean is no help, since $\mathbb P_{\Lambda_n}^{\mathrm{free}}$ is invariant under the global flip and its block average therefore has mean zero at every $n$. There the statement must be about the law, and it is the following.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-magnetised-phase.html#tag-F6J3">The magnetised phase, and what monotonicity gives</a>. To cite this assertion, link to
+<span class="tag">tag-F6J3.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-magnetised-phase.html#tag-F6J3"><span class="dir">context</span>The magnetised phase, and what monotonicity gives</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

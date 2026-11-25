@@ -272,6 +272,14 @@
     {
       "tag": "GHFF",
       "state": "allocated"
+    },
+    {
+      "tag": "F6J3",
+      "state": "allocated"
+    },
+    {
+      "tag": "15AV",
+      "state": "allocated"
     }
   ]
 }
