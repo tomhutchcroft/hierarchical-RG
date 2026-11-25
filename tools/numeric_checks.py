@@ -656,6 +656,54 @@ def check_ising_free_energy():
          f"{len(table)} rows compared, largest difference {worst:.2e}")
 
 
+def check_energy_telescoping():
+    """The energy as a difference of squared block sums, and the trap of using the free variances."""
+    L, d, alpha = 2, 1, 0.5
+    J = lambda k: L ** (-(d + alpha) * k)
+
+    def blocks(n, j):
+        V = vertices(d, L, n)
+        out = {}
+        for i, v in enumerate(V):
+            out.setdefault(tuple(v[j * d:]), []).append(i)
+        return list(out.values())
+
+    worst = 0.0
+    for n in (2, 3):
+        V = vertices(d, L, n)
+        pairs = [(a, b, lev(V[a], V[b], d)) for a in range(len(V)) for b in range(a + 1, len(V))]
+        grp = {j: blocks(n, j) for j in range(n + 1)}
+        for s in itertools.product([-1, 1], repeat=len(V)):
+            H = -sum(J(k) * s[a] * s[b] for a, b, k in pairs)
+            A = {j: sum(sum(s[i] for i in g) ** 2 for g in grp[j]) for j in range(n + 1)}
+            rhs = -0.5 * sum(J(k) * (A[k] - A[k - 1]) for k in range(1, n + 1))
+            worst = max(worst, abs(H - rhs))
+    note("the energy telescopes into squared block sums", worst < 1e-12,
+         f"largest discrepancy over every configuration at n = 2, 3: {worst:.2e}")
+
+    # the trap: the same identity with the free variances in place of the block variances
+    beta, n = 0.3, 2
+    V = vertices(d, L, n)
+    pairs = [(a, b, lev(V[a], V[b], d)) for a in range(len(V)) for b in range(a + 1, len(V))]
+    w = {}
+    for s in itertools.product([-1, 1], repeat=len(V)):
+        H = -sum(J(k) * s[a] * s[b] for a, b, k in pairs)
+        w[s] = math.exp(-beta * H)
+    Z = sum(w.values())
+    u_pairs = sum(p * (-sum(J(k) * s[a] * s[b] for a, b, k in pairs)) for s, p in w.items()) / Z / len(V)
+    free = [1.0]
+    for j in range(1, n + 1):
+        law, _, _ = ising_block(d, L, j, alpha, beta, boundary=0.0)
+        Vv = vertices(d, L, j)
+        free.append(sum(p * sum(s) ** 2 for s, p in law.items()))
+    m = L ** d
+    u_free = -0.5 * (J(n) * free[n] / m ** n + (J(1) - J(2)) * free[1] / m - J(1))
+    gap = abs(u_free - u_pairs) / abs(u_pairs)
+    note("the free variances do not give the energy", 0.005 < gap < 0.05,
+         f"u by enumeration {u_pairs:.6f}, from the free variances {u_free:.6f}, "
+         f"relative gap {gap:.3f}: a block inside a bigger block is not a free block")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -674,6 +722,7 @@ def main() -> int:
     check_finite_volume_magnetisation()
     check_free_energy_series()
     check_ising_free_energy()
+    check_energy_telescoping()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0
