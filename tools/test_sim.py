@@ -98,6 +98,18 @@ def main() -> int:
     check("cluster-size lists match the reference bit for bit", worst == 0,
           f"{len(cases) * 5} realisations compared, {worst} mismatch(es)")
 
+    # 4c. the block-spin laws of the three boundary conditions, against the reference
+    worst = 0.0
+    for beta in (0.5, 1.2):
+        py = simulate.block_spin_laws(3, 2, 1, 0.5, beta)
+        js = json.loads(ctx.eval("JSON.stringify(SIM.blockSpinLaws(3,2,1,0.5,%s))" % beta))
+        for name in ("minus", "free", "plus"):
+            worst = max(worst, abs(js[name]["mean"] - py[name]["mean"]))
+            for key, value in py[name]["law"].items():
+                worst = max(worst, abs(js[name]["law"][key] - value))
+    check("block-spin laws match the reference", worst < 1e-12,
+          f"largest discrepancy in the three laws at two intensities: {worst:.2e}")
+
     # 5. the Ising heat bath: one sweep, bit for bit
     n, L, d, alpha, beta = 4, 2, 1, 0.5, 1.0
     J = simulate.ising_couplings(n, L, d, alpha)

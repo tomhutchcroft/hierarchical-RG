@@ -468,6 +468,35 @@ def fig_percolation_tail():
     return _svg(W, H, "sampled cluster-size distribution", "".join(p + legend))
 
 
+# ---------------------------------------------------------------- 6. block-spin laws (exact)
+
+def block_spin_laws(n, L, d, alpha, beta):
+    """Exact law of the block spin under the plus, free and minus boundary conditions, by enumeration.
+
+    The twin in sim.js is SIM.blockSpinLaws; the article on the magnetised phase displays the three.
+    """
+    V = vertices(d, L, n)
+    N = len(V)
+    B = (1 - L ** (-d)) / (L ** alpha - 1) * L ** (-alpha * n)
+    out = {}
+    for name, t in (("minus", -1.0), ("free", 0.0), ("plus", 1.0)):
+        weights = {}
+        for s in itertools.product([-1, 1], repeat=N):
+            e = 0.0
+            for a in range(N):
+                for b in range(a + 1, N):
+                    e += L ** (-(d + alpha) * children_index(V[a], V[b], d)) * s[a] * s[b]
+                e += t * B * s[a]
+            weights[s] = math.exp(beta * e)
+        Z = sum(weights.values())
+        law = {}
+        for s, w in weights.items():
+            law[sum(s)] = law.get(sum(s), 0.0) + w / Z
+        out[name] = {"law": {str(k): law[k] for k in sorted(law)},
+                     "mean": sum(k * v for k, v in law.items())}
+    return out
+
+
 def figures() -> dict:
     return {"lattice-children": fig_lattice_children(), "flow": fig_flow(), "decimation": fig_decimation(),
             "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless(),

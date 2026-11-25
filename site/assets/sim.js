@@ -130,6 +130,39 @@
 
   global.SIM = SIM;
 
+  /* ---------------------------------------------------------------- block-spin laws */
+
+  /* Exact law of the block spin under the plus, free and minus boundary conditions: the twin of
+     block_spin_laws in simulate.py. Enumeration over all 2^N configurations of the block. */
+  SIM.blockSpinLaws = function (n, L, d, alpha, beta) {
+    var V = SIM.vertices(d, L, n), N = V.length, i, a, b, pair = [], mask, e, Z, sum, t;
+    var B = (1 - Math.pow(L, -d)) / (Math.pow(L, alpha) - 1) * Math.pow(L, -alpha * n);
+    for (a = 0; a < N; a++) for (b = a + 1; b < N; b++) pair.push([a, b, SIM.level(V[a], V[b], d)]);
+    var out = {};
+    [["minus", -1], ["free", 0], ["plus", 1]].forEach(function (bc) {
+      var weights = [], total = Math.pow(2, N);
+      Z = 0;
+      for (mask = 0; mask < total; mask++) {
+        var spins = [];
+        for (i = 0; i < N; i++) spins.push(((mask >> i) & 1) ? 1 : -1);
+        e = 0;
+        for (i = 0; i < pair.length; i++) e += Math.pow(L, -(d + alpha) * pair[i][2]) * spins[pair[i][0]] * spins[pair[i][1]];
+        for (i = 0; i < N; i++) e += bc[1] * B * spins[i];
+        weights.push(Math.exp(beta * e));
+        Z += weights[mask];
+      }
+      var law = {}, mean = 0;
+      for (mask = 0; mask < total; mask++) {
+        sum = 0;
+        for (i = 0; i < N; i++) sum += ((mask >> i) & 1) ? 1 : -1;
+        law[sum] = (law[sum] || 0) + weights[mask] / Z;
+      }
+      Object.keys(law).forEach(function (key) { mean += Number(key) * law[key]; });
+      out[bc[0]] = { law: law, mean: mean };
+    });
+    return out;
+  };
+
   /* ---------------------------------------------------------------- Ising heat bath */
 
   SIM.isingCouplings = function (n, L, d, alpha) {
@@ -344,6 +377,58 @@
     },
 
     /* -------------------------------------------------- Ising block-spin law */
+    "domination": function (host) {
+      var W = 620, H = 320, pad = { l: 52, r: 150, t: 18, b: 46 };
+      var svg = svgRoot(W, H);
+      var N = 8, L = 2, d = 1, alpha = 0.5;
+      var slider = document.createElement("input");
+      slider.type = "range"; slider.min = 0.1; slider.max = 2.6; slider.step = 0.02; slider.value = 1.2;
+      slider.className = "sim-slider";
+      var readout = document.createElement("div"); readout.className = "sim-readout";
+      var colours = { minus: "#1c5a8a", free: "#8a8f99", plus: "#8a1c1c" };
+      var labels = { minus: "minus boundary", free: "free", plus: "plus boundary" };
+      function draw() {
+        var beta = parseFloat(slider.value);
+        var laws = SIM.blockSpinLaws(3, L, d, alpha, beta);
+        var maxP = 1e-9;
+        ["minus", "free", "plus"].forEach(function (name) {
+          var law = laws[name].law;
+          Object.keys(law).forEach(function (k) { if (law[k] > maxP) maxP = law[k]; });
+        });
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+        axes(svg, W, H, pad,
+             [-8, -4, 0, 4, 8].map(function (s) { return { pos: (s + N) / (2 * N), label: String(s) }; }),
+             [], "block spin S of a block of 8 sites", "probability");
+        var xOf = function (s) { return pad.l + ((s + N) / (2 * N)) * (W - pad.l - pad.r); };
+        var yOf = function (p) { return H - pad.b - (p / maxP) * (H - pad.t - pad.b); };
+        var legend = 0;
+        ["minus", "free", "plus"].forEach(function (name) {
+          var law = laws[name].law, pts = [];
+          Object.keys(law).map(Number).sort(function (a, b) { return a - b; }).forEach(function (s) {
+            pts.push([xOf(s), yOf(law[s])]);
+          });
+          var path = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+          svg.appendChild(el("path", { d: path, fill: "none", stroke: colours[name], "stroke-width": 2 }));
+          pts.forEach(function (p) {
+            svg.appendChild(el("circle", { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 2.2,
+                                           fill: colours[name] }));
+          });
+          var y = pad.t + 10 + 24 * legend;
+          svg.appendChild(el("path", { d: "M" + (W - pad.r + 8) + " " + y + " l18 0", stroke: colours[name], "stroke-width": 2 }));
+          svg.appendChild(el("text", { x: W - pad.r + 32, y: y + 4, class: "fg-small" }, labels[name]));
+          legend++;
+        });
+        var m = laws.minus.mean / N, f = laws.free.mean / N, p = laws.plus.mean / N;
+        readout.innerHTML = "β = " + beta.toFixed(2) + " · magnetisation per site: minus " + fmt(m) +
+          ", free " + fmt(f) + ", plus " + fmt(p) +
+          (m <= f + 1e-12 && f <= p + 1e-12 ? " · the three are ordered" : " · ordering violated");
+      }
+      slider.addEventListener("input", draw);
+      host.appendChild(svg);
+      var controls = document.createElement("div"); controls.className = "sim-controls";
+      controls.appendChild(slider); host.appendChild(controls); host.appendChild(readout);
+      draw();
+    },
     "ising-block": function (host, data) {
       var W = 620, H = 300, pad = { l: 44, r: 14, t: 14, b: 42 };
       var values = data.values, hist = data.histograms, betas = data.betas;

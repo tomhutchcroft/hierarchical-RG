@@ -64,6 +64,8 @@
 :::
 <p>Two consequences are used below. Taking $\omega\preceq\omega'$ to be the extreme configurations gives $\mathbb P_\Lambda^{-}\preceq\mathbb P_\Lambda^{+}$: the plus and minus boundary conditions are the largest and smallest available. Taking instead the boundary conditions produced by the spins outside a smaller block gives the monotonicity in the volume, which is where the limits come from.</p>
 
+<div class="sim" data-sim="domination" data-title="The exact law of the block spin of a block of eight sites under the three boundary conditions, at an intensity you choose. Enumeration, not simulation: as the intensity rises the minus and plus curves separate and the free one stays between them, which is the domination of the article in one picture. The free curve is the symmetric one; the other two are its images under the flip of the boundary."></div>
+
 ## The two extremal states {#section-extremal}
 
 <a id="tag-N9S3" data-assertion="proposition" data-title="The plus and minus limits exist and sandwich every Gibbs measure"></a>
