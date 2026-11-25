@@ -103,6 +103,30 @@
         "critical-exponents-from-rg",
         "hierarchical-and-euclidean-rg"
       ]
+    },
+    {
+      "id": "exponents",
+      "title": "Straight to the exponents",
+      "note": "Five articles for a reader who wants the numbers: the map, the one case solved exactly, the threshold computed from the spectrum, the dictionary, and the theorem that supplies its inputs.",
+      "articles": [
+        "renormalisation-group-map",
+        "gaussian-renormalisation-group",
+        "gaussian-fixed-point-spectrum",
+        "critical-exponents-from-rg",
+        "bleher-sinai-fixed-point"
+      ]
+    },
+    {
+      "id": "probability",
+      "title": "For a probabilist",
+      "note": "The measure-theoretic spine: the lattice as a group, its isometries, the finite-volume measures, the passage to the limit, and the phase diagram that monotonicity gives.",
+      "articles": [
+        "hierarchical-lattice",
+        "hierarchical-symmetries",
+        "hierarchical-gibbs-measure",
+        "hierarchical-infinite-volume-limit",
+        "hierarchical-magnetised-phase"
+      ]
     }
   ]
 }

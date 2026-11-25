@@ -30,6 +30,7 @@ CATALOG = WIKI / "src" / "content" / "catalog.json"
 STRUCTURE = WIKI / "structure.json"
 STYLE = WIKI / "STYLE.md"
 DEFAULT_OUT = ROOT / "site"
+SITE_URL = "https://tomhutchcroft.github.io/hierarchical-RG/"
 
 # Fallback order used only if wiki/structure.json is missing; the structure file wins.
 ORDER = [
@@ -850,6 +851,25 @@ attribution where they are not.</p>
     (out / "index.html").write_text(
         page_shell("Hierarchical RG — a wiki on the renormalisation group",
                    "A wiki on the renormalisation group on hierarchical lattices.", inner, "index"))
+
+    # ---- site-level files
+    urls = "".join(f"<url><loc>{SITE_URL}{path.name}</loc></url>" for path in sorted(out.glob("*.html"))
+                    if path.name != "404.html")
+    (out / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls + "</urlset>\n")
+    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Not found</p>
+<h1>Not found</h1>
+<p class="meta">404</p>
+<p>There is no page at this address. The wiki is a flat set of pages with no server behind them, so
+a link that points at a misspelling points at nothing.</p>
+<p>Start from <a href="start.html">the argument</a>, look something up in the
+<a href="assertions.html">assertions index</a> or the <a href="notation.html">notation page</a>, or
+use the search box above: it matches titles, subtitles and the text of every page.</p>
+<p>Every page of the wiki is listed on the <a href="index.html">home page</a>.</p>"""
+    (out / "404.html").write_text(
+        page_shell("Not found — Hierarchical RG", "No page at this address.", inner, "404"))
 
     # ---- assets and search
     (out / "search-index.json").write_text(json.dumps(search_entries, ensure_ascii=False))
