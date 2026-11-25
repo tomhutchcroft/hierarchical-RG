@@ -497,6 +497,49 @@ def block_spin_laws(n, L, d, alpha, beta):
     return out
 
 
+# ---------------------------------------------------------------- what each one computes
+
+#: One line per generated figure: what it computes, and what checks that computation.
+FIGURE_NOTES = {
+    "lattice-children": ("The children of a level-2 block with $L=2$, $d=1$, with the pairs at each "
+                         "level drawn.", "schematic: geometry only"),
+    "flow": ("The two-coupling truncation, with the Gaussian and nontrivial fixed points and the "
+             "critical trajectory between them.", "schematic: it illustrates the truncation of the "
+             "phi-fourth article, not a computed flow"),
+    "decimation": ("One decimation step: the children, the tilt and the block spin.",
+                   "schematic: the identity it illustrates is checked by numeric_checks.py"),
+    "exponents-alpha": ("The classical exponents against the kernel exponent, with the crossover at "
+                        "$\\alpha=d/2$ marked.", "the formulas of the exponent dictionary, checked "
+                        "by test_sim.py against SIM.exponentTable"),
+    "thouless": ("The direction of the block spin below, at and above the critical intensity, which "
+                 "is the phenomenon of Bleher and Major.", "schematic: three unit circles of directions"),
+    "boundary": ("The coupling of a block to its complement: the field at one vertex, which decays, "
+                 "and its sum over the block, which grows below $\\alpha=d$.",
+                 "the closed form, checked against direct summation in numeric_checks.py"),
+    "percolation-tail": ("The sampled cluster-size distribution on a block of 64 sites at three "
+                         "intensities, with the predicted slope as a guide.",
+                         "sampled, and the sampler is written twice and compared in test_sim.py"),
+}
+
+#: One line per interactive figure.
+SIM_NOTES = {
+    "rg-orbit": ("The Gaussian orbit of the variance recursion for a range of intensities, against "
+                 "the critical one.", "the closed form, computed in Python and served as data"),
+    "exponents": ("The exponent table over a grid of kernel exponents.", "SIM.exponentTable, "
+                  "checked against the reference in test_sim.py"),
+    "triangle": ("The triangle diagram at criticality against its truncation level.",
+                 "the sum of the article, computed in Python and checked in numeric_checks.py"),
+    "ising-block": ("The exact law of the block spin of sixteen sites, by enumeration.",
+                    "exact enumeration, served as data"),
+    "ising-mc": ("A heat bath for the Ising model on sixty-four sites.",
+                 "SIM.isingSweep, checked bit for bit against the Python twin in test_sim.py"),
+    "percolation": ("A percolation realisation on a block, drawn level by level.",
+                    "SIM.percolate, checked against the reference clusters in test_sim.py"),
+    "domination": ("The exact block-spin laws of the plus, free and minus boundary conditions.",
+                   "SIM.blockSpinLaws, checked against the reference in test_sim.py"),
+}
+
+
 def figures() -> dict:
     return {"lattice-children": fig_lattice_children(), "flow": fig_flow(), "decimation": fig_decimation(),
             "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless(),

@@ -303,7 +303,8 @@ def sidebar(articles, structure, maps, active: str) -> str:
         mitems.append(f'<li><a href="source-{m["slug"]}.html"{cls}>{m["title"].split(":")[0]}</a></li>')
     index_items = [("start.html", "Start here"), ("assertions.html", "Assertions"),
                    ("notation.html", "Notation"), ("bibliography.html", "Bibliography"),
-                   ("chronology.html", "Chronology"), ("all.html", "Single file")]
+                   ("chronology.html", "Chronology"), ("figures.html", "Figures"),
+                   ("all.html", "Single file")]
     idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
                   for href, label in index_items)
     return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
@@ -534,6 +535,47 @@ record; a dash means no record was found, and the work is cited by its published
     search_entries.append({"url": "bibliography.html", "title": "Bibliography", "subtitle": f"{len(catalog)} works",
                            "summary": "", "text": " ".join(s["title"] + " " + s["author"] for s in catalog)})
 
+    # ---- figures and simulations
+    def shown_in(marker):
+        users = [a for a in order if f'{marker}="' in articles[a]["body"]]
+        return ", ".join(f'<a href="{a}.html">{articles[a]["title"]}</a>' for a in users) or "&mdash;"
+
+    fcards = []
+    for name, svg in figs.items():
+        note, checked = simulate.FIGURE_NOTES.get(name, ("", ""))
+        fcards.append(f"""<div class="card part"><span class="kind">figure</span>
+<h3><span class="tag">{name}</span></h3>
+<p>{note}</p>
+<div class="fig">{svg}</div>
+<p class="meta">shown in {shown_in("data-fig=\"" + name)}<br>checked by: {checked}</p></div>""")
+    scards = []
+    for name in simulate.SIM_NOTES:
+        note, checked = simulate.SIM_NOTES[name]
+        scards.append(f"""<div class="card part"><span class="kind">interactive</span>
+<h3><span class="tag">{name}</span></h3>
+<p>{note}</p>
+<p class="meta">shown in {shown_in("data-sim=\"" + name)}<br>checked by: {checked}</p></div>""")
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Figures</p>
+<h1>Figures and simulations</h1>
+<p class="meta">{len(figs)} generated figures, {len(simulate.SIM_NOTES)} interactive ones</p>
+<p>Every figure and every interactive panel in the wiki, with what it computes, the articles that
+show it, and what checks that the computation is right. The distinction in the last line is the one
+this wiki cares about: a figure computed from the model can be checked by a script, and a schematic
+cannot. The schematics are labelled as such rather than dressed up, and the rest say which test
+would catch them being wrong.</p>
+<h2>Generated figures</h2>
+<div class="cards">{''.join(fcards)}</div>
+<h2>Interactive figures</h2>
+<div class="cards">{''.join(scards)}</div>"""
+    (out / "figures.html").write_text(
+        page_shell("Figures — Hierarchical RG", "Every figure and simulation, and what checks it.",
+                   inner, "figures"))
+    search_entries.append({"url": "figures.html", "title": "Figures and simulations",
+                           "subtitle": f"{len(figs)} figures, {len(simulate.SIM_NOTES)} interactive",
+                           "summary": "", "text": "figures simulations " + " ".join(
+                               [simulate.FIGURE_NOTES.get(n, ("", ""))[0] for n in figs] +
+                               [v[0] for v in simulate.SIM_NOTES.values()])})
+
     # ---- chronology
     chrono = sorted(catalog, key=lambda src: (src["year"], src["shortName"]))
     yrows = []
@@ -711,6 +753,7 @@ attribution where they are not.</p>
 <li><a href="notation.html">Notation</a> <span class="meta">— one symbol per object, and the article that introduces it</span></li>
 <li><a href="bibliography.html">Bibliography</a> <span class="meta">— every work cited, with the articles citing it</span></li>
 <li><a href="chronology.html">Chronology</a> <span class="meta">— the same works in the order they appeared</span></li>
+<li><a href="figures.html">Figures</a> <span class="meta">— every figure and simulation, with what checks it</span></li>
 <li><a href="all.html">Single file</a> <span class="meta">— the whole wiki in one page, for printing</span></li>
 </ol>"""
     (out / "index.html").write_text(
