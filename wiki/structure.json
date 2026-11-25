@@ -19,14 +19,14 @@
       "id": "renormalisation-group",
       "title": "The renormalisation group",
       "subtitle": "The map on block-spin laws, its fixed points, and the exponents read off them.",
-      "intro": "Decimation, rescaled, is one operator on laws on the line, and the model is an orbit of it. This part builds the operator, solves it exactly in the Gaussian case, and extracts from it the two numbers that matter: the multiplier of the linearised map, which gives the correlation-length exponent, and the growth of the block spin, which the autonomy of the recursion fixes for every fixed point of this model. From those two numbers the exponent dictionary follows by algebra. The remaining articles supply what the dictionary cannot: the non-Gaussian fixed point, the corrections to the power laws, and the two rigorous analyses of the fixed point that do not go through a small parameter.",
+      "intro": "The part has one object: the rescaled decimation map on laws on the line, of which the model is an orbit. It builds the operator; solves it exactly in the Gaussian case, where the orbit closes on the variance; reads off a fixed point the two numbers that matter, the multiplier of the linearisation, which gives the correlation-length exponent, and the growth of the block spin, which the autonomy of the recursion fixes for every fixed point of this model; and turns them into the exponent dictionary by algebra. That dictionary is an if-then statement, and the article after it supplies the 'if' for the hierarchical Ising model, a nontrivial fixed point with a spectrum, which is the theorem of Bleher and Sinai. With the spectrum in hand the corrections to the power laws follow from the subleading eigenvalues; the second existence proof, Koch and Wittwer's, is valid without a small parameter; and the part closes with the flow described globally rather than near a single fixed point.",
       "articles": [
         "renormalisation-group-map",
         "gaussian-renormalisation-group",
         "gaussian-fixed-point-spectrum",
         "critical-exponents-from-rg",
-        "corrections-to-scaling",
         "bleher-sinai-fixed-point",
+        "corrections-to-scaling",
         "koch-wittwer-fixed-point",
         "abdesselam-global-trajectory"
       ]
