@@ -576,6 +576,7 @@ page of its own; the <a href="bibliography.html">bibliography</a> gives every wo
 articles citing it; the <a href="notation.html">notation page</a> fixes one symbol per object and
 names the article that introduces it; and the reading maps — for
 <a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a>,
+<a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a>,
 <a href="source-koch-wittwer.html">Koch and Wittwer</a> and
 <a href="source-abdesselam.html">Abdesselam</a> — say what each paper establishes and where the
 wiki uses it.</p>"""
