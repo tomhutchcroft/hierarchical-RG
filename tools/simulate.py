@@ -324,10 +324,154 @@ def fig_boundary():
     return _svg(W, H, "the boundary field of a block", "".join(p + legend))
 
 
+# ---------------------------------------------------------------- 5. percolation tail (sampled twice)
+
+def percolation_bits(n, L, d, seed):
+    """The uniform stream of sim.js's SIM.rng for one realisation, in the same order."""
+    total = len(vertices(d, L, n)) * (len(vertices(d, L, n)) - 1) // 2
+    state = (seed & 0xFFFFFFFF) or 1
+    out = []
+    for _ in range(total + 8):
+        state = (state * 1664525 + 1013904223) & 0xFFFFFFFF
+        out.append(state / 4294967296)
+    return out
+
+
+def percolation_clusters(n, L, d, alpha, beta, seed):
+    """Sizes of every cluster of the block for one realisation: the twin in sim.js is SIM.percolationClusters."""
+    V = vertices(d, L, n)
+    size = len(V)
+    bits = percolation_bits(n, L, d, seed)
+    parent = list(range(size))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    t = 0
+    for i in range(size):
+        for j in range(i + 1, size):
+            k = children_index(V[i], V[j], d)
+            if bits[t % len(bits)] < 1 - math.exp(-beta * L ** (-(d + alpha) * k)):
+                ri, rj = find(i), find(j)
+                if ri != rj:
+                    parent[ri] = rj
+            t += 1
+    counts = {}
+    for i in range(size):
+        r = find(i)
+        counts[r] = counts.get(r, 0) + 1
+    return sorted(counts.values(), reverse=True)
+
+
+def percolation_cluster_sizes(n, L, d, alpha, beta, seeds):
+    """The list of cluster sizes of each realisation, for the seeds given."""
+    return [percolation_clusters(n, L, d, alpha, beta, s) for s in seeds]
+
+
+def percolation_density(sizes, N):
+    """n_s: the number of clusters of size s per vertex, for s = 1..N."""
+    out = [0] * (N + 1)
+    for real in sizes:
+        for sz in real:
+            out[sz] += 1
+    return [c / (N * len(sizes)) for c in out]
+
+
+def percolation_mean_cluster(sizes, N):
+    """The mean size of the finite cluster of a random vertex, the largest cluster excluded.
+
+    Excluding the largest cluster is what makes this a susceptibility proxy: with it included the
+    statistic is maximised by the fully connected block rather than at the transition.
+    """
+    tot = 0.0
+    for real in sizes:
+        finite = real[1:] if len(real) > 1 else []
+        tot += sum(sz * sz for sz in finite) / N
+    return tot / len(sizes)
+
+
+def percolation_threshold(n, L, d, alpha, seeds):
+    """The intensity maximising the sampled mean cluster size: a finite-block pseudocritical intensity."""
+    N = L ** (d * n)
+    best, best_beta = -1.0, 1.0
+    lo, hi, steps = 0.2, 6.0, 3
+    for _ in range(steps):
+        for beta in (lo + (hi - lo) * i / 4 for i in range(5)):
+            chi = percolation_mean_cluster(percolation_cluster_sizes(n, L, d, alpha, beta, seeds), N)
+            if chi > best:
+                best, best_beta = chi, beta
+        lo, hi = max(0.05, best_beta - (hi - lo) / 4), best_beta + (hi - lo) / 4
+    return best_beta
+
+
+def fig_percolation_tail():
+    """The sampled cluster-size distribution on a level-6 block at three intensities, with the predicted slope."""
+    n, L, d, alpha = 6, 2, 1, 0.5
+    N = L ** (d * n)
+    seeds = list(range(1, 201))
+    beta_c = percolation_threshold(n, L, d, alpha, list(range(1, 61)))
+    curves = [(beta_c / 2, "#1c5a8a", "beta = beta*/2"), (beta_c, "#8a1c1c", "beta = beta*"),
+              (2 * beta_c, "#4a7a1c", "beta = 2 beta*")]
+    W, H = 560, 330
+    pad = {"l": 62, "r": 150, "t": 34, "b": 46}
+    xmax = float(N)
+    floor = 1.0 / (N * len(seeds))
+
+    def X(k):
+        return pad["l"] + math.log(k) / math.log(xmax) * (W - pad["l"] - pad["r"])
+
+    def Y(v):
+        v = max(min(v, 1.0), floor)
+        t = (math.log(v) - math.log(floor)) / (0.0 - math.log(floor))
+        return H - pad["b"] - t * (H - pad["t"] - pad["b"])
+
+    p = [f'<line x1="{pad["l"]}" y1="{H-pad["b"]}" x2="{W-pad["r"]}" y2="{H-pad["b"]}" class="fg-axis"/>',
+         f'<line x1="{pad["l"]}" y1="{pad["t"]}" x2="{pad["l"]}" y2="{H-pad["b"]}" class="fg-axis"/>']
+    for v, label in ((1.0, "1"), (0.1, "0.1"), (0.01, "0.01"), (1e-3, "0.001")):
+        if v < floor:
+            continue
+        p.append(f'<line x1="{pad["l"]}" y1="{Y(v):.1f}" x2="{W-pad["r"]}" y2="{Y(v):.1f}" '
+                 f'stroke="#e3e3e6" stroke-width="1"/>')
+        p.append(f'<text x="{pad["l"]-8}" y="{Y(v)+4:.1f}" text-anchor="end" class="fg-small">{label}</text>')
+    for k in (1, 2, 4, 8, 16, 32, 64):
+        p.append(f'<text x="{X(k):.1f}" y="{H-pad["b"]+18}" text-anchor="middle" class="fg-small">{k}</text>')
+    p.append(f'<text x="{(pad["l"]+W-pad["r"])/2:.0f}" y="{H-8}" text-anchor="middle" class="fg-small">'
+             f'cluster size s</text>')
+    p.append(f'<text x="{pad["l"]}" y="{pad["t"]-14}" class="fg-small">clusters of size s per vertex</text>')
+
+    legend, dens = [], {}
+    for beta, colour, label in curves:
+        ns = percolation_density(percolation_cluster_sizes(n, L, d, alpha, beta, seeds), N)
+        dens[beta] = ns
+        pts = [(k, ns[k]) for k in range(1, N + 1) if ns[k] > 0]
+        path = " ".join(("M" if i == 0 else "L") + f"{X(k):.1f} {Y(v):.1f}" for i, (k, v) in enumerate(pts))
+        p.append(f'<path d="{path}" fill="none" stroke="{colour}" stroke-width="2"/>')
+        y = pad["t"] + 6 + 22 * len(legend)
+        legend.append(f'<path d="M{W-pad["r"]+8} {y} l18 0" stroke="{colour}" stroke-width="2"/>')
+        legend.append(f'<text x="{W-pad["r"]+32}" y="{y+4}" class="fg-small">{label}</text>')
+
+    # the predicted slope of n_s, anchored on the critical curve at s = 3
+    tau = 2.0 * d / (d + alpha)
+    k0, k1 = 2.0, 32.0
+    v0 = dens[curves[1][0]][3]
+    v1 = v0 * (k1 / 3.0) ** (-tau)
+    p.append(f'<path d="M{X(3.0):.1f} {Y(v0):.1f} L{X(k1):.1f} {Y(v1):.1f}" stroke="#8a8f99" '
+             f'stroke-width="1.6" stroke-dasharray="6 4"/>')
+    p.append(f'<text x="{X(k1)-6:.1f}" y="{Y(v1)+16:.1f}" text-anchor="end" class="fg-small">'
+             f'slope -{tau:.2f}, the predicted n_s ~ s^-2d/(d+alpha)</text>')
+    p.append(f'<line x1="{X(N):.1f}" y1="{pad["t"]}" x2="{X(N):.1f}" y2="{H-pad["b"]}" '
+             f'stroke="#8a8a8a" stroke-width="1" stroke-dasharray="3 3"/>')
+    p.append(f'<text x="{X(N)-4:.1f}" y="{pad["t"]+10}" text-anchor="end" class="fg-small">block size</text>')
+    return _svg(W, H, "sampled cluster-size distribution", "".join(p + legend))
+
+
 def figures() -> dict:
     return {"lattice-children": fig_lattice_children(), "flow": fig_flow(), "decimation": fig_decimation(),
             "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless(),
-            "boundary": fig_boundary()}
+            "boundary": fig_boundary(), "percolation-tail": fig_percolation_tail()}
 
 
 def fig_exponents_alpha():

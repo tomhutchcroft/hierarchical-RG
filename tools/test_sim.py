@@ -84,6 +84,20 @@ def main() -> int:
     check("live percolation run is consistent", bool(size >= 1 and has0 and edges_ok),
           f"|K_0| = {size}, contains 0 = {has0}, edges valid = {edges_ok}")
 
+    # 4b. the cluster-size distribution, written twice and compared entry by entry
+    cases = [(4, 2, 1, 0.5, 0.8), (4, 2, 1, 0.5, 2.2), (3, 3, 1, 0.4, 1.4)]
+    worst = 0
+    for n, L, d, alpha, beta in cases:
+        for seed in range(1, 6):
+            py = simulate.percolation_clusters(n, L, d, alpha, beta, seed)
+            js = json.loads(ctx.eval(
+                "JSON.stringify(SIM.percolationClusters(%d,%d,%d,%s,%s,%d))"
+                % (n, L, d, alpha, beta, seed)))
+            if py != js:
+                worst += 1
+    check("cluster-size lists match the reference bit for bit", worst == 0,
+          f"{len(cases) * 5} realisations compared, {worst} mismatch(es)")
+
     # 5. the Ising heat bath: one sweep, bit for bit
     n, L, d, alpha, beta = 4, 2, 1, 0.5, 1.0
     J = simulate.ising_couplings(n, L, d, alpha)

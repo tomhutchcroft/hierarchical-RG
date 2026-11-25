@@ -95,6 +95,30 @@
     return { members: members, edges: edges, size: members.length };
   };
 
+  /* Sizes of every cluster of the block, largest first: the twin of percolation_clusters in simulate.py. */
+  SIM.percolationClusters = function (n, L, d, alpha, beta, seed) {
+    var rnd = SIM.rng(seed), V = SIM.vertices(d, L, n), N = V.length, bits = [], i, j, k, t = 0;
+    var total = (N * (N - 1)) / 2;
+    for (i = 0; i < total + 8; i++) bits.push(rnd());
+    var parent = [];
+    for (i = 0; i < N; i++) parent.push(i);
+    function find(x) { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
+    for (i = 0; i < N; i++) {
+      for (j = i + 1; j < N; j++) {
+        k = SIM.level(V[i], V[j], d);
+        if (bits[t % bits.length] < SIM.openProbability(k, beta, L, d, alpha)) {
+          var ri = find(i), rj = find(j);
+          if (ri !== rj) parent[ri] = rj;
+        }
+        t++;
+      }
+    }
+    var counts = {}, out = [];
+    for (i = 0; i < N; i++) { var r = find(i); counts[r] = (counts[r] || 0) + 1; }
+    Object.keys(counts).forEach(function (key) { out.push(counts[key]); });
+    return out.sort(function (a, b) { return b - a; });
+  };
+
   SIM.percolate = function (n, L, d, alpha, beta, seed) {
     var rnd = SIM.rng(seed), V = SIM.vertices(d, L, n), bits = [], i;
     var total = (V.length * (V.length - 1)) / 2;
