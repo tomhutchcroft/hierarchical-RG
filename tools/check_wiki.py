@@ -221,6 +221,7 @@ def main() -> int:
     strict = "--strict" in sys.argv
     catalog = json.loads(CATALOG.read_text())
     keys = {s["id"] for s in catalog["sources"]}
+    store = {s["id"]: s for s in catalog["sources"]}
     ledger = json.loads(LEDGER.read_text())
     reserved = {}
     for entry in ledger["tags"]:
@@ -331,6 +332,29 @@ def main() -> int:
     for aid, body in bodies.items():
         if not LINK_RE.search(body) and not TAGLINK_RE.search(body):
             warn(aid, "no inline link to another article or assertion")
+
+    # every work in the catalogue should be cited somewhere, and every sourceId should be cited
+    cited_any = set()
+    for aid, body in bodies.items():
+        found = set()
+        for m in CITE_RE.finditer(body):
+            for part in m.group(1).split(";"):
+                found.add(part.split(",")[0].strip())
+        cited_any |= found
+        for src in meta_by_id.get(aid, {}).get("sourceIds", []):
+            if src not in found:
+                warn(aid, f"sourceId {src!r} is not cited in the text")
+    for key in sorted(keys - cited_any):
+        warn("catalogue", f"work {key!r} is in the catalogue but no article cites it")
+
+    # catalogue hygiene
+    for key, src in store.items():
+        if not src.get("url") and not src.get("zbl"):
+            warn("catalogue", f"work {key!r} has neither a url nor a zbMATH number")
+        if not isinstance(src.get("year"), int):
+            fail("catalogue", f"work {key!r} has no integer year")
+        if key != key.lower() or " " in key:
+            fail("catalogue", f"id {key!r} is not a lowercase slug")
         for m in re.finditer(r'<a href="/articles/([a-z0-9-]+)/', body):
             if m.group(1) == aid:
                 warn(aid, "links to itself")

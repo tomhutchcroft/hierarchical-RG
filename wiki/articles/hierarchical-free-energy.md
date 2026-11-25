@@ -16,7 +16,7 @@
     "critical-exponents-from-rg",
     "corrections-to-scaling"
   ],
-  "sourceIds": ["bleher-sinai-1973"],
+  "sourceIds": [],
   "aliases": [
     "free energy",
     "specific heat",

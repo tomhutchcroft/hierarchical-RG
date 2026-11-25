@@ -375,6 +375,8 @@ def build(out: Path) -> dict:
             name = m.group(1)
             if name in sim_data:
                 used_sims[name] = sim_data[name]
+            if name not in simulate.SIM_NOTES:
+                sys.exit(f"{aid}: no interactive figure named {name!r}; the registered ones are {sorted(simulate.SIM_NOTES)}")
             title = m.group(2) or ""
             return (f'<div class="sim" data-sim="{name}">'
                     f'<div class="sim-title">{title}</div></div>')
@@ -383,7 +385,7 @@ def build(out: Path) -> dict:
         def fig_slot(match):
             name, title = match.group(1), match.group(2) or ""
             if name not in figs:
-                return ""
+                sys.exit(f"{aid}: no figure named {name!r}; the figures are {sorted(figs)}")
             caption = f"<figcaption>{title}</figcaption>" if title else ""
             return f'<figure class="fig">{figs[name]}{caption}</figure>'
         body = FIG_RE.sub(fig_slot, body)
