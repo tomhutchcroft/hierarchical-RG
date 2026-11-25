@@ -29,23 +29,7 @@
 <details><summary>Proof of the summability criterion</summary><div class='collapsible-body'>
 <p>The shell at level $k$ has $(1-L^{-d})L^{dk}=L^{dk}-L^{d(k-1)}$ vertices, all at distance $L^k$, so the sum is $(1-L^{-d})\sum_{k\geq1}L^{dk}L^{-(d+\alpha)k}=(1-L^{-d})\sum_{k\geq1}L^{-\alpha k}$. All terms are nonnegative, so the sum may be regrouped. The geometric series $\sum_{k\geq1}L^{-\alpha k}$ converges exactly when $L^{-\alpha}&lt;1$, that is when $\alpha&gt;0$, and then equals $L^{-\alpha}/(1-L^{-\alpha})$.</p>
 </div></details>
-<p>Since $\alpha&gt;0$, the kernel is integrable and the intensity of the interaction at a vertex is finite; this is the sense in which the model is nearest-neighbour-like despite its long range. At $\alpha=0$ each shell contributes the same mass $1-L^{-d}$ and the sum diverges; for $\alpha&lt;0$ the mass of the shells grows.</p>
-
-## Examples and non-examples {#section-examples}
-
-<p><em>The level-2 block.</em> Take $d=1$, $L=2$, so that $m=2$ and $\Lambda_2$ has four vertices. With $e_2(1)$ the sequence $(0,1,0,\ldots)$ and $e_1(1)=(1,0,\ldots)$, the children of $\Lambda_2$ are $\{0,e_1(1)\}$ and $\{e_2(1),e_1(1)+e_2(1)\}$, each a translate of $\Lambda_1$; the four pairs between the children have distance $4$, and the two pairs inside them have distance $2$. A coupling that charges pairs by distance therefore charges the within-child pairs at $J_1$ and the between-child pairs at $J_2$, so the block splits into two interacting copies of itself.</p>
-
-<p><em>The geometric kernel.</em> The kernel $J(x)=Cr^{\operatorname{lev}(x)}$ on $\mathbb H^d_L$, with $C\geq0$ and $0\leq r&lt;L^{-d}$, is summable, with row sum $C(1-L^{-d})r/(1-L^dr)$. This family is closed under rescalings of the level, and it contains the power kernel at $r=L^{-(d+\alpha)}$; a Gaussian model with such a kernel is exactly solvable, which is the subject of the <a href="gaussian-renormalisation-group.html">Gaussian article</a>.</p>
-
-<p><em>A pair-dependent kernel.</em> If $J(x,y)$ depends on the pair and not on the level, as for instance a kernel that charges only pairs inside a fixed family of blocks, then the children of a block are still congruent but the energy of the block is no longer a function of the child sums. The decimation identity of <a href="hierarchical-gibbs-measure.html">the next article</a> is specific to kernels that are constant on levels.</p>
-
-<p><em>The borderline exponent.</em> At $\alpha=0$ the power kernel is not summable and the corresponding percolation model is $\beta_c=0$ for every $\beta&gt;0$: every vertex has infinitely many neighbours of infinite total intensity. The condition $\alpha&gt;0$ is therefore not a technical convenience in the hypotheses below.</p>
-
-<p><em>The full product.</em> The compact group $\prod_{i\geq1}A$, with the same definition of level for pairs differing in finitely many coordinates, is not $\mathbb H^d_L$: it is uncountable, and the distance between two of its points can be zero even when the points differ, at coordinates tending to infinity. All statements here concern the direct sum.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>Dimension as bookkeeping.</em> Only $m=L^d$ and the ratios $J_k/J_{k+1}=L^{d+\alpha}$ enter the definitions, so a model is parametrised by the integer $m\geq2$, the ratio $\lambda&gt;m$ and the amplitude $J$, and the pair $(d,\alpha)$ records a choice of scale: $d=\log m/\log L$ and $\alpha=\log(\lambda/m)/\log L$. Fixing integer $d$ costs nothing.</p></div>
+<p>Since $\alpha&gt;0$, the kernel is integrable and the intensity of the interaction at a vertex is finite; this is the sense in which the model is nearest-neighbour-like despite its long range. At $\alpha=0$ each shell contributes the same mass $1-L^{-d}$ and the sum diverges; for $\alpha&lt;0$ the mass of the shells grows.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="hierarchical-lattice.html#tag-Q6HD">The hierarchical lattice</a>. To cite this assertion, link to
 <span class="tag">tag-Q6HD.html</span> or to the article anchor directly.</p>

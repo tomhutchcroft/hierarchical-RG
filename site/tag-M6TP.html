@@ -34,37 +34,7 @@
 <p>At $\beta=\beta_c$ one has $b_nv_{n-1}=q:=\frac{1-L^{-\alpha}}{m-1}$ and $v_{n-1}=L^{(d+\alpha)(n-1)}$, so $\Sigma_{aa'}=\frac{qL^{\alpha}}{1+q}v_{n-1}$ and $\tau_{\beta_c}=\frac{qL^\alpha}{1+q}L^{-(d-\alpha)(n-1)}$, with $\frac{qL^\alpha}{1+q}=\frac{L^\alpha-1}{L^d-L^{-\alpha}}$. For $\beta&lt;\beta_c$, $v_{n-1}=\chi L^{d(n-1)}(1+o(1))$ and $b_nv_{n-1}\to0$, so $\Sigma_{aa'}\sim b_nv_{n-1}^2\sim\beta J\chi^2L^{-(d+\alpha)n}L^{2d(n-1)}$.</p>
 </div></details>
 <p>The proposition is a statement about the top level of a block at free boundary, and the restriction matters: a pair at level $j$ inside the larger block $\Lambda_n$ with $n&gt;j$ has a larger covariance, because paths inside $\Lambda_n$ that leave the level-$j$ block also join the pair. What is uniform is the asymptotic form, which is read off from the sequence of top levels.</p>
-<p>The two regimes are worth distinguishing. Below criticality the correlation of two adjacent children is of the order of the coupling that joins them, $L^{-(d+\alpha)n}$, which is the kernel itself; the sum over scales then converges and the susceptibility is finite, in agreement with the closed form. At criticality the correlation is larger by a factor $L^{2\alpha n}$ and decays only as $L^{-(d-\alpha)n}$, so the shell sums diverge and the susceptibility with them. The difference between the two exponents is exactly the multiplier: the pair correlation gains $L^{\alpha}$ per scale at criticality, and the modulus $\lVert x-y\rVert^{-(d-\alpha)}$ is the same statement in the variable $\lVert x-y\rVert=L^n$.</p>
-
-## Examples and non-examples {#section-examples}
-
-<p><em>One dimension, two children, $\alpha=\tfrac12$.</em> Here $L=2$, $d=1$, $m=2$, $J_k=2^{-3k/2}$ and $\beta_c=2(\sqrt2-1)\approx0.828$. The block-spin variance at criticality is $2^{3n/2}$, and the covariance of two vertices at distance $2^j$ is $0.3204\ldots\times2^{-j/2}$, which is $\lVert x-y\rVert^{-(1-\frac12)}$ up to the constant. The multiplier is $\sqrt2$.</p>
-
-<p><em>The free field on $\mathbb Z^d$.</em> Replacing $\mathbb H^d_L$ by $\mathbb Z^d$ with the same power kernel leaves the Gaussian computation meaningful only in the limit of a continuum scaling limit; the block recursion no longer closes, because the block magnetisation is a vector and the interaction between neighbouring blocks depends on their relative position. This is the contrast drawn in <a href="hierarchical-and-euclidean-rg.html">the comparison article</a>.</p>
-
-<p><em>Non-example: a $\varphi^4$ prior.</em> With $\varrho\propto e^{-\lambda\sigma^4-\frac{\mu}{2}\sigma^2}d\sigma$ the tilted image of a quartic law is not quartic: the summation and the tilt generate all even powers. The recursion leaves the one-parameter family, and the fixed point of the full map is the subject of <a href="bleher-sinai-fixed-point.html">the Bleher–Sinai article</a>.</p>
-
-<p><em>Non-example: the critical field at $\beta=\beta_c$.</em> The formula for $\tau_{\beta_c}$ is a statement about correlations inside a block at free boundary. The infinite-volume Gaussian field does not exist at $\beta_c$, because $I-\beta_cA$ is not invertible on $\ell^2$; the critical object is a scaling limit, and the formula above is the finite-volume shadow of it.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>External field.</em> Adding $-\beta h\sum_x\sigma_x$ makes the block-spin law Gaussian with a mean, and the recursion becomes affine: the mean is multiplied by $1/(1+b_nv_{n-1}(m-1))$ per scale. The magnetic eigenvalue of that recursion is the number that appears in $\delta$ for models where the scaling relations hold; in the Gaussian case it reproduces $\delta=\frac{d+\alpha}{d-\alpha}$.</p>
-
-<p><em>Any $m$ and $\lambda$.</em> The computation uses only $m$ and $\lambda=L^{d+\alpha}$, so it applies to the operator $\mathcal T_b$ with any integer $m\geq2$ and any coupling ratio $\lambda&gt;m$; with $\alpha=\log(\lambda/m)/\log L$; the multiplier is $\lambda/m=L^{\alpha}$ and the exponents are $\nu=1/\alpha$ and $\kappa=\alpha$, as in <a href="hierarchical-lattice.html#section-variants">the lattice article</a>.</p>
-
-<p><em>Complex eigenvalues.</em> The linearisation of the full (non-Gaussian) map at its nontrivial fixed point can have a complex pair of eigenvalues, which produces oscillatory corrections to scaling. In the Gaussian case the linearisation is triangular on the moments and the eigenvalues are real; the phenomenon belongs to <a href="bleher-sinai-fixed-point.html">the nontrivial fixed point</a>.</p>
-
-## History and attribution {#section-history}
-
-<p>The variance recursion and the identification of the critical point as the value at which the block-spin variance starts to grow like $L^{(d+\alpha)n}$ are in Bleher and Sinai's treatment of Dyson's model [@bleher-sinai-1973], where the Gaussian case is the model problem solved before the general one. The exponent values $\eta=2-\alpha$ and $\nu=1/\alpha$ are the classical long-range values of Fisher, Ma and Nickel [@fisher-ma-nickel-1972], and the role of the Gaussian fixed point as the reference for the renormalisation-group analysis of lattice fields is set out by Bauerschmidt, Brydges and Slade [@bauerschmidt-brydges-slade-2019].</p>
-
-## References {#section-references}
-
-<ul>
-<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
-<li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>
-</ul></div>
+<p>The two regimes are worth distinguishing. Below criticality the correlation of two adjacent children is of the order of the coupling that joins them, $L^{-(d+\alpha)n}$, which is the kernel itself; the sum over scales then converges and the susceptibility is finite, in agreement with the closed form. At criticality the correlation is larger by a factor $L^{2\alpha n}$ and decays only as $L^{-(d-\alpha)n}$, so the shell sums diverge and the susceptibility with them. The difference between the two exponents is exactly the multiplier: the pair correlation gains $L^{\alpha}$ per scale at criticality, and the modulus $\lVert x-y\rVert^{-(d-\alpha)}$ is the same statement in the variable $\lVert x-y\rVert=L^n$.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="gaussian-renormalisation-group.html#tag-M6TP">The Gaussian renormalisation group</a>. To cite this assertion, link to
 <span class="tag">tag-M6TP.html</span> or to the article anchor directly.</p>

@@ -32,49 +32,7 @@
 <p>All three cases contribute the same order at scale $m$, so $T_N\asymp\sum_{m\leq N}L^{(3\alpha-d)m}$, which is bounded, linear, or geometric according to the sign of $3\alpha-d$. The last claim is the comparison of $\tau_{\beta_c}$ with $\tau$ in the two-sided form of the previous section.</p>
 </div></details>
 <p>The exponent in the display is the one that decides mean-field behaviour:
-<div class="sim" data-sim="triangle" data-title="The triangle diagram: partial sums against the level for a range of exponents. Below 3α = d the sums converge, at it they grow linearly, above it like L^{(3α−d)N}."></div> $3\alpha-d&gt;0$ is exactly the regime in which the triangle diagram diverges and the volume exponent, if it exists, exceeds its mean-field value. For $3\alpha&lt;d$ the diagram is finite, the triangle condition holds and the exponents of <a href="critical-exponents-from-rg.html">the dictionary</a> take their mean-field values, $\delta=2$ and $\beta_{\mathrm{o}}=1$; at $3\alpha=d$ the divergence is logarithmic.</p>
-
-## Consequences and applications {#section-consequences}
-
-<p><em>The growth exponent.</em> The theorem gives $\chi_n(\beta_c)\asymp L^{\alpha n}$ directly, which is $\kappa=\alpha$ and $\eta=2-\alpha$ in the notation of <a href="critical-exponents-from-rg.html#section-exponents">the exponent article</a>. This agrees with the general statement that the growth exponent is fixed by the autonomy of the recursion at $\theta_0=\tfrac12(d+\alpha)$: the quantile bound $R_n(\beta_c)^2\lesssim L^{(d+\alpha)n}$ is the upper half of the variance growth, and the boundary flux supplies the lower half.</p>
-
-<p><em>The volume exponent.</em> For $3\alpha&gt;d$ the model is not mean-field, and the cluster-volume tail is constrained. If $\mathbb P_{\beta_c}(\lvert K_0\rvert\geq n)=n^{-1/\delta+o(1)}$, then $\delta\geq\frac{d+\alpha}{d-\alpha}$, which is strictly greater than $2$. That bound is Corollary 1.5 of Hutchcroft [@hutchcroft-hierarchical-2021], and the value itself is now a theorem: the tail of the critical cluster volume is $n^{-(d-\alpha)/(d+\alpha)}$ up to constants below $d=3\alpha$, and the mean-field $n^{-1/2}$ above it [@hutchcroft-2025-volumes]. So the conjecture that the scaling relations give — $\delta=\frac{d+\alpha}{d-\alpha}$ when the two-point exponent is $2-\alpha$ — is proved in this model, and <a href="hierarchical-cluster-volume.html">the volume article</a> states it in each regime. The volume of the critical cluster is studied directly rather than through the two-point function in <a href="hierarchical-cluster-volume.html">its own article</a>.</p>
-
-<div class="fig" data-fig="percolation-tail" data-title="The sampled cluster-size distribution on a block of 64 sites at three intensities, on logarithmic axes, from 200 realisations each. The middle intensity is the one at which the sampled mean finite-cluster size is largest, a finite-block stand-in for criticality. The dashed guide has the slope the scaling relations give if delta = (d+alpha)/(d-alpha), that is n_s proportional to s to the minus 2d/(d+alpha); it is a guide, not a fit, and the block size cuts the distribution off at the right."></div>
-<p>The figure is the distribution itself rather than a schematic of it. Two things in it are worth reading off. The slope at the middle intensity follows the dashed guide over the first octave and then flattens, which is the block size: 64 sites cannot show a power law much beyond one decade, and the flattening is the finite-block cutoff rather than a physical effect. And the upper intensity has the opposite signature — a depletion at small sizes and a bump at the largest, which is the spanning cluster: the distribution of <em>finite</em> clusters is what carries the power law, and above the transition most vertices belong to a cluster the size of the block.</p>
-
-<p><em>The exponent $\nu$.</em> Nothing in the two-point theorem identifies the correlation-length exponent, and it is the one quantity the percolation analysis does not determine in the non-mean-field regime. In the mean-field regime $\nu=1/\alpha$ follows from the classical values and $\gamma=1$; for $\alpha&gt;d/3$ the value of $\nu$ is not known, and it is where the comparison with the spin model's nontrivial fixed point would enter.</p>
-
-## Examples and non-examples {#section-examples}
-
-<p><em>The power kernel with $\alpha\downarrow0$.</em> Then $d-\alpha\uparrow d$ and the critical two-point exponent tends to $d$: the connection probability decays like the inverse volume of the ball, the marginal case in which the susceptibility diverges logarithmically. At $\alpha=0$ the intensity is not summable, $\beta_c=0$, and the exponent statements above have no content.</p>
-
-<p><em>A kernel vanishing on a level.</em> The two-point theorem needs a two-sided comparison with the power kernel on every level. If $J$ vanishes, or is much smaller, on a sparse set of levels, the amplification fails at those scales and the critical behaviour changes: the model behaves as though the exponent were larger on those levels, and the block-quantile argument gives bounds at the worst scale rather than at each scale.</p>
-
-<p><em>Non-example: the nearest-neighbour lattice.</em> On $\mathbb Z^d$ the block geometry is not ultrametric, the triangle diagram is not a geometric sum in the scale, and the mean-field threshold is a dimension rather than a relation between $\alpha$ and $d$. The transfer of the computation to that setting is the subject of <a href="hierarchical-and-euclidean-rg.html">the comparison article</a>.</p>
-
-<p><em>Non-example: percolation with $q$ states.</em> The Fortuin-Kasteleyn random-cluster model on the hierarchical lattice has the same block decomposition but a cluster weight $q^{\#\text{clusters}}$ that is not a product over children, so the decimation state is a partition function with boundary conditions and not a one-variable law. The amplification inequalities survive; the exact two-point exponent is not available by this route.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>Inhomogeneous intensities.</em> Replacing $J_k$ by a level-dependent sequence $J_k$ with $J_k\asymp L^{-(d+\alpha)k}$ changes no bound in the argument, and the exponents are unchanged; this is the form in which the model appears in comparisons with Euclidean percolation, where the hierarchical kernel is a comparison object rather than a model of interest.</p>
-
-<p><em>Full connectivity.</em> The event that a block is fully connected, with no isolated bond structure, has its own recursion and is the percolation analogue of a one-variable law: the probability that $\Lambda_n$ is connected satisfies a recursion driven by the probability that the children and the cross edges form a connected structure. For large $m$ this is a mean-field-looking recursion, and it is not the recursion that governs $\tau_{\beta_c}$.</p>
-
-<p><em>Other lattices.</em> The child decomposition is available on any ultrametric group, including the $p$-adic integers and the solenoids; the counting arguments use only that a ball of radius $L^n$ has $L^{dn}$ points and $m$ children, so they apply verbatim wherever that holds.</p>
-
-## History and attribution {#section-history}
-
-<p>Long-range percolation on the hierarchical lattice was studied by Koval, Meester and Trapman, who proved that $\beta_c&lt;\infty$ exactly when $\alpha&lt;d$ and that there is no infinite cluster at criticality [@koval-meester-trapman-2012]. The two-point theorem, the pointwise form for radial kernels, the triangle threshold and the volume-exponent bound are Hutchcroft's [@hutchcroft-hierarchical-2021]. The block-quantile amplification that drives the argument is the percolation form of the amplification in <a href="hierarchical-gibbs-measure.html">decimation</a>, and the hierarchical lattice itself goes back to Dyson's approximation [@dyson-1969].</p>
-
-## References {#section-references}
-
-<ul>
-<li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
-<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <em>Ann. Appl. Probab.</em> 34 (2024), 986&ndash;1002 (arXiv:2103.17013).</li>
-<li>T. Hutchcroft, Critical cluster volumes in hierarchical percolation, <em>Proc. Lond. Math. Soc.</em> 130 (2025), e70023.</li>
-<li>V. Koval, R. Meester and P. Trapman, Long-range percolation on the hierarchical lattice, <em>Electron. J. Probab.</em> 17 (2012), no. 57.</li>
-</ul></div>
+<div class="sim" data-sim="triangle" data-title="The triangle diagram: partial sums against the level for a range of exponents. Below 3α = d the sums converge, at it they grow linearly, above it like L^{(3α−d)N}."></div> $3\alpha-d&gt;0$ is exactly the regime in which the triangle diagram diverges and the volume exponent, if it exists, exceeds its mean-field value. For $3\alpha&lt;d$ the diagram is finite, the triangle condition holds and the exponents of <a href="critical-exponents-from-rg.html">the dictionary</a> take their mean-field values, $\delta=2$ and $\beta_{\mathrm{o}}=1$; at $3\alpha=d$ the divergence is logarithmic.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="hierarchical-percolation-rg.html#tag-T6NB">Renormalisation for hierarchical percolation</a>. To cite this assertion, link to
 <span class="tag">tag-T6NB.html</span> or to the article anchor directly.</p>

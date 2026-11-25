@@ -28,45 +28,7 @@
 <details><summary>Proof</summary><div class='collapsible-body'>
 <p>By the proposition, the pairs of vertices inside $B$ split into the pairs inside the children, at levels at most $n-1$, and the pairs joining two different children, all at level $n$. The energy is therefore the sum of the children's energies plus $\beta J_n\sum_{a&lt;a'}S_aS_{a'}$, where $S_a$ is the total spin of the $a$-th child. A child is a translate of a level-$(n-1)$ block, and the Hamiltonian depends only on differences, so integrating the child at fixed $S_a$ gives $Z_{n-1}\mu_{n-1}(dS_a)$ — the additive constant in the couplings makes no difference. Multiplying over the children and integrating over the normalised measures gives the display. The rescaling step is the computation of the autonomous form, which uses only $2\theta_0=d+\alpha$ and the ratio $J_n/J_{n-1}$.</p>
 </div></details>
-<p>Two remarks isolate what the generality does and does not buy. The identity needs the amount of branching to be constant: with $[G_n:G_{n+1}]=m_n$ varying, the tilt has $m_n$ children and the coupling ratio is unchanged, so the map is the same but the composition is no longer a power of one operator, and the exponents of the dictionary no longer follow from a single fixed point. And it needs the coupling to depend only on the level, which in the group setting is the statement that the interaction is invariant under the isometries that preserve the block structure.</p>
-
-## The volume, and where the two cases differ {#section-volume}
-
-<p>For the exponents, the volume of a block enters through the growth exponent $\kappa=2\theta_0-d$ and through the summability criterion. In the discrete case the volume of a level-$n$ block is $m^n$; in the compact case it is $\mu(G_n)=m^{-n}$ for the normalised Haar measure if the measure is chosen so that $\mu(G_0)=1$. The two are reciprocal, and the recipe is the same in both: the number of children is the ratio of the volumes of a block and of its child, and the shell at level $n$ has volume the difference.</p>
-<p>Because of this, a percolation model on $\mathbb Z_p$ with a summable kernel behaves as follows: the number of open edges at a vertex is a sum of independent Bernoulli variables with summable probabilities, so it is finite almost surely, and every cluster is countable. The percolation thresholds and the two-point exponent are the same statements as on the hierarchical lattice, since they are statements about the block system.</p>
-
-## Examples and non-examples {#section-examples}
-
-<p><em>The p-adic integers.</em> Here $m=p$ for every $p$, so the branching is the prime and cannot be varied while keeping the ring: changing $m$ means changing the prime. The dimension is $d=1$ in the normalisation of this wiki, and the kernel exponent $\alpha$ is a free parameter; the models are the ones in Abdesselam's programme for conformal probability [@abdesselam-2018].</p>
-
-<p><em>The hierarchical lattice.</em> Here $m=L^d$ and both the scale and the branching are free, which is why the model is used to draw phase diagrams in $(d,\alpha)$ rather than at one prime.</p>
-
-<p><em>Subgroups with varying index.</em> Taking $G_n=p^{n^2}\mathbb Z_p$ gives $[G_n:G_{n+1}]=p^{2n+1}$, so the branching grows; the decimation identity still holds at each scale but the map at scale $n$ depends on $n$, and the model behaves as though the kernel exponent changed with scale. This is a useful non-example: it separates the part of the theory that needs constant branching from the part that does not.</p>
-
-<p><em>Non-example: the regular tree.</em> A rooted tree with constant branching is not a group, and its "blocks" have no canonical translates: the children of a vertex are distinguishable by their position, and there is no isometry moving one to another while fixing the structure. The decimation identity holds for the spin model on the tree in the form of a cavity recursion, but the state is a distribution of cavity fields rather than a block spin, and the exponents are not those of a fixed point of a single map.</p>
-
-<p><em>Non-example: $\mathbb R$ or $\mathbb Z$ with the usual metric.</em> There is no nested system of finite-index subgroups with constant branching, and the analogue of a block has a boundary of codimension one; this is the obstruction of <a href="hierarchical-and-euclidean-rg.html#section-exactness">the comparison article</a> in its group-theoretic form.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>p-adic fields and finite extensions.</em> Replacing $\mathbb Z_p$ by a finite extension of $\mathbb Q_p$ changes the residue field and hence the branching, and multiplies the volume by the ramification index; the recursion is unchanged with the new $m$.</p>
-
-<p><em>Products and sums.</em> A product of block systems is a block system with the product branching, which is how the hierarchical lattice is built from copies of $\mathbb Z/L\mathbb Z$; a direct sum of copies is the discrete case of the same construction.</p>
-
-<p><em>Vector and percolation models.</em> Nothing in the two proofs refers to the single-spin space, so the <a href="hierarchical-vector-models.html">vector models</a> and <a href="hierarchical-percolation-rg.html">percolation</a> transfer as well, with the branching $m$ replacing $L^d$ throughout.</p>
-
-## History and attribution {#section-history}
-
-<p>The hierarchical model of Bleher and Sinai was formulated on the lattice of the <a href="hierarchical-lattice.html">first article</a>, but their transformation uses only the block structure, as the proof above makes explicit [@bleher-sinai-1973]. The p-adic and ultrametric versions, and their use as a route to a three-dimensional conformal field theory, are developed by Abdesselam [@abdesselam-2018]. The percolation model on the hierarchical lattice is that of Koval, Meester and Trapman [@koval-meester-trapman-2012]; the transfer to an arbitrary block system is the content of this article and is not claimed in those sources. The general framework in which the block structure is one of the data of a renormalisation-group problem is the one of Bauerschmidt, Brydges and Slade [@bauerschmidt-brydges-slade-2019].</p>
-
-## References {#section-references}
-
-<ul>
-<li>A. Abdesselam, Towards three-dimensional conformal probability, <em>p-Adic Numbers Ultrametric Anal. Appl.</em> 10 (2018), 233&ndash;252.</li>
-<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
-<li>V. Koval, R. Meester and P. Trapman, Long-range percolation on the hierarchical lattice, <em>Electron. J. Probab.</em> 17 (2012), no. 57.</li>
-</ul></div>
+<p>Two remarks isolate what the generality does and does not buy. The identity needs the amount of branching to be constant: with $[G_n:G_{n+1}]=m_n$ varying, the tilt has $m_n$ children and the coupling ratio is unchanged, so the map is the same but the composition is no longer a power of one operator, and the exponents of the dictionary no longer follow from a single fixed point. And it needs the coupling to depend only on the level, which in the group setting is the statement that the interaction is invariant under the isometries that preserve the block structure.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="ultrametric-block-systems.html#tag-U2NB">Ultrametric block systems and the p-adic models</a>. To cite this assertion, link to
 <span class="tag">tag-U2NB.html</span> or to the article anchor directly.</p>

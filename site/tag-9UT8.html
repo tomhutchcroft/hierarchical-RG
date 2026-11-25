@@ -26,47 +26,7 @@
 <details><summary>Proof</summary><div class='collapsible-body'>
 <p>The concentration is part (ii) of <a href="bleher-sinai-fixed-point.html#section-statement">the trichotomy</a>: the orbit has unbounded variance after rescaling, and in the limit the block spin per site is $\pm M$, the two signs being the two phases of <a href="hierarchical-magnetised-phase.html">the magnetised-phase article</a>. For a fixed point in $\mathcal E$ to exist at $b&gt;b_c$ it would have to be fixed by $\mathcal R_{\theta_0,b}$ with a finite nonzero variance, and then the orbit of the Ising law would have to converge to it up to the relevant directions; but the orbit's variance per site grows like $m^{2n}$, so the rescaled variance diverges, and no limit in $\mathcal E$ exists. The only invariant laws of the unrescaled map consistent with concentration on $\pm M$ are $\delta_{\pm M}$ and their mixture, each of variance of order $m^{2n}$, which is outside $\mathcal E$.</p>
 </div></details>
-<p>So the four kinds of the definition are exhaustive in the following sense: the rescaled map has fixed points in $\mathcal E$ only at $b\leq b_c$, and at $b=b_c$ the one it has is the nontrivial fixed point. That is the technical content of the phrase "the phase transition is the critical orbit": every other orbit runs to a fixed point that is either outside the class or on its boundary.</p>
-
-## How each one is found {#section-methods}
-
-<p>The inventory is short and the methods that produce it are not interchangeable, so it is worth recording which method gives which row and what each method can and cannot do.</p>
-<table><thead><tr><th>Method</th><th>Gives</th><th>Cannot give</th></tr></thead>
-<tbody>
-<tr><td>closed form (variance recursion)</td><td>the Gaussian family, exactly</td><td>anything non-Gaussian: the recursion does not close</td></tr>
-<tr><td>invariant cone, truncation, contraction</td><td>existence and attractivity of $\nu^*$, and the spectrum</td><td>the value of $\lambda_1$ except near $\alpha=d/2$</td></tr>
-<tr><td>$\varepsilon$-expansion about $\alpha=d/2$</td><td>$\lambda_1$ and the normal form near the threshold</td><td>anything at a parameter where $\alpha-d/2$ is not small</td></tr>
-<tr><td>Borel summation of the large-field region</td><td>existence without a small parameter, for the $d=3$ scalar case</td><td>the spectrum, which it takes from the general theory</td></tr>
-<tr><td>reflection positivity and infrared bounds</td><td>bounds on the variance, with explicit constants</td><td>existence of a fixed point</td></tr>
-</tbody></table>
-<p>The third and fourth rows are two rigorous analyses of the same object by different means, and <a href="koch-wittwer-fixed-point.html#section-statement">the Koch–Wittwer statement</a> is careful about which part of the theorem is theirs: existence and convergent expansions, with the eigenvalue statement supplied by the general theory.</p>
-
-## What is not a fixed point {#section-nonexamples}
-
-<p><em>A law with heavy tails.</em> If the prior's density decays like $\lvert s\rvert^{-p}$ with $p$ large, the tilt is not normalisable for any $b&gt;0$, so the map is not defined on such a law and it can be neither a fixed point nor on an orbit. The class $\mathcal E$ is chosen to exclude it, and the exponential moment is what makes the tilt integrable.</p>
-
-<p><em>The product measure at infinite temperature.</em> The prior $\mu_0$ is not a fixed point of the rescaled map: rescaling by $L^{-\theta_0}$ changes its variance. It is $\delta_0$, not $\mu_0$, that attracts the disordered phase.</p>
-
-<p><em>The percolation recursion.</em> The percolation class has no one-variable fixed point, and that is structural rather than a gap in the analysis: the state of a block is the partition of its vertices into clusters, not the law of a number, so decimation acts on a much larger object [@hutchcroft-hierarchical-2021]. What survives is the growth of the cluster of the origin, which is <a href="hierarchical-percolation-rg.html#section-consequences">fixed at exponent $\alpha$</a> by the same autonomy, and the exponents of the class are read off that rather than off a fixed law.</p>
-
-<p><em>The Euclidean renormalisation group.</em> On $\mathbb Z^d$ the decimation step does not close on any finite-dimensional object, so there is no analogue of the table above: the fixed point exists as a point of an infinite-dimensional space and the statement of its existence is the content of the theory rather than a preliminary to it. <a href="hierarchical-and-euclidean-rg.html">The comparison article</a> sets out what transfers and what does not.</p>
-
-## What is not known {#section-open}
-
-<p>Four things, in order of how much they would add. The <em>value</em> of $\lambda_1$ at the nontrivial fixed point is not known in closed form above $\alpha=d/2$; it is known near the threshold, which is what the $\varepsilon$-expansion computes. The <em>pointwise</em> two-point function at the critical fixed point is not proved to have the order $\lVert y\rVert^{-(d-\alpha)}$ for Ising spins, although the summed statement is now a theorem and for percolation the pointwise one is Hutchcroft's. The <em>subleading spectrum</em> is not classified: complex pairs occur, and the wiki records that as part of the spectrum statement without listing the structure. And the <em>field direction</em> is treated separately throughout, so the inventory above is of the zero-field map; a version with the field included would have a two-dimensional unstable manifold and would gain a column rather than a row.</p>
-
-## History and attribution {#section-history}
-
-<p>The transformation as an operator on laws, the Gaussian fixed points in closed form, and the existence, uniqueness and attractivity of the nontrivial fixed point are the work of Bleher and Sinai [@bleher-sinai-1973] [@bleher-sinai-1975], whose trichotomy of the orbit organises the inventory. The local analysis — the $\varepsilon$-expansion of the leading eigenvalue and the normal form of the unstable manifold — is Gawedzki and Kupiainen's [@gawedzki-kupiainen-1983]. The parameter-free construction for the three-dimensional scalar hierarchy, by Borel summation of the large-field region, is Koch and Wittwer's [@koch-wittwer-1986]. The organisation of this article is the wiki's own; the statements are those of the articles cited in each row.</p>
-
-## References {#section-references}
-
-<ul>
-<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
-<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
-<li>H. Koch and P. Wittwer, A non-Gaussian renormalization group fixed point for hierarchical scalar lattice field theories, <em>Comm. Math. Phys.</em> 106 (1986), 495&ndash;532.</li>
-</ul></div>
+<p>So the four kinds of the definition are exhaustive in the following sense: the rescaled map has fixed points in $\mathcal E$ only at $b\leq b_c$, and at $b=b_c$ the one it has is the nontrivial fixed point. That is the technical content of the phrase "the phase transition is the critical orbit": every other orbit runs to a fixed point that is either outside the class or on its boundary.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="hierarchical-fixed-points.html#tag-9UT8">The fixed points, and what is known about each</a>. To cite this assertion, link to
 <span class="tag">tag-9UT8.html</span> or to the article anchor directly.</p>

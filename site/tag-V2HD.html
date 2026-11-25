@@ -26,38 +26,7 @@
 <div class="math-display">$$\frac{\mathcal R_{\theta,b}\bigl((1-\epsilon)\nu^*+\epsilon\rho\bigr)-\nu^*}{\epsilon}\longrightarrow D\mathcal R\,\rho\quad(\epsilon\downarrow0)$$</div>
 <p>for every signed measure $\rho$ of zero mass with $\int\lvert s\rvert^2d\lvert\rho\rvert(s)&lt;\infty$. A <em>direction</em> is an eigenmeasure $D\mathcal R\rho=\lambda\rho$; it is <em>relevant</em> if $\lvert\lambda\rvert&gt;1$, <em>marginal</em> if $\lvert\lambda\rvert=1$ and <em>irrelevant</em> if $\lvert\lambda\rvert&lt;1$.</p>
 <p>The classification is the standard one for a map on a space of laws and it is used here in the following way; <a href="hierarchical-fixed-points.html">the article on the fixed points</a> collects the ones this model has, with what is proved about each. The orbit approaches the fixed point along its stable directions and leaves it along its unstable ones; the critical model is the one whose orbit stays, and the two relevant directions of the hierarchical model are the thermal one, which measures the distance from the critical intensity, and an irrelevant or marginal partner that controls corrections. The exponents are functions of the relevant eigenvalues; the dictionary is the content of <a href="critical-exponents-from-rg.html">the exponent article</a>, and the linearisation is computed in closed form only in the <a href="gaussian-renormalisation-group.html">Gaussian case</a>.</p>
-<div class="fig" data-fig="flow" data-title="The two-coupling picture of the flow: a Gaussian fixed point, a nontrivial one, and the critical trajectory joining them. The exponents are read off the linearisation at whichever fixed point governs the model."></div>
-
-## Examples and non-examples {#section-examples}
-
-<p><em>The Gaussian orbit.</em> For $\nu_0=N(0,1)$ and the Gaussian prior, both the tilt and the summation preserve Gaussianity, so the orbit stays in the one-parameter family of centred Gaussians and the map reduces to a recursion on the variance: $\mathcal T_bN(0,v)=N(0,mv/(1-bv(m-1)))$ whenever the denominator is positive. This is worked out in <a href="gaussian-renormalisation-group.html">the Gaussian article</a>, where the fixed point and the eigenvalue $L^\alpha$ are computed.</p>
-
-<p><em>A degenerate fixed point.</em> The point mass $\delta_0$ is a fixed point of $\mathcal R_{\theta,b}$ for every $\theta$ and $b$: the tilt of a product of point masses is a point mass at $0$, and the sum is $0$. It carries zero variance and is excluded by the definition above. In the model it is the limit of the orbit below the critical intensity, where the rescaled block spin vanishes.</p>
-
-<p><em>Non-example: a law with divergent normaliser.</em> If $\mu$ has a density decaying like $e^{-c\lvert s\rvert^p}$ with $0&lt;p&lt;2$, so that its tails are heavier than Gaussian, then $Z_b(\mu)=\infty$ for every $b&gt;0$ and $\mathcal T_b\mu$ is undefined. The Gaussian threshold at $b=1/((m-1)v)$ is the borderline case, and it is the reason the fixed-point analysis of the Gaussian model stops at the critical coupling.</p>
-
-<p><em>Non-example: decimation of a Euclidean model.</em> On $\mathbb Z^d$ the analogous operation produces a law of the block magnetisation that is not a function of the block law alone, because the boundary between two blocks carries an interaction that depends on the arrangement of spins inside them. This is the subject of <a href="hierarchical-and-euclidean-rg.html">the comparison article</a>.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>External field.</em> Adding a field gives a family $\mathcal T_{b,h}$ acting on laws of the block spin with the argument $h$ carried along, and the magnetic eigenvalue is the derivative of the flow at the fixed point in $h$. The single-field versions are what appears in the model with $-\beta h\sum_x\sigma_x$ in the Hamiltonian.</p>
-
-<p><em>Anisotropic scaling.</em> Replacing $\theta_0$ by another exponent corresponds to weighting the sum differently at each scale and gives a map whose coupling is scale dependent. A fixed point of such a map is a self-similar law with anomalous scaling; the model's own recursion sits at $\theta_0$ and it is the physical exponents that decide whether the orbit of $\nu_0$ converges to a fixed point of $\mathcal R_{\theta_0,b}$ at all.</p>
-
-<p><em>Other numbers of children.</em> Nothing in the definitions uses $m=L^d$ beyond the cardinality of $A$: the same operator makes sense with any integer $m\geq2$, and the lattice realisation with $m$ children and ratio $\lambda$ is the one described in <a href="hierarchical-lattice.html#section-variants">the lattice article</a>.</p>
-
-## History and attribution {#section-history}
-
-<p>The transformation $\mathcal T_b$ is the renormalisation transformation of Bleher and Sinai (1973), who introduced it as a nonlinear integral operator on probability measures, proved that its fixed points govern the critical behaviour of Dyson's model, and computed the indices from its linearisation [@bleher-sinai-1973] [@bleher-sinai-1975]. The autonomous form of the recursion, and the reading of the model's block-spin sequence as an orbit of one map, are the derivations of that work; the systematic treatment in the language of measures with exponential tails, including the existence of the nontrivial fixed point, is in <a href="bleher-sinai-fixed-point.html">the next article but one</a>, following Gawedzki and Kupiainen [@gawedzki-kupiainen-1983].</p>
-
-## References {#section-references}
-
-<ul>
-<li>R. Bauerschmidt, D. C. Brydges and G. Slade, <em>Introduction to a Renormalisation Group Method</em>, Lecture Notes in Mathematics 2242, Springer, 2019.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
-<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
-</ul></div>
+<div class="fig" data-fig="flow" data-title="The two-coupling picture of the flow: a Gaussian fixed point, a nontrivial one, and the critical trajectory joining them. The exponents are read off the linearisation at whichever fixed point governs the model."></div></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="renormalisation-group-map.html#tag-V2HD">The renormalisation group map</a>. To cite this assertion, link to
 <span class="tag">tag-V2HD.html</span> or to the article anchor directly.</p>

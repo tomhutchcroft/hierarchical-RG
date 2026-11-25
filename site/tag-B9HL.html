@@ -27,52 +27,7 @@
 <p>Three consequences are worth separating. First, at the marginal exponent the criterion is a condition on the level sequence and not on a power: replacing $l_n$ by a sequence with the same growth but a convergent sum removes the transition. Second, the transition is continuous: the spontaneous magnetisation tends to zero at $T_c$, so the Thouless effect — a jump of the order parameter at the transition — does not occur. Third, the direction of the block spin is asymptotically uniform at $T_c$, so the order parameter vanishes while the block spin is of the size it has at criticality: the transition is carried by the fluctuations of the size, not by a selected direction.</p>
 <p>Below the critical temperature the limits change character.
 <div class="fig" data-fig="thouless" data-title="The direction of the block spin in two components. Below the critical temperature it concentrates on a point; at and above it, it spreads over the sphere. Bleher and Major prove that at criticality the limit is exactly uniform even though the spontaneous magnetisation vanishes."></div> For the vector model the block sums have non-central limit theorems at every temperature below $T_c$, and the non-Gaussian large-scale limit of the ordered phase is described by Bleher and Major in the two-part paper of 1988 [@bleher-major-1988], with the phenomenon recorded in their survey as one of the features that distinguishes the vector model from the scalar one [@bleher-major-1987]. The mechanism is the transverse enhancement of <a href="hierarchical-phi4-truncations.html#section-low-temperature">the low-temperature section of the truncations article</a>: the orthogonal fluctuations grow faster than the square root of the volume, and their limit need not be Gaussian.</p>
-<p>The three statements of the theorem together are the vector counterpart of the scalar picture of <a href="critical-exponents-from-rg.html">the exponent article</a>. In the scalar case the block spin at criticality is a number whose law has a nontrivial limit after rescaling; in the vector case the direction is asymptotically free and the limit law of the rescaled block spin is rotation invariant, so the angular variable contributes a marginal direction rather than a third independent exponent.</p>
-
-## Consequences for the exponents {#section-exponents}
-
-<p>The growth exponent is fixed by autonomy in the vector case as in the scalar one, since the argument of <a href="critical-exponents-from-rg.html#section-growth">the growth theorem</a> uses only the law of the block spin and its second moment.</p>
-<p>Consequently $\kappa=\alpha$ and $\eta=2-\alpha$ for the vector model at any rotation invariant fixed point with finite nonzero variance, and the exponents that involve the order parameter are those of the scalar model with the same $\nu$. The $r$-dependence sits in $\nu$, which is read off the linearisation at the non-Gaussian fixed point, and in the critical fluctuations of the direction, which are not captured by any exponent. This is the sense in which the vector model has the same two renormalisation-group numbers as the scalar one: the angular marginality changes the fixed point and the fluctuations, not the count of relevant directions.</p>
-<p>At the marginal exponent $\alpha=d$ the interaction is not summable and the model is at its own boundary; the level sequence $l_n$ then replaces the exponent as the parameter that decides criticality, which is why the exponents of the vector model at $\alpha=d$ are not obtained from the formulas above by substitution.</p>
-
-## Examples and non-examples {#section-examples}
-
-<p><em>The scalar case $r=1$.</em> The direction is a sign, the uniform law on $\mathbb S^0$ is the fair coin, and the phenomenon of the previous section reduces to the symmetry $\sigma\mapsto-\sigma$: the block spin's sign is asymptotically fair at $T_c$ whenever the law is symmetric. This is why the vector phenomenon has no scalar analogue of interest.</p>
-
-<p><em>Dyson's original model.</em> With $r=1$, $\alpha=d=1$ and $l_n\equiv1$ the criterion $\sum_nl_n=\infty$ holds and the transition exists, which is Dyson's theorem [@dyson-1969]; the vector statement extends it to every $r$ and to every level sequence.</p>
-
-<p><em>The Gaussian prior.</em> For $\varrho=N(0,I_r)$ the direction is uniform at every temperature by the proposition above, and the critical behaviour is entirely in the size: the model has no phase transition in the sense of symmetry breaking at any $\beta$, and its exponents are the Gaussian ones.</p>
-
-<p><em>Non-example: a discrete symmetry.</em> For the $q$-state Potts model, or for $r=1$, there is no continuous group and no marginal angular direction. The critical behaviour is then of the scalar type, and the marginal-exponent criterion of the theorem is replaced by the corresponding statement for percolation, where $\beta_c&lt;\infty$ exactly when $\alpha&lt;d$ [@koval-meester-trapman-2012].</p>
-
-<p><em>Non-example: the ordered phase.</em> Below $T_c$ the direction concentrates: the block spin is asymptotically parallel to a fixed vector, and the transverse fluctuations are massless. The renormalisation of that phase is a different problem, treated for the vector $\varphi^4$ model by Bleher and Major [@bleher-major-1984] and described in <a href="hierarchical-phi4-truncations.html#section-low-temperature">the article on truncations</a>.</p>
-
-## Variants and generalisations {#section-variants}
-
-<p><em>Other marginal structures.</em> The same question — whether summability decides criticality — can be asked at the marginal exponent of any model in the class, and the answer depends on the symmetry: for the percolation class the marginal exponent is $\alpha=d$ as well, and the criterion at $\alpha=d$ involves the level sequence in the same way.</p>
-
-<p><em>Ultrametric and $p$-adic models.</em> The construction uses only the ultrametric block structure, so it applies to the $p$-adic integers and to other ultrametric groups; the renormalisation group on those spaces, and its use as a model for a three-dimensional conformal field theory, is the subject of Abdesselam's programme [@abdesselam-2018].</p>
-
-<p><em>The number of components as a parameter.</em> The linearisation at the non-Gaussian fixed point depends on $r$ through the dimension of the space of angular perturbations. The scalar case has none, the $O(r)$ case has $r-1$ marginal directions at leading order, and the exponents are expected to depend on $r$ only through the eigenvalue associated with the radial direction.</p>
-
-## History and attribution {#section-history}
-
-<p>Dyson introduced the hierarchical model to prove a transition for power-law couplings [@dyson-1969], and conjectured that for continuous symmetry the criterion for a transition is the failure of summability of the interaction; the conjecture and its proof are the subject of Bleher and Major's paper, which circulated from 2002 and appeared in 2021 [@bleher-major-2021]. The low-temperature phase of the vector $\varphi^4$ model was treated by the same authors in 1984 [@bleher-major-1984], and the survey of 1987 presents the hierarchical model as a problem about limit distributions of strongly dependent random variables, with the vector phenomena and a list of conjectures [@bleher-major-1987], and the limit theorems for multicomponent models were announced in the Vilnius proceedings of the same period [@bleher-1987-vilnius]. The transformation itself, in the scalar case, is that of Bleher and Sinai [@bleher-sinai-1973]; the historical account of the Moscow seminar in which this circle of ideas developed is Bleher's [@bleher-2012].</p>
-
-## References {#section-references}
-
-<ul>
-<li>P. M. Bleher, Hierarchical models and renormalisation group, <em>Eur. Phys. J. H</em> 37 (2012), 605&ndash;618.</li>
-<li>P. M. Bleher and P. Major, Renormalization of Dyson's hierarchical vector valued &phi;<sup>4</sup> model at low temperatures, <em>Comm. Math. Phys.</em> 95 (1984), 487&ndash;532.</li>
-<li>P. M. Bleher, Limit theorems for multicomponent hierarchical models, in <em>Probability Theory and Mathematical Statistics</em>, Proc. 4th Vilnius Conf., Vol. 1, 211&ndash;229, 1987.</li>
-<li>P. M. Bleher and P. Major, Critical phenomena and universal exponents in statistical physics. On Dyson's hierarchical model, <em>Ann. Probab.</em> 15 (1987), 431&ndash;477.</li>
-<li>P. M. Bleher and P. Major, The large-scale limit of Dyson's hierarchical vector valued model at low temperatures. The non-Gaussian case, <em>Ann. Inst. H. Poincar&eacute; Phys. Th&eacute;or.</em> 49 (1988), 7&ndash;85 and 87&ndash;143.</li>
-<li>P. M. Bleher and P. Major, A Thouless-like effect in the Dyson hierarchical model with continuous symmetry, <em>Pure Appl. Funct. Anal.</em> 6 (2021), 101&ndash;175.</li>
-<li>P. M. Bleher and Ya. G. Sinai, Investigation of the critical point in models of the type of Dyson's hierarchical models, <em>Comm. Math. Phys.</em> 33 (1973), 23&ndash;42.</li>
-<li>F. J. Dyson, Existence of a phase-transition in a one-dimensional Ising ferromagnet, <em>Comm. Math. Phys.</em> 12 (1969), 91&ndash;107.</li>
-<li>V. Koval, R. Meester and P. Trapman, Long-range percolation on the hierarchical lattice, <em>Electron. J. Probab.</em> 17 (2012), no. 57.</li>
-<li>A. Abdesselam, Towards three-dimensional conformal probability, <em>p-Adic Numbers Ultrametric Anal. Appl.</em> 10 (2018), 233&ndash;247.</li>
-</ul></div>
+<p>The three statements of the theorem together are the vector counterpart of the scalar picture of <a href="critical-exponents-from-rg.html">the exponent article</a>. In the scalar case the block spin at criticality is a number whose law has a nontrivial limit after rescaling; in the vector case the direction is asymptotically free and the limit law of the rescaled block spin is rotation invariant, so the angular variable contributes a marginal direction rather than a third independent exponent.</p></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="hierarchical-vector-models.html#tag-B9HL">Hierarchical models with continuous symmetry</a>. To cite this assertion, link to
 <span class="tag">tag-B9HL.html</span> or to the article anchor directly.</p>

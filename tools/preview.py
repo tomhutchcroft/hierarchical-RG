@@ -490,7 +490,12 @@ def build(out: Path) -> dict:
         for m in ANCHOR_RE.finditer(body):
             tag, kind, title = m.group(1), m.group(2), m.group(3)
             chunk = body[m.end():]
-            cut = min([x for x in (chunk.find('<a id="tag-'), chunk.find("<h2 ")) if x >= 0] or [len(chunk)])
+            # stop at the next assertion or at the next section. The chunk is raw markdown, so the
+            # heading is a line beginning "## "; searching for "<h2 " (as this once did) never matched
+            # and every tag page ran on to the next tag, carrying whole sections with it.
+            next_head = re.search(r"(?m)^#{2,4} ", chunk)
+            cut = min([x for x in (chunk.find('<a id="tag-'),
+                                   next_head.start() if next_head else -1) if x >= 0] or [len(chunk)])
             statement = fences_to_details(chunk[:cut].strip())
             statement = rewrite_links(statement, tag_owner)
             statement = re.sub(r"^<p>", "", statement)
