@@ -71,11 +71,20 @@ extremal states. Both are the same kind of input as the trichotomy.
 
 ### 2. By value, next
 
-- The Ising free energy's singularity. The Gaussian case is computed in closed form; for Ising spins
-  no per-scale term is elementary and the curvature is computed nowhere in the wiki.
+- The one place where a computation is now known to be out of reach at this size: the Ising heat
+  capacity. The free-energy article computes the Ising free energy to a few digits and certifies it
+  from below, and shows that the derivatives are lost in the truncation near criticality. A method
+  that carries the law at scale `k` more cheaply than a vector of length `2m^k` — a cumulant or
+  Chebyshev representation, say — would reopen it.
 
 ## Done
 
+- The Ising free energy computed by the convolution recursion: one decimation step is a convolution
+  because the tilt's matrix has eigenvalues `(m-1)/2` and `-1/2`; in the Fourier and log domains the
+  recursion reproduces exact enumeration to `1.5e-16`, and since every per-scale term is nonnegative
+  each table entry is a certified lower bound. The section then shows the method stopping — converged
+  at twelve scales away from criticality, still moving in the fourth decimal at twenty near it — and
+  says that this is why the Ising curvature is not computed in the wiki.
 - The volume exponent as a picture (`volume-exponent`): `δ` against `α` in one dimension, mean field
   to the left of `d = 3α` and rising without bound to the right; the curve is cut where it leaves the
   frame rather than flattened on the axis.
