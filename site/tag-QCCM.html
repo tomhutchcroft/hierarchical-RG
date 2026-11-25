@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The plus block spin is pinned at least at the mean-field rate, the free one fluctuates at least that much — Hierarchical RG</title>
+<meta name="description" content="theorem: The plus block spin is pinned at least at the mean-field rate, the free one fluctuates at least that much">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / QCCM</p>
+<h1>The plus block spin is pinned at least at the mean-field rate, the free one fluctuates at least that much</h1>
+<p class="meta">theorem &middot; <span class="tag">QCCM</span> &middot; in
+<a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
+<div class="assertion">(i) The block average of the plus state concentrates: with $Y_n=S_{\Lambda_n}/m^n$,</p>
+<div class="math-display">$$\operatorname{Var}_{\mathbb P^{+}}(Y_n)\leq\frac{L^{-(d-\alpha)n}}{\beta C},$$</div>
+<p>so its fluctuations vanish at least like $L^{-(d-\alpha)n/2}$, and the plus block spin never grows faster than the mean-field rate, $2\theta_+\leq d+\alpha$.</p>
+<p>(ii) The free block average does not concentrate faster than the mean-field rate: $\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(Y_n)\geq M_n(\beta)L^{-(d-\alpha)n}/(\beta C)$.</p>
+<p>(iii) Suppose that at the critical intensity the rescaled orbit converges with a second moment $v^*=\int s^2d\nu^*\in(0,\infty)$, as in <a href="critical-exponents-from-rg.html#tag-A8VL">the growth theorem</a>, and that the transition is continuous, so that $M_n(\beta_c)\to0$. Then the free variance is $L^{2\theta_0n}v^*(1+o(1))$ and the sandwich gives</p>
+<div class="math-display">$$M_n\leq\beta Cv^*(1+o(1)),\qquad\frac{\operatorname{Var}_{\mathbb P^{+}}(Y_n)}{\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(Y_n)}\leq\frac{M_n}{v^*}\longrightarrow0:$$</div>
+<p>at criticality a boundary field of size $B_n\to0$ still pins the block spin, and the ratio of the two fluctuations measures the finite-size magnetisation.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>(i) Divide the lower half of the sandwich by $m^{2n}$ and use $M_n\leq1$, which holds because $\lvert\sigma_x\rvert\leq1$.</p>
+<p>(ii) Divide the upper half by $m^{2n}$.</p>
+<p>(iii) Under the hypothesis of the growth theorem the free variance is $L^{2\theta_0n}v^*(1+o(1))$, and the upper half of the sandwich is $M_n\leq\beta C\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(S_{\Lambda_n})/L^{2\theta_0n}$. The ratio bound divides the two halves of the sandwich by each other, and $M_n\to0$ is the continuity hypothesis, which is where the vanishing of the ratio comes from.</p>
+</div></details>
+<p>The third consequence is the one worth reading twice. The free block spin at criticality has a genuine scaling limit, so it fluctuates over a range of order $L^{\theta_0n}$; the plus block spin, whose boundary field is only $B_n=CL^{-\alpha n}$ — vanishing, and at a rate that makes the boundary energy of a block grow — fluctuates over a range that is a vanishing fraction of that. The mechanism is the one the identity in the previous article describes: the boundary injects magnetisation into the block, and the injected magnetisation is what the finite-size $M_n$ measures.</p>
+
+<p>What this route does <em>not</em> give is the value of $\kappa$. The lower half of the sandwich bounds the free variance below, in terms of $M_n$, and $M_n\to0$ at criticality, so it cannot certify a growth of order $L^{2\theta_0n}$; the upper half bounds the plus variance, not the free one. That is not an accident of the estimates: the two variances differ by the factor between them, which is exactly what distinguishes a pinned block spin from a fluctuating one. Certifying $\kappa=\alpha$ therefore still needs either the convergence of the rescaled orbit, which is <a href="critical-exponents-from-rg.html#tag-A8VL">the growth theorem</a>, or an upper bound on the free block-spin variance which this argument does not supply.</p>
+
+## The dictionary {#section-dictionary}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="critical-exponents-from-rg.html#tag-QCCM">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-QCCM.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="critical-exponents-from-rg.html#tag-QCCM"><span class="dir">context</span>Critical exponents from the renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

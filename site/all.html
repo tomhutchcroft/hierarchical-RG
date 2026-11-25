@@ -20,7 +20,7 @@
 <p class="crumbs"><a href="index.html">Home</a> / Single file</p>
 <h1>Hierarchical RG</h1>
 <p class="subtitle">The whole wiki in one page, for printing or reading offline.</p>
-<p class="meta">18 articles &middot; 69 tagged assertions &middot; the pages
+<p class="meta">18 articles &middot; 71 tagged assertions &middot; the pages
 that are interactive or generated are linked from each article's separate page</p>
 <details class="toc" open><summary>Contents</summary><ol><li><strong>Part 1: The block structure</strong><ol><li><a href="#whole-hierarchical-lattice">The hierarchical lattice</a></li><li><a href="#whole-hierarchical-symmetries">The isometries of the hierarchical lattice</a></li><li><a href="#whole-hierarchical-gibbs-measure">Hierarchical spin systems and decimation</a></li><li><a href="#whole-hierarchical-infinite-volume-limit">The infinite-volume limit</a></li><li><a href="#whole-ultrametric-block-systems">Ultrametric block systems and the p-adic models</a></li><li><a href="#whole-hierarchical-magnetised-phase">The magnetised phase, and what monotonicity gives</a></li></ol></li><li><strong>Part 2: The renormalisation group</strong><ol><li><a href="#whole-renormalisation-group-map">The renormalisation group map</a></li><li><a href="#whole-gaussian-renormalisation-group">The Gaussian renormalisation group</a></li><li><a href="#whole-gaussian-fixed-point-spectrum">The spectrum at the Gaussian fixed point</a></li><li><a href="#whole-critical-exponents-from-rg">Critical exponents from the renormalisation group</a></li><li><a href="#whole-corrections-to-scaling">Corrections to scaling</a></li><li><a href="#whole-bleher-sinai-fixed-point">The Bleher–Sinai fixed point</a></li><li><a href="#whole-koch-wittwer-fixed-point">Koch and Wittwer's non-Gaussian fixed point</a></li><li><a href="#whole-abdesselam-global-trajectory">Abdesselam's trajectory between two fixed points</a></li></ol></li><li><strong>Part 3: Percolation, vectors, and the Euclidean comparison</strong><ol><li><a href="#whole-hierarchical-percolation-rg">Renormalisation for hierarchical percolation</a></li><li><a href="#whole-hierarchical-vector-models">Hierarchical models with continuous symmetry</a></li><li><a href="#whole-hierarchical-phi4-truncations">The phi-fourth hierarchical model and its truncations</a></li><li><a href="#whole-hierarchical-and-euclidean-rg">Hierarchical and Euclidean renormalisation</a></li></ol></li></ol></details>
 <section class="whole" id="whole-hierarchical-lattice"><h1>The hierarchical lattice</h1><p class="subtitle">An ultrametric group whose blocks fall into L^d congruent children.</p><p class="meta">model &middot; <a href="hierarchical-lattice.html">separate page</a></p>
@@ -877,6 +877,37 @@ that are interactive or generated are linked from each article's separate page</
 </div></details>
 <p>The mechanism is worth separating from the bookkeeping. The autonomy of the recursion at $\theta_0$ is a statement about the couplings, and it says that the only self-similar law consistent with them has block spins growing at rate $L^{\theta_0n}$. What the theorem adds is convergence of the orbit, which is the content of the fixed-point theory in the <a href="gaussian-renormalisation-group.html">Gaussian</a> and <a href="bleher-sinai-fixed-point.html">non-Gaussian</a> cases. The exponent that is not fixed this way is $\nu$, which measures the rate at which the orbit leaves the fixed point and is computed from the linearisation.</p>
 
+<h2 id="section-variance-route">The variance route to the growth exponent</h2>
+<p>The growth theorem above reads the exponent off a fixed point, so it presupposes that the orbit converges. There is a second route, which assumes nothing about the orbit and instead compares the block spin of the plus state with that of the free state; it gives an inequality rather than an identity, and the inequality is valid at every intensity, including at the critical one.</p>
+
+<p>The input is the concavity of the magnetisation in a positive field. Turn the boundary condition on gradually: for $t\in[0,1]$ let $\mathbb P^{(t)}_{\Lambda_n}$ be the measure whose boundary spins are all $t$, so that $t=0$ is free and $t=1$ is the plus condition, and recall from <a href="hierarchical-magnetised-phase.html#section-block-average">the block-average section</a> that the boundary energy is $-tB_nS_{\Lambda_n}$ with $B_n=CL^{-\alpha n}$.</p>
+<a id="tag-XZYU" data-assertion="proposition" data-title="The block-spin variance is maximal at zero boundary field, and the sandwich it gives"></a>
+<p>For every $\beta$ and $n$, the map $t\mapsto\mathbb E_{\mathbb P^{(t)}_{\Lambda_n}}[S_{\Lambda_n}]$ is concave and increasing on $[0,1]$, so $t\mapsto\operatorname{Var}_{\mathbb P^{(t)}}(S_{\Lambda_n})$ is nonincreasing there; hence</p>
+<div class="math-display">$$\frac{\beta C\operatorname{Var}_{\mathbb P^{+}}(S_{\Lambda_n})}{L^{2\theta_0n}}\ \leq\ M_n(\beta)\ \leq\ \frac{\beta C\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(S_{\Lambda_n})}{L^{2\theta_0n}},$$</div>
+<p>where $M_n(\beta)=\mathbb E_{\mathbb P_{\Lambda_n}^{+}}[\sigma_x]$ is the finite-size magnetisation and $2\theta_0=d+\alpha$.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>The two derivatives of the identity are $\frac{d}{dt}\mathbb E_{\mathbb P^{(t)}}[S_{\Lambda_n}]=\beta B_n\operatorname{Var}_{\mathbb P^{(t)}}(S_{\Lambda_n})$ and</p>
+<div class="math-display">$$\frac{d^2}{dt^2}\mathbb E_{\mathbb P^{(t)}}[S_{\Lambda_n}]=(\beta B_n)^2\sum_{x,y,z\in\Lambda_n}\mathbb E_{\mathbb P^{(t)}}\bigl[\sigma_x;\sigma_y;\sigma_z\bigr],$$</div>
+<p>the sum of third cumulants, which is nonpositive by the GHS inequality for ferromagnetic Ising spins in a nonnegative field [@ghs-1970]. So the mean is concave, its derivative is nonincreasing, and by the previous display so is the variance. The variance is even in $t$, because $\mathbb P^{(-t)}$ is the image of $\mathbb P^{(t)}$ under the global flip, so the integral of the variance over $[-1,1]$ lies between twice its value at $t=1$ and twice its value at $t=0$. Multiplying the identity $m^nM_n(\beta)=\tfrac12\beta B_n\int_{-1}^{1}\operatorname{Var}_{\mathbb P^{(t)}}(S_{\Lambda_n})\,dt$ by these bounds and using $B_n=CL^{-\alpha n}$ together with $L^{2\theta_0n}=m^nL^{\alpha n}$ gives the sandwich.</p>
+</div></details>
+<p>Three consequences follow, and none of them needs the orbit to converge.</p>
+<a id="tag-QCCM" data-assertion="theorem" data-title="The plus block spin is pinned at least at the mean-field rate, the free one fluctuates at least that much"></a>
+<p>(i) The block average of the plus state concentrates: with $Y_n=S_{\Lambda_n}/m^n$,</p>
+<div class="math-display">$$\operatorname{Var}_{\mathbb P^{+}}(Y_n)\leq\frac{L^{-(d-\alpha)n}}{\beta C},$$</div>
+<p>so its fluctuations vanish at least like $L^{-(d-\alpha)n/2}$, and the plus block spin never grows faster than the mean-field rate, $2\theta_+\leq d+\alpha$.</p>
+<p>(ii) The free block average does not concentrate faster than the mean-field rate: $\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(Y_n)\geq M_n(\beta)L^{-(d-\alpha)n}/(\beta C)$.</p>
+<p>(iii) Suppose that at the critical intensity the rescaled orbit converges with a second moment $v^*=\int s^2d\nu^*\in(0,\infty)$, as in <a href="critical-exponents-from-rg.html#tag-A8VL">the growth theorem</a>, and that the transition is continuous, so that $M_n(\beta_c)\to0$. Then the free variance is $L^{2\theta_0n}v^*(1+o(1))$ and the sandwich gives</p>
+<div class="math-display">$$M_n\leq\beta Cv^*(1+o(1)),\qquad\frac{\operatorname{Var}_{\mathbb P^{+}}(Y_n)}{\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(Y_n)}\leq\frac{M_n}{v^*}\longrightarrow0:$$</div>
+<p>at criticality a boundary field of size $B_n\to0$ still pins the block spin, and the ratio of the two fluctuations measures the finite-size magnetisation.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>(i) Divide the lower half of the sandwich by $m^{2n}$ and use $M_n\leq1$, which holds because $\lvert\sigma_x\rvert\leq1$.</p>
+<p>(ii) Divide the upper half by $m^{2n}$.</p>
+<p>(iii) Under the hypothesis of the growth theorem the free variance is $L^{2\theta_0n}v^*(1+o(1))$, and the upper half of the sandwich is $M_n\leq\beta C\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(S_{\Lambda_n})/L^{2\theta_0n}$. The ratio bound divides the two halves of the sandwich by each other, and $M_n\to0$ is the continuity hypothesis, which is where the vanishing of the ratio comes from.</p>
+</div></details>
+<p>The third consequence is the one worth reading twice. The free block spin at criticality has a genuine scaling limit, so it fluctuates over a range of order $L^{\theta_0n}$; the plus block spin, whose boundary field is only $B_n=CL^{-\alpha n}$ — vanishing, and at a rate that makes the boundary energy of a block grow — fluctuates over a range that is a vanishing fraction of that. The mechanism is the one the identity in the previous article describes: the boundary injects magnetisation into the block, and the injected magnetisation is what the finite-size $M_n$ measures.</p>
+
+<p>What this route does <em>not</em> give is the value of $\kappa$. The lower half of the sandwich bounds the free variance below, in terms of $M_n$, and $M_n\to0$ at criticality, so it cannot certify a growth of order $L^{2\theta_0n}$; the upper half bounds the plus variance, not the free one. That is not an accident of the estimates: the two variances differ by the factor between them, which is exactly what distinguishes a pinned block spin from a fluctuating one. Certifying $\kappa=\alpha$ therefore still needs either the convergence of the rescaled orbit, which is <a href="critical-exponents-from-rg.html#tag-A8VL">the growth theorem</a>, or an upper bound on the free block-spin variance which this argument does not supply.</p>
+
 <h2 id="section-dictionary">The dictionary</h2>
 <a id="tag-G6YW" data-assertion="theorem" data-title="Exponents in terms of the two renormalisation-group numbers"></a>
 <p>Suppose that $\chi_n(\beta_c)\asymp L^{\kappa n}$ and that, uniformly in $n$ and $\beta$,</p>
@@ -912,6 +943,8 @@ that are interactive or generated are linked from each article's separate page</
 
 <h2 id="section-references">References</h2>
 <ul>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>R. B. Griffiths, C. A. Hurst and S. Sherman, Concavity of magnetization of an Ising ferromagnet in a positive external field, <em>J. Math. Phys.</em> 11 (1970), 790&ndash;795.</li>
 <li>M. Aizenman and R. Fernandez, Critical exponents for long-range interactions, <em>Lett. Math. Phys.</em> 16 (1988), 39&ndash;49.</li>
 <li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
 <li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>

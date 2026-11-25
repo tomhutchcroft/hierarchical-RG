@@ -74,13 +74,11 @@ material — before returning to the percolation volume, which is item 2.
   points there.
 - The notation page gives one article per symbol. A second column saying where each symbol is
   *used*, not only where it is introduced, would help a reader who arrives in the middle.
-- The transfer between the trichotomy and the order parameter is now proved both ways
-  (`hierarchical-magnetised-phase`, section `block-average`), so what remains of that gap is only
-  the trichotomy itself, which is external and attributed. What is *not* in the wiki is the
-  variance identity's consequence at criticality: the block magnetisation of the plus state is the
-  integrated boundary-induced variance, which should give `M_n ≍ β B_n Var(S_n) / m^n` and hence
-  relate the order parameter to the block-spin variance growth — a route to `κ` that the exponent
-  article does not take.
+- The variance route gives `κ₊ ≤ α` unconditionally and pins the ratio of the two block-spin
+  fluctuations at criticality, but it cannot certify `κ = α`, because the half of the sandwich that
+  would do so is the missing *upper* bound on the free block-spin variance. Either that bound, or a
+  direct proof that the free measures at `β_c` are the even mixture of the two extremal states,
+  would close it; both are open in the wiki and both are the same kind of input as the trichotomy.
 
 ### 2. The volume of the critical cluster (percolation depth), deferred
 
@@ -91,6 +89,15 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- The variance route to `κ` (`critical-exponents-from-rg`, section `variance-route`): the GHS
+  inequality makes the block-spin variance maximal at zero boundary field, so the boundary-field
+  identity sandwiches the finite-size magnetisation between the two block-spin variances,
+  `βC Var₊/L^{2θ₀n} ≤ M_n ≤ βC Var_free/L^{2θ₀n}`. Consequences, all unconditional: the plus
+  block average concentrates at least like `L^{-(d-α)n/2}`, so `κ₊ ≤ α` at every intensity; the
+  free one fluctuates at least `M_n` times mean field; and at criticality, given the growth
+  theorem's hypothesis and continuity, a boundary field of size `B_n → 0` pins the block spin, with
+  the ratio of the two fluctuations tending to zero. Checked: GHS monotonicity on eleven boundary
+  fields at three intensities, the sandwich and both rate bounds.
 - The block-average converse (`hierarchical-magnetised-phase`, section `block-average`): the plus
   state's block average *equals* its single-site magnetisation at every finite volume, because
   translations by `Λ_n` permute `Λ_n`, so it decreases to `M(β)`; every Gibbs measure's block

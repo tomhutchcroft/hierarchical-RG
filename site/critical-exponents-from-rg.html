@@ -21,8 +21,8 @@
 <a href="part-renormalisation-group.html">The renormalisation group</a> / Critical exponents from the renormalisation group</p>
 <h1>Critical exponents from the renormalisation group</h1>
 <p class="subtitle">Two numbers from the fixed point, and the algebra that turns them into the exponents.</p>
-<p class="meta">theorem &middot; part 2 &middot; 8 sections &middot;
-5 tagged assertions &middot; <span class="tag">critical-exponents-from-rg</span></p>
+<p class="meta">theorem &middot; part 2 &middot; 9 sections &middot;
+7 tagged assertions &middot; <span class="tag">critical-exponents-from-rg</span></p>
 
 <p>A model with a renormalisation-group fixed point has two numbers that matter: the multiplier $\lambda_1$ of the linearised map at the fixed point, which says how fast a perturbation of the critical intensity is amplified per scale, and the growth exponent $\theta$ of the block spin at criticality, which says how large a block's magnetisation is at scale $L^n$. The first gives the correlation-length exponent through $\nu=\log L/\log\lambda_1$; the second gives the susceptibility exponent $\kappa=2\theta-d$, which is the same as the statement $\eta=2-\kappa$. Every other exponent follows from these two by algebra, provided the standard scaling hypotheses hold; hyperscaling is the one that can fail, and it fails in the classical regime of percolation.</p>
 
@@ -31,7 +31,7 @@
 <p>For percolation on the hierarchical lattice both statements are theorems: the two-point exponent is $2-\alpha$ for every $0&lt;\alpha&lt;d$ [@hutchcroft-hierarchical-2021], and the volume exponent satisfies $\delta\geq\frac{d+\alpha}{d-\alpha}$ above the triangle threshold, with equality conjectured. The classical long-range values are tabulated by Fisher, Ma and Nickel [@fisher-ma-nickel-1972]; the rigorous versions in the mean-field region are due to Aizenman and Fernandez [@aizenman-fernandez-1988].</p>
 
 
-<details class="toc" open><summary>On this page</summary><ol><li><a href="#section-exponents">Definitions and setting</a></li><li><a href="#section-identities">Block identities</a></li><li><a href="#section-growth">The growth exponent is fixed</a></li><li><a href="#section-dictionary">The dictionary</a></li><li><a href="#section-examples">Examples and non-examples</a></li><li><a href="#section-variants">Variants and generalisations</a></li><li><a href="#section-history">History and attribution</a></li><li><a href="#section-references">References</a></li></ol></details>
+<details class="toc" open><summary>On this page</summary><ol><li><a href="#section-exponents">Definitions and setting</a></li><li><a href="#section-identities">Block identities</a></li><li><a href="#section-growth">The growth exponent is fixed</a></li><li><a href="#section-variance-route">The variance route to the growth exponent</a></li><li><a href="#section-dictionary">The dictionary</a></li><li><a href="#section-examples">Examples and non-examples</a></li><li><a href="#section-variants">Variants and generalisations</a></li><li><a href="#section-history">History and attribution</a></li><li><a href="#section-references">References</a></li></ol></details>
 <h2 id="section-exponents">Definitions and setting<a class="anchor" href="#section-exponents" aria-label="link to this section">#</a></h2>
 <a id="tag-E1QZ" data-assertion="definition" data-title="The exponents of a hierarchical model"></a>
 <p>Let $0&lt;\alpha&lt;d$. Write $\tau_n(x,y)$ for the two-point function of the model on the block $\Lambda_n$ with free boundary conditions — the connection probability for percolation, the spin correlation for an Ising model — and $\tau_\beta(x,y)$ for that of the model on $\mathbb H^d_L$, when it exists. Let $\beta_c$ be the critical intensity, and for $n\geq0$ let</p>
@@ -74,6 +74,37 @@
 </div></details>
 <p>The mechanism is worth separating from the bookkeeping. The autonomy of the recursion at $\theta_0$ is a statement about the couplings, and it says that the only self-similar law consistent with them has block spins growing at rate $L^{\theta_0n}$. What the theorem adds is convergence of the orbit, which is the content of the fixed-point theory in the <a href="gaussian-renormalisation-group.html">Gaussian</a> and <a href="bleher-sinai-fixed-point.html">non-Gaussian</a> cases. The exponent that is not fixed this way is $\nu$, which measures the rate at which the orbit leaves the fixed point and is computed from the linearisation.</p>
 
+<h2 id="section-variance-route">The variance route to the growth exponent<a class="anchor" href="#section-variance-route" aria-label="link to this section">#</a></h2>
+<p>The growth theorem above reads the exponent off a fixed point, so it presupposes that the orbit converges. There is a second route, which assumes nothing about the orbit and instead compares the block spin of the plus state with that of the free state; it gives an inequality rather than an identity, and the inequality is valid at every intensity, including at the critical one.</p>
+
+<p>The input is the concavity of the magnetisation in a positive field. Turn the boundary condition on gradually: for $t\in[0,1]$ let $\mathbb P^{(t)}_{\Lambda_n}$ be the measure whose boundary spins are all $t$, so that $t=0$ is free and $t=1$ is the plus condition, and recall from <a href="hierarchical-magnetised-phase.html#section-block-average">the block-average section</a> that the boundary energy is $-tB_nS_{\Lambda_n}$ with $B_n=CL^{-\alpha n}$.</p>
+<a id="tag-XZYU" data-assertion="proposition" data-title="The block-spin variance is maximal at zero boundary field, and the sandwich it gives"></a>
+<p>For every $\beta$ and $n$, the map $t\mapsto\mathbb E_{\mathbb P^{(t)}_{\Lambda_n}}[S_{\Lambda_n}]$ is concave and increasing on $[0,1]$, so $t\mapsto\operatorname{Var}_{\mathbb P^{(t)}}(S_{\Lambda_n})$ is nonincreasing there; hence</p>
+<div class="math-display">$$\frac{\beta C\operatorname{Var}_{\mathbb P^{+}}(S_{\Lambda_n})}{L^{2\theta_0n}}\ \leq\ M_n(\beta)\ \leq\ \frac{\beta C\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(S_{\Lambda_n})}{L^{2\theta_0n}},$$</div>
+<p>where $M_n(\beta)=\mathbb E_{\mathbb P_{\Lambda_n}^{+}}[\sigma_x]$ is the finite-size magnetisation and $2\theta_0=d+\alpha$.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>The two derivatives of the identity are $\frac{d}{dt}\mathbb E_{\mathbb P^{(t)}}[S_{\Lambda_n}]=\beta B_n\operatorname{Var}_{\mathbb P^{(t)}}(S_{\Lambda_n})$ and</p>
+<div class="math-display">$$\frac{d^2}{dt^2}\mathbb E_{\mathbb P^{(t)}}[S_{\Lambda_n}]=(\beta B_n)^2\sum_{x,y,z\in\Lambda_n}\mathbb E_{\mathbb P^{(t)}}\bigl[\sigma_x;\sigma_y;\sigma_z\bigr],$$</div>
+<p>the sum of third cumulants, which is nonpositive by the GHS inequality for ferromagnetic Ising spins in a nonnegative field [@ghs-1970]. So the mean is concave, its derivative is nonincreasing, and by the previous display so is the variance. The variance is even in $t$, because $\mathbb P^{(-t)}$ is the image of $\mathbb P^{(t)}$ under the global flip, so the integral of the variance over $[-1,1]$ lies between twice its value at $t=1$ and twice its value at $t=0$. Multiplying the identity $m^nM_n(\beta)=\tfrac12\beta B_n\int_{-1}^{1}\operatorname{Var}_{\mathbb P^{(t)}}(S_{\Lambda_n})\,dt$ by these bounds and using $B_n=CL^{-\alpha n}$ together with $L^{2\theta_0n}=m^nL^{\alpha n}$ gives the sandwich.</p>
+</div></details>
+<p>Three consequences follow, and none of them needs the orbit to converge.</p>
+<a id="tag-QCCM" data-assertion="theorem" data-title="The plus block spin is pinned at least at the mean-field rate, the free one fluctuates at least that much"></a>
+<p>(i) The block average of the plus state concentrates: with $Y_n=S_{\Lambda_n}/m^n$,</p>
+<div class="math-display">$$\operatorname{Var}_{\mathbb P^{+}}(Y_n)\leq\frac{L^{-(d-\alpha)n}}{\beta C},$$</div>
+<p>so its fluctuations vanish at least like $L^{-(d-\alpha)n/2}$, and the plus block spin never grows faster than the mean-field rate, $2\theta_+\leq d+\alpha$.</p>
+<p>(ii) The free block average does not concentrate faster than the mean-field rate: $\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(Y_n)\geq M_n(\beta)L^{-(d-\alpha)n}/(\beta C)$.</p>
+<p>(iii) Suppose that at the critical intensity the rescaled orbit converges with a second moment $v^*=\int s^2d\nu^*\in(0,\infty)$, as in <a href="critical-exponents-from-rg.html#tag-A8VL">the growth theorem</a>, and that the transition is continuous, so that $M_n(\beta_c)\to0$. Then the free variance is $L^{2\theta_0n}v^*(1+o(1))$ and the sandwich gives</p>
+<div class="math-display">$$M_n\leq\beta Cv^*(1+o(1)),\qquad\frac{\operatorname{Var}_{\mathbb P^{+}}(Y_n)}{\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(Y_n)}\leq\frac{M_n}{v^*}\longrightarrow0:$$</div>
+<p>at criticality a boundary field of size $B_n\to0$ still pins the block spin, and the ratio of the two fluctuations measures the finite-size magnetisation.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>(i) Divide the lower half of the sandwich by $m^{2n}$ and use $M_n\leq1$, which holds because $\lvert\sigma_x\rvert\leq1$.</p>
+<p>(ii) Divide the upper half by $m^{2n}$.</p>
+<p>(iii) Under the hypothesis of the growth theorem the free variance is $L^{2\theta_0n}v^*(1+o(1))$, and the upper half of the sandwich is $M_n\leq\beta C\operatorname{Var}_{\mathbb P^{\mathrm{free}}}(S_{\Lambda_n})/L^{2\theta_0n}$. The ratio bound divides the two halves of the sandwich by each other, and $M_n\to0$ is the continuity hypothesis, which is where the vanishing of the ratio comes from.</p>
+</div></details>
+<p>The third consequence is the one worth reading twice. The free block spin at criticality has a genuine scaling limit, so it fluctuates over a range of order $L^{\theta_0n}$; the plus block spin, whose boundary field is only $B_n=CL^{-\alpha n}$ — vanishing, and at a rate that makes the boundary energy of a block grow — fluctuates over a range that is a vanishing fraction of that. The mechanism is the one the identity in the previous article describes: the boundary injects magnetisation into the block, and the injected magnetisation is what the finite-size $M_n$ measures.</p>
+
+<p>What this route does <em>not</em> give is the value of $\kappa$. The lower half of the sandwich bounds the free variance below, in terms of $M_n$, and $M_n\to0$ at criticality, so it cannot certify a growth of order $L^{2\theta_0n}$; the upper half bounds the plus variance, not the free one. That is not an accident of the estimates: the two variances differ by the factor between them, which is exactly what distinguishes a pinned block spin from a fluctuating one. Certifying $\kappa=\alpha$ therefore still needs either the convergence of the rescaled orbit, which is <a href="critical-exponents-from-rg.html#tag-A8VL">the growth theorem</a>, or an upper bound on the free block-spin variance which this argument does not supply.</p>
+
 <h2 id="section-dictionary">The dictionary<a class="anchor" href="#section-dictionary" aria-label="link to this section">#</a></h2>
 <a id="tag-G6YW" data-assertion="theorem" data-title="Exponents in terms of the two renormalisation-group numbers"></a>
 <p>Suppose that $\chi_n(\beta_c)\asymp L^{\kappa n}$ and that, uniformly in $n$ and $\beta$,</p>
@@ -109,6 +140,8 @@
 
 <h2 id="section-references">References<a class="anchor" href="#section-references" aria-label="link to this section">#</a></h2>
 <ul>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>R. B. Griffiths, C. A. Hurst and S. Sherman, Concavity of magnetization of an Ising ferromagnet in a positive external field, <em>J. Math. Phys.</em> 11 (1970), 790&ndash;795.</li>
 <li>M. Aizenman and R. Fernandez, Critical exponents for long-range interactions, <em>Lett. Math. Phys.</em> 16 (1988), 39&ndash;49.</li>
 <li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
 <li>M. E. Fisher, S.-k. Ma and B. G. Nickel, Critical exponents for long-range interactions, <em>Phys. Rev. Lett.</em> 29 (1972), 917&ndash;920.</li>

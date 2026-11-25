@@ -475,6 +475,16 @@
       "description": "Positive correlation of increasing functions for measures satisfying a positive lattice condition, covering ferromagnetic Ising and Potts models and percolation: the FKG inequality.",
       "zbl": "0346.06011",
       "zblUrl": "https://zbmath.org/?q=an:0346.06011"
+    },
+    {
+      "id": "ghs-1970",
+      "shortName": "Griffiths–Hurst–Sherman",
+      "title": "Concavity of magnetization of an Ising ferromagnet in a positive external field",
+      "author": "R. B. Griffiths, C. A. Hurst and S. Sherman",
+      "year": 1970,
+      "edition": "J. Math. Phys. 11 (1970), 790-795",
+      "url": "https://doi.org/10.1063/1.1665211",
+      "description": "The magnetisation of a ferromagnetic Ising model is concave in a nonnegative external field, equivalently the third cumulant of any sum of spins is nonpositive: the GHS inequality. No zbMATH record was found for this work; it is cited by its published details."
     }
   ]
 }

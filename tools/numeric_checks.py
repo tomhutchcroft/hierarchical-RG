@@ -366,12 +366,14 @@ def check_free_measure_conditional():
 
 # ---------------------------------------------------------------- the ferromagnetic phase
 
+def total_mass(d, L, alpha, J=1.0):
+    """The total coupling mass at a vertex, C = sum over the shells."""
+    return J * (1 - L ** (-d)) / (L ** alpha - 1)
+
+
 def boundary_mass(d, L, n, alpha, J=1.0):
-    """The mass from outside Lambda_n at each vertex of Lambda_n; the same number at every vertex."""
-    M = n + 3
-    padded = [x + tuple([0] * (d * (M - n))) for x in vertices(d, L, n)]
-    return [sum(J * L ** (-(d + alpha) * lev(x, y, d)) for y in vertices(d, L, M) if lev(x, y, d) > n)
-            for x in padded]
+    """The mass from outside Lambda_n at each vertex of Lambda_n: the same number at every vertex, C L^{-alpha n}."""
+    return [total_mass(d, L, alpha, J) * L ** (-alpha * n) for _ in vertices(d, L, n)]
 
 
 def ising_block(d, L, n, alpha, beta, boundary=1, J=1.0):
@@ -483,6 +485,56 @@ def check_block_average():
          f"E_+[S] = {lhs:.9f} against beta B / 2 times the integral of Var = {rhs:.9f}")
 
 
+def check_variance_sandwich():
+    """GHS monotonicity, and the sandwich between M_n and the two block-spin variances."""
+    d, L, alpha = 1, 2, 0.5
+    C = total_mass(d, L, alpha)
+    for beta in (0.5, 0.8284271, 1.2):
+        worst = 0.0
+        for n in (2, 3):
+            vars_by_t = []
+            for t in np.linspace(0.0, 1.0, 11):
+                tab, _, _ = ising_block(d, L, n, alpha, beta, boundary=float(t))
+                S = {s: sum(s) for s in tab}
+                m1 = sum(p * S[s] for s, p in tab.items())
+                m2 = sum(p * S[s] ** 2 for s, p in tab.items())
+                vars_by_t.append(m2 - m1 * m1)
+            rise = max(vars_by_t[i + 1] - vars_by_t[i] for i in range(len(vars_by_t) - 1))
+            worst = max(worst, rise)
+        note(f"block-spin variance decreases in the boundary field (beta={beta})", worst < 1e-9,
+             f"largest rise along t in [0,1]: {worst:.2e}, "
+             f"variance from t=0 to t=1: {vars_by_t[0]:.3f} -> {vars_by_t[-1]:.3f}")
+
+        rows = []
+        for n in (2, 3):
+            mn = L ** (d * n)
+            scale = L ** ((d + alpha) * n)
+            plus, _, _ = ising_block(d, L, n, alpha, beta, boundary=1.0)
+            free, _, _ = ising_block(d, L, n, alpha, beta, boundary=0.0)
+            S = {s: sum(s) for s in plus}
+
+            def moments(tab):
+                m1 = sum(p * sum(s) for s, p in tab.items())
+                m2 = sum(p * sum(s) ** 2 for s, p in tab.items())
+                return m1, m2 - m1 * m1
+
+            e_plus, v_plus = moments(plus)
+            _, v_free = moments(free)
+            Mn = e_plus / mn
+            lo = beta * C * v_plus / scale
+            hi = beta * C * v_free / scale
+            ok = lo <= Mn + 1e-12 and Mn <= hi + 1e-12
+            rate = L ** (-(d - alpha) * n) / (beta * C)
+            ok = ok and v_plus / mn ** 2 <= rate + 1e-12 and v_free / mn ** 2 >= Mn * rate - 1e-12
+            rows.append((n, Mn, lo, hi, v_plus / mn ** 2, rate, v_free / mn ** 2))
+        note(f"variance sandwich and concentration rates (beta={beta})",
+             all(r[2] <= r[1] + 1e-12 and r[1] <= r[3] + 1e-12 and r[4] <= r[5] + 1e-12
+                 and r[6] >= r[1] * r[5] - 1e-12 for r in rows),
+             "; ".join(f"n={n}: M_n={Mn:.3f} in [{lo:.3f},{hi:.3f}], Var_+(Y)={vp:.4f} <= {rate:.4f}, "
+                       f"Var_free(Y)={vf:.3f} >= {Mn * rate:.4f}"
+                       for n, Mn, lo, hi, vp, rate, vf in rows))
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -497,6 +549,7 @@ def main() -> int:
     check_free_measure_conditional()
     check_ferromagnetic_phase()
     check_block_average()
+    check_variance_sandwich()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0
