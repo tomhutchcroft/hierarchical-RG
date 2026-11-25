@@ -288,6 +288,18 @@
     {
       "tag": "QCCM",
       "state": "allocated"
+    },
+    {
+      "tag": "2I6O",
+      "state": "allocated"
+    },
+    {
+      "tag": "JBBF",
+      "state": "allocated"
+    },
+    {
+      "tag": "RS6Z",
+      "state": "allocated"
     }
   ]
 }

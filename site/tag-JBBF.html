@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>At alpha = d summability is decided by the level sequence alone — Hierarchical RG</title>
+<meta name="description" content="proposition: At alpha = d summability is decided by the level sequence alone">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">5</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / JBBF</p>
+<h1>At alpha = d summability is decided by the level sequence alone</h1>
+<p class="meta">proposition &middot; <span class="tag">JBBF</span> &middot; in
+<a href="hierarchical-two-marginalities.html">The two marginal exponents</a></p>
+<div class="assertion">Let $\alpha=d$. Then</p>
+<div class="math-display">$$\sum_{x\neq0}J(\lVert x\rVert)=(1-L^{-d})\sum_{k\geq1}l_k,$$</div>
+<p>so the interaction is summable if and only if $\sum_kl_k<\infty$, and it is summable for every $\alpha>d$ and for no $\alpha<d$ with $l_k\not\to0$ fast enough. In particular the marginal case is not decided by the exponent.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>The shell at level $k$ has $(1-L^{-d})L^{dk}$ vertices by <a href="hierarchical-lattice.html#section-blocks">the shell count</a>, and each contributes $J_k=l_kL^{-(d+\alpha)k}$. At $\alpha=d$ the two powers of $L$ cancel and the shell contributes $(1-L^{-d})l_k$, so the sum is the stated multiple of $\sum_kl_k$. For $\alpha>d$ the shell contributes $(1-L^{-d})l_kL^{-(\alpha-d)k}$, and convergence follows from $l_k$ bounded; for $\alpha<d$ the shell contributes a positive multiple of $l_kL^{(d-\alpha)k}$, which diverges unless $l$ decays at least that fast.</p>
+</div></details>
+<p>Whether the marginal case is a Gibbs system at all is therefore a question about $l$, and the literature treats it as such. For the spin model, Bleher and Major prove that at $\alpha=d$ a phase transition exists exactly when $\sum_kl_k=\infty$: the divergent marginal interaction orders at low temperature, the convergent one does not, and in the divergent case the transition is continuous with a vanishing magnetisation and a block spin whose direction does not concentrate [@bleher-major-2021], which is the criterion <a href="hierarchical-vector-models.html#section-thouless">the vector article</a> states. For percolation the corresponding statement is sharper still: $\beta_c<\infty$ exactly when $\alpha<d$ [@koval-meester-trapman-2012], so at $\alpha=d$ there is no transition at any intensity, for every level sequence with $l_k\not\to0$. The two models disagree at the marginal exponent — the spin model can order and the percolation model cannot — and that is itself the point: summability decides whether the model is well posed, and what happens at the threshold is a model-specific question that has to be answered, not deduced.</p>
+
+## The threshold of the map {#section-relevance}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-two-marginalities.html#tag-JBBF">The two marginal exponents</a>. To cite this assertion, link to
+<span class="tag">tag-JBBF.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-two-marginalities.html#tag-JBBF"><span class="dir">context</span>The two marginal exponents</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

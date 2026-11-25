@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The quartic eigenvalue is one exactly at alpha = d/2 — Hierarchical RG</title>
+<meta name="description" content="proposition: The quartic eigenvalue is one exactly at alpha = d/2">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">5</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / RS6Z</p>
+<h1>The quartic eigenvalue is one exactly at alpha = d/2</h1>
+<p class="meta">proposition &middot; <span class="tag">RS6Z</span> &middot; in
+<a href="hierarchical-two-marginalities.html">The two marginal exponents</a></p>
+<div class="assertion">At the Gaussian fixed point the linearised potential map is triangular in the even monomials with eigenvalues $\Lambda_{kk}=L^{d(1-k)+k\alpha}$. The quadratic direction has eigenvalue $L^{\alpha}>1$ for every $\alpha>0$, and the quartic direction has eigenvalue</p>
+<div class="math-display">$$\Lambda_{22}=L^{2\alpha-d},$$</div>
+<p>which is one exactly at $\alpha=d/2$, larger above it and smaller below. Hence the quartic coupling is relevant for $\alpha>d/2$, marginal at it, and irrelevant below.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>The eigenvalue formula is <a href="gaussian-fixed-point-spectrum.html#section-statement">the spectrum theorem</a>; setting $k=2$ gives $\Lambda_{22}=L^{d(1-2)+2\alpha}=L^{2\alpha-d}$, and $k=1$ gives $L^{\alpha}$. The sign of $2\alpha-d$ decides the comparison with one, and $L>1$ is increasing.</p>
+</div></details>
+<p>This threshold is of a different kind. It is not a statement about whether the model is defined — the model is a Gibbs system for every $\alpha>0$ — but about which fixed point governs the critical behaviour: below $d/2$ the quartic is irrelevant, the critical orbit converges to the Gaussian fixed point after rescaling, and the exponents are the classical ones; above it the quartic is relevant, a nontrivial fixed point separates from the Gaussian one, and the correlation-length exponent is no longer $1/\alpha$ [@bleher-sinai-1975] [@gawedzki-kupiainen-1983]. At the threshold itself the two fixed points merge, the second eigenvalue tends to one, the leading correction becomes logarithmic, and the analysis needs its own treatment.</p>
+<p>The dependence on the dimension is worth stating separately, because it is the reason the phrase "upper critical dimension" is used for two different things. Setting $\alpha=2$, which is the power law of a short-range interaction in the sense that $\lVert x\rVert^{-d-2}$ is the borderline of summability of the second moment, gives $\alpha=d/2$ exactly when $d=4$. So the four-dimensional theory is the marginal one for the quartic, which is why the four-dimensional $\lvert\varphi\rvert^4$ model is the case <a href="hierarchical-phi4-truncations.html#section-potentials">the potential formulation</a> and the method of Bauerschmidt, Brydges and Slade are built for. The two thresholds coincide there, and nowhere else.</p>
+
+## The regimes side by side {#section-table}
+
+<p>The table collects what the two thresholds do, with the status of each statement.</p>
+<table><thead><tr><th>Regime</th><th>Summability</th><th>Quartic at the Gaussian fixed point</th><th>What the exponents are</th></tr></thead>
+<tbody>
+<tr><td>$\alpha<d/2$</td><td>summable</td><td>irrelevant</td><td>classical, $\nu=1/\alpha$, proved</td></tr>
+<tr><td>$\alpha=d/2$</td><td>summable</td><td>marginal</td><td>classical with logarithmic corrections</td></tr>
+<tr><td>$d/2<\alpha<d$</td><td>summable</td><td>relevant</td><td>$\kappa=\alpha$ proved; $\nu\neq1/\alpha$, not known in closed form</td></tr>
+<tr><td>$\alpha=d$</td><td>decided by $\sum_kl_k$</td><td>relevant</td><td>criterion of Bleher and Major; exponents not classical</td></tr>
+<tr><td>$\alpha>d$</td><td>summable</td><td>relevant</td><td>outside the long-range range; the two-point bounds do not apply</td></tr>
+</tbody></table>
+<p>Reading down the first column, the model is a Gibbs system throughout except possibly at $\alpha=d$, where the level sequence decides; reading down the third, the fixed point changes character at $d/2$ whatever the level sequence. The two rows that are easiest to confuse are the two middle ones, and the table is here to keep them apart: at $\alpha=d/2$ the model is as summable as it ever is, and at $\alpha=d$ the quartic is as relevant as it ever is.</p>
+
+## Examples and non-examples {#section-examples}
+
+<p><em>One dimension.</em> Here the thresholds are $\alpha=1$ and $\alpha=1/2$, and Dyson's model lives in between: a transition with $\beta_c<\infty$ for every $\alpha<1$, no transition at $\alpha\geq1$ for the percolation model, and the classical exponents for $\alpha<1/2$. So in one dimension the interval $(1/2,1)$ is the one in which the exponents are not classical but the transition exists — which is why Dyson's paper and the whole subsequent literature are about that interval.</p>
+
+<p><em>Four dimensions.</em> The thresholds are $\alpha=4$ and $\alpha=2$, and the second of them is the upper critical dimension of the phi-fourth theory. A reader who takes "α = d is the upper critical dimension" from the spin-glass or percolation literature and applies it to the phi-fourth model will get the wrong threshold by a factor of two, which is the confusion the table is meant to prevent.</p>
+
+<p><em>A level sequence that decays at $\alpha=d$.</em> Take $l_k=L^{-\beta k}$ with $\beta>0$ and $\alpha=d$. The interaction is then summable, with the effective exponent $d+\beta$, and Bleher and Major's criterion puts the vector model below its transition: the sequence, not the exponent, decides. For the scalar model at $\alpha=d$ this wiki records no criterion, and that asymmetry is part of the point of the section — the marginal case is a question about a model and a sequence, not a formula.</p>
+
+<p><em>Non-example: applying the percolation criterion to the spin model.</em> At $\alpha=d$ the percolation model has $\beta_c=\infty$ for every nondecaying $l$, and the spin model can have a transition. A criterion is a statement about a model, not about an exponent, and this pair is the counterexample to treating them as interchangeable.</p>
+
+## Variants and generalisations {#section-variants}
+
+<p><em>The vector case.</em> Nothing in either threshold involves the number of components: the summability computation is about the kernel, and the quartic eigenvalue is computed in <a href="gaussian-fixed-point-spectrum.html">the spectrum article</a> within the scalar sector, which the vector article shows is enough because the Gaussian fixed point is $r$-independent. The marginal criteria at $\alpha=d$ do differ with $r$: for $r=1$ the direction is a sign and the phenomenon of non-concentrating direction has no scalar analogue, which is what <a href="hierarchical-vector-models.html">that article</a> is about.</p>
+
+<p><em>The percolation triangle threshold.</em> A third special value, $\alpha=d/3$, appears in percolation and is of neither kind: it is where the triangle diagram at criticality changes from convergent to divergent, which is a statement about a diagram rather than about the measure or the linearisation. <a href="hierarchical-percolation-rg.html#section-triangle">The percolation article</a> derives it, and it is the threshold that decides whether the model is mean-field, not whether it is defined or which fixed point governs the scalar spin model.</p>
+
+<p><em>Slowly varying factors elsewhere.</em> The same device — an exponent fixed and a sequence left free — is used for the correlation-length exponent at $\alpha=d/2$, where the corrections become logarithmic because the second eigenvalue tends to one. That is the third place in the wiki where a threshold is resolved by a sequence rather than by a number, and <a href="corrections-to-scaling.html#section-examples">the corrections article</a> treats it.</p>
+
+## History and attribution {#section-history}
+
+<p>The summability criterion is the elementary computation of <a href="hierarchical-lattice.html#section-kernels">the lattice article</a>, and the marginal case $\alpha=d$ is where Bleher and Major's analysis of Dyson's conjecture lives: the criterion in terms of the level sequence, the continuity of the transition and the non-concentration of the direction are theirs [@bleher-major-2021]. The percolation counterpart at $\alpha=d$ is part of the classical theory of long-range percolation on the hierarchical lattice [@koval-meester-trapman-2012], and the two-point bounds at criticality beyond the marginal exponent are Hutchcroft's [@hutchcroft-hierarchical-2021].</p>
+
+<p>The quartic threshold $\alpha=d/2$ is the value at which the quartic eigenvalue of <a href="gaussian-fixed-point-spectrum.html">the spectrum article</a> crosses one; that it is where the exponents change from classical to non-classical is the content of the fixed-point analysis of Bleher and Sinai [@bleher-sinai-1975], and the local description near the threshold, with the expansion in $\alpha-d/2$, is that of Gawedzki and Kupiainen [@gawedzki-kupiainen-1983]. That the two thresholds coincide at $\alpha=2$, $d=4$ is arithmetic, and it is the reason the four-dimensional theory is the marginal one for the quartic.</p>
+
+## References {#section-references}
+
+<ul>
+<li>P. M. Bleher and P. Major, A Thouless-like effect in the Dyson hierarchical model with continuous symmetry, <em>Pure Appl. Funct. Anal.</em> 6 (2021), 101&ndash;175.</li>
+<li>P. M. Bleher and Ya. G. Sinai, Critical indices for Dyson's asymptotically-hierarchical models, <em>Comm. Math. Phys.</em> 45 (1975), 247&ndash;278.</li>
+<li>K. Gawedzki and A. Kupiainen, Non-Gaussian fixed points of the block spin transformation. Hierarchical model approximation, <em>Comm. Math. Phys.</em> 89 (1983), 191&ndash;220.</li>
+<li>T. Hutchcroft, The critical two-point function for long-range percolation on the hierarchical lattice, <em>Ann. Appl. Probab.</em> 34 (2024), no. 1B, 986&ndash;1002.</li>
+<li>V. Koval, R. Meester and A. Trapman, Long-range percolation on the hierarchical lattice, <em>Electron. J. Probab.</em> 17 (2012), no. 57.</li>
+</ul></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-two-marginalities.html#tag-RS6Z">The two marginal exponents</a>. To cite this assertion, link to
+<span class="tag">tag-RS6Z.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-two-marginalities.html#tag-RS6Z"><span class="dir">context</span>The two marginal exponents</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>
