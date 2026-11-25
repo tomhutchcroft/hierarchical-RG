@@ -304,6 +304,7 @@ def sidebar(articles, structure, maps, active: str) -> str:
     index_items = [("start.html", "Start here"), ("assertions.html", "Assertions"),
                    ("notation.html", "Notation"), ("bibliography.html", "Bibliography"),
                    ("chronology.html", "Chronology"), ("figures.html", "Figures"),
+                   ("open.html", "What is not known"), ("checks.html", "How it is checked"),
                    ("all.html", "Single file")]
     idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
                   for href, label in index_items)
@@ -512,6 +513,96 @@ article being edited around it.</p>
 <tbody>{rows}</tbody></table>"""
     (out / "assertions.html").write_text(
         page_shell("Assertions — Hierarchical RG", "Every tagged assertion in the wiki.", inner, "assertions"))
+
+    # ---- what is not known
+    open_items = [
+        ("Is the growth exponent certified?", "critical-exponents-from-rg",
+         "The variance route gives <code>&kappa;<sub>+</sub> &le; &alpha;</code> unconditionally and bounds the ratio of "
+         "the two block-spin fluctuations at criticality, but the half of the sandwich that would give "
+         "<code>&kappa; = &alpha;</code> needs an upper bound on the free block-spin variance, and there is none."),
+        ("Is the threshold a matter of monotonicity?", "hierarchical-magnetised-phase",
+         "FKG gives the architecture of the phase diagram and one nearly empty bound on the order parameter; the "
+         "location of the threshold is the trichotomy's, which is external."),
+        ("What does the free energy do at the Ising transition?", "hierarchical-free-energy",
+         "The Gaussian case is computed in closed form, including the divergence of the curvature. For Ising spins no "
+         "per-scale term is elementary and the curvature is computed nowhere."),
+        ("Is the correlation-length exponent known in closed form?", "bleher-sinai-fixed-point",
+         "The value is read off the leading eigenvalue of the linearisation; the eigenvalue is known through the "
+         "expansion in the distance from the marginal exponent, not in closed form."),
+        ("What is the volume of the critical cluster?", "hierarchical-percolation-rg",
+         "The bound <code>&delta; &ge; (d+&alpha;)/(d&minus;&alpha;)</code> is proved above the triangle threshold; the "
+         "value is conjectured and the volume exponent is studied separately."),
+        ("What is &nu; for percolation above the triangle threshold?", "hierarchical-percolation-rg",
+         "Below it the classical values hold and the two-point bound pins the exponents; above it the percolation "
+         "analysis determines everything except the correlation-length exponent."),
+        ("Which criterion holds at the marginal exponent for the scalar model?", "hierarchical-two-marginalities",
+         "Bleher and Major decide the marginal exponent for the vector model and the percolation model has no "
+         "transition there at all; for the scalar spin model this wiki records no criterion."),
+        ("Is there an exact renormalisation group on the Euclidean lattice?", "hierarchical-and-euclidean-rg",
+         "The decimation step produces interactions that depend on the shape of the boundary between blocks, so the "
+         "recursion is no longer on one variable; the comparison article says what fails."),
+    ]
+    items = "".join(f'<li><strong>{title}</strong> &mdash; {text} See '
+                    f'<a href="{aid}.html">{articles[aid]["title"]}</a>.</li>'
+                    for title, aid, text in open_items)
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / What is not known</p>
+<h1>What is not known</h1>
+<p class="meta">{len(open_items)} open questions</p>
+<p>A wiki that attributes its theorems should be as explicit about what it does not prove. This page
+collects the places where the argument stops short of the statement, with the reason and the
+article where the gap sits. Every item is either a question the wiki leaves open or a claim it
+carries only on someone else's authority, and the distinction is made in the text of the articles
+themselves, with the tags and the small print.</p>
+<ol class="paths">{items}</ol>
+<p>The other direction is worth stating too. Everything marked as a theorem, proposition or corollary
+in the <a href="assertions.html">assertions index</a> is proved in the article that carries it, with
+the hypotheses in the running text; the attributions are to works, not to theorem numbers, and the
+<a href="figures.html">figures page</a> says which of the computations are checked by a script.</p>"""
+    (out / "open.html").write_text(
+        page_shell("What is not known — Hierarchical RG", "The open questions, and where they sit.",
+                   inner, "open"))
+
+    # ---- how it is checked
+    checks = [
+        ("<code>check_wiki.py</code>", "the sources",
+         "front matter, the section structure, the tag ledger, internal links and section fragments, "
+         "citation keys, the reading maps and the partition of the articles into parts"),
+        ("<code>preview.py</code>", "the site",
+         "builds the site from the sources, and refuses an unknown figure or simulation name rather than "
+         "silently dropping it"),
+        ("<code>check_site.py</code>", "the links",
+         "every local <code>href</code>, <code>src</code> and stylesheet <code>url()</code> in the built "
+         "site, including fragments"),
+        ("<code>test_math.py</code>", "the formulas",
+         "renders every formula through KaTeX with errors fatal, so an unsupported macro fails the build "
+         "instead of a reader's page"),
+        ("<code>test_sim.py</code>", "the browser code",
+         "loads the simulation script in quickjs and compares it against the Python reference, bit for "
+         "bit where the arithmetic is deterministic"),
+        ("<code>numeric_checks.py</code>", "the displayed identities",
+         "assertions of the articles against direct computation on finite blocks: eigenvalues, "
+         "thresholds, sums, laws and bounds"),
+        ("<code>preview.py --check</code>", "the commit",
+         "the site in the repository is exactly what the sources build to, so a stale page cannot be "
+         "published"),
+    ]
+    rows = "".join(f"<tr><td>{tool}</td><td>{what}</td><td>{detail}</td></tr>" for tool, what, detail in checks)
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / How it is checked</p>
+<h1>How this wiki is checked</h1>
+<p class="meta">seven checks, all of them cheap enough to run on every change</p>
+<p>A claim is worth what its checks are worth, so here is what is checked and with what. The scripts
+are in the repository under <code>tools/</code>; none of them needs the network, and the site build
+itself needs only the Python standard library.</p>
+<table><thead><tr><th>Script</th><th>Checks</th><th>What that means</th></tr></thead>
+<tbody>{rows}</tbody></table>
+<p>Two limits are worth stating. The checks establish that the statements are internally consistent
+with the computations and that the site is well formed; they do not establish that a proof is
+correct, which is a reader's job. And nothing here renders a page in a browser: the formulas are
+checked through KaTeX and the browser code through quickjs, but how a page looks is not verified by
+any script.</p>"""
+    (out / "checks.html").write_text(
+        page_shell("How it is checked — Hierarchical RG", "The checks, and what they do not cover.",
+                   inner, "checks"))
 
     # ---- bibliography
     by_id = {s["id"]: s for s in catalog}
