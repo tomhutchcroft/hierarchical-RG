@@ -2,8 +2,8 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A pointwise upper bound and a top-shell lower bound give the amplitude and the exponent — Hierarchical RG</title>
-<meta name="description" content="proposition: A pointwise upper bound and a top-shell lower bound give the amplitude and the exponent">
+<title>A pointwise upper bound and a top-shell lower bound give the pointwise exponent — Hierarchical RG</title>
+<meta name="description" content="proposition: A pointwise upper bound and a top-shell lower bound give the pointwise exponent">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/site.css">
 </head><body>
@@ -19,14 +19,14 @@
 </aside>
 <main id="main">
 <p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / UTEB</p>
-<h1>A pointwise upper bound and a top-shell lower bound give the amplitude and the exponent</h1>
+<h1>A pointwise upper bound and a top-shell lower bound give the pointwise exponent</h1>
 <p class="meta">proposition &middot; <span class="tag">UTEB</span> &middot; in
 <a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
-<div class="assertion">Assume at $\beta=\beta_c$ that (IR) $\tau_\infty(0,y)\leq AL^{-(d-\alpha)\operatorname{lev}(y)}$ for every $y\neq0$, and (FSL) $\tau_n(0,y)\geq aL^{-(d-\alpha)n}$ for every $n\geq n_0$ and every $y$ in the top shell. Then $cL^{(d+\alpha)n}\leq V_n\leq KL^{(d+\alpha)n}$ for all $n$, so the amplitude bound holds and $\kappa=\alpha$ with a two-sided amplitude.</p>
+<div class="assertion">Assume (IR) and (FSL) at $\beta=\beta_c$. Then $c'L^{(d+\alpha)n}\leq V_n\leq K'L^{(d+\alpha)n}$ for all $n$ with constants depending only on $L,d,\alpha,A,a,n_0$, and moreover $\tau_\infty(0,y)$ and $\tau_n(0,y)$ have the pointwise rates displayed.</p>
 <details><summary>Proof</summary><div class='collapsible-body'>
-<p>By Griffiths monotonicity $\tau_n\leq\tau_\infty$, and by the block identity $V_n=L^{dn}\sum_{y\in\Lambda_n}\tau_n(0,y)$. The shell at level $k$ has $(m-1)m^{k-1}$ vertices, so (IR) gives $\sum_{y\in\Lambda_n}\tau_\infty(0,y)\leq1+A(1-m^{-1})\sum_{k\leq n}L^{\alpha k}\leq K'L^{\alpha n}$; retaining only the top shell and using (FSL) gives $V_n\geq L^{dn}(m-1)m^{n-1}aL^{-(d-\alpha)n}=a(1-m^{-1})L^{(d+\alpha)n}$ for $n\geq n_0$, and finitely many smaller $n$ are absorbed.</p>
+<p>By Griffiths monotonicity $\tau_n\leq\tau_\infty$ and by the block identity $V_n=L^{dn}\sum_{y\in\Lambda_n}\tau_n(0,y)$. The shell at level $k$ has $(m-1)m^{k-1}$ vertices, so (IR) gives $\sum_{y\in\Lambda_n}\tau_\infty(0,y)\leq1+A(1-m^{-1})\sum_{k\leq n}L^{\alpha k}\leq K'L^{\alpha n}$; retaining only the top shell and using (FSL) gives $V_n\geq L^{dn}(m-1)m^{n-1}aL^{-(d-\alpha)n}=a(1-m^{-1})L^{(d+\alpha)n}$ for $n\geq n_0$, with finitely many smaller $n$ absorbed.</p>
 </div></details>
-<p>Note that (IR) is now only needed for the amplitude: the upper bound $V_n\leq KL^{(d+\alpha)n}$ is already a theorem from the runaway argument of this section, which needs no pointwise input at all. What the pointwise route would add is the reverse inequality, which is why (FSL) — a finite-volume lower bound, in the opposite direction to Griffiths monotonicity — is the statement that matters for what remains open.</p>
+<p>The identity $\tau_n\leq\tau_\infty$ points the wrong way for a lower bound on $V_n$, which is why (FSL) — a finite-volume estimate — cannot be replaced by the two-sided infinite-volume statement, and why the trapping argument above, which gets the amplitude from the recursion instead, is the route that worked.</p>
 
 ## The dictionary {#section-dictionary}</div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in

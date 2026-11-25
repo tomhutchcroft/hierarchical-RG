@@ -356,6 +356,10 @@
     {
       "tag": "UJC1",
       "state": "allocated"
+    },
+    {
+      "tag": "RN1S",
+      "state": "allocated"
     }
   ]
 }

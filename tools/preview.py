@@ -528,11 +528,11 @@ article being edited around it.</p>
 
     # ---- what is not known
     open_items = [
-        ("Is the amplitude of the growth certified?", "critical-exponents-from-rg",
-         "The exponent is <code>&alpha;</code> at criticality: the upper bound from the runaway argument, the lower "
-         "one from the divergence of the susceptibility. What is not proved is the amplitude — that the normalised "
-         "variance stays bounded away from zero — which needs a pointwise upper bound on the two-point function at "
-         "criticality, a theorem for the percolation class on the same lattice and not for the spin model."),
+        ("Is the two-point function bounded pointwise?", "critical-exponents-from-rg",
+         "The growth exponent and its amplitude are settled: the normalised second moment is bounded away from zero and "
+         "from infinity at criticality. What is not proved is the per-pair rate — that <code>&tau;(0,y)</code> is of "
+         "order <code>L^{-(d-&alpha)lev y}</code> — although the summed statement it would imply is now a theorem. For "
+         "the percolation class on the same lattice the pointwise bound is Hutchcroft's."),
         ("Is the threshold a matter of monotonicity?", "hierarchical-magnetised-phase",
          "FKG gives the architecture of the phase diagram and one nearly empty bound on the order parameter; the "
          "location of the threshold is the trichotomy's, which is external."),

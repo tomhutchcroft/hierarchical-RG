@@ -765,6 +765,25 @@ def check_two_child_recursion():
          f"e.g. beta=0.8, n=4: V_n={detail[7][2]:.4f}, lower bound={detail[7][3]:.4f}")
 
 
+def check_amplitude_ratios():
+    """The trapping inequality: in the small regime the normalised variance decays by at least the factor q."""
+    L, d, alpha = 2, 1, 0.5
+    r = L ** (d + alpha)
+    rho = L ** (-alpha)
+    q = (1 + rho) / 2
+    rows = []
+    for beta in (0.2, 0.35):
+        Vs = [1.0]
+        for n in range(1, 5):
+            tab, _, _ = ising_block(d, L, n, alpha, beta, boundary=0.0)
+            Vs.append(sum(p * sum(c) ** 2 for c, p in tab.items()))
+        Rs = [Vs[n] / r ** n for n in range(5)]
+        rows.append((beta, [Rs[n] / Rs[n - 1] for n in range(1, 5)]))
+    note("the normalised variance decays when it is small", all(max(rs) < q for _, rs in rows),
+         f"q = (1+L^-alpha)/2 = {q:.4f}; ratios " +
+         "; ".join(f"beta={b}: {[round(x, 4) for x in rs]}" for b, rs in rows))
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -786,6 +805,7 @@ def main() -> int:
     check_energy_telescoping()
     check_moment_monotonicity()
     check_two_child_recursion()
+    check_amplitude_ratios()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0
