@@ -306,7 +306,7 @@ def sidebar(articles, structure, maps, active: str) -> str:
                    ("notation.html", "Notation"), ("bibliography.html", "Bibliography"),
                    ("chronology.html", "Chronology"), ("figures.html", "Figures"),
                    ("open.html", "What is not known"), ("checks.html", "How it is checked"),
-                   ("all.html", "Single file")]
+                   ("sections.html", "Sections"), ("all.html", "Single file")]
     idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
                   for href, label in index_items)
     return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
@@ -413,6 +413,12 @@ def build(out: Path) -> dict:
 
         lead, sep, rest = body.partition("<h2")
         rest = sep + rest if sep else ""
+        src_items = [src for src in catalog if src["id"] in set(meta.get("sourceIds", []))]
+        sources_line = (
+            '<p class="meta">Sources: '
+            + ", ".join(f'<a href="bibliography.html#work-{src["id"]}">{src["shortName"]}, {src["year"]}</a>'
+                        for src in src_items)
+            + '.</p>') if src_items else ""
         strip_items = symbols_of.get(aid, [])
         notation_strip = (
             '<p class="meta">Notation in this article: '
@@ -427,6 +433,7 @@ def build(out: Path) -> dict:
 {lead}
 <details class="toc" open><summary>On this page</summary><ol>{toc}</ol></details>
 {rest}
+{sources_line}
 {linked_html}
 {notation_strip}
 <div class="pager">{prev_link}{next_link}</div>
@@ -614,7 +621,7 @@ any script.</p>"""
         users = cited_in.get(source["id"], [])
         links = ", ".join(f'<a href="{a}.html">{articles[a]["title"]}</a>' for a in users) or "&mdash;"
         zbl = f'<a href="{source["zblUrl"]}">{source["zbl"]}</a>' if source.get("zbl") else "—"
-        brow.append(f'<tr><td>{source["shortName"]}</td>'
+        brow.append(f'<tr id="work-{source["id"]}"><td>{source["shortName"]}</td>'
                     f'<td>{source["title"]}<br><span class="meta">{source["edition"]}</span></td>'
                     f'<td class="num">{zbl}</td><td>{links}</td></tr>')
     inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Bibliography</p>
@@ -810,8 +817,19 @@ wiki uses it.</p>"""
 that are interactive or generated are linked from each article's separate page</p>
 <details class="toc" open><summary>Contents</summary><ol>{''.join(contents)}</ol></details>
 {''.join(whole)}"""
+    appendix = "".join(
+        f'<tr><td>{symbol}</td><td>{obj}</td>'
+        f'<td>{articles[aid]["title"]}</td></tr>'
+        for obj, symbol, aid, _users in notation["rows"])
+    inner = inner.replace(
+        '<section class="whole" id="whole-', '<section class="whole" id="whole-', 1)
+    inner += (f'<section class="whole" id="whole-notation"><h1>Notation</h1>'
+              f'<p class="subtitle">One symbol per object, with the article that introduces it.</p>'
+              f'<table><thead><tr><th>Symbol</th><th>Object</th><th>Introduced in</th></tr></thead>'
+              f'<tbody>{appendix}</tbody></table></section>')
     (out / "all.html").write_text(
-        page_shell("Hierarchical RG — single file", "The whole wiki in one page.", inner, "all"))
+        page_shell("Hierarchical RG — single file", "The whole wiki in one page, with the notation.",
+                   inner, "all"))
     search_entries.append({"url": "all.html", "title": "Single file edition",
                            "subtitle": f"all {len(order)} articles in one page", "summary": "",
                            "text": "single file printable edition"})
@@ -853,6 +871,24 @@ attribution where they are not.</p>
     (out / "index.html").write_text(
         page_shell("Hierarchical RG — a wiki on the renormalisation group",
                    "A wiki on the renormalisation group on hierarchical lattices.", inner, "index"))
+
+    # ---- sections index
+    rows = []
+    for aid in order:
+        heads = re.findall(r'<h2 id="(section-[a-z0-9-]+)">(.*?)<a class="anchor"', rendered[aid])
+        if not heads:
+            continue
+        items = "".join(f'<li><a href="{aid}.html#{sid}">{title}</a></li>' for sid, title in heads)
+        rows.append(f'<h3><a href="{aid}.html">{articles[aid]["title"]}</a></h3><ol>{items}</ol>')
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Sections</p>
+<h1>Every section</h1>
+<p class="meta">{len(order)} articles, {sum(len(re.findall(r'<h2 id="section-', rendered[a])) for a in order)} sections</p>
+<p>The tree of the wiki in one page: every article with its sections, for a reader who remembers a
+heading and not where it lives. The <a href="assertions.html">assertions index</a> serves the same
+purpose for statements and the <a href="all.html">single file</a> for reading end to end.</p>
+{''.join(rows)}"""
+    (out / "sections.html").write_text(
+        page_shell("Every section — Hierarchical RG", "The tree of the wiki.", inner, "sections"))
 
     # ---- site-level files
     urls = "".join(f"<url><loc>{SITE_URL}{path.name}</loc></url>" for path in sorted(out.glob("*.html"))
