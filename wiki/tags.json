@@ -344,6 +344,18 @@
     {
       "tag": "UTEB",
       "state": "allocated"
+    },
+    {
+      "tag": "3V4U",
+      "state": "allocated"
+    },
+    {
+      "tag": "4QMQ",
+      "state": "allocated"
+    },
+    {
+      "tag": "UJC1",
+      "state": "allocated"
     }
   ]
 }

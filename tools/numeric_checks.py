@@ -744,6 +744,27 @@ def check_moment_monotonicity():
          f"the IR sum at n = {n} is {ir_sum:.6f} <= K' L^(alpha n) = {Kp * L ** (alpha * n):.6f}")
 
 
+def check_two_child_recursion():
+    """The lower recursion for the block-spin variance, on the free laws of the model itself."""
+    L, d, alpha = 2, 1, 0.5
+    m = L ** d
+    worst = 1.0
+    detail = []
+    for beta in (0.2, 0.5, 0.8, 1.2, 1.6):
+        for n in (2, 3, 4):
+            prev, _, _ = ising_block(d, L, n - 1, alpha, beta, boundary=0.0)
+            cur, _, _ = ising_block(d, L, n, alpha, beta, boundary=0.0)
+            V_prev = sum(p * sum(c) ** 2 for c, p in prev.items())
+            V_n = sum(p * sum(c) ** 2 for c, p in cur.items())
+            b = beta * L ** (-(d + alpha) * n)
+            rhs = m * V_prev * (1 + (m - 1) * math.tanh(b * V_prev))
+            worst = min(worst, (V_n - rhs) / V_n)
+            detail.append((beta, n, V_n, rhs))
+    note("the two-child recursion holds on the model's own laws", worst > 0,
+         f"smallest relative margin {worst:.2e} over five intensities and three sizes; "
+         f"e.g. beta=0.8, n=4: V_n={detail[7][2]:.4f}, lower bound={detail[7][3]:.4f}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -764,6 +785,7 @@ def main() -> int:
     check_ising_free_energy()
     check_energy_telescoping()
     check_moment_monotonicity()
+    check_two_child_recursion()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

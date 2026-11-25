@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The growth exponent is alpha, in the sense that the normalised variance cannot decay exponentially — Hierarchical RG</title>
+<meta name="description" content="theorem: The growth exponent is alpha, in the sense that the normalised variance cannot decay exponentially">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<a class="skip" href="#main">skip to content</a>
+<div class="layout">
+<aside class="sidebar" aria-label="site">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec" aria-label="part: The block structure"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec" aria-label="part: The renormalisation group"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="hierarchical-free-energy.html">The free energy and its singularity</a></li><li><span class="num">8</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">9</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec" aria-label="part: Percolation, vectors, and the Euclidean comparison"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-cluster-volume.html">The volume of the critical cluster</a></li><li><span class="num">3</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">4</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">5</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">6</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec" aria-label="reading maps"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec" aria-label="index"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="chronology.html">Chronology</a></li><li><a href="figures.html">Figures</a></li><li><a href="open.html">What is not known</a></li><li><a href="checks.html">How it is checked</a></li><li><a href="sections.html">Sections</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main id="main">
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / UJC1</p>
+<h1>The growth exponent is alpha, in the sense that the normalised variance cannot decay exponentially</h1>
+<p class="meta">theorem &middot; <span class="tag">UJC1</span> &middot; in
+<a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
+<div class="assertion">Let $\chi_n=\sum_{y\in\Lambda_n}\tau(0,y)$ be the block susceptibility, and recall the mean-field lower bound of the sharpness theory for ferromagnetic Ising models: there is $c&gt;0$ with $\chi(\beta)\geq c(\beta_c-\beta)^{-1}$ for $\beta&lt;\beta_c$, whence $\chi_n(\beta_c)$ is unbounded in $n$. Then, at $\beta=\beta_c$,</p>
+<div class="math-display">$$\limsup_{n\to\infty}\frac{\log\chi_n}{n\log L}=\alpha,\qquad\text{equivalently}\qquad \limsup_{n\to\infty}\frac{\log V_n}{n\log L}=d+\alpha.$$</div>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>By the <a href="hierarchical-gibbs-measure.html#section-correlations">block identity</a>, $V_n=m^n\chi_n$, so $R_n=\chi_nL^{-\alpha n}$ and the two statements are equivalent. The upper bound of the previous theorem gives $\limsup\leq\alpha$. Suppose the limit superior were smaller, say $R_n\leq DL^{-\varepsilon n}$ for some $\varepsilon&gt;0$ and all $n$. Then $R_n\to0$, so the tilt parameter $\beta_cJ_nV_{n-1}=cR_{n-1}$ is small and (1) can be expanded: the tilted pair law is a small perturbation of the product law, giving</p>
+<div class="math-display">$$V_n=mV_{n-1}\bigl[1+(m-1)\beta J_nV_{n-1}+O\bigl((\beta J_nV_{n-1})^2\bigr)\bigr],$$</div>
+<p>whose logarithm is $\log\chi_n-\log\chi_{n-1}=O(R_{n-1})=O(L^{-\varepsilon n})$. Those increments are summable, so $\chi_n$ would be bounded, contradicting the unboundedness. Hence the limit superior is at least $\alpha$, and with the upper bound it is $\alpha$.</p>
+</div></details>
+<p>The expansion step is legitimate because the rescaled child law has a variance proxy of one and a sub-Gaussian moment generating function uniformly in $n$ and $\beta$ — which is the GHS inequality integrated three times — so the exponential tilt is analytic in its parameter on a fixed disc and the second-order expansion is uniform. What the theorem does <em>not</em> give is the amplitude: it excludes exponential decay of $R_n$ but says nothing about polynomial decay, so $\liminf R_n&gt;0$ is not claimed.</p>
+
+### What is still open {#section-amplitude}
+
+<p>Two things, and they are the same thing seen twice: the amplitude bound $R_n\geq c&gt;0$ is not proved, and neither is the pointwise decay $\tau_\infty(0,y)\leq AL^{-(d-\alpha)\operatorname{lev}(y)}$ which would imply it. For the <em>percolation</em> class on the same lattice both that pointwise bound and a matching finite-volume lower bound are theorems, as <a href="hierarchical-cluster-volume.html">the volume article</a> and <a href="hierarchical-percolation-rg.html#section-two-point">the percolation article</a> record. The two statements that a pointwise route needs are recorded here, because between them they give the amplitude and because the first is a monotonicity that does not follow from FKG.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="critical-exponents-from-rg.html#tag-UJC1">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-UJC1.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="critical-exponents-from-rg.html#tag-UJC1"><span class="dir">context</span>Critical exponents from the renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

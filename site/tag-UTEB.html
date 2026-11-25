@@ -2,8 +2,8 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The growth exponent follows from two pointwise bounds on the two-point function — Hierarchical RG</title>
-<meta name="description" content="proposition: The growth exponent follows from two pointwise bounds on the two-point function">
+<title>A pointwise upper bound and a top-shell lower bound give the amplitude and the exponent — Hierarchical RG</title>
+<meta name="description" content="proposition: A pointwise upper bound and a top-shell lower bound give the amplitude and the exponent">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/site.css">
 </head><body>
@@ -19,17 +19,14 @@
 </aside>
 <main id="main">
 <p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / UTEB</p>
-<h1>The growth exponent follows from two pointwise bounds on the two-point function</h1>
+<h1>A pointwise upper bound and a top-shell lower bound give the amplitude and the exponent</h1>
 <p class="meta">proposition &middot; <span class="tag">UTEB</span> &middot; in
 <a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
-<div class="assertion">Assume, at $\beta=\beta_c$: (IR) there is $A&lt;\infty$ with $\tau_\infty(0,y)\leq AL^{-(d-\alpha)\operatorname{lev}(y)}$ for every $y\neq0$; and (FSL) there are $a&gt;0$ and $n_0$ with $\tau_n(0,y)\geq aL^{-(d-\alpha)n}$ for every $n\geq n_0$ and every $y$ in the top shell $\Lambda_n\setminus\Lambda_{n-1}$. Then there are constants $0&lt;c\leq K&lt;\infty$, depending only on $L,d,\alpha,A,a,n_0$, with</p>
-<div class="math-display">$$c\,L^{(d+\alpha)n}\ \leq\ V_n\ \leq\ K\,L^{(d+\alpha)n}\qquad\text{for every }n\geq1,$$</div>
-<p>so the growth exponent is $\kappa=\alpha$ and the rescaled second moment stays bounded away from zero and infinity.</p>
+<div class="assertion">Assume at $\beta=\beta_c$ that (IR) $\tau_\infty(0,y)\leq AL^{-(d-\alpha)\operatorname{lev}(y)}$ for every $y\neq0$, and (FSL) $\tau_n(0,y)\geq aL^{-(d-\alpha)n}$ for every $n\geq n_0$ and every $y$ in the top shell. Then $cL^{(d+\alpha)n}\leq V_n\leq KL^{(d+\alpha)n}$ for all $n$, so the amplitude bound holds and $\kappa=\alpha$ with a two-sided amplitude.</p>
 <details><summary>Proof</summary><div class='collapsible-body'>
-<p><em>Upper bound.</em> By Griffiths monotonicity in the couplings, $\tau_n(0,y)\leq\tau_\infty(0,y)$ for $n$ with $y\in\Lambda_n$, so $V_n\leq L^{dn}\sum_{y\in\Lambda_n}\tau_\infty(0,y)$. The shell at level $k$ has $(m-1)m^{k-1}$ vertices, so by (IR) the sum is at most $1+A(1-m^{-1})\sum_{k\leq n}L^{\alpha k}\leq K'L^{\alpha n}$, and $V_n\leq K'L^{(d+\alpha)n}$.</p>
-<p><em>Lower bound.</em> Retaining only the top shell and using (FSL), $V_n\geq L^{dn}(m-1)m^{n-1}\,aL^{-(d-\alpha)n}=a(1-m^{-1})L^{(d+\alpha)n}$ for $n\geq n_0$; finitely many smaller $n$ are absorbed into the constant.</p>
+<p>By Griffiths monotonicity $\tau_n\leq\tau_\infty$, and by the block identity $V_n=L^{dn}\sum_{y\in\Lambda_n}\tau_n(0,y)$. The shell at level $k$ has $(m-1)m^{k-1}$ vertices, so (IR) gives $\sum_{y\in\Lambda_n}\tau_\infty(0,y)\leq1+A(1-m^{-1})\sum_{k\leq n}L^{\alpha k}\leq K'L^{\alpha n}$; retaining only the top shell and using (FSL) gives $V_n\geq L^{dn}(m-1)m^{n-1}aL^{-(d-\alpha)n}=a(1-m^{-1})L^{(d+\alpha)n}$ for $n\geq n_0$, and finitely many smaller $n$ are absorbed.</p>
 </div></details>
-<p>For the <em>percolation</em> class on the same lattice both hypotheses are theorems: the pointwise two-point bounds at criticality, in both directions and in exactly this form, are <a href="hierarchical-percolation-rg.html#section-two-point">Hutchcroft's</a>, with the lower bound for connections inside the smallest common block — which is what (FSL) asks for. So for percolation the conclusion of the proposition is proved, and it reproduces the $\chi_n\asymp L^{\alpha n}$ of <a href="hierarchical-percolation-rg.html#section-consequences">the percolation article</a> from a different direction. For the Ising model the two hypotheses are the missing input, and the proposition says precisely what they buy and why neither is implied by what the earlier sections prove: the upper bound needs the infinite-volume pointwise decay, which sum-level information does not give, and the lower bound needs a finite-volume estimate in the opposite direction to Griffiths monotonicity, which points the other way.</p>
+<p>Note that (IR) is now only needed for the amplitude: the upper bound $V_n\leq KL^{(d+\alpha)n}$ is already a theorem from the runaway argument of this section, which needs no pointwise input at all. What the pointwise route would add is the reverse inequality, which is why (FSL) — a finite-volume lower bound, in the opposite direction to Griffiths monotonicity — is the statement that matters for what remains open.</p>
 
 ## The dictionary {#section-dictionary}</div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in

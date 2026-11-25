@@ -528,10 +528,11 @@ article being edited around it.</p>
 
     # ---- what is not known
     open_items = [
-        ("Is the growth exponent certified?", "critical-exponents-from-rg",
-         "The variance route gives <code>&kappa;<sub>+</sub> &le; &alpha;</code> unconditionally and bounds the ratio of "
-         "the two block-spin fluctuations at criticality, but the half of the sandwich that would give "
-         "<code>&kappa; = &alpha;</code> needs an upper bound on the free block-spin variance, and there is none."),
+        ("Is the amplitude of the growth certified?", "critical-exponents-from-rg",
+         "The exponent is <code>&alpha;</code> at criticality: the upper bound from the runaway argument, the lower "
+         "one from the divergence of the susceptibility. What is not proved is the amplitude — that the normalised "
+         "variance stays bounded away from zero — which needs a pointwise upper bound on the two-point function at "
+         "criticality, a theorem for the percolation class on the same lattice and not for the spin model."),
         ("Is the threshold a matter of monotonicity?", "hierarchical-magnetised-phase",
          "FKG gives the architecture of the phase diagram and one nearly empty bound on the order parameter; the "
          "location of the threshold is the trichotomy's, which is external."),

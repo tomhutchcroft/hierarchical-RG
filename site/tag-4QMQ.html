@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>At criticality the block-spin variance grows at most like L to the (d+alpha)n — Hierarchical RG</title>
+<meta name="description" content="theorem: At criticality the block-spin variance grows at most like L to the (d+alpha)n">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<a class="skip" href="#main">skip to content</a>
+<div class="layout">
+<aside class="sidebar" aria-label="site">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec" aria-label="part: The block structure"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec" aria-label="part: The renormalisation group"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="hierarchical-free-energy.html">The free energy and its singularity</a></li><li><span class="num">8</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">9</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec" aria-label="part: Percolation, vectors, and the Euclidean comparison"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-cluster-volume.html">The volume of the critical cluster</a></li><li><span class="num">3</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">4</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">5</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">6</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec" aria-label="reading maps"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec" aria-label="index"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="chronology.html">Chronology</a></li><li><a href="figures.html">Figures</a></li><li><a href="open.html">What is not known</a></li><li><a href="checks.html">How it is checked</a></li><li><a href="sections.html">Sections</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main id="main">
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / 4QMQ</p>
+<h1>At criticality the block-spin variance grows at most like L to the (d+alpha)n</h1>
+<p class="meta">theorem &middot; <span class="tag">4QMQ</span> &middot; in
+<a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
+<div class="assertion">Let $\beta=\beta_c$ and $r=L^{d+\alpha}$, and suppose that $\mathbb E_{\beta_c}[(S_n/m^n)^2]\to0$, which holds because the block average converges to the vanishing magnetisation. Then there is $A&lt;\infty$, depending only on $L,d,\alpha,\beta_c$, with</p>
+<div class="math-display">$$\mathbb E_{\beta_c}\bigl[S_n^2\bigr]\ \leq\ A\,L^{(d+\alpha)n}\qquad\text{for every }n\geq0.$$</div>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>Put $R_n=V_n/r^n$, $B_n=V_n/m^{2n}$ and $c=\beta_c/r$, so that $\beta_cJ_nV_{n-1}=cR_{n-1}$ and (1) reads, in the two normalisations,</p>
+<div class="math-display">$$R_n\ \geq\ Q\,h(R_{n-1})\,R_{n-1},\qquad B_n\ \geq\ h(R_{n-1})\,B_{n-1},\qquad h(R)=\frac{1+(m-1)\tanh(cR)}{m},$$</div>
+<p>with $Q=m^2/r=L^{d-\alpha}&gt;1$. The function $h$ increases to $1$, so $Qh(R)$ increases to $Q&gt;1$ and there is $A\geq1$ with $Qh(A)=:\gamma&gt;1$. Suppose $R_N\geq A$ for some $N$. Since $h$ is increasing, the first inequality gives $R_{N+j}\geq\gamma^jA$ by induction, and the second gives $B_{N+j}\geq B_N\prod_{i&lt;j}h(R_{N+i})$. Now $1-h(R)=\frac{m-1}{m}\bigl(1-\tanh(cR)\bigr)\leq\frac{2(m-1)}{m}e^{-2cR}$, so along a sequence growing like $\gamma^j$ the deficits are summable and the product has a strictly positive limit. Then $B_n$ does not tend to zero, contradicting the hypothesis. Hence $R_n&lt;A$ for every $n$, which is the claim.</p>
+</div></details>
+<p>So the upper half of $\kappa=\alpha$ is unconditional at criticality. The proof uses nothing about the tilt being small: the runaway argument works precisely because a large normalised variance feeds itself, so it can be excluded by the one piece of global information the model gives for free, that the block average is negligible compared with the block.</p>
+<p>The same argument applies at any intensity at which the block average vanishes, which is every $\beta\leq\beta_c$; above $\beta_c$ the block average is macroscopic and $R_n$ grows like $L^{(d-\alpha)n}$, consistently with the bound failing.</p>
+
+### The lower bound {#section-lower}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="critical-exponents-from-rg.html#tag-4QMQ">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
+<span class="tag">tag-4QMQ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="critical-exponents-from-rg.html#tag-4QMQ"><span class="dir">context</span>Critical exponents from the renormalisation group</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

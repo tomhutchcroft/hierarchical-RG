@@ -22,14 +22,10 @@
 <h1>Even diagonal moments of a child increase under the decimation tilt</h1>
 <p class="meta">proposition &middot; <span class="tag">T8WS</span> &middot; in
 <a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></p>
-<div class="assertion">Let $\nu$ be a symmetric law on $\mathbb R$, let $S_1,\dots,S_m$ be independent with law $\nu$, and let $\mathbb E_{\mathrm{tilt}}$ be the expectation under the normalised measure $\propto e^{b\sum_{a&lt;a'}S_aS_{a'}}\prod_a\nu(dS_a)$ with $b\geq0$. Then for every $r\geq1$</p>
-<div class="math-display">$$\mathbb E_{\mathrm{tilt}}\bigl[S_1^{2r}\bigr]\ \geq\ \int s^{2r}\,\nu(ds).$$</div>
+<div class="assertion">Let $\nu$ be a symmetric law on $\mathbb R$, let $S_1,\dots,S_m$ be independent with law $\nu$, and let $\mathbb E_{\mathrm{tilt}}$ be the expectation under the normalised measure $\propto e^{b\sum_{a&lt;a'}S_aS_{a'}}\prod_a\nu(dS_a)$, $b\geq0$. Then $\mathbb E_{\mathrm{tilt}}[S_1^{2r}]\geq\int s^{2r}\nu(ds)$ for every $r\geq1$.</p>
 <details><summary>Proof</summary><div class='collapsible-body'>
-<p>Write $T=\sum_{a\geq2}S_a$ and $W_0=\exp\bigl(b\sum_{2\leq a&lt;a'}S_aS_{a'}\bigr) \geq0$. Integrating out everything but $S_1=x$ under the product law gives the conditional weight</p>
-<div class="math-display">$$f(x)=\mathbb E_0\bigl[e^{bxT}W_0\bigr]=\sum_{k\geq0}\frac{b^{2k}}{(2k)!}\,\mathbb E_0\bigl[T^{2k}W_0\bigr]x^{2k},$$</div>
-<p>with no odd terms: flipping all the blocks $2,\dots,m$ simultaneously leaves $W_0$ unchanged and sends $T$ to $-T$. Every coefficient is nonnegative, so $f$ is a nondecreasing function of $x^2$, and so is $x^{2r}$. Chebyshev's association inequality for a single real variable, applied to $X=S_1^2$, gives $\mathbb E_0[S_1^{2r}f(S_1)]\geq\mathbb E_0[S_1^{2r}]\,\mathbb E_0[f(S_1)]$, which after dividing by $\mathbb E_0[f(S_1)]$ — the normalising constant of the tilted law — is the claim. In the actual model the block sums are bounded, so the series converges and the interchanges are legitimate.</p>
-</div></details>
-<p>The second ingredient is the comparison between the finite-volume and infinite-volume two-point functions, and then the two hypotheses. Recall $\tau_n$ for the free measure on $\Lambda_n$, $\tau_\infty$ for the limit, and $V_n=\mathbb E_\beta[S_n^2]=L^{dn}\sum_{y\in\Lambda_n}\tau_n(0,y)$, which is the <a href="critical-exponents-from-rg.html#section-identities">block identity</a> with translation invariance.</p></div>
+<p>With $T=\sum_{a\geq2}S_a$ and $W_0=\exp(b\sum_{2\leq a&lt;a'}S_aS_{a'})$, the conditional weight of $S_1=x$ is $f(x)=\mathbb E_0[e^{bxT}W_0]=\sum_k\frac{b^{2k}}{(2k)!}\mathbb E_0[T^{2k}W_0]x^{2k}$, with no odd terms since flipping blocks $2,\dots,m$ together leaves $W_0$ fixed and sends $T$ to $-T$. All coefficients are nonnegative, so $f$ and $x^{2r}$ are nondecreasing in $x^2$, and Chebyshev's association inequality for the single variable $S_1^2$ gives the claim after dividing by $\mathbb E_0[f(S_1)]$. FKG cannot be used directly, since $S_1^2$ is not an increasing function of the spins.</p>
+</div></details></div>
 <p class="meta">The full context, including the running hypotheses and the proof, is in
 <a href="critical-exponents-from-rg.html#tag-T8WS">Critical exponents from the renormalisation group</a>. To cite this assertion, link to
 <span class="tag">tag-T8WS.html</span> or to the article anchor directly.</p>
