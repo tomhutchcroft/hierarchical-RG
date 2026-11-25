@@ -138,14 +138,16 @@ def load_notation(articles) -> dict:
             flush()
             state = "note"
             cells = [c.strip() for c in line.strip("|").split("|")]
-            if len(cells) != 3:
-                sys.exit(f"a notation row of STYLE.md needs three columns (object, symbol, article): {line}")
+            if len(cells) != 4:
+                sys.exit(f"a notation row of STYLE.md needs four columns (object, symbol, introduced in, also used in): {line}")
             if cells[0] == "Object" or set(cells[0]) <= set("-: "):
                 continue
-            obj, symbol, aid = cells
-            if aid not in articles:
-                sys.exit(f"the notation table names '{aid}', which is not an article")
-            rows.append((obj, symbol, aid))
+            obj, symbol, aid, also = cells
+            for name in [aid] + [x.strip() for x in also.replace("\u2014", "").split(",") if x.strip()]:
+                if name not in articles:
+                    sys.exit(f"the notation table names '{name}', which is not an article")
+            users = [x.strip() for x in also.replace("\u2014", "").split(",") if x.strip()]
+            rows.append((obj, symbol, aid, users))
         elif line.startswith(">"):
             continue  # notes to maintainers, kept in the source and not published
         elif line:
@@ -522,15 +524,19 @@ record; a dash means no record was found, and the work is cited by its published
 
     # ---- notation
     notation = load_notation(articles)
+    def also_cell(users):
+        return ", ".join(f'<a href="{u}.html">{articles[u]["title"]}</a>' for u in users) or "&mdash;"
+
     nrows = "".join(
         f'<tr><td>{symbol}</td><td>{obj}</td>'
-        f'<td><a href="{aid}.html">{articles[aid]["title"]}</a></td></tr>'
-        for obj, symbol, aid in notation["rows"])
+        f'<td><a href="{aid}.html">{articles[aid]["title"]}</a></td>'
+        f'<td>{also_cell(users)}</td></tr>'
+        for obj, symbol, aid, users in notation["rows"])
     inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Notation</p>
 <h1>Notation</h1>
 <p class="meta">{len(notation["rows"])} symbols, one per object</p>
 {notation["lead"]}
-<table><thead><tr><th>Symbol</th><th>Object</th><th>Introduced in</th></tr></thead>
+<table><thead><tr><th>Symbol</th><th>Object</th><th>Introduced in</th><th>Also used in</th></tr></thead>
 <tbody>{nrows}</tbody></table>
 {notation["note"]}"""
     (out / "notation.html").write_text(
@@ -538,8 +544,9 @@ record; a dash means no record was found, and the work is cited by its published
                    inner, "notation"))
     search_entries.append({"url": "notation.html", "title": "Notation",
                            "subtitle": f"{len(notation['rows'])} symbols", "summary": "",
-                           "text": " ".join(f"{obj} {articles[aid]['title']}"
-                                            for obj, _symbol, aid in notation["rows"])})
+                           "text": " ".join(f"{obj} {articles[aid]['title']} "
+                                            + " ".join(articles[u]["title"] for u in users)
+                                            for obj, _symbol, aid, users in notation["rows"])})
 
     # ---- start here
     path_blocks = []
