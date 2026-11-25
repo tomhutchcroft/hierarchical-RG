@@ -303,7 +303,7 @@ def sidebar(articles, structure, maps, active: str) -> str:
         mitems.append(f'<li><a href="source-{m["slug"]}.html"{cls}>{m["title"].split(":")[0]}</a></li>')
     index_items = [("start.html", "Start here"), ("assertions.html", "Assertions"),
                    ("notation.html", "Notation"), ("bibliography.html", "Bibliography"),
-                   ("all.html", "Single file")]
+                   ("chronology.html", "Chronology"), ("all.html", "Single file")]
     idx = "".join(f'<li><a href="{href}"{" class=\"active\"" if href.split(".")[0] == active else ""}>{label}</a></li>'
                   for href, label in index_items)
     return f"""<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
@@ -522,6 +522,42 @@ record; a dash means no record was found, and the work is cited by its published
     search_entries.append({"url": "bibliography.html", "title": "Bibliography", "subtitle": f"{len(catalog)} works",
                            "summary": "", "text": " ".join(s["title"] + " " + s["author"] for s in catalog)})
 
+    # ---- chronology
+    chrono = sorted(catalog, key=lambda src: (src["year"], src["shortName"]))
+    yrows = []
+    for src in chrono:
+        users = cited_in.get(src["id"], [])
+        where = ", ".join(f'<a href="{a}.html">{articles[a]["title"]}</a>'
+                          for a in sorted(users, key=order.index)) or "&mdash;"
+        if src.get("zbl"):
+            ref = f'<a href="{src["zblUrl"]}">Zbl {src["zbl"]}</a>'
+        elif src.get("url"):
+            ref = f'<a href="{src["url"]}">doi</a>'
+        else:
+            ref = "&mdash;"
+        yrows.append(f'<tr><td class="num">{src["year"]}</td>'
+                     f'<td>{src["shortName"]}, <em>{src["title"]}</em></td>'
+                     f'<td>{ref}</td><td>{where}</td></tr>')
+    years = sorted({src["year"] for src in catalog})
+    inner = f"""<p class="crumbs"><a href="index.html">Home</a> / Chronology</p>
+<h1>Chronology</h1>
+<p class="meta">{len(catalog)} works, {years[0]}&ndash;{years[-1]}</p>
+<p>The works of the catalogue in the order they appeared, with the articles that cite each. The
+bibliography answers the question "what is this work and where is it used"; this page answers the
+other one, which is what was available at each stage of the subject. The layers are visible: the
+model and its first analysis in the 1960s and 1970s, the correlation inequalities alongside them,
+the renormalisation-group analysis of the hierarchical model in the 1980s, and the percolation
+results of the last decade.</p>
+<table><thead><tr><th>Year</th><th>Work</th><th>Record</th><th>Cited in</th></tr></thead>
+<tbody>{''.join(yrows)}</tbody></table>"""
+    (out / "chronology.html").write_text(
+        page_shell("Chronology — Hierarchical RG", "The works of the wiki in the order they appeared.",
+                   inner, "chronology"))
+    search_entries.append({"url": "chronology.html", "title": "Chronology",
+                           "subtitle": f"{len(catalog)} works in order",
+                           "summary": "", "text": "chronology " + " ".join(
+                               f"{src['year']} {src['author']} {src['title']}" for src in chrono)})
+
     # ---- notation
     notation = load_notation(articles)
     def also_cell(users):
@@ -581,7 +617,8 @@ obstruction that stops the argument on $\\mathbb Z^d$.</p>
 <p>The <a href="assertions.html">assertions index</a> lists every tagged statement, each with a
 page of its own; the <a href="bibliography.html">bibliography</a> gives every work cited and the
 articles citing it; the <a href="notation.html">notation page</a> fixes one symbol per object and
-names the article that introduces it; and the reading maps — for
+names the article that introduces it; the <a href="chronology.html">chronology</a> puts the cited
+works in the order they appeared; and the reading maps — for
 <a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a>,
 <a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a>,
 <a href="source-koch-wittwer.html">Koch and Wittwer</a>,
@@ -661,6 +698,7 @@ attribution where they are not.</p>
 <li><a href="assertions.html">Assertions</a> <span class="meta">— every tagged statement, with its own page</span></li>
 <li><a href="notation.html">Notation</a> <span class="meta">— one symbol per object, and the article that introduces it</span></li>
 <li><a href="bibliography.html">Bibliography</a> <span class="meta">— every work cited, with the articles citing it</span></li>
+<li><a href="chronology.html">Chronology</a> <span class="meta">— the same works in the order they appeared</span></li>
 <li><a href="all.html">Single file</a> <span class="meta">— the whole wiki in one page, for printing</span></li>
 </ol>"""
     (out / "index.html").write_text(
