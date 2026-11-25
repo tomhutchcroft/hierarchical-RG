@@ -316,6 +316,14 @@
     {
       "tag": "1TUR",
       "state": "allocated"
+    },
+    {
+      "tag": "RQEG",
+      "state": "allocated"
+    },
+    {
+      "tag": "HLTX",
+      "state": "allocated"
     }
   ]
 }

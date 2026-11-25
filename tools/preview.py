@@ -541,9 +541,10 @@ article being edited around it.</p>
         ("Is the correlation-length exponent known in closed form?", "bleher-sinai-fixed-point",
          "The value is read off the leading eigenvalue of the linearisation; the eigenvalue is known through the "
          "expansion in the distance from the marginal exponent, not in closed form."),
-        ("What is the volume of the critical cluster?", "hierarchical-percolation-rg",
-         "The bound <code>&delta; &ge; (d+&alpha;)/(d&minus;&alpha;)</code> is proved above the triangle threshold; the "
-         "value is conjectured and the volume exponent is studied separately."),
+        ("Can the logarithms at the upper critical dimension be got right everywhere?", "hierarchical-cluster-volume",
+         "The volume exponent is known in every regime, including the order of the polylogarithmic correction at "
+         "<code>d = 3&alpha;</code>, and that correction disagrees with the one predicted for the Euclidean model; what "
+         "is not known is the corresponding statement for long-range percolation on <code>Z<sup>d</sup></code>."),
         ("What is &nu; for percolation above the triangle threshold?", "hierarchical-percolation-rg",
          "Below it the classical values hold and the two-point bound pins the exponents; above it the percolation "
          "analysis determines everything except the correlation-length exponent."),

@@ -15,7 +15,8 @@
     "gaussian-fixed-point-spectrum",
     "hierarchical-vector-models",
     "hierarchical-percolation-rg",
-    "bleher-sinai-fixed-point"
+    "bleher-sinai-fixed-point",
+    "hierarchical-cluster-volume"
   ],
   "sourceIds": [
     "bleher-major-2021",

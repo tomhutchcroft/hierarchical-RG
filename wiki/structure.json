@@ -39,6 +39,7 @@
       "intro": "The same block structure carries models that are not the scalar spin model, and each one changes something specific. Percolation replaces the block-spin law by a cluster partition, and the mechanism that survives is amplification: two large clusters in sibling blocks are joined at a rate proportional to the product of their sizes. Vector spins make the block spin a vector, so the direction becomes an observable, and at criticality it does not settle. The phi-fourth truncation is where the infinite-dimensionality of the flow shows up, and the Euclidean comparison is where the exactness is lost.",
       "articles": [
         "hierarchical-percolation-rg",
+        "hierarchical-cluster-volume",
         "hierarchical-vector-models",
         "hierarchical-phi4-truncations",
         "hierarchical-two-marginalities",

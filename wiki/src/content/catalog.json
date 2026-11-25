@@ -320,7 +320,7 @@
       "url": "https://doi.org/10.1112/plms.70023",
       "zbl": "1557.60262",
       "zblUrl": "https://zbmath.org/?q=an:1557.60262",
-      "description": "The volume of the critical cluster in hierarchical long-range percolation, and the exponent that governs its tail."
+      "description": "Up-to-constants estimates for the tail of the volume of the critical cluster in hierarchical long-range percolation: the exponent is the mean-field value 1/2 above the upper critical dimension d = 3 alpha, the value (d+alpha)/(d-alpha) below it, and the polylogarithmic correction is computed at the dimension itself. Also the sized-biased limit at and above the critical dimension and the tightness of the cluster-size list below it."
     },
     {
       "id": "bleher-1974",

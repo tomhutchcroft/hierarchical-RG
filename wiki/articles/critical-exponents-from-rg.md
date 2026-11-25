@@ -19,7 +19,8 @@
     "corrections-to-scaling",
     "hierarchical-infinite-volume-limit",
     "hierarchical-vector-models",
-    "hierarchical-free-energy"
+    "hierarchical-free-energy",
+    "hierarchical-cluster-volume"
   ],
   "sourceIds": [
     "bleher-sinai-1975",
