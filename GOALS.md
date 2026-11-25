@@ -18,10 +18,10 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Eighteen articles in three parts, four reading paths, three reading maps, 67 tagged assertions,
-six interactive simulations, six generated diagrams, a notation page generated from `STYLE.md`,
-41 works in the catalogue, and a built site of 97 pages committed under `site/`. The checks below
-pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
+Eighteen articles in three parts, four reading paths, four reading maps, 71 tagged assertions,
+six interactive simulations, seven generated diagrams, a notation page generated from `STYLE.md`
+with a column saying where each symbol is used as well as where it is introduced, 42 works in the
+catalogue, and a built site of 102 pages committed under `site/`. The checks below pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
 Actions artifact whose root is `site/`.
 
 This section ages. Trust the checks and `git log`, not this paragraph.
@@ -64,21 +64,18 @@ material — before returning to the percolation volume, which is item 2.
 
 ### 1. By value
 
-- A percolation figure that is not a schematic: the cluster-size tail on a level-6 lattice with the
-  predicted power law and the crossover marked, sampled by code written twice and compared bit for
-  bit the way `SIM.isingSweep` is.
-- A second look at part 2's entry order: whether `corrections-to-scaling` should precede
-  `bleher-sinai-fixed-point`, or the part needs a bridge paragraph between the exponent dictionary
-  and the two rigorous fixed-point analyses.
-- More literature maps (Gawedzki–Kupiainen; Bauerschmidt–Brydges–Slade) if a reader's question
-  points there.
-- The notation page gives one article per symbol. A second column saying where each symbol is
-  *used*, not only where it is introduced, would help a reader who arrives in the middle.
+- The one literature map still named and not written: Bauerschmidt, Brydges and Slade, whose book is
+  the reference for the renormalisation group as an operation on potentials and is cited by
+  `hierarchical-lattice`, `hierarchical-gibbs-measure` and `hierarchical-phi4-truncations`.
 - The variance route gives `κ₊ ≤ α` unconditionally and pins the ratio of the two block-spin
   fluctuations at criticality, but it cannot certify `κ = α`, because the half of the sandwich that
   would do so is the missing *upper* bound on the free block-spin variance. Either that bound, or a
   direct proof that the free measures at `β_c` are the even mixture of the two extremal states,
   would close it; both are open in the wiki and both are the same kind of input as the trichotomy.
+- Part three has four articles to part one's six and part two's eight. The percolation and vector
+  articles are the ones the person asked for most; a third vector-model article — the $N$-component
+  `φ⁴` at the marginal exponent, where Bleher and Major's criterion replaces the exponent test —
+  would balance the part and give `hierarchical-vector-models` somewhere to hand over.
 
 ### 2. The volume of the critical cluster (percolation depth), deferred
 
@@ -89,6 +86,22 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- A reading map for Gawedzki and Kupiainen: the five papers that build the local theory of the
+  nontrivial fixed point, with the group's three boundaries stated — existence is not its subject,
+  the analysis is local in `ε` or `1/N`, and the setting is the hierarchical approximation.
+- Part two reordered and bridged: `corrections-to-scaling` now follows `bleher-sinai-fixed-point`,
+  because it expands in the spectrum that article proves exists; the part's introduction says what
+  the chain of articles is doing, and a bridge paragraph at the end of the exponent dictionary says
+  which of its inputs are hypotheses and where they are supplied.
+- The notation page says where each symbol is used, not only where it is introduced: a fourth column
+  in the `STYLE.md` table, resolved by the generator, with the lists chosen by counting the LaTeX
+  token in every article rather than from memory.
+- A sampled cluster-size distribution for hierarchical percolation: 200 realisations on a 64-site
+  block at three intensities, the pseudocritical one found by maximising the sampled mean finite
+  cluster size, the predicted slope `n_s ∝ s^{-2d/(d+α)}` drawn as a guide and the block cutoff
+  marked. The sampler is written twice — `percolation_clusters` in `simulate.py` and
+  `SIM.percolationClusters` in `sim.js` share the uniform stream — and `test_sim.py` compares the
+  cluster-size lists entry by entry over fifteen realisations.
 - The variance route to `κ` (`critical-exponents-from-rg`, section `variance-route`): the GHS
   inequality makes the block-spin variance maximal at zero boundary field, so the boundary-field
   identity sandwiches the finite-size magnetisation between the two block-spin variances,
