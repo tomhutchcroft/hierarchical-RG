@@ -71,6 +71,11 @@ extremal states. Both are the same kind of input as the trichotomy.
 
 ### 2. By value, next
 
+- The energy's telescoping identity is now in the free-energy article, together with the trap it
+  invites: the expected squared block sums are *not* the free variances, because a block inside a
+  bigger block feels its siblings (1.4 per cent at `n = 2`). The energy needs the joint law of the
+  children's sums, which is the same wall as the heat capacity. What would reopen both is a
+  representation of that joint law cheaper than a vector of length `2m^k`.
 - The one place where a computation is now known to be out of reach at this size: the Ising heat
   capacity. The free-energy article computes the Ising free energy to a few digits and certifies it
   from below, and shows that the derivatives are lost in the truncation near criticality. A method
