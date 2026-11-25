@@ -62,16 +62,15 @@ Beyond the scripts:
 structure and the renormalisation group — and, within part three, the vector and phi-fourth
 material — before returning to the percolation volume, which is item 2.
 
-### 1. The one mathematical question still open in the wiki
+### 1. The amplitude, which is all that is left of the growth exponent
 
-It is now narrowed. `critical-exponents-from-rg`, section `reduction`, proves that `κ = α` follows
-from two pointwise bounds on the two-point function at criticality: an infinite-volume upper bound
-`τ_∞(0,y) ≤ A L^{-(d-α)lev y}`, and a finite-volume lower bound on the top shell,
-`τ_n(0,y) ≥ a L^{-(d-α)n}`. For percolation both are Hutchcroft's theorems; for Ising spins they are
-the open model-specific input, and the article says why neither follows from the summed information
-the earlier sections have. A solver should either prove one of the two, or show that a proof needs
-an ingredient outside Griffiths monotonicity and GHS — a swarm member has shown the latter for
-response arguments alone.
+`κ = α` at criticality is now proved in `critical-exponents-from-rg`, section `reduction`: the upper
+bound unconditionally, from a two-child comparison and a runaway argument, and the lower bound as a
+limsup statement from the divergence of the susceptibility. What is not proved is the amplitude —
+that `R_n = V_n / L^{(d+α)n}` stays bounded away from zero — and the article records the two
+pointwise statements that would give it: an infinite-volume upper bound `τ_∞(0,y) ≤ A L^{-(d-α)lev y}`
+and a finite-volume lower bound on the top shell. For the percolation class on the same lattice both
+are Hutchcroft's theorems; for Ising spins they are the open input.
 
 ### 2. By value, next
 
@@ -88,6 +87,13 @@ response arguments alone.
 
 ## Done
 
+- `κ = α` at criticality (`tag-UJC1` for the lower half, `tag-4QMQ` for the upper), from two submissions
+  to a swarm run on this question. Both were refereed here before being written up: the two-child
+  comparison's FKG-on-the-amplitude-quadrant and Riccati steps checked line by line, the recursion
+  tested on the model's own laws over five intensities and three sizes (smallest margin `7e-4`), and
+  the runaway argument's normalisations (`Q = L^{d-α} > 1`, summable deficits, positive product)
+  checked by hand. The one external input, the mean-field lower bound for the susceptibility, is
+  named in the article.
 - The growth exponent reduced to two pointwise bounds (`tag-UTEB`), with the moment-monotonicity lemma
   (`tag-T8WS`) that the argument needs. The reduction came from a member of a swarm run on this
   question; it was refereed here — the lemma's Chebyshev step checked line by line and verified by
