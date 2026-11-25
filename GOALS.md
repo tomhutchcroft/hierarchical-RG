@@ -18,11 +18,11 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Nineteen articles in three parts, four reading paths, five reading maps, 75 tagged assertions,
-seven interactive simulations, seven generated diagrams, and four generated index pages beyond the
-bibliography and the assertions: notation (with where each symbol is used), chronology, figures, and
-the single-file edition. 42 works in the catalogue; a built site of 109 pages under `site/`. The
-checks below pass.
+Twenty-one articles in three parts, six reading paths, five reading maps, 78 tagged assertions,
+eight generated figures, seven interactive ones, 42 works in the catalogue, and a built site of 119
+pages under `site/`. Beyond the articles the site has nine generated index pages — start, the three
+part hubs, assertions, notation, bibliography, chronology, figures, sections, and what is not known
+— and a page saying how the wiki is checked. The checks below pass.
 
 This section ages. Trust the checks and `git log`, not this paragraph.
 
@@ -65,30 +65,35 @@ material — before returning to the percolation volume, which is item 2.
 ### 1. The one mathematical question still open in the wiki
 
 The variance route gives `κ₊ ≤ α` unconditionally and pins the ratio of the two block-spin
-fluctuations at criticality, but it cannot certify `κ = α`: the half of the sandwich that would do
-so is an upper bound on the free block-spin variance, and the wiki has neither that bound nor a
-proof that the free measures at `β_c` are the even mixture of the two extremal states. Everything
-else that was open has been closed or attributed, so this is now the only place where the wiki's own
-argument stops short of its own statement.
+fluctuations at criticality, but it cannot certify `κ = α`: that needs an upper bound on the free
+block-spin variance, or a proof that the free measures at `β_c` are the even mixture of the two
+extremal states. Both are the same kind of input as the trichotomy.
 
 ### 2. By value, next
 
-- The free energy's singularity. The recursion gives `F_n → F` and convexity, and nothing in the wiki
-  says what `F` does at `β_c`. The Gaussian case is computable in closed form from the per-scale
-  terms of the recursion, so the singularity there is arithmetic; whether the Ising case can be said
-  anything about beyond the attribution is an open editorial question.
-- A second literature map is not needed; the catalogue is mapped in five groups, and the works
-  outside them are cited individually.
-
-### 3. The volume of the critical cluster (percolation depth), deferred
-
-Part 3 promises the non-mean-field regime and delivers one article. Define the exponent from the
-tail of the cluster volume, explain why the two-point function is not the hard object there, state
-the obstruction giving the bound above the triangle threshold, and keep proved and attributed
-sharply apart. Sources already in the catalogue.
+- The Ising free energy's singularity. The Gaussian case is computed in closed form; for Ising spins
+  no per-scale term is elementary and the curvature is computed nowhere in the wiki.
+- The Euclidean counterparts. Every statement in part three is about the hierarchical lattice, and
+  the volume article now says explicitly that the Euclidean tail is open. A page collecting what is
+  known on `Z^d` — the upper bounds transported from the hierarchy, the ranges in which the two-point
+  function is proved — would make the boundary of the comparison precise without claiming more.
 
 ## Done
 
+Sixteen increments in one session, of which three were content and the rest structure, checks and
+navigation:
+
+- *The free energy and its singularity*: the Gaussian per-scale terms in closed form, the uniform
+  convergence of the series, and the divergence of the curvature with exponent `2 − d/α`. The
+  quadrature check rejected my first closed form (wrong eigenvalue structure of the tilt) and the
+  same check exposed a false claim that the series diverges at criticality.
+- *The two marginal exponents*, and *the volume of the critical cluster*: the second corrects the
+  percolation article, which had been calling a proved value a conjecture.
+- Twelve structural increments: two generated documentation pages (what is not known, how it is
+  checked), two reading paths, sitemap/robots/404, four checks (unknown figure names are now fatal;
+  orphaned works; sourceIds cited in the text; catalogue hygiene), a sections index, a notation
+  appendix in the printable edition, source lines per article, and landmarks with labels that
+  `check_site.py` enforces.
 - A reading map for Bauerschmidt, Brydges and Slade: the one book in the catalogue, with what the
   method is, what this wiki takes from it, and the boundary that matters — a book about the marginal
   dimension cannot decide the open questions about the hierarchical model, which is its setting.
