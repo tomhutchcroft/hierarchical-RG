@@ -15,7 +15,8 @@
     "hierarchical-lattice",
     "hierarchical-gibbs-measure",
     "renormalisation-group-map",
-    "hierarchical-and-euclidean-rg"
+    "hierarchical-and-euclidean-rg",
+    "hierarchical-infinite-volume-limit"
   ],
   "sourceIds": ["abdesselam-2018", "bleher-sinai-1973", "koval-meester-trapman-2012", "bauerschmidt-brydges-slade-2019"],
   "aliases": [

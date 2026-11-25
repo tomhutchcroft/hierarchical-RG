@@ -15,7 +15,12 @@
     "hierarchical-gibbs-measure",
     "renormalisation-group-map",
     "critical-exponents-from-rg",
-    "bleher-sinai-fixed-point"
+    "bleher-sinai-fixed-point",
+    "corrections-to-scaling",
+    "gaussian-fixed-point-spectrum",
+    "hierarchical-phi4-truncations",
+    "hierarchical-symmetries",
+    "koch-wittwer-fixed-point"
   ],
   "sourceIds": [
     "bleher-sinai-1973",

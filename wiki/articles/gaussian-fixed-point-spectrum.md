@@ -15,7 +15,8 @@
     "gaussian-renormalisation-group",
     "corrections-to-scaling",
     "hierarchical-phi4-truncations",
-    "bleher-sinai-fixed-point"
+    "bleher-sinai-fixed-point",
+    "hierarchical-two-marginalities"
   ],
   "sourceIds": ["fisher-ma-nickel-1972", "gawedzki-kupiainen-1983", "bleher-sinai-1975", "bauerschmidt-brydges-slade-2019"],
   "aliases": [

@@ -295,10 +295,13 @@ def main() -> int:
         if body.count('<a id="tag-') != len(ANCHOR_RE.findall(body)):
             fail(where, "an assertion anchor does not have the required form")
 
+    related = {aid: list(meta.get("related", [])) for aid, meta in meta_by_id.items()}
     for aid, meta in meta_by_id.items():
         for rel in meta.get("related", []):
             if rel not in meta_by_id:
                 fail(aid, f"related article {rel!r} does not exist")
+            elif aid not in related[rel]:
+                warn(aid, f"related to {rel!r}, which does not list it back")
 
     wanted: dict[str, list[str]] = {}
     for aid, body in bodies.items():

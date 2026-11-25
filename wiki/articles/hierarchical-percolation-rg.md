@@ -15,7 +15,11 @@
     "hierarchical-gibbs-measure",
     "renormalisation-group-map",
     "critical-exponents-from-rg",
-    "hierarchical-lattice"
+    "hierarchical-lattice",
+    "hierarchical-magnetised-phase",
+    "hierarchical-symmetries",
+    "hierarchical-two-marginalities",
+    "hierarchical-vector-models"
   ],
   "sourceIds": [
     "koval-meester-trapman-2012",

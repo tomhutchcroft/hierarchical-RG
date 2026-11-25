@@ -16,7 +16,9 @@
     "hierarchical-gibbs-measure",
     "gaussian-renormalisation-group",
     "hierarchical-percolation-rg",
-    "hierarchical-vector-models"
+    "hierarchical-vector-models",
+    "hierarchical-infinite-volume-limit",
+    "hierarchical-magnetised-phase"
   ],
   "sourceIds": ["hutchcroft-hierarchical-2021", "bleher-sinai-1973", "abdesselam-2018"],
   "aliases": [

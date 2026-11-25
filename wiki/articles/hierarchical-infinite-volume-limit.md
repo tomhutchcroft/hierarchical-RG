@@ -16,7 +16,8 @@
     "hierarchical-lattice",
     "hierarchical-symmetries",
     "critical-exponents-from-rg",
-    "ultrametric-block-systems"
+    "ultrametric-block-systems",
+    "hierarchical-magnetised-phase"
   ],
   "sourceIds": [
     "dobrushin-1968",

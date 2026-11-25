@@ -15,7 +15,14 @@
     "hierarchical-lattice",
     "renormalisation-group-map",
     "gaussian-renormalisation-group",
-    "hierarchical-percolation-rg"
+    "hierarchical-percolation-rg",
+    "hierarchical-and-euclidean-rg",
+    "hierarchical-infinite-volume-limit",
+    "hierarchical-magnetised-phase",
+    "hierarchical-symmetries",
+    "hierarchical-two-marginalities",
+    "hierarchical-vector-models",
+    "ultrametric-block-systems"
   ],
   "sourceIds": [
     "dyson-1969",

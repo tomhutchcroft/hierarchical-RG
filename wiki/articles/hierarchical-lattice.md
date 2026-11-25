@@ -14,7 +14,11 @@
   "related": [
     "hierarchical-gibbs-measure",
     "renormalisation-group-map",
-    "hierarchical-and-euclidean-rg"
+    "hierarchical-and-euclidean-rg",
+    "hierarchical-infinite-volume-limit",
+    "hierarchical-percolation-rg",
+    "hierarchical-symmetries",
+    "ultrametric-block-systems"
   ],
   "sourceIds": ["dyson-1969", "bleher-sinai-1973", "bauerschmidt-brydges-slade-2019"],
   "aliases": [

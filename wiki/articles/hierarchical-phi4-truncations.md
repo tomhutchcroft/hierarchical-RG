@@ -16,7 +16,8 @@
     "gaussian-renormalisation-group",
     "koch-wittwer-fixed-point",
     "abdesselam-global-trajectory",
-    "bleher-sinai-fixed-point"
+    "bleher-sinai-fixed-point",
+    "gaussian-fixed-point-spectrum"
   ],
   "sourceIds": [
     "bleher-sinai-1973",

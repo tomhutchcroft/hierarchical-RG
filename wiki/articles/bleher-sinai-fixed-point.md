@@ -15,7 +15,15 @@
     "renormalisation-group-map",
     "gaussian-renormalisation-group",
     "critical-exponents-from-rg",
-    "hierarchical-and-euclidean-rg"
+    "hierarchical-and-euclidean-rg",
+    "abdesselam-global-trajectory",
+    "corrections-to-scaling",
+    "gaussian-fixed-point-spectrum",
+    "hierarchical-magnetised-phase",
+    "hierarchical-phi4-truncations",
+    "hierarchical-two-marginalities",
+    "hierarchical-vector-models",
+    "koch-wittwer-fixed-point"
   ],
   "sourceIds": [
     "bleher-sinai-1973",

@@ -14,7 +14,9 @@
   "related": [
     "hierarchical-lattice",
     "hierarchical-gibbs-measure",
-    "bleher-sinai-fixed-point"
+    "bleher-sinai-fixed-point",
+    "abdesselam-global-trajectory",
+    "ultrametric-block-systems"
   ],
   "sourceIds": [
     "gawedzki-kupiainen-1980",

@@ -16,7 +16,9 @@
     "hierarchical-phi4-truncations",
     "bleher-sinai-fixed-point",
     "critical-exponents-from-rg",
-    "hierarchical-percolation-rg"
+    "hierarchical-percolation-rg",
+    "hierarchical-symmetries",
+    "hierarchical-two-marginalities"
   ],
   "sourceIds": [
     "dyson-1969",

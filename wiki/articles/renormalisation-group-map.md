@@ -15,7 +15,11 @@
     "hierarchical-gibbs-measure",
     "gaussian-renormalisation-group",
     "critical-exponents-from-rg",
-    "bleher-sinai-fixed-point"
+    "bleher-sinai-fixed-point",
+    "corrections-to-scaling",
+    "hierarchical-lattice",
+    "hierarchical-percolation-rg",
+    "ultrametric-block-systems"
   ],
   "sourceIds": [
     "bleher-sinai-1973",

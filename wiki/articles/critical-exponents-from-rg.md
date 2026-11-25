@@ -15,7 +15,10 @@
     "renormalisation-group-map",
     "gaussian-renormalisation-group",
     "bleher-sinai-fixed-point",
-    "hierarchical-percolation-rg"
+    "hierarchical-percolation-rg",
+    "corrections-to-scaling",
+    "hierarchical-infinite-volume-limit",
+    "hierarchical-vector-models"
   ],
   "sourceIds": [
     "bleher-sinai-1975",
