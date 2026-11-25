@@ -300,6 +300,10 @@
     {
       "tag": "RS6Z",
       "state": "allocated"
+    },
+    {
+      "tag": "LSTE",
+      "state": "allocated"
     }
   ]
 }

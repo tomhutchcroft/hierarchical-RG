@@ -535,6 +535,24 @@ def check_variance_sandwich():
                        for n, Mn, lo, hi, vp, rate, vf in rows))
 
 
+def check_finite_volume_magnetisation():
+    """Every finite-volume plus state is magnetised, at every positive intensity."""
+    d, L, alpha = 1, 2, 0.5
+    rows = []
+    for beta in (0.05, 0.2, 0.6, 1.5):
+        for n in (2, 3):
+            tab, V, _ = ising_block(d, L, n, alpha, beta, boundary=1.0)
+            m = sum(p * s[0] for s, p in tab.items())
+            rows.append((beta, n, m))
+    by_n = {}
+    for beta, n, m in rows:
+        by_n.setdefault(n, []).append(m)
+    increasing = all(all(a < b for a, b in zip(v, v[1:])) for v in by_n.values())
+    note("finite-volume plus states are magnetised at every intensity",
+         all(r[2] > 0 for r in rows) and increasing and rows[0][2] < 0.1,
+         "M_n = " + ", ".join(f"beta={b}, n={n}: {m:.2e}" for b, n, m in rows))
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -550,6 +568,7 @@ def main() -> int:
     check_ferromagnetic_phase()
     check_block_average()
     check_variance_sandwich()
+    check_finite_volume_magnetisation()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0
