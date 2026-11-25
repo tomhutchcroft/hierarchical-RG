@@ -122,7 +122,7 @@
 
 <p><em>Other priors.</em> A $\varphi^4$ prior $e^{-V(\sigma)}d\sigma$ with $V$ a quartic polynomial gives the same identity with $\mu_0$ not Gaussian, and the recursion no longer closes: it generates an infinite-dimensional family of laws. Controlling that family is the content of <a href="/articles/bleher-sinai-fixed-point/">the Bleher–Sinai analysis</a>.</p>
 
-<p><em>Infinite volume.</em> The measures $\mathbb P_n$ are not consistent under restriction, because a restricted Gibbs measure is not Gibbsian for the restricted Hamiltonian; the infinite-volume limit requires a boundary condition and a compactness argument. Every identity above is finite-volume and exact, which is what the renormalisation group needs; passing to the limit is a separate step, taken in the articles on the <a href="/articles/bleher-sinai-fixed-point/">fixed point</a> and on <a href="/articles/critical-exponents-from-rg/">exponents</a>.</p>
+<p><em>Infinite volume.</em> The measures $\mathbb P_n$ are not consistent under restriction, because a restricted Gibbs measure is not Gibbsian for the restricted Hamiltonian; the infinite-volume limit requires a boundary condition and a compactness argument. Every identity above is finite-volume and exact, which is what the renormalisation group needs; passing to the limit is a separate step, taken in <a href="/articles/hierarchical-infinite-volume-limit/">the article on the infinite-volume limit</a>, which uses the boundary field of a block and produces a Gibbs measure with a radial two-point function.</p>
 
 ## History and attribution {#section-history}
 

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boundary field, finite-volume Gibbs measure, and the DLR property — Hierarchical RG</title>
+<meta name="description" content="definition: Boundary field, finite-volume Gibbs measure, and the DLR property">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / R5T3</p>
+<h1>Boundary field, finite-volume Gibbs measure, and the DLR property</h1>
+<p class="meta">definition &middot; <span class="tag">R5T3</span> &middot; in
+<a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></p>
+<div class="assertion">A <em>boundary field</em> on a finite $\Lambda$ is a function $h:\Lambda\to\mathbb R$, and the finite-volume measure with boundary field $h$ is</p>
+<div class="math-display">$$\mathbb P_\Lambda^h(d\sigma)=\frac{1}{Z_\Lambda(h)}\exp\Bigl(-\beta H_\Lambda(\sigma)+\beta\sum_{x\in\Lambda}h_x\sigma_x\Bigr)\prod_{x\in\Lambda}\varrho(d\sigma_x).$$</div>
+<p>Two cases are used. The <em>free</em> boundary condition is $h\equiv0$, which is the measure $\mathbb P_\Lambda$ of the decimation article. A <em>fixed</em> boundary condition is a configuration $\omega$, and the field it induces is $h_x=\sum_{y\notin\Lambda}J(x-y)\omega_y$; the resulting measure is the model on $\Lambda$ with the outside held at $\omega$, since the omitted energy is $-\sum_{x\in\Lambda,y\notin\Lambda}J(x-y)\sigma_x\omega_y$ and is linear in $\sigma$ on $\Lambda$. For finite $A\subset\Lambda$ and a field $h$ on $A$ write $\gamma_A^h$ for the law of $\sigma_A$ with density $\exp(-\beta H_A(\sigma_A)+\beta\sum_{x\in A}h_x\sigma_x)$ against the prior: the <em>Gibbs conditional</em> of $A$ in the field $h$. With $h_A(\omega)_x=\sum_{y\notin A}J(x-y)\omega_y$, a probability measure $\mu$ on $\Omega$ is a <em>Gibbs measure</em> if</p>
+<div class="math-display">$$\mathbb E_\mu\bigl[f\mid\mathcal F_{A^c}\bigr](\omega)=\int f\,d\gamma_A^{h_A(\omega)}\qquad\mu\text{-a.e.}$$</div>
+<p>for every finite $A$ and every bounded local $f$ on $A$.</p>
+<p>The sums defining $h_A(\omega)$ converge absolutely because $\omega$ is bounded and $\sum_{y}\lvert J(x-y)\rvert<\infty$, which is the <a href="hierarchical-lattice.html#section-kernels">summability criterion of the lattice article</a>; without it the conditional law in the definition would not exist, and the last section of examples is built on that. The condition is the one of Dobrushin and of Lanford and Ruelle, and it says that the measure is compatible with all of its own one-region conditional laws at once [@dobrushin-1968] [@lanford-ruelle-1969]. Nothing in it refers to a volume or to a boundary, which is why it is the right notion for a limit.</p>
+
+## The boundary field of a block {#section-boundary}
+
+<p>The hierarchical lattice makes one computation exact, because a block is a subgroup: every vertex of $\Lambda_n$ sees the complement in the same way.</p></div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-infinite-volume-limit.html#tag-R5T3">The infinite-volume limit</a>. To cite this assertion, link to
+<span class="tag">tag-R5T3.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-infinite-volume-limit.html#tag-R5T3"><span class="dir">context</span>The infinite-volume limit</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

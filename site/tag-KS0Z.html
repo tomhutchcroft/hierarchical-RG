@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gibbs conditional is Lipschitz in the boundary field — Hierarchical RG</title>
+<meta name="description" content="proposition: The Gibbs conditional is Lipschitz in the boundary field">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li></ol></nav><nav class="sec"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">6</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">7</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">8</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li></ol></nav><nav class="sec"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">3</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">4</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main>
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / KS0Z</p>
+<h1>The Gibbs conditional is Lipschitz in the boundary field</h1>
+<p class="meta">proposition &middot; <span class="tag">KS0Z</span> &middot; in
+<a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></p>
+<div class="assertion">Let $A$ be finite, let $h,h'$ be fields on $A$, and let $c=\beta\sum_{x\in A}\lvert h_x-h'_x\rvert$. Then the laws $\gamma_A^h$ and $\gamma_A^{h'}$ satisfy $\lVert\gamma_A^h-\gamma_A^{h'}\rVert_{\mathrm{TV}}\leq\tanh(c/2)\leq c/2$, and consequently for every bounded local $f$ on $A$</p>
+<div class="math-display">$$\Bigl\lvert\int f\,d\gamma_A^h-\int f\,d\gamma_A^{h'}\Bigr\rvert\leq 2\lVert f\rVert_\infty\tanh(c/2)\leq\beta\lVert f\rVert_\infty\sum_{x\in A}\lvert h_x-h'_x\rvert.$$</div>
+<p>Two consequences are used. First, $\omega\mapsto\gamma_A^{h_A(\omega)}$ is continuous in the product topology: each $h_A(\omega)_x=\sum_{y\notin A}J(x-y)\omega_y$ is a uniform limit of functions of finitely many coordinates, hence continuous, because $\sum_y\lvert J(x-y)\rvert<\infty$ and $\lvert\omega\rvert\leq1$. Second, for $A\subset\Lambda_n$ the conditional of the free-boundary measure differs from the infinite-volume conditional by at most</p>
+<div class="math-display">$$\Bigl\lVert\gamma_A^{h_{A|\Lambda_n}(\sigma)}-\gamma_A^{h_A(\sigma)}\Bigr\rVert_{\mathrm{TV}}\leq\tanh\Bigl(\tfrac12\beta\lvert A\rvert B_n\Bigr),$$</div>
+<p>where $h_{A|\Lambda_n}(x)=\sum_{y\in\Lambda_n\setminus A}J(x-y)\sigma_y$ uses only the spins inside the block, as the free boundary condition prescribes.</p>
+<details><summary>Proof</summary><div class='collapsible-body'>
+<p>Write $\Lambda=A$. The two densities against the prior differ only by the factor $\exp\bigl(\beta\sum_{x\in A}\sigma_x(h_x-h'_x)\bigr)$, which lies in $[e^{-c},e^{c}]$ because $\lvert\sigma_x\rvert\leq1$. If two probability densities have ratio everywhere in $[a,b]$, their total variation distance is at most $(b-a)/(b+a)$: the positive part of the difference is at most $\tfrac12\int p\,(b-a)/(b+a)$ in the normalised form, which is the bound. With $b/a=e^{c}$ this is $\tanh(c/2)$, and $\tanh u\leq u$ since $(\tanh u)'=\operatorname{sech}^2u\leq1$ and $\tanh0=0$. Expectations differ by at most $2\lVert f\rVert_\infty$ times the total variation distance.</p>
+<p>For the second consequence, the two fields on $A$ agree on the contribution of $y\in\Lambda_n\setminus A$ and differ only in the contribution of $y\notin\Lambda_n$, which is at most $B_n$ in modulus at each $x\in A$ by <a href="hierarchical-infinite-volume-limit.html#tag-AHO7">the boundary-field proposition</a>. So $c\leq\beta\lvert A\rvert B_n$ and the estimate applies.</p>
+<p>For the continuity, fix $x$ and $N$; the partial sum $\sum_{\lVert y\rVert\leq L^N}J(x-y)\omega_y$ depends on finitely many coordinates, and the remainder is at most $\sum_{\lVert y\rVert>L^N}\lvert J(x-y)\rvert\to0$ uniformly in $\omega$. A uniform limit of continuous functions is continuous, and a finite tuple of continuous fields gives a conditional law that depends continuously on them by the estimate above, so $\omega\mapsto\gamma_A^{h_A(\omega)}$ is continuous.</p>
+</div></details>
+<p>The estimate is quantitative where it matters: the error in the conditional is of order $\beta\lvert A\rvert B_n$, so it is small uniformly in the configuration and does not degrade as the volume grows. That uniformity is the whole content of the theorem below, and it is what fails when the interaction is not summable.</p>
+
+## Existence, and the Gibbs property {#section-existence}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-infinite-volume-limit.html#tag-KS0Z">The infinite-volume limit</a>. To cite this assertion, link to
+<span class="tag">tag-KS0Z.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-infinite-volume-limit.html#tag-KS0Z"><span class="dir">context</span>The infinite-volume limit</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

@@ -266,9 +266,68 @@ def fig_decimation():
     return _svg(W, H, "one decimation step", "".join(p))
 
 
+def fig_boundary():
+    """The coupling of a block to its complement: decaying per vertex, growing in total below alpha = d."""
+    d, L, J = 1, 2, 1.0
+    alphas = [(0.4, "#1c5a8a"), (0.8, "#4a7a1c"), (1.2, "#8a1c1c")]
+    W, H = 560, 290
+    pad = {"l": 56, "r": 126, "t": 30, "b": 42}
+    n_max = 8
+    ymin, ymax = 0.03, 80.0
+
+    def X(n):
+        return pad["l"] + n / n_max * (W - pad["l"] - pad["r"])
+
+    def Y(v):
+        t = (math.log(v) - math.log(ymin)) / (math.log(ymax) - math.log(ymin))
+        return H - pad["b"] - t * (H - pad["t"] - pad["b"])
+
+    def path(values, colour, width, dash=""):
+        """Polyline, broken where it leaves the frame, so that no curve is drawn flat on the axis."""
+        pts, out = [], []
+        for n, v in enumerate(values):
+            if v < ymin:
+                if len(pts) > 1:
+                    out.append(f'<path d="{" ".join(pts)}" fill="none" stroke="{colour}" '
+                               f'stroke-width="{width}"{dash}/>')
+                pts = []
+                continue
+            pts.append(("M" if not pts else "L") + f"{X(n):.1f} {Y(min(v, ymax)):.1f}")
+        if len(pts) > 1:
+            out.append(f'<path d="{" ".join(pts)}" fill="none" stroke="{colour}" stroke-width="{width}"{dash}/>')
+        return "".join(out)
+
+    p = [f'<line x1="{pad["l"]}" y1="{H-pad["b"]}" x2="{W-pad["r"]}" y2="{H-pad["b"]}" class="fg-axis"/>',
+         f'<line x1="{pad["l"]}" y1="{pad["t"]}" x2="{pad["l"]}" y2="{H-pad["b"]}" class="fg-axis"/>']
+    for v, label in ((0.1, "0.1"), (1.0, "1"), (10.0, "10")):
+        p.append(f'<line x1="{pad["l"]}" y1="{Y(v):.1f}" x2="{W-pad["r"]}" y2="{Y(v):.1f}" '
+                 f'stroke="#e3e3e6" stroke-width="1"/>')
+        p.append(f'<text x="{pad["l"]-8}" y="{Y(v)+4:.1f}" text-anchor="end" class="fg-small">{label}</text>')
+    for n in range(0, n_max + 1, 2):
+        p.append(f'<text x="{X(n):.1f}" y="{H-pad["b"]+18}" text-anchor="middle" class="fg-small">{n}</text>')
+    p.append(f'<text x="{(pad["l"]+W-pad["r"])/2:.0f}" y="{H-8}" text-anchor="middle" class="fg-small">'
+             f'block level n</text>')
+    p.append(f'<text x="{pad["l"]}" y="{pad["t"]-10}" class="fg-small">'
+             f'solid: |\u039b\u2099| B\u2099 (total)   dashed: B\u2099 (per vertex)   d = 1, L = 2</text>')
+    legend = []
+    for i, (alpha, colour) in enumerate(alphas):
+        row = J * (1 - L ** (-d)) * L ** (-alpha) / (1 - L ** (-alpha))
+        per = [row * L ** (-alpha * n) for n in range(0, n_max + 1)]
+        tot = [per[n] * L ** (d * n) for n in range(0, n_max + 1)]
+        p.append(path(tot, colour, 2))
+        p.append(path(per, colour, 1.6, ' stroke-dasharray="5 4"'))
+        ly = pad["t"] + 10 + 22 * i
+        legend.append(f'<path d="M{W-pad["r"]+10} {ly} l18 0" stroke="{colour}" stroke-width="2"/>')
+        legend.append(f'<path d="M{W-pad["r"]+10} {ly+8} l18 0" stroke="{colour}" stroke-width="1.6" '
+                      f'stroke-dasharray="5 4"/>')
+        legend.append(f'<text x="{W-pad["r"]+34}" y="{ly+6}" class="fg-small">alpha = {alpha}</text>')
+    return _svg(W, H, "the boundary field of a block", "".join(p + legend))
+
+
 def figures() -> dict:
     return {"lattice-children": fig_lattice_children(), "flow": fig_flow(), "decimation": fig_decimation(),
-            "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless()}
+            "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless(),
+            "boundary": fig_boundary()}
 
 
 def fig_exponents_alpha():

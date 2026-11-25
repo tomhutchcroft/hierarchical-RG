@@ -18,9 +18,10 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Sixteen articles in three parts, four reading paths, three reading maps, 57 tagged assertions,
-six interactive simulations, five generated diagrams, a notation page generated from `STYLE.md`,
-and a built site of 85 pages committed under `site/`. The checks below pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
+Seventeen articles in three parts, four reading paths, three reading maps, 62 tagged assertions,
+six interactive simulations, six generated diagrams, a notation page generated from `STYLE.md`,
+40 works in the catalogue, and a built site of 91 pages committed under `site/`. The checks below
+pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
 Actions artifact whose root is `site/`.
 
 This section ages. Trust the checks and `git log`, not this paragraph.
@@ -59,16 +60,9 @@ Beyond the scripts:
 
 **Priority: parts one and two first.** Percolation is not the priority. Build out the block
 structure and the renormalisation group — and, within part three, the vector and phi-fourth
-material — before returning to the percolation volume, which is item 3.
+material — before returning to the percolation volume, which is item 2.
 
-### 1. The infinite-volume limit in part one
-
-`hierarchical-gibbs-measure` deliberately stays at finite volume and says the limit is a separate
-step; part one should close that gap. Compactness of the finite-volume measures, a limit along a
-subsequence, and the Gibbs property for a summable interaction — or an explicit statement of what
-is assumed, if the proof is out of reach here.
-
-### 2. Then, by value
+### 1. By value
 
 - A percolation figure that is not a schematic: the cluster-size tail on a level-6 lattice with the
   predicted power law and the crossover marked, sampled by code written twice and compared bit for
@@ -80,8 +74,13 @@ is assumed, if the proof is out of reach here.
   points there.
 - The notation page gives one article per symbol. A second column saying where each symbol is
   *used*, not only where it is introduced, would help a reader who arrives in the middle.
+- Part one now has the infinite-volume limit, but the magnetised phase is only named there:
+  the two boundary conditions ± and the spontaneous magnetisation of the hierarchical Ising model
+  below the critical intensity are not proved anywhere in the wiki, only attributed. An article
+  that states what the Bleher–Sinai analysis gives, and what the FKG argument gives cheaply, would
+  close part one properly.
 
-### 3. The volume of the critical cluster (percolation depth), deferred
+### 2. The volume of the critical cluster (percolation depth), deferred
 
 Part 3 promises the non-mean-field regime and delivers one article. Define the exponent from the
 tail of the cluster volume, explain why the two-point function is not the hard object there, state
@@ -90,6 +89,15 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- The infinite-volume limit (`hierarchical-infinite-volume-limit`): the boundary field of a block is
+  the same at every vertex and decays like `L^{-alpha n}`, while its sum over the block grows like
+  `L^{(d-alpha)n}`, which is where the two ranges of the model part. The Gibbs conditional is
+  Lipschitz in that field, so every limit point of the finite-volume measures is a Gibbs measure in
+  the sense of Dobrushin, Lanford and Ruelle; limit points of the free-boundary measures are
+  invariant under translations and coordinate-wise bijections, so their two-point function is
+  radial. Checked: the closed form for the boundary field against direct summation, the Lipschitz
+  bound, and the identity between the free-boundary conditional and the Gibbs conditional of the
+  field, all in `numeric_checks.py`; the figure is rendered and looked at.
 - The lattice's isometries (`hierarchical-symmetries`): translations and coordinate-wise bijections
   are isometries and act transitively on ordered pairs at each level, which supplies the three
   statements five articles were using as "by symmetry". A level-preserving bijection that is not an

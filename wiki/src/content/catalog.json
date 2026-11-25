@@ -427,6 +427,42 @@
       "zbl": "0722.60108",
       "zblUrl": "https://zbmath.org/?q=an:0722.60108",
       "description": "An outline of a computer-assisted proof giving rigorous bounds on the free-energy exponent, universal across a one-parameter family of hierarchical systems in three dimensions."
+    },
+    {
+      "id": "dobrushin-1968",
+      "shortName": "Dobrushin",
+      "title": "The description of a random field by means of conditional probabilities and conditions of its regularity",
+      "author": "R. L. Dobrushin",
+      "year": 1968,
+      "edition": "Teor. Veroyatn. Primen. 13 (1968), 201-229; English translation: Theory Probab. Appl. 13, 197-224",
+      "url": "https://zbmath.org/3294019",
+      "description": "A random field described by its system of conditional probabilities, with a regularity condition under which the description determines the field: the origin of the formulation of a Gibbs measure by its conditional laws.",
+      "zbl": "0184.40403",
+      "zblUrl": "https://zbmath.org/?q=an:0184.40403"
+    },
+    {
+      "id": "lanford-ruelle-1969",
+      "shortName": "Lanford–Ruelle",
+      "title": "Observables at infinity and states with short range correlations in statistical mechanics",
+      "author": "O. E. Lanford III and D. Ruelle",
+      "year": 1969,
+      "edition": "Comm. Math. Phys. 13 (1969), 194-215",
+      "url": "https://doi.org/10.1007/BF01645487",
+      "description": "States of an infinite system characterised by their conditional expectations given the configuration outside a finite region, with the equivalence between short-range correlations and the absence of dependence on observables at infinity.",
+      "zbl": "1522.82003",
+      "zblUrl": "https://zbmath.org/?q=an:1522.82003"
+    },
+    {
+      "id": "georgii-2011",
+      "shortName": "Georgii",
+      "title": "Gibbs Measures and Phase Transitions",
+      "author": "H.-O. Georgii",
+      "year": 2011,
+      "edition": "2nd extended edition, De Gruyter Studies in Mathematics 9, de Gruyter, Berlin, 2011",
+      "url": "https://doi.org/10.1515/9783110250329",
+      "description": "The general theory of Gibbs measures on lattice spin systems: specifications, the DLR characterisation, compactness of the set of Gibbs measures, and the passage from finite-volume measures, with phase transitions treated through the convex structure.",
+      "zbl": "1225.60001",
+      "zblUrl": "https://zbmath.org/?q=an:1225.60001"
     }
   ]
 }
