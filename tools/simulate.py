@@ -497,6 +497,83 @@ def block_spin_laws(n, L, d, alpha, beta):
     return out
 
 
+# ---------------------------------------------------------------- 7. free energy (Gaussian)
+
+def free_energy_term(k, L, d, alpha, beta):
+    """The level-k contribution to the Gaussian free energy, in closed form.
+
+    The tilt is a quadratic form whose matrix has eigenvalue (m-1)/2 along the diagonal direction
+    and -1/2 on its complement, so in an orthonormal eigenbasis the Gaussian integral factorises.
+    """
+    m = L ** d
+    mass = (1 - L ** (-d)) * sum(L ** (-alpha * j) for j in range(1, k))   # mass up to level k-1
+    v = m ** (k - 1) / (1 - beta * mass)
+    Jk = L ** (-(d + alpha) * k)
+    a = 1 - beta * Jk * (m - 1) * v      # eigenvalue (m-1)/2 of the tilt, twice
+    b = 1 + beta * Jk * v                # eigenvalue -1/2, m-1 times
+    if a <= 0:
+        return float("inf")
+    return m ** (-k) * (-0.5 * math.log(a) - ((m - 1) / 2) * math.log(b))
+
+
+def free_energy(beta, L=2, d=1, alpha=0.5, terms=80):
+    """The Gaussian free energy per site: the sum of the per-scale terms."""
+    return sum(free_energy_term(k, L, d, alpha, beta) for k in range(1, terms + 1))
+
+
+def free_energy_curvature(beta, L=2, d=1, alpha=0.5, terms=80, h=2e-4):
+    """The heat capacity beta^2 F'' of the Gaussian model, by central differences with a Richardson step."""
+    def second(hh):
+        return (free_energy(beta + hh, L, d, alpha, terms)
+                - 2 * free_energy(beta, L, d, alpha, terms)
+                + free_energy(beta - hh, L, d, alpha, terms)) / hh ** 2
+    d2 = (4 * second(h / 2) - second(h)) / 3
+    return beta ** 2 * d2
+
+
+def fig_free_energy():
+    """The Gaussian free energy and its curvature against the intensity, with the critical one marked."""
+    L, d, alpha = 2, 1, 0.5
+    C = (1 - L ** (-d)) / (L ** alpha - 1)
+    beta_c = 1 / C
+    W, H = 560, 320
+    pad = {"l": 56, "r": 150, "t": 24, "b": 46}
+    betas = [beta_c * (i / 40.0) for i in range(1, 40)]
+
+    def X(b):
+        return pad["l"] + b / beta_c * (W - pad["l"] - pad["r"])
+
+    fvals = [free_energy(b, L, d, alpha) for b in betas]
+    cvals = [free_energy_curvature(b, L, d, alpha) for b in betas]
+    fmax = max(fvals) * 1.05
+    cmax = max(cvals) * 1.05
+    p = [f'<line x1="{pad["l"]}" y1="{H-pad["b"]}" x2="{W-pad["r"]}" y2="{H-pad["b"]}" class="fg-axis"/>',
+         f'<line x1="{pad["l"]}" y1="{pad["t"]}" x2="{pad["l"]}" y2="{H-pad["b"]}" class="fg-axis"/>']
+    for frac in (0.25, 0.5, 0.75, 1.0):
+        p.append(f'<text x="{X(beta_c * frac):.1f}" y="{H-pad["b"]+18}" text-anchor="middle" class="fg-small">'
+                 f'{frac:.2f}</text>')
+    p.append(f'<text x="{(pad["l"]+W-pad["r"])/2:.0f}" y="{H-10}" text-anchor="middle" class="fg-small">'
+             f'intensity as a fraction of the critical one</text>')
+    p.append(f'<text x="{pad["l"]}" y="{pad["t"]-8}" class="fg-small">free energy F (blue, left) '
+             f'and heat capacity (red, scaled)</text>')
+    fpath = " ".join(("M" if i == 0 else "L") +
+                     f"{X(b):.1f} {H-pad['b'] - (f / fmax) * (H-pad['t']-pad['b']):.1f}"
+                     for i, (b, f) in enumerate(zip(betas, fvals)))
+    p.append(f'<path d="{fpath}" fill="none" stroke="#1c5a8a" stroke-width="2"/>')
+    cpath = " ".join(("M" if i == 0 else "L") +
+                     f"{X(b):.1f} {H-pad['b'] - (c / cmax) * (H-pad['t']-pad['b']):.1f}"
+                     for i, (b, c) in enumerate(zip(betas, cvals)))
+    p.append(f'<path d="{cpath}" fill="none" stroke="#8a1c1c" stroke-width="2"/>')
+    p.append(f'<line x1="{X(beta_c):.1f}" y1="{pad["t"]}" x2="{X(beta_c):.1f}" y2="{H-pad["b"]}" '
+             f'stroke="#8a8a8a" stroke-width="1" stroke-dasharray="3 3"/>')
+    p.append(f'<text x="{X(beta_c)-4:.1f}" y="{pad["t"]+4}" text-anchor="end" class="fg-small">critical</text>')
+    p.append(f'<text x="{W-pad["r"]+10}" y="{pad["t"]+16}" class="fg-small">F({betas[-1]:.2f}) = '
+             f'{fvals[-1]:.4f}</text>')
+    p.append(f'<text x="{W-pad["r"]+10}" y="{pad["t"]+32}" class="fg-small">C near it = '
+             f'{cvals[-1]:.1f}</text>')
+    return _svg(W, H, "free energy and heat capacity", "".join(p))
+
+
 # ---------------------------------------------------------------- what each one computes
 
 #: One line per generated figure: what it computes, and what checks that computation.
@@ -519,6 +596,10 @@ FIGURE_NOTES = {
     "percolation-tail": ("The sampled cluster-size distribution on a block of 64 sites at three "
                          "intensities, with the predicted slope as a guide.",
                          "sampled, and the sampler is written twice and compared in test_sim.py"),
+    "free-energy": ("The Gaussian free energy per site and its curvature against the intensity, with "
+                    "the critical intensity marked.",
+                    "the closed-form per-scale terms, checked against direct quadrature in "
+                    "numeric_checks.py"),
 }
 
 #: One line per interactive figure.
@@ -543,7 +624,8 @@ SIM_NOTES = {
 def figures() -> dict:
     return {"lattice-children": fig_lattice_children(), "flow": fig_flow(), "decimation": fig_decimation(),
             "exponents-alpha": fig_exponents_alpha(), "thouless": fig_thouless(),
-            "boundary": fig_boundary(), "percolation-tail": fig_percolation_tail()}
+            "boundary": fig_boundary(), "percolation-tail": fig_percolation_tail(),
+            "free-energy": fig_free_energy()}
 
 
 def fig_exponents_alpha():

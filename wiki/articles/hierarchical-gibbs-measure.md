@@ -22,7 +22,8 @@
     "hierarchical-symmetries",
     "hierarchical-two-marginalities",
     "hierarchical-vector-models",
-    "ultrametric-block-systems"
+    "ultrametric-block-systems",
+    "hierarchical-free-energy"
   ],
   "sourceIds": [
     "dyson-1969",

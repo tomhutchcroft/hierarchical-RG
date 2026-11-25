@@ -15,6 +15,11 @@ import math
 
 import numpy as np
 
+sys_path = __import__('pathlib').Path(__file__).resolve().parent
+import sys as _sys
+_sys.path.insert(0, str(sys_path))
+import simulate  # noqa: E402
+
 RESULTS = []
 
 
@@ -553,6 +558,36 @@ def check_finite_volume_magnetisation():
          "M_n = " + ", ".join(f"beta={b}, n={n}: {m:.2e}" for b, n, m in rows))
 
 
+def check_free_energy_series():
+    """The Gaussian per-scale terms against direct quadrature, and the divergence of the curvature."""
+    L, d, alpha = 2, 1, 0.5
+    m = L ** d
+    xs, ws = np.polynomial.hermite.hermgauss(60)
+    worst = 0.0
+    for beta in (0.3, 0.7):
+        for k in (1, 2):
+            mass = (1 - L ** -d) * sum(L ** (-alpha * j) for j in range(1, k))
+            v = m ** (k - 1) / (1 - beta * mass)
+            b = beta * L ** (-(d + alpha) * k)
+            # direct: int int exp(b s1 s2) N(0,v) N(0,v), by Gauss-Hermite (m = 2 children)
+            s1 = np.sqrt(2 * v) * xs
+            quad = float(np.sum(np.outer(ws, ws) * np.exp(b * np.outer(s1, s1))) / np.pi)
+            closed = (1 - b * (m - 1) * v) ** -0.5 * (1 + b * v) ** (-(m - 1) / 2.0)
+            worst = max(worst, abs(quad - closed) / closed)
+    note("Gaussian per-scale term: closed form against quadrature", worst < 1e-10,
+         f"largest relative difference over two intensities and two scales: {worst:.2e}")
+
+    def second(beta, hh):
+        return (simulate.free_energy(beta + hh, L, d, alpha) - 2 * simulate.free_energy(beta, L, d, alpha)
+                + simulate.free_energy(beta - hh, L, d, alpha)) / hh ** 2
+
+    beta_c = 1 / ((1 - L ** -d) / (L ** alpha - 1))
+    low = beta_c ** 2 * second(beta_c * 0.5, 1e-4)
+    high = beta_c ** 2 * second(beta_c * 0.95, 1e-4)
+    note("the heat capacity grows towards the critical intensity", high > 5 * low > 0,
+         f"C at half the critical intensity {low:.3f}, at 0.95 of it {high:.3f}")
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -569,6 +604,7 @@ def main() -> int:
     check_block_average()
     check_variance_sandwich()
     check_finite_volume_magnetisation()
+    check_free_energy_series()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

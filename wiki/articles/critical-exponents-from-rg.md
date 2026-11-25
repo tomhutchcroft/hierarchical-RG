@@ -18,7 +18,8 @@
     "hierarchical-percolation-rg",
     "corrections-to-scaling",
     "hierarchical-infinite-volume-limit",
-    "hierarchical-vector-models"
+    "hierarchical-vector-models",
+    "hierarchical-free-energy"
   ],
   "sourceIds": [
     "bleher-sinai-1975",

@@ -20,7 +20,8 @@
     "gaussian-fixed-point-spectrum",
     "hierarchical-phi4-truncations",
     "hierarchical-symmetries",
-    "koch-wittwer-fixed-point"
+    "koch-wittwer-fixed-point",
+    "hierarchical-free-energy"
   ],
   "sourceIds": [
     "bleher-sinai-1973",

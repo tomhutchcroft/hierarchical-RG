@@ -304,6 +304,18 @@
     {
       "tag": "LSTE",
       "state": "allocated"
+    },
+    {
+      "tag": "6D6N",
+      "state": "allocated"
+    },
+    {
+      "tag": "EILW",
+      "state": "allocated"
+    },
+    {
+      "tag": "1TUR",
+      "state": "allocated"
     }
   ]
 }
