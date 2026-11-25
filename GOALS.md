@@ -18,11 +18,11 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Eighteen articles in three parts, four reading paths, four reading maps, 71 tagged assertions,
-six interactive simulations, seven generated diagrams, a notation page generated from `STYLE.md`
-with a column saying where each symbol is used as well as where it is introduced, 42 works in the
-catalogue, and a built site of 102 pages committed under `site/`. The checks below pass. The site is live at `https://tomhutchcroft.github.io/hierarchical-RG/`, served from the
-Actions artifact whose root is `site/`.
+Nineteen articles in three parts, four reading paths, five reading maps, 75 tagged assertions,
+seven interactive simulations, seven generated diagrams, and four generated index pages beyond the
+bibliography and the assertions: notation (with where each symbol is used), chronology, figures, and
+the single-file edition. 42 works in the catalogue; a built site of 109 pages under `site/`. The
+checks below pass.
 
 This section ages. Trust the checks and `git log`, not this paragraph.
 
@@ -62,22 +62,25 @@ Beyond the scripts:
 structure and the renormalisation group — and, within part three, the vector and phi-fourth
 material — before returning to the percolation volume, which is item 2.
 
-### 1. By value
+### 1. The one mathematical question still open in the wiki
 
-- The one literature map still named and not written: Bauerschmidt, Brydges and Slade, whose book is
-  the reference for the renormalisation group as an operation on potentials and is cited by
-  `hierarchical-lattice`, `hierarchical-gibbs-measure` and `hierarchical-phi4-truncations`.
-- The variance route gives `κ₊ ≤ α` unconditionally and pins the ratio of the two block-spin
-  fluctuations at criticality, but it cannot certify `κ = α`, because the half of the sandwich that
-  would do so is the missing *upper* bound on the free block-spin variance. Either that bound, or a
-  direct proof that the free measures at `β_c` are the even mixture of the two extremal states,
-  would close it; both are open in the wiki and both are the same kind of input as the trichotomy.
-- Part three has four articles to part one's six and part two's eight. The percolation and vector
-  articles are the ones the person asked for most; a third vector-model article — the $N$-component
-  `φ⁴` at the marginal exponent, where Bleher and Major's criterion replaces the exponent test —
-  would balance the part and give `hierarchical-vector-models` somewhere to hand over.
+The variance route gives `κ₊ ≤ α` unconditionally and pins the ratio of the two block-spin
+fluctuations at criticality, but it cannot certify `κ = α`: the half of the sandwich that would do
+so is an upper bound on the free block-spin variance, and the wiki has neither that bound nor a
+proof that the free measures at `β_c` are the even mixture of the two extremal states. Everything
+else that was open has been closed or attributed, so this is now the only place where the wiki's own
+argument stops short of its own statement.
 
-### 2. The volume of the critical cluster (percolation depth), deferred
+### 2. By value, next
+
+- The free energy's singularity. The recursion gives `F_n → F` and convexity, and nothing in the wiki
+  says what `F` does at `β_c`. The Gaussian case is computable in closed form from the per-scale
+  terms of the recursion, so the singularity there is arithmetic; whether the Ising case can be said
+  anything about beyond the attribution is an open editorial question.
+- A second literature map is not needed; the catalogue is mapped in five groups, and the works
+  outside them are cited individually.
+
+### 3. The volume of the critical cluster (percolation depth), deferred
 
 Part 3 promises the non-mean-field regime and delivers one article. Define the exponent from the
 tail of the cluster volume, explain why the two-point function is not the hard object there, state
@@ -86,6 +89,24 @@ sharply apart. Sources already in the catalogue.
 
 ## Done
 
+- A reading map for Bauerschmidt, Brydges and Slade: the one book in the catalogue, with what the
+  method is, what this wiki takes from it, and the boundary that matters — a book about the marginal
+  dimension cannot decide the open questions about the hierarchical model, which is its setting.
+- *The two marginal exponents* (`hierarchical-two-marginalities`), a synthesis article for part
+  three: `α = d` is the threshold of the measure and `α = d/2` that of the map, the two coincide
+  only at `α = 2`, `d = 4`, and the table says which criterion applies in each regime. Proved: the
+  summability computation and the quartic eigenvalue crossing one. Attributed: Bleher and Major's
+  criterion at the marginal exponent and its percolation counterpart, which disagree.
+- Four generated index pages and one generated strip: a chronology of the cited works by year, a
+  page documenting every figure and simulation with what checks it, per-article notation lines
+  pointing at the rows of the notation table, and the earlier notation page extended with where each
+  symbol is used. All generated from their sources, all linked from the sidebar.
+- An exact widget for the magnetised phase: the three boundary conditions' block-spin laws side by
+  side, enumerated, written twice and compared by `test_sim.py` to `3e-15`.
+- `check_wiki.py` now warns when a `related` link is one-sided, and the 46 one-sided links in the
+  data were made reciprocal.
+- Every finite-volume plus state is magnetised at every positive intensity (`tag-LSTE`), which is why
+  the transition is a statement about the limit; checked by enumeration at four intensities.
 - A reading map for Gawedzki and Kupiainen: the five papers that build the local theory of the
   nontrivial fixed point, with the group's three boundaries stated — existence is not its subject,
   the analysis is local in `ε` or `1/N`, and the setting is the hierarchical approximation.
