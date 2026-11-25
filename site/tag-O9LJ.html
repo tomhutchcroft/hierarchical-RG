@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The fixed points of the hierarchical recursion, and the four kinds that occur — Hierarchical RG</title>
+<meta name="description" content="definition: The fixed points of the hierarchical recursion, and the four kinds that occur">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<a class="skip" href="#main">skip to content</a>
+<div class="layout">
+<aside class="sidebar" aria-label="site">
+<a class="brand" href="index.html">Hierarchical RG<span>renormalisation on hierarchical lattices</span></a>
+<form class="search" onsubmit="return false"><input id="q" type="search" placeholder="search  (press /)" aria-label="search the wiki"></form>
+<ul class="search-results" id="results"></ul>
+<nav class="sec" aria-label="part: The block structure"><h2><a href="part-block-structure.html">The block structure</a></h2><ol><li><span class="num">1</span><a href="hierarchical-lattice.html">The hierarchical lattice</a></li><li><span class="num">2</span><a href="hierarchical-symmetries.html">The isometries of the hierarchical lattice</a></li><li><span class="num">3</span><a href="hierarchical-gibbs-measure.html">Hierarchical spin systems and decimation</a></li><li><span class="num">4</span><a href="hierarchical-infinite-volume-limit.html">The infinite-volume limit</a></li><li><span class="num">5</span><a href="ultrametric-block-systems.html">Ultrametric block systems and the p-adic models</a></li><li><span class="num">6</span><a href="hierarchical-magnetised-phase.html">The magnetised phase, and what monotonicity gives</a></li></ol></nav><nav class="sec" aria-label="part: The renormalisation group"><h2><a href="part-renormalisation-group.html">The renormalisation group</a></h2><ol><li><span class="num">1</span><a href="renormalisation-group-map.html">The renormalisation group map</a></li><li><span class="num">2</span><a href="gaussian-renormalisation-group.html">The Gaussian renormalisation group</a></li><li><span class="num">3</span><a href="gaussian-fixed-point-spectrum.html">The spectrum at the Gaussian fixed point</a></li><li><span class="num">4</span><a href="critical-exponents-from-rg.html">Critical exponents from the renormalisation group</a></li><li><span class="num">5</span><a href="bleher-sinai-fixed-point.html">The Bleher–Sinai fixed point</a></li><li><span class="num">6</span><a href="corrections-to-scaling.html">Corrections to scaling</a></li><li><span class="num">7</span><a href="hierarchical-free-energy.html">The free energy and its singularity</a></li><li><span class="num">8</span><a href="koch-wittwer-fixed-point.html">Koch and Wittwer's non-Gaussian fixed point</a></li><li><span class="num">9</span><a href="abdesselam-global-trajectory.html">Abdesselam's trajectory between two fixed points</a></li><li><span class="num">10</span><a href="hierarchical-fixed-points.html">The fixed points, and what is known about each</a></li></ol></nav><nav class="sec" aria-label="part: Percolation, vectors, and the Euclidean comparison"><h2><a href="part-beyond-spins.html">Percolation, vectors, and the Euclidean comparison</a></h2><ol><li><span class="num">1</span><a href="hierarchical-percolation-rg.html">Renormalisation for hierarchical percolation</a></li><li><span class="num">2</span><a href="hierarchical-cluster-volume.html">The volume of the critical cluster</a></li><li><span class="num">3</span><a href="hierarchical-vector-models.html">Hierarchical models with continuous symmetry</a></li><li><span class="num">4</span><a href="hierarchical-phi4-truncations.html">The phi-fourth hierarchical model and its truncations</a></li><li><span class="num">5</span><a href="hierarchical-two-marginalities.html">The two marginal exponents</a></li><li><span class="num">6</span><a href="hierarchical-and-euclidean-rg.html">Hierarchical and Euclidean renormalisation</a></li></ol></nav>
+<nav class="sec" aria-label="reading maps"><h2>Reading maps</h2><ul><li><a href="source-abdesselam.html">Abdesselam</a></li><li><a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a></li><li><a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a></li><li><a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a></li><li><a href="source-koch-wittwer.html">Koch and Wittwer</a></li></ul></nav>
+<nav class="sec" aria-label="index"><h2>Index</h2><ul><li><a href="start.html">Start here</a></li><li><a href="assertions.html">Assertions</a></li><li><a href="notation.html">Notation</a></li><li><a href="bibliography.html">Bibliography</a></li><li><a href="chronology.html">Chronology</a></li><li><a href="figures.html">Figures</a></li><li><a href="open.html">What is not known</a></li><li><a href="checks.html">How it is checked</a></li><li><a href="sections.html">Sections</a></li><li><a href="all.html">Single file</a></li></ul></nav>
+</aside>
+<main id="main">
+<p class="crumbs"><a href="index.html">Home</a> / <a href="assertions.html">Assertions</a> / O9LJ</p>
+<h1>The fixed points of the hierarchical recursion, and the four kinds that occur</h1>
+<p class="meta">definition &middot; <span class="tag">O9LJ</span> &middot; in
+<a href="hierarchical-fixed-points.html">The fixed points, and what is known about each</a></p>
+<div class="assertion">A <em>fixed point</em> is a law $\nu^*\in\mathcal E$ with $\mathcal R_{\theta,b}\nu^*=\nu^*$ for some $\theta$ and $b$, where $\mathcal E$ is the class of <a href="bleher-sinai-fixed-point.html#section-setting">the fixed-point article</a>: symmetric, with $0&lt;\int s^2d\nu^*&lt;\infty$ and an exponential moment. Four kinds occur in this model, and nothing else is known to:</p>
+<ol>
+<li>the <em>trivial</em> fixed point $\delta_0$, the law of the block spin in the disordered phase, which is a fixed point only in the degenerate sense that its variance vanishes — it is the limit of every orbit with $b&lt;b_c$, and it lies on the boundary of $\mathcal E$ rather than in it;</li>
+<li>the <em>Gaussian</em> fixed points $N(0,v_b)$, one for each $b&gt;0$, of which the critical member is $N(0,1)$ at $b=b_1^{(0)}$;</li>
+<li>the <em>nontrivial</em> fixed point $\nu^*$ of the critical orbit, in $\mathcal E$ and not Gaussian when $\alpha&gt;d/2$;</li>
+<li>the <em>degenerate</em> fixed points of the supercritical phase, $\delta_{+M}$ and $\delta_{-M}$, which are fixed points of the unrescaled map and lie outside $\mathcal E$ because their variance is of the order of the block rather than of the block's square root.</li>
+</ol>
+<p>"Fixed point" below means the second or third kind unless another is named, and the distinction between the four is the point of the inventory: only two of them can govern a critical theory.</p>
+
+## The inventory {#section-inventory}
+
+<p>The table is the article. Each row gives the fixed point, when it exists, whether its existence is a theorem and of what kind, the multiplier in the growth direction, the correlation-length exponent, and where the statement is proved.</p>
+<table><thead><tr><th>Fixed point</th><th>Exists when</th><th>Status</th><th>Growth multiplier</th><th>$\nu$</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>$\delta_0$ (trivial)</td><td>always, as a limit</td><td>elementary; not in $\mathcal E$</td><td>&mdash;</td><td>&mdash;</td><td><a href="bleher-sinai-fixed-point.html#section-statement">the trichotomy</a></td></tr>
+<tr><td>$N(0,v_b)$</td><td>every $b&gt;0$</td><td>closed form</td><td>$\lambda/m=L^{\alpha}$</td><td>$1/\alpha$</td><td><a href="bleher-sinai-fixed-point.html#tag-S8FR">tag S8FR</a></td></tr>
+<tr><td>$N(0,1)$ at $b_1^{(0)}$</td><td>critical member</td><td>closed form</td><td>$L^{\alpha}$</td><td>$1/\alpha$</td><td><a href="gaussian-renormalisation-group.html#section-multiplier">the Gaussian article</a></td></tr>
+<tr><td>$\nu^*$ (nontrivial)</td><td>$0&lt;\alpha&lt;d$</td><td>Bleher–Sinai; independently Koch–Wittwer for the $d=3$ scalar case</td><td>$\lambda_1&gt;1$, and $\lambda_1\neq L^{\alpha}$ for $\alpha&gt;d/2$</td><td>$\log L/\log\lambda_1$</td><td><a href="bleher-sinai-fixed-point.html#tag-B7WD">tag B7WD</a>, <a href="koch-wittwer-fixed-point.html#tag-C2ZB">tag C2ZB</a></td></tr>
+<tr><td>$\delta_{\pm M}$</td><td>$b&gt;b_c$</td><td>degenerate; outside $\mathcal E$</td><td>&mdash;</td><td>&mdash;</td><td><a href="hierarchical-fixed-points.html#section-degenerate">below</a></td></tr>
+</tbody></table>
+<p>Two remarks on the columns. The Gaussian row is one family rather than one point: for every $b$ the rescaled map has exactly one Gaussian fixed point, of variance $v_b=\frac{\lambda-m}{\lambda b(m-1)}$, and it is the critical one only at $b_1^{(0)}=\frac{\lambda-m}{\lambda(m-1)}$, where the variance is one and the multiplier is $L^{\alpha}$. And the nontrivial row's spectrum is part of its existence statement: the linearisation is compact on the signed measures of zero mass, its spectrum is a simple eigenvalue $\lambda_1&gt;1$ with the rest in a disk of radius $\rho&lt;1$, and complex pairs occur among the rest.</p>
+
+## What is the same at every fixed point {#section-universal}</div>
+<p class="meta">The full context, including the running hypotheses and the proof, is in
+<a href="hierarchical-fixed-points.html#tag-O9LJ">The fixed points, and what is known about each</a>. To cite this assertion, link to
+<span class="tag">tag-O9LJ.html</span> or to the article anchor directly.</p>
+<div class="pager"><a href="assertions.html"><span class="dir">index</span>All assertions</a>
+<a href="hierarchical-fixed-points.html#tag-O9LJ"><span class="dir">context</span>The fixed points, and what is known about each</a></div>
+</main>
+</div>
+<script src="assets/katex/katex.min.js" defer></script>
+<script src="assets/katex/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredClasses:['sim']});"></script>
+<script src="assets/sim.js" defer></script>
+<script src="assets/search.js" defer></script>
+
+</body></html>

@@ -17,7 +17,8 @@
     "bleher-sinai-fixed-point",
     "gaussian-renormalisation-group",
     "gaussian-fixed-point-spectrum",
-    "hierarchical-free-energy"
+    "hierarchical-free-energy",
+    "hierarchical-fixed-points"
   ],
   "sourceIds": ["bleher-sinai-1975", "gawedzki-kupiainen-1983", "gawedzki-kupiainen-1984", "aizenman-fernandez-1988"],
   "aliases": [

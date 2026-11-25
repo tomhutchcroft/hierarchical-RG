@@ -79,6 +79,10 @@ def check_math(where: str, body: str) -> None:
             fail(where, f"paragraph {i + 1}: odd number of $ delimiters")
         if re.search(r"\\\(|\\\[", block):
             fail(where, f"paragraph {i + 1}: uses \\( or \\[ delimiters")
+        # a doubled backslash before a command name renders as a line break plus the letters,
+        # which KaTeX accepts silently: it is always an escaping mistake, never a row separator
+        if re.search(r"\\\\[A-Za-z]", block):
+            fail(where, f"paragraph {i + 1}: doubled backslash before a command name")
 
 
 def check_fences(where: str, body: str) -> None:

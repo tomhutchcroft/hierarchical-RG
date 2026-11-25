@@ -16,7 +16,8 @@
     "corrections-to-scaling",
     "hierarchical-phi4-truncations",
     "bleher-sinai-fixed-point",
-    "hierarchical-two-marginalities"
+    "hierarchical-two-marginalities",
+    "hierarchical-fixed-points"
   ],
   "sourceIds": ["fisher-ma-nickel-1972", "gawedzki-kupiainen-1983", "bleher-sinai-1975", "bauerschmidt-brydges-slade-2019"],
   "aliases": [

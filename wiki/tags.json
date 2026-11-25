@@ -360,6 +360,18 @@
     {
       "tag": "RN1S",
       "state": "allocated"
+    },
+    {
+      "tag": "O9LJ",
+      "state": "allocated"
+    },
+    {
+      "tag": "NBGG",
+      "state": "allocated"
+    },
+    {
+      "tag": "9UT8",
+      "state": "allocated"
     }
   ]
 }

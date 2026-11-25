@@ -15,7 +15,8 @@
     "hierarchical-phi4-truncations",
     "bleher-sinai-fixed-point",
     "gaussian-renormalisation-group",
-    "abdesselam-global-trajectory"
+    "abdesselam-global-trajectory",
+    "hierarchical-fixed-points"
   ],
   "sourceIds": [
     "koch-wittwer-1986",

@@ -21,7 +21,8 @@
     "hierarchical-phi4-truncations",
     "hierarchical-symmetries",
     "koch-wittwer-fixed-point",
-    "hierarchical-free-energy"
+    "hierarchical-free-energy",
+    "hierarchical-fixed-points"
   ],
   "sourceIds": [
     "bleher-sinai-1973",
@@ -66,6 +67,9 @@
 <p>The recursion is fractional linear in $v$, increasing and convex on its domain, and it blows up at the boundary $v=1/(b(m-1))$. It is the exact statement that the block spin of a Gaussian model is Gaussian: the tilt by a function of the sum and the pushforward by the sum preserve the class of centred Gaussians.</p>
 
 ## The closed form and the critical intensity {#section-critical}
+
+<p>This section computes the member of the Gaussian family that is critical; the family as a whole, and its place among the other fixed points of the recursion, are listed in <a href="/articles/hierarchical-fixed-points/">the fixed points article</a>.</p>
+
 
 <a id="tag-F9KB" data-assertion="theorem" data-title="Block-spin variance in closed form and the critical intensity"></a>
 <p>For every $n\geq0$,</p>

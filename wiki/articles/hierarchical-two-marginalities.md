@@ -16,7 +16,8 @@
     "hierarchical-vector-models",
     "hierarchical-percolation-rg",
     "bleher-sinai-fixed-point",
-    "hierarchical-cluster-volume"
+    "hierarchical-cluster-volume",
+    "hierarchical-fixed-points"
   ],
   "sourceIds": [
     "bleher-major-2021",

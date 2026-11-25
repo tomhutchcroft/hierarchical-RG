@@ -18,11 +18,10 @@ the browser code, the displayed identities, and the built site, by scripts in `t
 
 ## Current state
 
-Twenty-one articles in three parts, six reading paths, five reading maps, 78 tagged assertions,
-eight generated figures, seven interactive ones, 42 works in the catalogue, and a built site of 119
-pages under `site/`. Beyond the articles the site has nine generated index pages — start, the three
-part hubs, assertions, notation, bibliography, chronology, figures, sections, and what is not known
-— and a page saying how the wiki is checked. The checks below pass.
+Twenty-two articles in three parts, six reading paths, five reading maps, 84 tagged assertions,
+eight generated figures, seven interactive ones, 42 works in the catalogue, and a built site of 131
+pages under `site/`, with nine generated index pages beyond the articles and a page saying how the
+wiki is checked. The checks below pass.
 
 This section ages. Trust the checks and `git log`, not this paragraph.
 
@@ -85,6 +84,12 @@ spins the summed consequence is now proved and the pointwise one is not.
 
 ## Done
 
+- *The fixed points, and what is known about each* (`hierarchical-fixed-points`), the coda of part two:
+  an inventory table of every fixed point of the recursion with its existence status, growth multiplier,
+  `ν` and the article that proves it; the proposition that the growth exponent is `θ₀` at every fixed
+  point, so `κ = α` everywhere while `ν` is what the fixed point determines; a table of the five methods
+  that produce the rows and what each cannot do; the degenerate supercritical fixed points; the
+  coalescence at `α = d/2`; and what is not a fixed point in each of the neighbouring classes.
 - The amplitude (`tag-UJC1` now carries the two-sided theorem): a trapping argument, from a fifth submission,
   refereed here. In the small regime the uniform two-sided small-tilt expansion gives `R_n ≤ qR_{n-1}` with
   `q = (1+L^{-α})/2 < 1`, so a small value would decay for ever, making `log χ_n` have summable increments and

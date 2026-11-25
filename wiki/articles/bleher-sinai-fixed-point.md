@@ -23,7 +23,8 @@
     "hierarchical-phi4-truncations",
     "hierarchical-two-marginalities",
     "hierarchical-vector-models",
-    "koch-wittwer-fixed-point"
+    "koch-wittwer-fixed-point",
+    "hierarchical-fixed-points"
   ],
   "sourceIds": [
     "bleher-sinai-1973",
@@ -64,7 +65,7 @@
 <p>The first display is the <a href="/articles/gaussian-renormalisation-group/#section-closure">variance recursion</a> composed with the rescaling $v\mapsto L^{-2\theta}v$. A fixed point satisfies $v=\frac{mv}{\lambda(1-bv(m-1))}$ with $v&gt;0$, which is $\lambda(1-bv(m-1))=m$, that is $v=v_b$; the normalisability condition $bv(m-1)&lt;1$ holds because $bv_b(m-1)=1-m/\lambda&lt;1$.</p>
 <p>At $b=b_1^{(0)}$ the variance is $v=\frac{\lambda-m}{\lambda(m-1)}\cdot\frac{\lambda(m-1)}{\lambda-m}=1$. The derivative of $w$ in $v$ at the fixed point is $\frac{m}{\lambda}\cdot\frac{1}{(1-bv(m-1))^2}=\frac{m}{\lambda}\cdot\frac{\lambda^2}{m^2}=\frac{\lambda}{m}$, using $1-bv_b(m-1)=m/\lambda$.</p>
 :::
-<p>For the Ising prior the fixed point is not Gaussian. This is the content of the theorem below; the proposition above shows only that the Gaussian candidate at the Ising critical coupling would have to be $N(0,v_{b_c})$, a single number, and the theorem says that the critical law is a different one.</p>
+<p>For the inventory of every fixed point of the recursion, and what distinguishes them, see <a href="/articles/hierarchical-fixed-points/">the fixed points article</a>. For the Ising prior the fixed point is not Gaussian. This is the content of the theorem below; the proposition above shows only that the Gaussian candidate at the Ising critical coupling would have to be $N(0,v_{b_c})$, a single number, and the theorem says that the critical law is a different one.</p>
 
 ## Statement {#section-statement}
 
