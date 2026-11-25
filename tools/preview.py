@@ -584,7 +584,8 @@ articles citing it; the <a href="notation.html">notation page</a> fixes one symb
 names the article that introduces it; and the reading maps — for
 <a href="source-bleher-major-sinai.html">Bleher, Major and Sinai</a>,
 <a href="source-gawedzki-kupiainen.html">Gawedzki and Kupiainen</a>,
-<a href="source-koch-wittwer.html">Koch and Wittwer</a> and
+<a href="source-koch-wittwer.html">Koch and Wittwer</a>,
+<a href="source-bauerschmidt-brydges-slade.html">Bauerschmidt, Brydges and Slade</a> and
 <a href="source-abdesselam.html">Abdesselam</a> — say what each paper establishes and where the
 wiki uses it.</p>"""
     (out / "start.html").write_text(
