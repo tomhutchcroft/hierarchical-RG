@@ -809,6 +809,68 @@ def check_multicritical_counts():
          f"d = {[round(x, 4) for x in ds]}; at each, the marginal index is k")
 
 
+def check_multicritical_scheme():
+    """The projected potential map of the fixed-point article: Gaussian fixed point and its eigenvalues."""
+    L, d = 2.0, 1.0
+    S, N = 10.0, 601
+    s = np.linspace(-S, S, N)
+    T = np.linspace(-2 * S, 2 * S, 2 * N)
+
+    def density(u):
+        V = sum(uj * s ** (2 * j) for j, uj in enumerate(u, start=1))
+        f = np.exp(-np.clip(V, -700, 700))
+        return f / np.trapezoid(f, s)
+
+    def one_step(u, alpha, b):
+        f = density(u)
+        g = np.empty_like(T)
+        for i, t in enumerate(T):
+            fs = np.interp(t - s, s, f, left=0.0, right=0.0)
+            g[i] = np.trapezoid(f * fs * np.exp(b * s * (t - s)), s)
+        a = L ** (0.5 * (d + alpha))
+        h = np.interp(a * s, T, g, left=0.0, right=0.0) * a
+        return h / np.trapezoid(h, s)
+
+    def fit(h, K):
+        keep = h > 1e-7 * h.max()
+        y = -np.log(np.maximum(h, 1e-300))[keep]
+        w = h[keep]
+        sig2 = np.trapezoid(s ** 2 * h, s)
+        t = s[keep] ** 2 / sig2
+        A = np.stack([t ** j for j in range(0, K + 1)], axis=1)
+        sol, *_ = np.linalg.lstsq(A * np.sqrt(w)[:, None], y * np.sqrt(w), rcond=None)
+        return sol[1:] / np.array([sig2 ** j for j in range(1, K + 1)])
+
+    def projected(u, alpha, b, K):
+        return fit(one_step(u, alpha, b), K)
+
+    def dbl(j):
+        out = 1
+        for i in range(1, j + 1):
+            out *= 2 * i - 1
+        return out
+
+    rows = []
+    for alpha in (0.5, 0.8):
+        K = 3
+        lam = L ** (d + alpha)
+        b = (lam - L ** d) / (lam * (L ** d - 1))
+        u0 = np.zeros(K); u0[0] = 0.5
+        res = np.max(np.abs(projected(u0, alpha, b, K) - u0))
+        J = np.zeros((K, K))
+        for i in range(K):
+            h = 1e-5 / dbl(i + 1)
+            e = np.zeros(K); e[i] = h
+            J[:, i] = (projected(u0 + e, alpha, b, K) - projected(u0 - e, alpha, b, K)) / (2 * h)
+        ev = np.sort(np.linalg.eigvals(J).real)[::-1]
+        pred = np.array([L ** (d * (1 - k) + k * alpha) for k in range(1, K + 1)])
+        rows.append((alpha, res, np.max(np.abs(ev - pred) / pred), ev, pred))
+    ok = all(r[1] < 1e-3 and r[2] < 3e-3 for r in rows)
+    note("the projected potential map reproduces the Gaussian fixed point and its spectrum", ok,
+         "; ".join(f"alpha={a}: fixed-point residual {r:.1e}, eigenvalues {np.round(e, 4)} vs "
+                   f"{np.round(p, 4)}" for a, r, _, e, p in rows))
+
+
 def main() -> int:
     check_variance()
     check_beta_c()
@@ -832,6 +894,7 @@ def main() -> int:
     check_two_child_recursion()
     check_amplitude_ratios()
     check_multicritical_counts()
+    check_multicritical_scheme()
     bad = [r for r in RESULTS if not r[1]]
     print(f"\n{len(RESULTS) - len(bad)} passed, {len(bad)} failed")
     return 1 if bad else 0

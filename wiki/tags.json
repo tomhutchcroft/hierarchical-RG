@@ -376,6 +376,10 @@
     {
       "tag": "UHCZ",
       "state": "allocated"
+    },
+    {
+      "tag": "JH7E",
+      "state": "allocated"
     }
   ]
 }
